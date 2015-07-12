@@ -11,7 +11,7 @@ public class Introduction extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_instroduction);
+        setContentView(R.layout.activity_introduction);
     }
 
     @Override
