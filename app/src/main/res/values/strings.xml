@@ -6,5 +6,7 @@
 
     <!--welcome interface string set -->
     <string name="welcome_text">Designed by Battle Team.</string>
+    <string name="title_activity_instroduction">Instroduction</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>

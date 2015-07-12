@@ -20,12 +20,17 @@ public class Welcome extends ActionBarActivity implements Runnable{
     }
     @Override
     public void run() {
+        //input code to check version
+
+
         preferences=getSharedPreferences(setting,MODE_PRIVATE);
         isFirst=preferences.getBoolean("STARTFIRST",true);
         if(isFirst){//use firstly
-            //preferences.edit().putBoolean("STARTFIRST",false);
+            preferences.edit().putBoolean("STARTFIRST",false).commit();
+            startActivity(new Intent(Welcome.class,Instroduction.class));
         }else{
-
+            //load user info
+            //load resources saved in SDCard
         }
     }
 }
