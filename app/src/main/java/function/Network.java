@@ -14,7 +14,7 @@ public class Network {
      * @return
      */
     public static boolean checkNetWorkState(Context context){
-        return false;
+        return true;
     }
 
     /**
