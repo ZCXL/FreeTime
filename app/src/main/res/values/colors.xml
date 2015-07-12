@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- the colors of welcome interface-->
+    <color name="welcome_text_color">#6f7070</color>
+</resources>

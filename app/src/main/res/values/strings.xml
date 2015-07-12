@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FreeTime</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!--welcome interface string set -->
+    <string name="welcome_text">Designed by Battle Team.</string>
+
+</resources>

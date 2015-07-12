@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    >
+
+    <ImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/logo"
+        android:id="@+id/logoView"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="149.66dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="143.33dp"
+        />
+
+    <ImageView
+        android:layout_width="176.66dp"
+        android:layout_height="52.66dp"
+        android:id="@+id/logoWordView1"
+        android:background="@drawable/loading_word1"
+        android:layout_below="@+id/logoView"
+        android:layout_marginTop="97.66dp"
+        android:layout_marginLeft="61dp"
+        />
+
+    <ImageView
+        android:layout_width="133.66dp"
+        android:layout_height="46.33dp"
+        android:id="@+id/logoWordView2"
+        android:background="@drawable/loading_word2"
+        android:layout_below="@+id/logoWordView1"
+        android:layout_marginTop="29.66dp"
+        android:layout_marginLeft="171.33dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_text"
+        android:layout_alignParentBottom="true"
+        android:textSize="@dimen/welcome_text_size"
+        android:textColor="@color/welcome_text_color"
+        android:layout_marginBottom="37.66dp"
+        android:layout_marginLeft="126.66dp"/>
+
+</RelativeLayout>
