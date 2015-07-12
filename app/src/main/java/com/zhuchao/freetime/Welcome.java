@@ -23,7 +23,7 @@ public class Welcome extends ActionBarActivity implements Runnable{
         preferences=getSharedPreferences(setting,MODE_PRIVATE);
         isFirst=preferences.getBoolean("STARTFIRST",true);
         if(isFirst){//use firstly
-            preferences.edit().putBoolean("STARTFIRST",false);
+            preferences.edit().putBoolean("STARTFIRST",false);////
         }else{
 
         }
