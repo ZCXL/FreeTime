@@ -87,37 +87,38 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        hideAllFragment(transaction);
+        FragmentTransaction fragmentTransaction=manager.beginTransaction();
+        hideAllFragment(fragmentTransaction);
         switch (v.getId()){
             case R.id.main_zero_time:
                 setAllUnchecked(1);
                 zero_time.setBackgroundResource(R.drawable.main_bottom_icon_1_unchecked);
                 if(zeroTimeFragment==null){
                     zeroTimeFragment=new ZeroTimeFragment();
-                    transaction.add(R.id.container,zeroTimeFragment);
+                    fragmentTransaction.add(R.id.container,zeroTimeFragment);
                 }else{
-                    transaction.show(zeroTimeFragment);
+                    fragmentTransaction.show(zeroTimeFragment);
                 }
                 break;
             case R.id.main_top_hot:
                 setAllUnchecked(2);
                 if(topHotFragment==null){
                     topHotFragment=new TopHotFragment();
-                    transaction.add(R.id.container,topHotFragment);
+                    fragmentTransaction.add(R.id.container,topHotFragment);
                 }else{
-                    transaction.show(topHotFragment);
+                    fragmentTransaction.show(topHotFragment);
                 }
                 break;
             case R.id.main_mine:
                 setAllUnchecked(3);
                 if(mineFragment==null){
                     mineFragment=new MineFragment();
-                    transaction.add(R.id.container,mineFragment);
+                    fragmentTransaction.add(R.id.container,mineFragment);
                 }else{
-                    transaction.show(mineFragment);
+                    fragmentTransaction.show(mineFragment);
                 }
                 break;
         }
-        transaction.commit();
+        fragmentTransaction.commit();
     }
 }
