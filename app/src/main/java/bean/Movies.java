@@ -10,13 +10,24 @@ public class Movies extends BaseObjects {
     public Movies(){
         super();
     }
+    /**
+     * get movies counts
+     * @return
+     * Created by LMZ on 7/13/15
+     */
     @Override
     public int getCount() {
-        return 0;
+        if(movies==null)
+            return -1;
+        else
+            return movies.size();
     }
 
     @Override
     public BaseObject getItem(int index) {
-        return null;
+        if(movies==null)
+            return null;
+        else
+            return movies.get(index);
     }
 }

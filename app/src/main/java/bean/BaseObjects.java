@@ -9,7 +9,6 @@ public abstract class BaseObjects {
      * @return
      */
     public abstract int getCount();
-
     /**
      * Get the item where is at index,and you must check the bundary.
      * @param index

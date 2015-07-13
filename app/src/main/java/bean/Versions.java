@@ -14,7 +14,7 @@ import function.ParseJson;
  * Created by zhuchao on 7/13/15.
  */
 public class Versions extends BaseObjects implements ParseJson {
-    private static String TAG="ProcessJson";
+    private static String TAG="VersionProcessJson";
     private ArrayList<BaseObject>versions;
     public Versions(String c){
         versions=getObjects(c);
@@ -47,11 +47,13 @@ public class Versions extends BaseObjects implements ParseJson {
 
     @Override
     public int getCount() {
+
         return 0;
     }
 
     @Override
     public BaseObject getItem(int index) {
+
         return null;
     }
 }
