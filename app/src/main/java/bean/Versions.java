@@ -44,16 +44,29 @@ public class Versions extends BaseObjects implements ParseJson {
             return null;
         }
     }
-
+    /**
+     * get versions' counts
+     * @return int
+     * Created by LMZ on 7/13/15
+     */
     @Override
     public int getCount() {
-
-        return 0;
+        if (versions == null)
+            return -1;
+        else
+            return versions.size();
     }
-
+    /**
+     * get instant version's item
+     * @param index
+     * @return
+     * Created by LMZ on 7/13/15
+     */
     @Override
     public BaseObject getItem(int index) {
-
-        return null;
+        if (versions == null)
+            return null;
+        else
+            return versions.get(index);
     }
 }

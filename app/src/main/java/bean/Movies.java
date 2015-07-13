@@ -11,8 +11,8 @@ public class Movies extends BaseObjects {
         super();
     }
     /**
-     * get movies counts
-     * @return
+     * get movies' counts
+     * @return int
      * Created by LMZ on 7/13/15
      */
     @Override
@@ -23,6 +23,12 @@ public class Movies extends BaseObjects {
             return movies.size();
     }
 
+    /**
+     * get instant movie's item
+     * @param index
+     * @return
+     * Created by LMZ on 7/13/15
+     */
     @Override
     public BaseObject getItem(int index) {
         if(movies==null)

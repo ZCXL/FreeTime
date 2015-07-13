@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Movie extends BaseObject implements Serializable {
     private static final long serialVersionUID=-7620435178023928254L;
     private String description;
-    private long filesize;
+    private long fileSize;
     private String time;
     private String imageUrl;
     private String fileUrl;
@@ -17,8 +17,8 @@ public class Movie extends BaseObject implements Serializable {
         return description;
     }
 
-    public long getFilesize() {
-        return filesize;
+    public long getFileSize() {
+        return fileSize;
     }
 
     public String getTime() {
@@ -33,12 +33,14 @@ public class Movie extends BaseObject implements Serializable {
         return fileUrl;
     }
 
+    public void setDescription(String description){this.description = description;}
+
     public void setTime(String time) {
         this.time = time;
     }
 
-    public void setFilesize(long filesize) {
-        this.filesize = filesize;
+    public void setFileSize(long fileSize) {
+        this.fileSize = fileSize;
     }
 
     public void setImageUrl(String imageUrl) {

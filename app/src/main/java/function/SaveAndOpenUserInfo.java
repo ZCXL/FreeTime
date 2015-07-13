@@ -44,7 +44,6 @@ public class SaveAndOpenUserInfo implements ParseXml{
         try{
             xmlSerializer.setOutput(stringWriter);
             xmlSerializer.startDocument("UTF-8", true);
-            xmlSerializer.startTag("", "Info");
             xmlSerializer.startTag("", "UserShow");
             for(int i=0;i<objects.size();i++){
                 //强制转换：父类型转换为子类型
@@ -68,10 +67,9 @@ public class SaveAndOpenUserInfo implements ParseXml{
                 xmlSerializer.endTag("", "userInfo");
             }
             xmlSerializer.endTag("", "UserShow");
-            xmlSerializer.endTag("", "Info");
             xmlSerializer.endDocument();
             String result=stringWriter.toString();
-            Log.d("userInfo_a",result);
+            Log.d("userInfo",result);
             //将数据写入userInfo.xml
             FileOutputStream outputStream=context.openFileOutput("userInfo.xml",Context.MODE_PRIVATE);
             outputStream.write(result.getBytes());
