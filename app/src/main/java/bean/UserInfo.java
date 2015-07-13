@@ -1,10 +1,16 @@
 package bean;
 import java.io.Serializable;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import function.ParseJson;
+
 /**
  * Created by zhuchao on 7/12/15.
  * This class is used to save user's information.
  */
-public class UserInfo extends BaseObject implements Serializable {
+public class UserInfo extends BaseObject implements Serializable, ParseJson {
+    private ArrayList<BaseObject>userinfo;
     private String number;//user's account
     private String nick_name;//user's nick name;
     private String head_url;//user's head url
@@ -52,13 +58,30 @@ public class UserInfo extends BaseObject implements Serializable {
         this.stamp = stamp;
     }
 
-    public UserInfo(String number,String nick_name,String head_url,String signature,String stamp){
+    public UserInfo(){
         super(TYPE.USER);
-        this.number=number;
-        this.nick_name=nick_name;
-        this.head_url=head_url;
-        this.signature=signature;
-        this.stamp=stamp;
+    }
+    public UserInfo(String c){
+        super(TYPE.USER);
+        setUserinfo(c);
+    }
+    private void setUserinfo(String c){
+        userinfo=getObjects(c);
+        UserInfo info=(UserInfo)userinfo.get(0);
+        setHead_url(info.getHead_url());
+        setNumber(info.getNumber());
+        setNick_name(info.getNick_name());
+        setSignature(info.getSignature());
+        setStamp(info.getStamp());
     }
 
+    /**
+     * Remember to complete this function.
+     * @param c
+     * @return
+     */
+    @Override
+    public ArrayList<BaseObject> getObjects(String c) {
+        return null;
+    }
 }
