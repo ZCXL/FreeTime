@@ -12,8 +12,7 @@
         android:id="@+id/logoView"
         android:layout_alignParentTop="true"
         android:layout_marginTop="149.66dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="143.33dp"
+        android:layout_centerInParent="true"
         />
 
     <ImageView
