@@ -1,12 +1,13 @@
 package com.zhuchao.freetime;
 
-import android.support.v7.app.ActionBarActivity;
+
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class Introduction extends ActionBarActivity {
+public class Introduction extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +30,6 @@ public class Introduction extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

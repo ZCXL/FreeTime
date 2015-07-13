@@ -1,7 +1,7 @@
 package com.zhuchao.freetime;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.content.Intent;
 
@@ -10,7 +10,7 @@ import android.view.Window;
 import bean.Version;
 import function.CheckVersion;
 
-public class Welcome extends ActionBarActivity implements Runnable{
+public class Welcome extends Activity implements Runnable{
 
     private boolean isFirst;//check whether use this software firstly.
     private final String setting="Setting";//get base setting name
