@@ -16,7 +16,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import adapter.ViewPagerAdapter;
-import animation.DepthPageTransformer;
 import bean.Version;
 
 
@@ -61,7 +60,7 @@ public class Introduction extends Activity implements ViewPager.OnPageChangeList
         page2=inflater.inflate(R.layout.introduction_page_2,null);
         page3=inflater.inflate(R.layout.introduction_page_3,null);
 
-        start_button=(ImageView)page3.findViewById(R.id.introdution_start_button);//start button.
+        start_button=(ImageView)page3.findViewById(R.id.introduction_start_button);//start button.
 
         viewPager=(ViewPager)findViewById(R.id.introduction_viewPager);
         list=new ArrayList<View>();

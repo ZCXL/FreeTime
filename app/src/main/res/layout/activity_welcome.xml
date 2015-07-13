@@ -2,37 +2,37 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@android:color/white"
     >
 
     <ImageView
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        android:layout_width="@dimen/introduction_logo_width"
+        android:layout_height="@dimen/introduction_logo_height"
         android:background="@drawable/logo"
         android:id="@+id/logoView"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="149.66dp"
+        android:layout_marginTop="@dimen/introduction_logo_margin_top"
         android:layout_centerInParent="true"
         />
 
     <ImageView
-        android:layout_width="176.66dp"
-        android:layout_height="52.66dp"
+        android:layout_width="@dimen/introduction_word_1_width"
+        android:layout_height="@dimen/introduction_word_1_height"
         android:id="@+id/logoWordView1"
         android:background="@drawable/loading_word1"
         android:layout_below="@+id/logoView"
-        android:layout_marginTop="97.66dp"
-        android:layout_marginLeft="61dp"
+        android:layout_marginTop="@dimen/introduction_word_1_margin_top"
+        android:layout_marginLeft="@dimen/introduction_word_1_margin_left"
         />
 
     <ImageView
-        android:layout_width="133.66dp"
-        android:layout_height="46.33dp"
+        android:layout_width="@dimen/introduction_word_2_width"
+        android:layout_height="@dimen/introduction_word_2_height"
         android:id="@+id/logoWordView2"
         android:background="@drawable/loading_word2"
         android:layout_below="@+id/logoWordView1"
-        android:layout_marginTop="29.66dp"
-        android:layout_marginLeft="171.33dp"
+        android:layout_marginTop="@dimen/introduction_word_2_margin_top"
+        android:layout_marginLeft="@dimen/introduction_word_2_margin_left"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
         android:layout_alignParentBottom="true"
         android:textSize="@dimen/welcome_text_size"
         android:textColor="@color/welcome_text_color"
-        android:layout_marginBottom="37.66dp"
+        android:layout_marginBottom="@dimen/introduction_rights_text_margin_bottom"
         android:layout_centerInParent="true"/>
 
 </RelativeLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/main_zero_time_title"
+        android:layout_width="@dimen/main_ImageView1_layout_width"
+        android:layout_height="@dimen/main_ImageView1_layout_height"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/main_ImageView1_layout_marginTop"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/main_title_word"/>
+    <FrameLayout
+        android:id="@+id/main_zero_time_movie_frame"
+        android:layout_width="@dimen/main_frameLayout_layout_width"
+        android:layout_height="@dimen/main_frameLayout_layout_height"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/main_zero_time_title"
+        android:layout_marginTop="@dimen/main_frameLayout_layout_marginTop">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/main_zero_time_movie_image_container"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/main_video_frame"/>
+    </FrameLayout>
+    <TextView
+        android:id="@+id/main_zero_time_movie_description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/main_zero_time_movie_frame"
+        android:layout_marginTop="@dimen/main_TextView1_layout_marginTop"
+        android:paddingLeft="@dimen/main_TextView1_paddingLeft"
+        android:paddingRight="@dimen/main_TextView1_paddingRight"
+        android:textSize="@dimen/main_TextView1_textSize"
+        android:text="One word to describe a movie,One word to describe a movie."/>
+
+    <TextView
+        android:id="@+id/main_zero_time_movie_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_zero_time_movie_description"
+        android:layout_marginTop="@dimen/main_TextView2_layout_marginTop"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/main_TextView2_layout_marginLeft"
+        android:text="File Size:123M"
+        android:textSize="@dimen/main_TextView2_textSize"
+        android:textColor="#b3b3b3"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/main_zero_time_movie_size"
+        android:layout_toRightOf="@+id/main_zero_time_movie_size"
+        android:layout_marginLeft="@dimen/main_ImageView2_layout_marginLeft"
+        android:src="@drawable/main_comment_button"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_linearLayout_layout_height"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/main_zero_time_movie_size"
+        android:layout_marginTop="@dimen/main_linearLayout_layout_marginTop"
+        android:paddingLeft="@dimen/main_linearLayout_paddingLeft"
+        android:paddingRight="@dimen/main_linearLayout_paddingRight">
+        <ImageView
+            android:id="@+id/main_zero_time_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:src="@drawable/main_share_button"
+            />
+        <ImageView
+            android:id="@+id/main_zero_time_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:src="@drawable/main_collect_button"
+            />
+        <ImageView
+            android:id="@+id/main_zero_time_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:src="@drawable/main_delete_button"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -2,4 +2,8 @@
 <resources>
     <!-- the colors of welcome interface-->
     <color name="welcome_text_color">#6f7070</color>
+
+    <!-- the colors of main interface-->
+    <color name="main_bottom_text_checked_color">#00b7ee</color>
+    <color name="main_bottom_text_unchecked_color">#b5b7b4</color>
 </resources>
