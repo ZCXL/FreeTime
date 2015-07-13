@@ -22,10 +22,16 @@ public class Welcome extends Activity implements Runnable{
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_welcome);
+        new Thread(this).start();
     }
     @Override
     public void run() {
         //input code to check version
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         checkVersion=new CheckVersion(Welcome.this);
         checkVersion.setOnVersionCheckListener(new CheckVersion.OnVersionCheckListener() {
             @Override
