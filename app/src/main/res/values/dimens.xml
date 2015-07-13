@@ -73,7 +73,7 @@
         <!--the data of zero time-->
     <dimen name="main_zero_time_title_width">134.66dp</dimen>
     <dimen name="main_zero_time_title_height">23.33dp</dimen>
-    <dimen name="main_zero_time_title_margin_top">31.33dp</dimen>
+    <dimen name="main_zero_time_title_margin_top">50.33dp</dimen>
 
     <!--the data of main_activity -->
     <dimen name="main_activity_layout_width">24dp</dimen>
