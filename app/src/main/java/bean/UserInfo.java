@@ -1,4 +1,10 @@
 package bean;
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -10,6 +16,7 @@ import function.ParseJson;
  * This class is used to save user's information.
  */
 public class UserInfo extends BaseObject implements Serializable, ParseJson {
+    private static String TAG="ProcessJson";
     private ArrayList<BaseObject>userinfo;
     private String number;//user's account
     private String nick_name;//user's nick name;
@@ -82,6 +89,30 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
      */
     @Override
     public ArrayList<BaseObject> getObjects(String c) {
-        return null;
+        /**
+         * deal with String c
+         * Created by LMZ on 7/13/15.
+         */
+        ArrayList<BaseObject> list=new ArrayList<BaseObject>();
+        UserInfo userInfo;
+        try {
+            JSONObject object=new JSONObject(c);
+            JSONArray jsonArray=object.getJSONArray("U");
+            for(int i=0;i<jsonArray.length();i++) {
+                JSONObject jsonObject=jsonArray.getJSONObject(i);
+                userInfo=new UserInfo();
+                userInfo.setNumber(jsonObject.getString("number"));
+                userInfo.setHead_url(jsonObject.getString("head_url"));
+                userInfo.setNick_name(jsonObject.getString("nick_name"));
+                userInfo.setSignature(jsonObject.getString("signature"));
+                userInfo.setStamp(jsonObject.getString("stamp"));
+                userInfo.setUserinfo(jsonObject.getString("userInfo"));
+                list.add(userInfo);
+            }
+            return list;
+        } catch (JSONException e) {
+            Log.d(TAG,e.toString()+"userInfo of json fault");
+            return null;
+        }
     }
 }

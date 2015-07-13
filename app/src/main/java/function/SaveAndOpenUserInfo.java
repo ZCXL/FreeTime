@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.ArrayList;
 
 import bean.BaseObject;
+import bean.UserInfo;
 
 /**
  * Created by zhuchao on 7/12/15.
