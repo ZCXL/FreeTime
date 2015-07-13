@@ -25,7 +25,7 @@ public class Network {
     public static boolean checkNetWorkState(Context context){
         boolean isConnected = false;
         int netWorkState = getNetworkType(context);
-        if (netWorkState == 1){
+        if (netWorkState == 1||netWorkState == 2){
             isConnected = true;
         }else{
             isConnected=false;
