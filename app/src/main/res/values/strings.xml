@@ -11,7 +11,7 @@
 
     <!--main interface string set-->
        <!--the text at bottom-->
-    <string name="main_bottom_text_1">ZeroTime</string>
-    <string name="main_bottom_text_2">TopHot</string>
-    <string name="main_bottom_text_3">Mine</string>
+    <string name="main_bottom_text_1">零时光</string>
+    <string name="main_bottom_text_2">最热</string>
+    <string name="main_bottom_text_3">我的</string>
 </resources>
