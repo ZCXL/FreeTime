@@ -3,34 +3,42 @@ package com.zhuchao.freetime;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.Window;
+
+import java.util.ArrayList;
 
 
-public class Introduction extends Activity {
+public class Introduction extends Activity implements ViewPager.OnPageChangeListener{
+    private ViewPager viewPager;
+
+    private ArrayList<View>list;
+    private View page1,page2,page3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_introduction);
+        initView();
+    }
+
+    private void initView(){
+
+    }
+    @Override
+    public void onPageScrolled(int i, float v, int i1) {
+
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_instroduction, menu);
-        return true;
+    public void onPageSelected(int i) {
+
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onPageScrollStateChanged(int i) {
 
-        //noinspection SimplifiableIfStatement
-
-        return super.onOptionsItemSelected(item);
     }
 }

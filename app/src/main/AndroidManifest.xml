@@ -19,7 +19,8 @@
         </activity>
         <activity
             android:name=".Introduction"
-            android:label="@string/title_activity_instroduction" >
+            android:label="@string/title_activity_instroduction"
+            android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity
             android:name=".MainActivity"
