@@ -96,7 +96,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     zeroTimeFragment=new ZeroTimeFragment();
                     transaction.add(R.id.container,zeroTimeFragment);
                 }else{
-                    transaction.replace(R.id.container,zeroTimeFragment);
+                    transaction.show(zeroTimeFragment);
                 }
                 break;
             case R.id.main_top_hot:
@@ -105,7 +105,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     topHotFragment=new TopHotFragment();
                     transaction.add(R.id.container,topHotFragment);
                 }else{
-                    transaction.replace(R.id.container,topHotFragment);
+                    transaction.show(topHotFragment);
                 }
                 break;
             case R.id.main_mine:
@@ -114,7 +114,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     mineFragment=new MineFragment();
                     transaction.add(R.id.container,mineFragment);
                 }else{
-                    transaction.replace(R.id.container,mineFragment);
+                    transaction.show(mineFragment);
                 }
                 break;
         }
