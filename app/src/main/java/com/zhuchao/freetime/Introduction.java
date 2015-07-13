@@ -97,12 +97,10 @@ public class Introduction extends Activity implements ViewPager.OnPageChangeList
     private void initData(){
         viewPager.setOnPageChangeListener(this);
 
-        viewPager.setPageTransformer(true,new DepthPageTransformer());
-
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Introduction.this,Introduction.class);
+                Intent intent=new Intent(Introduction.this,MainActivity.class);
                 Bundle bundle=new Bundle();
                 bundle.putSerializable("version",version);
                 intent.putExtras(bundle);
