@@ -75,4 +75,8 @@
     <dimen name="main_zero_time_title_height">23.33dp</dimen>
     <dimen name="main_zero_time_title_margin_top">28.33dp</dimen>
 
+    <!--the data of main_activity -->
+    <dimen name="main_activity_layout_width">24dp</dimen>
+    <dimen name="main_activity_layout_height">24dp</dimen>
+
 </resources>
