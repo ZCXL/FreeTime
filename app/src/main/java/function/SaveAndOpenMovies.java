@@ -19,6 +19,7 @@ public class SaveAndOpenMovies implements ParseXml {
 
     @Override
     public ArrayList<BaseObject> Open(Context context) {
+
         return null;
     }
 }
