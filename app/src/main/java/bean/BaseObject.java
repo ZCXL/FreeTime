@@ -16,6 +16,8 @@ public class BaseObject {
                     return USER;
                 case 1:
                     return VERSION;
+                case 2:
+                    return MOVIE;
                 default:
                     return null;
             }
