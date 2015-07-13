@@ -4,4 +4,43 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <!--the data of welcome interface -->
     <dimen name="welcome_text_size">10sp</dimen>
+
+
+    <!--the data of introduction interface-->
+    <dimen name="introduction_logo_width">72dp</dimen>
+    <dimen name="introduction_logo_height">72dp</dimen>
+    <dimen name="introduction_logo_margin_top">149.66dp</dimen>
+
+    <dimen name="introduction_word_1_width">176.66dp</dimen>
+    <dimen name="introduction_word_1_height">52.66dp</dimen>
+    <dimen name="introduction_word_1_margin_top">97.66dp</dimen>
+    <dimen name="introduction_word_1_margin_left">61dp</dimen>
+
+    <dimen name="introduction_word_2_width">136.66dp</dimen>
+    <dimen name="introduction_word_2_height">46.33dp</dimen>
+    <dimen name="introduction_word_2_margin_top">29.66dp</dimen>
+    <dimen name="introduction_word_2_margin_left">171.33dp</dimen>
+
+    <dimen name="introduction_rights_text_size">10sp</dimen>
+    <dimen name="introduction_rights_text_margin_bottom">37.66dp</dimen>
+
+        <!--the data in page 3-->
+    <dimen name="introduction_start_button_width">136.33dp</dimen>
+    <dimen name="introduction_start_button_height">36dp</dimen>
+    <dimen name="introduction_margin_bottom">84.66dp</dimen>
+
+
+    <!--the data of main interface-->
+        <!--the data at bottom-->
+    <dimen name="main_bottom_height">70dp</dimen>
+    <dimen name="main_bottom_icon_top">6dp</dimen>
+    <dimen name="main_bottom_text_top_icon">1dp</dimen>
+    <dimen name="main_bottom_text_size">12sp</dimen>
+
+
+        <!--the data of zero time-->
+    <dimen name="main_zero_time_title_width">134.66dp</dimen>
+    <dimen name="main_zero_time_title_height">23.33dp</dimen>
+    <dimen name="main_zero_time_title_margin_top">28.33dp</dimen>
+
 </resources>

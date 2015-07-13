@@ -16,7 +16,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import adapter.ViewPagerAdapter;
-import animation.DepthPageTransformer;
 import bean.Version;
 
 
