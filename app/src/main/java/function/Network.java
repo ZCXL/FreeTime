@@ -1,7 +1,9 @@
 package function;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
 
 /**
  * Use this class to get Network info.
@@ -9,20 +11,48 @@ import android.net.NetworkInfo;
  */
 public class Network {
     /**
+     * network type convert to number(0,1,2)
+     */
+    public static final int NETWORNTYPE_NONE = 0;
+    public static final int NETWORNTYPE_WIFI = 1;
+    public static final int NETWORNTYPE_MOBILE = 2;
+    /**
      * Check network connection state
      * @param context
-     * @return
+     * @return boolean isConnected WIFI(1)=true
+     * Created by LMZ on 7/13/15
      */
     public static boolean checkNetWorkState(Context context){
-        return true;
+        boolean isConnected = false;
+        int netWorkState = getNetworkType(context);
+        if (netWorkState == 1){
+            isConnected = true;
+        }else{
+            isConnected=false;
+        }
+        return isConnected;
     }
 
     /**
      * Check network type,for example,wifi.
      * @param context
-     * @return
+     * @return int mNetWorkType{0,1,2}
+     * Created by LMZ on 7/13/15
      */
-    public static NetworkInfo.State getNetworkType(Context context){
-        return null;
+    public static int getNetworkType(Context context){
+        int mNetWorkType = 0;
+        ConnectivityManager connectivityManager=(ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            String type = networkInfo.getTypeName();
+            if (type.equalsIgnoreCase("WIFI")) {
+                mNetWorkType = NETWORNTYPE_WIFI;
+            } else if (type.equalsIgnoreCase("MOBILE")){
+                mNetWorkType = NETWORNTYPE_MOBILE;
+            }
+        } else {
+            mNetWorkType = NETWORNTYPE_NONE;
+        }
+        return mNetWorkType;
     }
 }
