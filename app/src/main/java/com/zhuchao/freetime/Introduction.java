@@ -16,6 +16,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import adapter.ViewPagerAdapter;
+import animation.DepthPageTransformer;
+import bean.Version;
 
 
 public class Introduction extends Activity implements ViewPager.OnPageChangeListener{
@@ -24,15 +26,28 @@ public class Introduction extends Activity implements ViewPager.OnPageChangeList
     private ArrayList<View>list;
     private View page1,page2,page3;
     private ImageView icon1,icon2,icon3;
-
+    private ImageView start_button;
+    private Version version;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_introduction);
+
+        getVersion(savedInstanceState);
+
         initView();
+
+        initData();
+
+
     }
 
+    private void getVersion(Bundle bundle){
+        if(bundle!=null){
+            version=(Version)bundle.getSerializable("version");
+        }
+    }
     private void initView(){
         LayoutInflater inflater=LayoutInflater.from(this);
         //Init there icon at bottom.
@@ -42,8 +57,11 @@ public class Introduction extends Activity implements ViewPager.OnPageChangeList
         icon3=(ImageView)findViewById(R.id.introduction_icon_3);
 
         //Init there pages.
+        page1=inflater.inflate(R.layout.introduction_page_1,null);
+        page2=inflater.inflate(R.layout.introduction_page_2,null);
+        page3=inflater.inflate(R.layout.introduction_page_3,null);
 
-
+        start_button=(ImageView)page3.findViewById(R.id.introdution_start_button);//start button.
 
         viewPager=(ViewPager)findViewById(R.id.introduction_viewPager);
         list=new ArrayList<View>();
@@ -73,14 +91,31 @@ public class Introduction extends Activity implements ViewPager.OnPageChangeList
 
     }
 
+    /**
+     * Init layout data.
+     */
     private void initData(){
         viewPager.setOnPageChangeListener(this);
 
+        viewPager.setPageTransformer(true,new DepthPageTransformer());
+
+        start_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Introduction.this,Introduction.class);
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("version",version);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                Introduction.this.finish();
+            }
+        });
         viewPager.setAdapter(adapter);
         list.add(page1);
         list.add(page2);
         list.add(page3);
         adapter.notifyDataSetChanged();
+        viewPager.setCurrentItem(0);
 
     }
     @Override
@@ -90,14 +125,31 @@ public class Introduction extends Activity implements ViewPager.OnPageChangeList
 
     @Override
     public void onPageSelected(int i) {
-
+        Clear();
+        switch (i){
+            case 0:
+                icon1.setImageResource(R.drawable.lead_icon_checked);
+                break;
+            case 1:
+                icon2.setImageResource(R.drawable.lead_icon_checked);
+                break;
+            case 2:
+                icon3.setImageResource(R.drawable.lead_icon_checked);
+                break;
+        }
     }
 
     @Override
     public void onPageScrollStateChanged(int i) {
 
     }
-    private void Clear(){
 
+    /**
+     * Cleat the bg of there icon at bottom.
+     */
+    private void Clear(){
+        icon1.setImageResource(R.drawable.lead_icon_unchecked);
+        icon2.setImageResource(R.drawable.lead_icon_unchecked);
+        icon3.setImageResource(R.drawable.lead_icon_unchecked);
     }
 }

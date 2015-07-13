@@ -36,15 +36,22 @@ public class Welcome extends Activity implements Runnable{
         checkVersion.startCheck();
 
         preferences=getSharedPreferences(setting,MODE_PRIVATE);
-        isFirst=preferences.getBoolean("STARTFIRST",true);
+        isFirst=preferences.getBoolean("START_FIRST",true);
         if(isFirst){//use firstly
-            preferences.edit().putBoolean("STARTFIRST",false).commit();
-            startActivity(new Intent(Welcome.this, Introduction.class));
+            preferences.edit().putBoolean("START_FIRST",false).commit();
+            Intent intent=new Intent(Welcome.this,Introduction.class);
+            Bundle bundle=new Bundle();
+            bundle.putSerializable("version",version);
+            intent.putExtras(bundle);
+            startActivity(intent);
+            overridePendingTransition(R.anim.out_to_left,R.anim.in_from_right);
+            Welcome.this.finish();
         }else{
             //load user info
             //load resources saved in SDCard
             startActivity(new Intent(Welcome.this,MainActivity.class));
-            overridePendingTransition(R.anim.loading_out,R.anim.loading_in);
+            overridePendingTransition(R.anim.loading_out, R.anim.loading_in);
+            Welcome.this.finish();
         }
     }
 }

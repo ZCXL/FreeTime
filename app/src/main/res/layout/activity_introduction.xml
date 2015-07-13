@@ -15,24 +15,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
-            android:paddingBottom="20dp">
+            android:paddingBottom="12dp">
             <ImageView
                 android:id="@+id/introduction_icon_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_input_add"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/lead_icon_unchecked"
                 android:layout_weight="1.0"/>
             <ImageView
                 android:id="@+id/introduction_icon_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_input_add"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/lead_icon_unchecked"
                 android:layout_weight="1.0"/>
             <ImageView
                 android:id="@+id/introduction_icon_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_input_add"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/lead_icon_unchecked"
                 android:layout_weight="1.0"/>
         </LinearLayout>
     </FrameLayout>
