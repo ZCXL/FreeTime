@@ -1,6 +1,8 @@
 package view_rewrite;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -10,8 +12,10 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.nineoldandroids.view.ViewHelper;
+import com.zhuchao.freetime.R;
 
 import listener.OnDistanceChangeListener;
 import utils.Utils;
@@ -51,6 +55,10 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
     }
 
     @Override
+    public void invalidate(){
+        super.invalidate();
+    }
+    @Override
     void setAttributes(AttributeSet attributes) {
         setBackgroundResource(android.R.color.transparent);
 
@@ -64,9 +72,9 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
             if(background!=-1)
                 setBackgroundColor(background);
         }
-
-
+        TypedArray array=getContext().obtainStyledAttributes(attributes, R.styleable.CustomerAttributes);
         //get line color
+        //int lineColorTemp=array.getInt(R.styleable.CustomerAttributes_line_color,-1);
         int lineColorTemp=attributes.getAttributeResourceValue(CUSTOMREXML,"line_color",-1);
         if(lineColorTemp!=-1){
             lineColor=getResources().getColor(lineColorTemp);
@@ -78,6 +86,7 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
 
         //get line length
         lineLength=attributes.getAttributeIntValue(CUSTOMREXML, "line_length", 0);
+        //Toast.makeText(getContext(),lineLength,Toast.LENGTH_LONG).show();
         //get line width
         lineWidth=attributes.getAttributeIntValue(CUSTOMREXML, "line_width", 0);
         //get max slide distance
@@ -86,7 +95,7 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
         min_distance=attributes.getAttributeResourceValue(CUSTOMREXML,"min_distance",0);
 
         //set image of button
-        image_button_source=attributes.getAttributeResourceValue(CUSTOMREXML,"",-1);
+        image_button_source=attributes.getAttributeResourceValue(CUSTOMREXML,"source_button",-1);
         imageView=new FlatImage(getContext());
         imageView.setImageResource(image_button_source);
         RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -137,7 +146,7 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
     }
     private void placeButton(){
         ViewHelper.setX(imageView,getWidth()/2-imageView.getWidth()/2);
-        ViewHelper.setY(imageView, getHeight() - lineLength);
+        ViewHelper.setY(imageView,lineLength);
         yInit=imageView.getY();
         yCurrent=yInit;
         yLast=yInit;
