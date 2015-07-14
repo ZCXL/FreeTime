@@ -74,31 +74,38 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
         }
         TypedArray array=getContext().obtainStyledAttributes(attributes, R.styleable.CustomerAttributes);
         //get line color
-        //int lineColorTemp=array.getInt(R.styleable.CustomerAttributes_line_color,-1);
-        int lineColorTemp=attributes.getAttributeResourceValue(CUSTOMREXML,"line_color",-1);
-        if(lineColorTemp!=-1){
+        lineColor=array.getColor(R.styleable.CustomerAttributes_line_color, -1);
+        //int lineColorTemp=attributes.getAttributeResourceValue(CUSTOMREXML,"line_color",-1);
+        /*if(lineColorTemp!=-1){
             lineColor=getResources().getColor(lineColorTemp);
         }else{
             lineColorTemp=attributes.getAttributeIntValue(CUSTOMREXML,"line_color",-1);
             if(lineColorTemp!=-1)
                 lineColor=lineColorTemp;
-        }
+        }*/
 
         //get line length
-        lineLength=attributes.getAttributeIntValue(CUSTOMREXML, "line_length", 0);
+        //lineLength=attributes.getAttributeIntValue(CUSTOMREXML, "line_length", 0);
+        lineLength=array.getDimensionPixelSize(R.styleable.CustomerAttributes_line_length, 0);
         //Toast.makeText(getContext(),lineLength,Toast.LENGTH_LONG).show();
+
         //get line width
-        lineWidth=attributes.getAttributeIntValue(CUSTOMREXML, "line_width", 0);
+        //lineWidth=attributes.getAttributeIntValue(CUSTOMREXML, "line_width", 0);
+        lineWidth=array.getDimensionPixelSize(R.styleable.CustomerAttributes_line_width, 0);
+
         //get max slide distance
-        max_distance=attributes.getAttributeResourceValue(CUSTOMREXML,"max_distance",0);
+        //max_distance=attributes.getAttributeResourceValue(CUSTOMREXML,"max_distance",0);
+        max_distance=array.getDimensionPixelSize(R.styleable.CustomerAttributes_max_distance, 0);
+
         //get min slide distance
-        min_distance=attributes.getAttributeResourceValue(CUSTOMREXML,"min_distance",0);
+        //min_distance=attributes.getAttributeResourceValue(CUSTOMREXML,"min_distance",0);
+        min_distance=array.getDimensionPixelSize(R.styleable.CustomerAttributes_min_distance, 0);
 
         //set image of button
         image_button_source=attributes.getAttributeResourceValue(CUSTOMREXML,"source_button",-1);
         imageView=new FlatImage(getContext());
         imageView.setImageResource(image_button_source);
-        RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(Utils.dpToPx(51f,getResources()),Utils.dpToPx(51f,getResources()));
         params.addRule(RelativeLayout.CENTER_HORIZONTAL,RelativeLayout.TRUE);
         imageView.setLayoutParams(params);
         addView(imageView);
@@ -146,7 +153,7 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
     }
     private void placeButton(){
         ViewHelper.setX(imageView,getWidth()/2-imageView.getWidth()/2);
-        ViewHelper.setY(imageView,lineLength);
+        ViewHelper.setY(imageView,lineLength-Utils.dpToPx(9,getResources()));
         yInit=imageView.getY();
         yCurrent=yInit;
         yLast=yInit;
@@ -156,30 +163,30 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
     @Override
     protected  void onDraw(Canvas canvas){
         super.onDraw(canvas);
-        if(isPlaced)
+        if(!isPlaced)
             placeButton();
         Paint paint=new Paint();
-        if(imageView.getY()==yInit){
-            if(bitmap==null){
-                bitmap=Bitmap.createBitmap(canvas.getWidth(),canvas.getHeight(), Bitmap.Config.ARGB_8888);
+        if(imageView.getY()==yInit) {
+            if (bitmap == null) {
+                bitmap = Bitmap.createBitmap(canvas.getWidth(), canvas.getHeight(), Bitmap.Config.ARGB_8888);
             }
-            Canvas temp=new Canvas(bitmap);
+            Canvas temp = new Canvas(bitmap);
             paint.setColor(lineColor);
             paint.setStrokeWidth(Utils.dpToPx(2.33f, getResources()));
-            temp.drawLine(getWidth() / 2, 0, getWidth(), lineLength, paint);
-            canvas.drawBitmap(bitmap,0,0,new Paint());
+            temp.drawLine(getWidth() / 2, 0, getWidth()/2, lineLength, paint);
+            canvas.drawBitmap(bitmap, 0, 0, new Paint());
         }else{
             paint.setColor(lineColor);
             paint.setStrokeWidth(Utils.dpToPx(2.33f, getResources()));
-            canvas.drawLine(getWidth() / 2, 0, getWidth(), lineLength, paint);
+            canvas.drawLine(getWidth() / 2, 0, getWidth()/2, lineLength, paint);
 
             float division=yCurrent-yInit;
 
             if(division>0.0f){
-                canvas.drawLine(getWidth()/2,0,getWidth(),lineLength+division,paint);
+                canvas.drawLine(getWidth()/2,0,getWidth()/2,lineLength+division,paint);
             }else{
                 paint.setColor(getResources().getColor(android.R.color.transparent));
-                canvas.drawLine(getWidth()/2,yCurrent,getWidth(),division,paint);
+                canvas.drawLine(getWidth()/2,yCurrent,getWidth()/2,division,paint);
             }
         }
         invalidate();

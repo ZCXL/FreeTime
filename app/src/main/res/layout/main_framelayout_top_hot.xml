@@ -2,18 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:customer="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:background="#ffffff"
+    android:background="#6e6e6e"
     android:layout_height="match_parent">
     <view_rewrite.SlideDown
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        customer:line_length="100"
-        customer:line_width="7"
+        customer:line_length="278.33dp"
+        customer:line_width="7dp"
         customer:line_color="#ffffff"
-        customer:max_distance="150"
-        customer:min_distance="130"
-        customer:source_button="@drawable/logo"
+        customer:max_distance="150dp"
+        customer:min_distance="130dp"
+        customer:source_button="@drawable/casual_login_button"
         />
 
 </RelativeLayout>
