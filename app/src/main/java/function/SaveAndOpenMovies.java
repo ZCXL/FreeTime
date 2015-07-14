@@ -87,6 +87,12 @@ public class SaveAndOpenMovies implements ParseXml {
         }
     }
 
+    /**
+     * open movie info
+     * Created by LMZ on 7/13/15
+     * @param context
+     * @return
+     */
         @Override
     public ArrayList<BaseObject> Open(Context context) {
             ArrayList<BaseObject> list = new ArrayList<BaseObject>();

@@ -24,25 +24,23 @@ public class Versions extends BaseObjects implements ParseJson {
         /**
          * deal with String c for version
          * Created by LMZ on 7/13/15
+         * modified by LMZ on 7/14/15
          */
         ArrayList<BaseObject> list = new ArrayList<BaseObject>();
         Version version;
         try {
-            JSONObject object = new JSONObject(c);
-            JSONArray jsonArray = object.getJSONArray("V");
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                version = new Version();
-                version.setVersionDescription(jsonObject.getString("versionDescription"));
+            JSONArray jsonArray = new JSONArray(c);
+            version = new Version();
+            JSONObject jsonObject= (JSONObject) jsonArray.get(0);
                 version.setVersionId(jsonObject.getString("versionId"));
-                version.setVersionUrl(jsonObject.getString("versionUrl"));
+                version.setVersionDescription(jsonObject.getString("versiondescription"));
+                version.setVersionUrl(jsonObject.getString("versionurl"));
                 version.setAvailable(jsonObject.getBoolean("available"));
                 list.add(version);
-            }
             return list;
         } catch (JSONException e) {
-            Log.d(TAG, e.toString() + "version of json fault");
-            return null;
+            Log.d(TAG, e.toString()+"version of json error");
+            return  null;
         }
     }
     /**

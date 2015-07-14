@@ -1,7 +1,6 @@
 package bean;
 import android.util.Log;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,7 +15,7 @@ import function.ParseJson;
  */
 public class UserInfo extends BaseObject implements Serializable, ParseJson {
     private static String TAG="ProcessJson";
-    private ArrayList<BaseObject>userInfo;
+    private ArrayList<BaseObject>userinfo;
     private String number;//user's account
     private String nick_name;//user's nick name;
     private String head_url;//user's head url
@@ -69,11 +68,11 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
     }
     public UserInfo(String c){
         super(TYPE.USER);
-        setUserInfo(c);
+        setUserinfo(c);
     }
-    private void setUserInfo(String c){
-        userInfo=getObjects(c);
-        UserInfo info=(UserInfo)userInfo.get(0);
+    private void setUserinfo(String c){
+        userinfo=getObjects(c);
+        UserInfo info=(UserInfo)userinfo.get(0);
         setHead_url(info.getHead_url());
         setNumber(info.getNumber());
         setNick_name(info.getNick_name());
@@ -90,27 +89,25 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
     public ArrayList<BaseObject> getObjects(String c) {
         /**
          * deal with String c for userInfo
-         * Created by LMZ on 7/13/15.
+         * Created by LMZ on 7/14/15
          */
-        ArrayList<BaseObject> list=new ArrayList<BaseObject>();
+        ArrayList<BaseObject> list = new ArrayList<BaseObject>();
         UserInfo userInfo;
         try {
-            JSONObject object=new JSONObject(c);
-            JSONArray jsonArray=object.getJSONArray("U");
-            for(int i=0;i<jsonArray.length();i++) {
-                JSONObject jsonObject=jsonArray.getJSONObject(i);
-                userInfo=new UserInfo();
-                userInfo.setNumber(jsonObject.getString("number"));
-                userInfo.setHead_url(jsonObject.getString("head_url"));
-                userInfo.setNick_name(jsonObject.getString("nick_name"));
-                userInfo.setSignature(jsonObject.getString("signature"));
-                userInfo.setStamp(jsonObject.getString("stamp"));
-                userInfo.setUserInfo(jsonObject.getString("userInfo"));
+            JSONObject object = new JSONObject(c);
+            String U = object.getString("U");
+            JSONObject user = new JSONObject(U);
+            userInfo=new UserInfo();
+                userInfo.setNumber(user.getString("number"));
+                userInfo.setHead_url(user.getString("head_url"));
+                userInfo.setNick_name(user.getString("nick_name"));
+                userInfo.setSignature(user.getString("signature"));
+                userInfo.setStamp(user.getString("stamp"));
+                userInfo.setUserinfo(user.getString("userInfo"));
                 list.add(userInfo);
-            }
             return list;
         } catch (JSONException e) {
-            Log.d(TAG,e.toString()+"userInfo of json fault");
+            Log.d(TAG, e.toString() + "userInfo of json fault");
             return null;
         }
     }
