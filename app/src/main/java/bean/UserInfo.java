@@ -91,27 +91,25 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
     public ArrayList<BaseObject> getObjects(String c) {
         /**
          * deal with String c for userInfo
-         * Created by LMZ on 7/13/15.
+         * Created by LMZ on 7/14/15
          */
-        ArrayList<BaseObject> list=new ArrayList<BaseObject>();
+        ArrayList<BaseObject> list = new ArrayList<BaseObject>();
         UserInfo userInfo;
         try {
-            JSONObject object=new JSONObject(c);
-            JSONArray jsonArray=object.getJSONArray("U");
-            for(int i=0;i<jsonArray.length();i++) {
-                JSONObject jsonObject=jsonArray.getJSONObject(i);
-                userInfo=new UserInfo();
-                userInfo.setNumber(jsonObject.getString("number"));
-                userInfo.setHead_url(jsonObject.getString("head_url"));
-                userInfo.setNick_name(jsonObject.getString("nick_name"));
-                userInfo.setSignature(jsonObject.getString("signature"));
-                userInfo.setStamp(jsonObject.getString("stamp"));
-                userInfo.setUserinfo(jsonObject.getString("userInfo"));
+            JSONObject object = new JSONObject(c);
+            String U = object.getString("U");
+            JSONObject user = new JSONObject(U);
+            userInfo=new UserInfo();
+                userInfo.setNumber(user.getString("number"));
+                userInfo.setHead_url(user.getString("head_url"));
+                userInfo.setNick_name(user.getString("nick_name"));
+                userInfo.setSignature(user.getString("signature"));
+                userInfo.setStamp(user.getString("stamp"));
+                userInfo.setUserinfo(user.getString("userInfo"));
                 list.add(userInfo);
-            }
             return list;
         } catch (JSONException e) {
-            Log.d(TAG,e.toString()+"userInfo of json fault");
+            Log.d(TAG, e.toString() + "userInfo of json fault");
             return null;
         }
     }
