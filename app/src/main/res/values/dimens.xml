@@ -33,9 +33,11 @@
     <!--the data of main interface-->
         <!--the data at bottom-->
     <dimen name="main_bottom_height">57dp</dimen>
+    <dimen name="main_bottom_linear_height">58dp</dimen>
     <dimen name="main_bottom_icon_top">6dp</dimen>
     <dimen name="main_bottom_text_top_icon">1dp</dimen>
     <dimen name="main_bottom_text_size">12sp</dimen>
+    <dimen name="main_bottom_divider">0.66dp</dimen>
 
     <!--the data of main_FrameLayout_ImageView1 -->
     <dimen name="main_ImageView1_layout_width">134.66dp</dimen>

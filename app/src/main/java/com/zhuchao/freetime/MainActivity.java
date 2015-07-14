@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import fragment.MineFragment;
 import fragment.TopHotFragment;
@@ -21,7 +23,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private ZeroTimeFragment zeroTimeFragment;
     private TopHotFragment topHotFragment;
     private MineFragment mineFragment;
-    private ImageView zero_time,top_hot,mine;
+    private RelativeLayout zero_time,top_hot,mine;
+    private TextView zero_time_text,top_hot_text,mine_text;
+    private ImageView zero_time_image,top_hot_image,mine_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +36,19 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
     private void initView(){
         //init button at main interface's bottom.
-        zero_time=(ImageView)findViewById(R.id.main_zero_time);
-        top_hot=(ImageView)findViewById(R.id.main_top_hot);
-        mine=(ImageView)findViewById(R.id.main_mine);
+        zero_time=(RelativeLayout)findViewById(R.id.main_zero_time_layout);
+        top_hot=(RelativeLayout)findViewById(R.id.main_top_hot_layout);
+        mine=(RelativeLayout)findViewById(R.id.main_mine_layout);
 
+        //init image at bottom.
+        zero_time_image=(ImageView)findViewById(R.id.main_zero_time);
+        top_hot_image=(ImageView)findViewById(R.id.main_top_hot);
+        mine_image=(ImageView)findViewById(R.id.main_mine);
+
+        //init text at bottom.
+        zero_time_text=(TextView)findViewById(R.id.main_zero_time_text);
+        top_hot_text=(TextView)findViewById(R.id.main_top_hot_text);
+        mine_text=(TextView)findViewById(R.id.main_mine_text);
         //set button's listener
         zero_time.setOnClickListener(this);
         top_hot.setOnClickListener(this);
@@ -68,19 +81,28 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private void setAllUnchecked(int i){
         switch (i){
             case 1:
-                zero_time.setImageResource(R.drawable.main_bottom_icon_1_checked);
-                top_hot.setImageResource(R.drawable.main_bottom_icon_2_unchecked);
-                mine.setImageResource(R.drawable.main_bottom_icon_3_unchecked);
+                zero_time_image.setImageResource(R.drawable.main_bottom_icon_1_checked);
+                top_hot_image.setImageResource(R.drawable.main_bottom_icon_2_unchecked);
+                mine_image.setImageResource(R.drawable.main_bottom_icon_3_unchecked);
+                zero_time_text.setTextColor(getResources().getColor(R.color.main_bottom_text_checked_color));
+                top_hot_text.setTextColor(getResources().getColor(R.color.main_bottom_text_unchecked_color));
+                mine_text.setTextColor(getResources().getColor(R.color.main_bottom_text_unchecked_color));
                 break;
             case 2:
-                zero_time.setImageResource(R.drawable.main_bottom_icon_1_unchecked);
-                top_hot.setImageResource(R.drawable.main_bottom_icon_2_checked);
-                mine.setImageResource(R.drawable.main_bottom_icon_3_unchecked);
+                zero_time_image.setImageResource(R.drawable.main_bottom_icon_1_unchecked);
+                top_hot_image.setImageResource(R.drawable.main_bottom_icon_2_checked);
+                mine_image.setImageResource(R.drawable.main_bottom_icon_3_unchecked);
+                zero_time_text.setTextColor(getResources().getColor(R.color.main_bottom_text_unchecked_color));
+                top_hot_text.setTextColor(getResources().getColor(R.color.main_bottom_text_checked_color));
+                mine_text.setTextColor(getResources().getColor(R.color.main_bottom_text_unchecked_color));
                 break;
             case 3:
-                zero_time.setImageResource(R.drawable.main_bottom_icon_1_unchecked);
-                top_hot.setImageResource(R.drawable.main_bottom_icon_2_unchecked);
-                mine.setImageResource(R.drawable.main_bottom_icon_3_checked);
+                zero_time_image.setImageResource(R.drawable.main_bottom_icon_1_unchecked);
+                top_hot_image.setImageResource(R.drawable.main_bottom_icon_2_unchecked);
+                mine_image.setImageResource(R.drawable.main_bottom_icon_3_checked);
+                zero_time_text.setTextColor(getResources().getColor(R.color.main_bottom_text_unchecked_color));
+                top_hot_text.setTextColor(getResources().getColor(R.color.main_bottom_text_unchecked_color));
+                mine_text.setTextColor(getResources().getColor(R.color.main_bottom_text_checked_color));
                 break;
         }
     }

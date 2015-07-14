@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomerAttributes">
+        <!--The length of line-->
+        <attr name="line_length" format="integer"/>
+        <!--The width of line-->
+        <attr name="line_width" format="integer"/>
+        <!--The color of line-->
+        <attr name="line_color" format="color|integer"/>
+        <!--The max distance that can be pull-->
+        <attr name="max_distance" format="integer"/>
+        <!--The min distance that can be found-->
+        <attr name="min_distance" format="integer"/>
+        <!--The source of button image-->
+        <attr name="source_button" format="integer"/>
+    </declare-styleable>
+</resources>

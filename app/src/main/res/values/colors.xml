@@ -6,4 +6,6 @@
     <!-- the colors of main interface-->
     <color name="main_bottom_text_checked_color">#00b7ee</color>
     <color name="main_bottom_text_unchecked_color">#b5b7b4</color>
+    <color name="main_bottom_divider_color">#e8e7e7</color>
+    <color name="main_bottom_linear_bg">#f8f8f8</color>
 </resources>
