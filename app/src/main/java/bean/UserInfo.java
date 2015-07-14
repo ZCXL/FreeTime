@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import function.ParseJson;
@@ -101,10 +102,11 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
                 JSONObject jsonObject=jsonArray.getJSONObject(i);
                 userInfo=new UserInfo();
                 userInfo.setNumber(jsonObject.getString("number"));
-                userInfo.setNick_name(jsonObject.getString("nickname"));
-                userInfo.setHead_url(jsonObject.getString("headurl"));
+                userInfo.setHead_url(jsonObject.getString("head_url"));
+                userInfo.setNick_name(jsonObject.getString("nick_name"));
                 userInfo.setSignature(jsonObject.getString("signature"));
                 userInfo.setStamp(jsonObject.getString("stamp"));
+                userInfo.setUserinfo(jsonObject.getString("userInfo"));
                 list.add(userInfo);
             }
             return list;
