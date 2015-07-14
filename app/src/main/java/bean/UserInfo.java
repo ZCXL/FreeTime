@@ -102,11 +102,10 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
                 JSONObject jsonObject=jsonArray.getJSONObject(i);
                 userInfo=new UserInfo();
                 userInfo.setNumber(jsonObject.getString("number"));
-                userInfo.setHead_url(jsonObject.getString("head_url"));
-                userInfo.setNick_name(jsonObject.getString("nick_name"));
+                userInfo.setNick_name(jsonObject.getString("nickname"));
+                userInfo.setHead_url(jsonObject.getString("headurl"));
                 userInfo.setSignature(jsonObject.getString("signature"));
                 userInfo.setStamp(jsonObject.getString("stamp"));
-                userInfo.setUserinfo(jsonObject.getString("userInfo"));
                 list.add(userInfo);
             }
             return list;

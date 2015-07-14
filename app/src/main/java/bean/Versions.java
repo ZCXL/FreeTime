@@ -33,9 +33,10 @@ public class Versions extends BaseObjects implements ParseJson {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 version = new Version();
-                version.setVersionDescription(jsonObject.getString("versionDescription"));
                 version.setVersionId(jsonObject.getString("versionId"));
-                version.setVersionUrl(jsonObject.getString("versionUrl"));
+                version.setVersionDescription(jsonObject.getString("versiondescription"));
+                version.setVersionUrl(jsonObject.getString("versionurl"));
+                version.setAvailable(jsonObject.getBoolean("available"));
                 list.add(version);
             }
             return list;
