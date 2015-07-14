@@ -32,7 +32,7 @@
 
     <!--the data of main interface-->
         <!--the data at bottom-->
-    <dimen name="main_bottom_height">70dp</dimen>
+    <dimen name="main_bottom_height">57dp</dimen>
     <dimen name="main_bottom_icon_top">6dp</dimen>
     <dimen name="main_bottom_text_top_icon">1dp</dimen>
     <dimen name="main_bottom_text_size">12sp</dimen>
@@ -66,8 +66,6 @@
     <dimen name="main_linearLayout_layout_marginTop">33.66dp</dimen>
     <dimen name="main_linearLayout_paddingLeft">38.45dp</dimen>
     <dimen name="main_linearLayout_paddingRight">38.45dp</dimen>
-
-
 
 
         <!--the data of zero time-->
