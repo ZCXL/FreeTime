@@ -112,9 +112,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         FragmentTransaction fragmentTransaction=manager.beginTransaction();
         hideAllFragment(fragmentTransaction);
         switch (v.getId()){
-            case R.id.main_zero_time:
+            case R.id.main_zero_time_layout:
                 setAllUnchecked(1);
-                zero_time.setBackgroundResource(R.drawable.main_bottom_icon_1_unchecked);
                 if(zeroTimeFragment==null){
                     zeroTimeFragment=new ZeroTimeFragment();
                     fragmentTransaction.add(R.id.container,zeroTimeFragment);
@@ -122,7 +121,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     fragmentTransaction.show(zeroTimeFragment);
                 }
                 break;
-            case R.id.main_top_hot:
+            case R.id.main_top_hot_layout:
                 setAllUnchecked(2);
                 if(topHotFragment==null){
                     topHotFragment=new TopHotFragment();
@@ -131,7 +130,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     fragmentTransaction.show(topHotFragment);
                 }
                 break;
-            case R.id.main_mine:
+            case R.id.main_mine_layout:
                 setAllUnchecked(3);
                 if(mineFragment==null){
                     mineFragment=new MineFragment();

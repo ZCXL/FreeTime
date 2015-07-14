@@ -2,16 +2,21 @@
 <resources>
     <declare-styleable name="CustomerAttributes">
         <!--The length of line-->
-        <attr name="line_length" format="integer"/>
+        <attr name="line_length" format="dimension"/>
         <!--The width of line-->
-        <attr name="line_width" format="integer"/>
+        <attr name="line_width" format="dimension"/>
         <!--The color of line-->
-        <attr name="line_color" format="color|integer"/>
+        <attr name="line_color" format="color"/>
         <!--The max distance that can be pull-->
-        <attr name="max_distance" format="integer"/>
+        <attr name="max_distance" format="dimension"/>
         <!--The min distance that can be found-->
-        <attr name="min_distance" format="integer"/>
+        <attr name="min_distance" format="dimension"/>
         <!--The source of button image-->
         <attr name="source_button" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="roundedImageView">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color"></attr>
     </declare-styleable>
 </resources>

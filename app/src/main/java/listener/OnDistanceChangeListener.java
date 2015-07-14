@@ -13,8 +13,7 @@ public interface OnDistanceChangeListener{
 
     /**
      * when the change is over,backup the position.
-     * @param flag
      * @param distance
      */
-    void onChangeOver(int flag,float distance);
+    void onChangeOver(float distance);
 }
