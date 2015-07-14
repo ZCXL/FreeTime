@@ -6,7 +6,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import function.ParseJson;
@@ -17,7 +16,7 @@ import function.ParseJson;
  */
 public class UserInfo extends BaseObject implements Serializable, ParseJson {
     private static String TAG="ProcessJson";
-    private ArrayList<BaseObject>userinfo;
+    private ArrayList<BaseObject>userInfo;
     private String number;//user's account
     private String nick_name;//user's nick name;
     private String head_url;//user's head url
@@ -70,11 +69,11 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
     }
     public UserInfo(String c){
         super(TYPE.USER);
-        setUserinfo(c);
+        setUserInfo(c);
     }
-    private void setUserinfo(String c){
-        userinfo=getObjects(c);
-        UserInfo info=(UserInfo)userinfo.get(0);
+    private void setUserInfo(String c){
+        userInfo=getObjects(c);
+        UserInfo info=(UserInfo)userInfo.get(0);
         setHead_url(info.getHead_url());
         setNumber(info.getNumber());
         setNick_name(info.getNick_name());
@@ -106,7 +105,7 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
                 userInfo.setNick_name(jsonObject.getString("nick_name"));
                 userInfo.setSignature(jsonObject.getString("signature"));
                 userInfo.setStamp(jsonObject.getString("stamp"));
-                userInfo.setUserinfo(jsonObject.getString("userInfo"));
+                userInfo.setUserInfo(jsonObject.getString("userInfo"));
                 list.add(userInfo);
             }
             return list;

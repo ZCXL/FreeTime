@@ -23,7 +23,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import bean.BaseObject;
 import bean.Movie;
-import bean.UserInfo;
 
 /**
  * Created by zhuchao on 7/12/15.
