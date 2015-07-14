@@ -1,15 +1,25 @@
 package view_rewrite;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
+import com.nineoldandroids.view.ViewHelper;
+
+import listener.OnDistanceChangeListener;
+import utils.Utils;
 
 /**
  * Created by zhuchao on 7/14/15.
  */
-public class SlideDown extends CustomerView {
+public class SlideDown extends CustomerView implements OnDistanceChangeListener{
     //Parameters that will be used to set interface value.
     private int lineLength;
     private int lineWidth;
@@ -18,10 +28,23 @@ public class SlideDown extends CustomerView {
     private int min_distance=50;
 
     private boolean pressed;
-    private int yLast;
-    private int yCurrent;
+    private boolean isPlaced=false;
+    private Bitmap bitmap;
+    //The last position of image button.
+    private float yLast;
+
+    //The current position of image button.
+    private float yCurrent;
+
+    //The starting position of image button.
+    private float yInit;
+
     private FlatImage imageView;
     private int image_button_source;
+
+    private static int TO_UP=1;
+    private static int TO_DOWN=2;
+    private OnDistanceChangeListener listener;
     public SlideDown(Context context, AttributeSet attrs) {
         super(context, attrs);
         setAttributes(attrs);
@@ -66,6 +89,10 @@ public class SlideDown extends CustomerView {
         image_button_source=attributes.getAttributeResourceValue(CUSTOMREXML,"",-1);
         imageView=new FlatImage(getContext());
         imageView.setImageResource(image_button_source);
+        RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.CENTER_HORIZONTAL,RelativeLayout.TRUE);
+        imageView.setLayoutParams(params);
+        addView(imageView);
 
     }
 
@@ -108,6 +135,60 @@ public class SlideDown extends CustomerView {
     public void setLineColor(int lineColor) {
         this.lineColor = lineColor;
     }
+    private void placeButton(){
+        ViewHelper.setX(imageView,getWidth()/2-imageView.getWidth()/2);
+        ViewHelper.setY(imageView, getHeight() - lineLength);
+        yInit=imageView.getY();
+        yCurrent=yInit;
+        yLast=yInit;
+        isPlaced=true;
+    }
+
+    @Override
+    protected  void onDraw(Canvas canvas){
+        super.onDraw(canvas);
+        if(isPlaced)
+            placeButton();
+        Paint paint=new Paint();
+        if(imageView.getY()==yInit){
+            if(bitmap==null){
+                bitmap=Bitmap.createBitmap(canvas.getWidth(),canvas.getHeight(), Bitmap.Config.ARGB_8888);
+            }
+            Canvas temp=new Canvas(bitmap);
+            paint.setColor(lineColor);
+            paint.setStrokeWidth(Utils.dpToPx(2.33f, getResources()));
+            temp.drawLine(getWidth() / 2, 0, getWidth(), lineLength, paint);
+            canvas.drawBitmap(bitmap,0,0,new Paint());
+        }else{
+            paint.setColor(lineColor);
+            paint.setStrokeWidth(Utils.dpToPx(2.33f, getResources()));
+            canvas.drawLine(getWidth() / 2, 0, getWidth(), lineLength, paint);
+
+            float division=yCurrent-yInit;
+
+            if(division>0.0f){
+                canvas.drawLine(getWidth()/2,0,getWidth(),lineLength+division,paint);
+            }else{
+                paint.setColor(getResources().getColor(android.R.color.transparent));
+                canvas.drawLine(getWidth()/2,yCurrent,getWidth(),division,paint);
+            }
+        }
+        invalidate();
+    }
+    @Override
+    public void onDistanceChanged(float changedValue) {
+        if(changedValue>0.0f){
+            ViewHelper.setY(imageView,yInit+changedValue);
+        }else{
+            ViewHelper.setY(imageView,yInit-changedValue);
+        }
+    }
+
+    @Override
+    public void onChangeOver(int flag, float distance) {
+
+    }
+
     public class FlatImage extends ImageView{
         public FlatImage(Context context) {
             super(context);
@@ -116,21 +197,33 @@ public class SlideDown extends CustomerView {
         public boolean onTouchEvent(MotionEvent event){
             switch (event.getAction()){
                 case MotionEvent.ACTION_DOWN:
+                    yCurrent=event.getY();
+                    yLast=yCurrent;
+                    pressed=true;
                     break;
                 case MotionEvent.ACTION_UP:
+                    yCurrent=event.getY();
+                    float distance=yCurrent-yInit;
+                    if(distance>0){
+                        if(listener!=null)
+                            listener.onChangeOver(1,distance);
+                    }else{
+                        if(listener!=null)
+                            listener.onChangeOver(2,distance);
+                    }
+                    pressed=false;
+                    yCurrent=yInit;
+                    yLast=yInit;
                     break;
                 case MotionEvent.ACTION_MOVE:
+                    yCurrent=event.getY();
+                    float distance1=yCurrent-yLast;
+                    yLast=yCurrent;
+                    if(listener!=null)
+                        listener.onDistanceChanged(distance1);
                     break;
             }
             return true;
         }
-    }
-
-    /**
-     * distance change listener used to change the length of line and position of button.
-     * @author zhuchao 2015/7/14
-     */
-    public interface OnDistanceChangeListener{
-        void onDistanceChanged(int changedValue);
     }
 }

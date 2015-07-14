@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="#dbd8d8"
+    >
+    <TextView
+        android:id="@+id/share_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="12dp"
+        android:text="分享到"
+        android:textSize="36px"
+        android:textColor="#5d5d5d"
+        />
+   <!--定义一个GridView组件-->
+    <GridView
+        android:id="@+id/message_share_remind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/share_word"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="8dp"
+        android:numColumns="4"
+        android:gravity="center"
+        android:scrollbars="none"
+        >
+    </GridView>
+    <!--cancel button-->
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="#ffffff"
+        android:layout_below="@+id/message_share_remind"
+        android:layout_marginTop="3dp"
+        android:text="取消"
+        android:textSize="48px"
+        android:textColor="#333333"
+        />
+
+
+</RelativeLayout>
