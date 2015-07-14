@@ -8,4 +8,8 @@
     <color name="main_bottom_text_unchecked_color">#b5b7b4</color>
     <color name="main_bottom_divider_color">#e8e7e7</color>
     <color name="main_bottom_linear_bg">#f8f8f8</color>
+
+    <!--the colors of mine interface-->
+    <color name="mine_item_pressed">#00b7ee</color>
+    <color name="mine_item_unpressed">#ffffff</color>
 </resources>

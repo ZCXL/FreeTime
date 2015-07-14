@@ -24,8 +24,7 @@ public class RoundImageView extends ImageView {
     private int mBorderOutsideColor = 0; 
     private int mBorderInsideColor = 0;
     private int defaultWidth = 0; 
-    private int defaultHeight = 0; 
-   
+    private int defaultHeight = 0;
     public RoundImageView(Context context) { 
         super(context); 
         mContext = context; 

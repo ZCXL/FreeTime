@@ -1,6 +1,5 @@
 package view_rewrite;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -9,15 +8,14 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.nineoldandroids.view.ViewHelper;
 import com.zhuchao.freetime.R;
 
 import listener.OnDistanceChangeListener;
+import listener.OnUnpressedListener;
 import utils.Utils;
 
 /**
@@ -46,14 +44,43 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
     private FlatImage imageView;
     private int image_button_source;
 
-    private static int TO_UP=1;
-    private static int TO_DOWN=2;
-    private OnDistanceChangeListener listener;
+    private OnUnpressedListener unpressedListener;
+
     public SlideDown(Context context, AttributeSet attrs) {
         super(context, attrs);
         setAttributes(attrs);
     }
-
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                if(event.getY()>imageView.getY()&&event.getY()<imageView.getY()+imageView.getHeight()){
+                    pressed=true;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                if(pressed){
+                    if(imageView.getListener()!=null)
+                        imageView.getListener().onChangeOver(yCurrent-yInit);
+                    pressed=false;
+                }
+                yCurrent=yInit;
+                yLast=yInit;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if(event.getY()<=getHeight()&&event.getY()>0){
+                    if(pressed){
+                        yLast=yCurrent;
+                        yCurrent=event.getY();
+                        float distance=yCurrent-yLast;
+                        if(imageView.getListener()!=null)
+                            imageView.getListener().onDistanceChanged(distance);
+                    }
+                }
+                break;
+        }
+        return true;
+    }
     @Override
     public void invalidate(){
         super.invalidate();
@@ -105,6 +132,7 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
         image_button_source=attributes.getAttributeResourceValue(CUSTOMREXML,"source_button",-1);
         imageView=new FlatImage(getContext());
         imageView.setImageResource(image_button_source);
+        imageView.setListener(this);
         RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(Utils.dpToPx(51f,getResources()),Utils.dpToPx(51f,getResources()));
         params.addRule(RelativeLayout.CENTER_HORIZONTAL,RelativeLayout.TRUE);
         imageView.setLayoutParams(params);
@@ -139,6 +167,9 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
     public int getLineColor() {
         return lineColor;
     }
+    public OnUnpressedListener getUnpressedListener() {
+        return unpressedListener;
+    }
 
     public void setLineLength(int lineLength) {
         this.lineLength = lineLength;
@@ -151,6 +182,14 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
     public void setLineColor(int lineColor) {
         this.lineColor = lineColor;
     }
+
+    public void setUnpressedListener(OnUnpressedListener unpressedListener) {
+        this.unpressedListener = unpressedListener;
+    }
+
+    /**
+     * place the button at right position
+     */
     private void placeButton(){
         ViewHelper.setX(imageView,getWidth()/2-imageView.getWidth()/2);
         ViewHelper.setY(imageView,lineLength-Utils.dpToPx(9,getResources()));
@@ -175,7 +214,7 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
             paint.setStrokeWidth(Utils.dpToPx(2.33f, getResources()));
             temp.drawLine(getWidth() / 2, 0, getWidth()/2, lineLength, paint);
             canvas.drawBitmap(bitmap, 0, 0, new Paint());
-        }else{
+        }else if(imageView.getY()>yInit){
             paint.setColor(lineColor);
             paint.setStrokeWidth(Utils.dpToPx(2.33f, getResources()));
             canvas.drawLine(getWidth() / 2, 0, getWidth()/2, lineLength, paint);
@@ -186,60 +225,48 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
                 canvas.drawLine(getWidth()/2,0,getWidth()/2,lineLength+division,paint);
             }else{
                 paint.setColor(getResources().getColor(android.R.color.transparent));
-                canvas.drawLine(getWidth()/2,yCurrent,getWidth()/2,division,paint);
+                canvas.drawLine(getWidth()/2,yCurrent,getWidth()/2,yInit,paint);
             }
+        }else{
+            paint.setColor(getResources().getColor(android.R.color.transparent));
+            paint.setStrokeWidth(Utils.dpToPx(2.33f, getResources()));
+            canvas.drawLine(getWidth() / 2, 0, getWidth() / 2, lineLength, paint);
+
+            paint.setColor(lineColor);
+            canvas.drawLine(getWidth() / 2, 0, getWidth()/2, yCurrent+Utils.dpToPx(9,getResources()), paint);
         }
         invalidate();
     }
     @Override
     public void onDistanceChanged(float changedValue) {
-        if(changedValue>0.0f){
-            ViewHelper.setY(imageView,yInit+changedValue);
-        }else{
-            ViewHelper.setY(imageView,yInit-changedValue);
-        }
+        ViewHelper.setY(imageView,imageView.getY()+changedValue);
     }
 
     @Override
-    public void onChangeOver(int flag, float distance) {
-
+    public void onChangeOver(float distance) {
+        ViewHelper.setY(imageView,yInit);
+        if(distance>min_distance){
+            if(unpressedListener!=null)
+                unpressedListener.onUnpressed(true);
+        }else{
+            if(unpressedListener!=null)
+                unpressedListener.onUnpressed(false);
+        }
     }
 
     public class FlatImage extends ImageView{
+        //Listener for updating image's position.
+        private OnDistanceChangeListener listener;
         public FlatImage(Context context) {
             super(context);
         }
-        @Override
-        public boolean onTouchEvent(MotionEvent event){
-            switch (event.getAction()){
-                case MotionEvent.ACTION_DOWN:
-                    yCurrent=event.getY();
-                    yLast=yCurrent;
-                    pressed=true;
-                    break;
-                case MotionEvent.ACTION_UP:
-                    yCurrent=event.getY();
-                    float distance=yCurrent-yInit;
-                    if(distance>0){
-                        if(listener!=null)
-                            listener.onChangeOver(1,distance);
-                    }else{
-                        if(listener!=null)
-                            listener.onChangeOver(2,distance);
-                    }
-                    pressed=false;
-                    yCurrent=yInit;
-                    yLast=yInit;
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    yCurrent=event.getY();
-                    float distance1=yCurrent-yLast;
-                    yLast=yCurrent;
-                    if(listener!=null)
-                        listener.onDistanceChanged(distance1);
-                    break;
-            }
-            return true;
+
+        public OnDistanceChangeListener getListener() {
+            return listener;
+        }
+
+        public void setListener(OnDistanceChangeListener listener) {
+            this.listener = listener;
         }
     }
 }

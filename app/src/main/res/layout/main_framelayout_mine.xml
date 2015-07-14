@@ -28,7 +28,8 @@
     <!--my information block-->
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="89.66dp">
+        android:layout_height="89.66dp"
+        android:background="@android:color/white">
         <view_rewrite.RoundImageView
             android:id="@+id/mine_head_image"
             android:layout_width="52dp"
@@ -38,7 +39,7 @@
             android:layout_centerVertical="true"
             android:paddingTop="19dp"
             android:paddingBottom="19dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/qq_login_button"
             imagecontrol:border_outside_color="#f3f2f2"
             imagecontrol:border_thickness="0.33dp" />
         <TextView
