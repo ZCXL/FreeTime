@@ -40,8 +40,8 @@
 
     <TextView
         android:id="@+id/main_zero_time_movie_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="85dp"
+        android:layout_height="25dp"
         android:layout_below="@+id/main_zero_time_movie_description"
         android:layout_marginTop="@dimen/main_TextView2_layout_marginTop"
         android:layout_alignParentLeft="true"
@@ -50,8 +50,8 @@
         android:textSize="@dimen/main_TextView2_textSize"
         android:textColor="#b3b3b3"/>
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_alignBottom="@+id/main_zero_time_movie_size"
         android:layout_toRightOf="@+id/main_zero_time_movie_size"
         android:layout_marginLeft="@dimen/main_ImageView2_layout_marginLeft"
