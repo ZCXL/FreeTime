@@ -19,6 +19,7 @@ public class Versions extends BaseObjects implements ParseJson {
     public Versions(String c){
         versions=getObjects(c);
     }
+
     @Override
     public ArrayList<BaseObject> getObjects(String c) {
         /**
@@ -30,13 +31,15 @@ public class Versions extends BaseObjects implements ParseJson {
         Version version;
         try {
             JSONArray jsonArray = new JSONArray(c);
-            version = new Version();
-            JSONObject jsonObject= (JSONObject) jsonArray.get(0);
+            for(int i=0;i<jsonArray.length();i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                version = new Version();
                 version.setVersionId(jsonObject.getString("versionId"));
                 version.setVersionDescription(jsonObject.getString("versiondescription"));
                 version.setVersionUrl(jsonObject.getString("versionurl"));
                 version.setAvailable(jsonObject.getBoolean("available"));
                 list.add(version);
+            }
             return list;
         } catch (JSONException e) {
             Log.d(TAG, e.toString()+"version of json error");

@@ -64,17 +64,14 @@ public class NetworkFunction {
             return result;
         } catch (UnsupportedEncodingException e) {
             Log.d(TAG, e.toString()+"ConnectServer UnsupportedEncoding error");
-            return null;
         } catch (ClientProtocolException e) {
             Log.d(TAG, e.toString() + "ConnectServer ClientProtocol error");
-            return null;
         } catch (IOException e) {
             Log.d(TAG, e.toString() + "ConnectServer IO error");
-            return null;
         } catch (Exception e) {
             Log.d(TAG, e.toString() + "ConnectServer error");
-            return null;
         }
+        return null;
     }
 
     /**
