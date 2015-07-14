@@ -90,7 +90,7 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
     @Override
     public ArrayList<BaseObject> getObjects(String c) {
         /**
-         * deal with String c
+         * deal with String c for userInfo
          * Created by LMZ on 7/13/15.
          */
         ArrayList<BaseObject> list=new ArrayList<BaseObject>();
