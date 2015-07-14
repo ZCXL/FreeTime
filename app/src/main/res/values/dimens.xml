@@ -48,9 +48,9 @@
     <dimen name="main_frameLayout_layout_marginTop">21dp</dimen>
 
     <!--the data of main_frameLayout_TextView1 -->
-    <dimen name="main_TextView1_layout_marginTop">28dp</dimen>
-    <dimen name="main_TextView1_paddingLeft">57dp</dimen>
-    <dimen name="main_TextView1_paddingRight">57dp</dimen>
+    <dimen name="main_TextView1_layout_marginTop">20dp</dimen>
+    <dimen name="main_TextView1_paddingLeft">47dp</dimen>
+    <dimen name="main_TextView1_paddingRight">47dp</dimen>
     <dimen name="main_TextView1_textSize">20sp</dimen>
 
     <!--the data of main_frameLayout_TextView2 -->
