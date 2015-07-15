@@ -8,11 +8,11 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        customer:line_length="278.33dp"
-        customer:line_width="7dp"
+        customer:line_length="@dimen/main_frameLayout_top_hot_view_rewrite_line_length"
+        customer:line_width="@dimen/main_frameLayout_top_hot_view_rewrite_line_width"
         customer:line_color="#ffffff"
-        customer:max_distance="150dp"
-        customer:min_distance="130dp"
+        customer:max_distance="@dimen/main_frameLayout_top_hot_view_rewrite_max_distance"
+        customer:min_distance="@dimen/main_frameLayout_top_hot_view_rewrite_min_distance"
         customer:source_button="@drawable/casual_login_button"
         />
 

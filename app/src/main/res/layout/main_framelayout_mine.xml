@@ -13,14 +13,14 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Mine"
-            android:textSize="16sp"
-            android:paddingTop="17dp"
-            android:paddingBottom="17dp"/>
+            android:textSize="@dimen/main_frameLayout_mine_TextView1_textSize"
+            android:paddingTop="@dimen/main_frameLayout_mine_TextView1_paddingTop"
+            android:paddingBottom="@dimen/main_frameLayout_mine_TextView1_paddingBottom"/>
         <ImageView
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+            android:layout_width="@dimen/main_frameLayout_mine_layout_width"
+            android:layout_height="@dimen/main_frameLayout_mine_layout_height"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="17dp"
+            android:layout_marginRight="@dimen/main_frameLayout_mine_layout_marginRight"
             android:layout_centerVertical="true"
             android:src="@drawable/mine_setting_button_press"
             />
@@ -28,46 +28,46 @@
     <!--my information block-->
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="89.66dp"
+        android:layout_height="@dimen/main_frameLayout_mine_relativeLayout_layout_height"
         android:background="@android:color/white">
         <view_rewrite.RoundImageView
             android:id="@+id/mine_head_image"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="@dimen/main_frameLayout_mine_view_rewrite_layout_width"
+            android:layout_height="@dimen/main_frameLayout_mine_view_rewrite_layout_height"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="19dp"
+            android:layout_marginLeft="@dimen/main_frameLayout_mine_view_rewrite_layout_marginLeft"
             android:layout_centerVertical="true"
-            android:paddingTop="19dp"
-            android:paddingBottom="19dp"
+            android:paddingTop="@dimen/main_frameLayout_mine_view_rewrite_paddingTop"
+            android:paddingBottom="@dimen/main_frameLayout_mine_view_rewrite_paddingBottom"
             android:src="@drawable/qq_login_button"
             imagecontrol:border_outside_color="#f3f2f2"
-            imagecontrol:border_thickness="0.33dp" />
+            imagecontrol:border_thickness="@dimen/main_frameLayout_mine_view_rewrite_border_thickness" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/mine_head_image"
-            android:layout_marginLeft="20.33dp"
-            android:textSize="14sp"
+            android:layout_marginLeft="@dimen/main_frameLayout_mine_TextView2_layout_marginLeft"
+            android:textSize="@dimen/main_frameLayout_mine_TextView2_textSize"
             android:text="Sun Shine."/>
     </RelativeLayout>
     <!--gap between two blocks-->
     <View
         android:layout_width="fill_parent"
-        android:layout_height="17dp"
+        android:layout_height="@dimen/main_frameLayout_mine_view1_layout_height"
         android:background="#f3f2f2"/>
     <!--my collection block-->
     <RelativeLayout
         android:id="@+id/mine_collection_block"
         android:layout_width="fill_parent"
-        android:layout_height="51dp"
+        android:layout_height="@dimen/main_frameLayout_mine_RelativeLayout_layout_height"
         android:background="@drawable/mine_item_press">
         <ImageView
             android:id="@+id/mine_collect_image"
-            android:layout_width="26.33dp"
-            android:layout_height="23.33dp"
+            android:layout_width="@dimen/main_frameLayout_mine_ImageView2_layout_width"
+            android:layout_height="@dimen/main_frameLayout_mine_ImageView2_layout_height"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="@dimen/main_frameLayout_mine_ImageView2_layout_marginLeft"
             android:src="@drawable/mine_collect_button"
             />
         <TextView
@@ -75,37 +75,37 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/mine_collect_image"
-            android:layout_marginLeft="9dp"
+            android:layout_marginLeft="@dimen/main_frameLayout_mine_TextView3_layout_marginLeft"
             android:text="My Collection"
-            android:textSize="13.33sp"
+            android:textSize="@dimen/main_frameLayout_mine_TextView3_textSize"
             />
         <ImageView
-            android:layout_width="11.66dp"
-            android:layout_height="16.66dp"
+            android:layout_width="@dimen/main_frameLayout_mine_ImageView3_layout_width"
+            android:layout_height="@dimen/main_frameLayout_mine_ImageView3_layout_height"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="19.66dp"
+            android:layout_marginRight="@dimen/main_frameLayout_mine_ImageView3_layout_marginRight"
             android:src="@drawable/mine_arrow_button"
             />
     </RelativeLayout>
     <View
         android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/main_frameLayout_mine_view2_layout_height"
         android:background="#f3f2f2"
         />
     <!--message notification block-->
     <RelativeLayout
         android:id="@+id/mine_message_block"
         android:layout_width="fill_parent"
-        android:layout_height="51dp"
+        android:layout_height="@dimen/main_frameLayout_mine_RelativeLayout_layout_height"
         android:background="@drawable/mine_item_press"
         >
         <ImageView
             android:id="@+id/mine_message_image"
-            android:layout_width="26.33dp"
-            android:layout_height="23.33dp"
+            android:layout_width="@dimen/main_frameLayout_mine_ImageView2_layout_width"
+            android:layout_height="@dimen/main_frameLayout_mine_ImageView2_layout_height"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="@dimen/main_frameLayout_mine_ImageView2_layout_marginLeft"
             android:src="@drawable/mine_information_button"
             />
         <TextView
@@ -113,37 +113,37 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/mine_message_image"
-            android:layout_marginLeft="9dp"
+            android:layout_marginLeft="@dimen/main_frameLayout_mine_TextView3_layout_marginLeft"
             android:text="Message Notification"
-            android:textSize="13.33sp"
+            android:textSize="@dimen/main_frameLayout_mine_TextView3_textSize"
             />
         <ImageView
-            android:layout_width="11.66dp"
-            android:layout_height="16.66dp"
+            android:layout_width="@dimen/main_frameLayout_mine_ImageView3_layout_width"
+            android:layout_height="@dimen/main_frameLayout_mine_ImageView3_layout_height"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="19.66dp"
+            android:layout_marginRight="@dimen/main_frameLayout_mine_ImageView3_layout_marginRight"
             android:src="@drawable/mine_arrow_button"
             />
     </RelativeLayout>
     <View
         android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/main_frameLayout_mine_view2_layout_height"
         android:background="#f3f2f2"
         />
 <!--time machine block-->
     <RelativeLayout
         android:id="@+id/mine_time_machine_block"
         android:layout_width="fill_parent"
-        android:layout_height="51dp"
+        android:layout_height="@dimen/main_frameLayout_mine_RelativeLayout_layout_height"
         android:background="@drawable/mine_item_press"
         >
         <ImageView
             android:id="@+id/mine_time_machine_image"
-            android:layout_width="26.33dp"
-            android:layout_height="23.33dp"
+            android:layout_width="@dimen/main_frameLayout_mine_ImageView2_layout_width"
+            android:layout_height="@dimen/main_frameLayout_mine_ImageView2_layout_height"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="@dimen/main_frameLayout_mine_ImageView2_layout_marginLeft"
             android:src="@drawable/mine_time_machine_button"
             />
         <TextView
@@ -151,37 +151,37 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/mine_time_machine_image"
-            android:layout_marginLeft="9dp"
+            android:layout_marginLeft="@dimen/main_frameLayout_mine_TextView3_layout_marginLeft"
             android:text="Time Machine"
-            android:textSize="13.33sp"
+            android:textSize="@dimen/main_frameLayout_mine_TextView3_textSize"
             />
         <ImageView
-            android:layout_width="11.66dp"
-            android:layout_height="16.66dp"
+            android:layout_width="@dimen/main_frameLayout_mine_ImageView3_layout_width"
+            android:layout_height="@dimen/main_frameLayout_mine_ImageView3_layout_height"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="19.66dp"
+            android:layout_marginRight="@dimen/main_frameLayout_mine_ImageView3_layout_marginRight"
             android:src="@drawable/mine_arrow_button"
             />
     </RelativeLayout>
     <View
         android:layout_width="fill_parent"
-        android:layout_height="17dp"
+        android:layout_height="@dimen/main_frameLayout_mine_view1_layout_height"
         android:background="#f3f2f2"
         />
     <!--self label block-->
     <RelativeLayout
         android:id="@+id/mine_self_label_block"
         android:layout_width="fill_parent"
-        android:layout_height="51dp"
+        android:layout_height="@dimen/main_frameLayout_mine_RelativeLayout_layout_height"
         android:background="@drawable/mine_item_press"
         >
         <ImageView
             android:id="@+id/mine_self_label_image"
-            android:layout_width="26.33dp"
-            android:layout_height="23.33dp"
+            android:layout_width="@dimen/main_frameLayout_mine_ImageView2_layout_width"
+            android:layout_height="@dimen/main_frameLayout_mine_ImageView2_layout_height"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="@dimen/main_frameLayout_mine_ImageView2_layout_marginLeft"
             android:src="@drawable/mine_self_label_button"
             />
         <TextView
@@ -189,22 +189,22 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/mine_self_label_image"
-            android:layout_marginLeft="9dp"
+            android:layout_marginLeft="@dimen/main_frameLayout_mine_TextView3_layout_marginLeft"
             android:text="Self Label"
-            android:textSize="13.33sp"
+            android:textSize="@dimen/main_frameLayout_mine_TextView3_textSize"
             />
         <ImageView
-            android:layout_width="11.66dp"
-            android:layout_height="16.66dp"
+            android:layout_width="@dimen/main_frameLayout_mine_ImageView3_layout_width"
+            android:layout_height="@dimen/main_frameLayout_mine_ImageView3_layout_height"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="19.66dp"
+            android:layout_marginRight="@dimen/main_frameLayout_mine_ImageView3_layout_marginRight"
             android:src="@drawable/mine_arrow_button"
             />
     </RelativeLayout>
     <View
         android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/main_frameLayout_mine_view2_layout_height"
         android:background="#f3f2f2"
         />
 </LinearLayout>

@@ -39,38 +39,96 @@
     <dimen name="main_bottom_text_size">12sp</dimen>
     <dimen name="main_bottom_divider">0.66dp</dimen>
 
-    <!--the data of main_FrameLayout_ImageView1 -->
+    <!--the data of main_frameLayout_zero_time_ImageView1 -->
     <dimen name="main_ImageView1_layout_width">134.66dp</dimen>
     <dimen name="main_ImageView1_layout_height">23.33dp</dimen>
     <dimen name="main_ImageView1_layout_marginTop">28.33dp</dimen>
 
-    <!--the data of main_frameLayout -->
+    <!--the data of main_frameLayout_zero_time -->
     <dimen name="main_frameLayout_layout_width">292dp</dimen>
     <dimen name="main_frameLayout_layout_height">193dp</dimen>
     <dimen name="main_frameLayout_layout_marginTop">21dp</dimen>
 
-    <!--the data of main_frameLayout_TextView1 -->
+    <!--the data of main_frameLayout_zero_time_TextView1 -->
     <dimen name="main_TextView1_layout_marginTop">20dp</dimen>
     <dimen name="main_TextView1_paddingLeft">47dp</dimen>
     <dimen name="main_TextView1_paddingRight">47dp</dimen>
     <dimen name="main_TextView1_textSize">20sp</dimen>
 
-    <!--the data of main_frameLayout_TextView2 -->
+    <!--the data of main_frameLayout_zero_time_TextView2 -->
     <dimen name="main_TextView2_layout_marginTop">21dp</dimen>
     <dimen name="main_TextView2_layout_marginLeft">86.33dp</dimen>
     <dimen name="main_TextView2_textSize">12sp</dimen>
 
-    <!--the data of main_frameLayout_ImageView2 -->
+    <!--the data of main_frameLayout_zero_time_ImageView2 -->
     <dimen name="main_ImageView2_layout_marginLeft">41.33dp</dimen>
 
-    <!--the data of main_linearLayout -->
+    <!--the data of main_linearLayout_zero_time -->
     <dimen name="main_linearLayout_layout_height">58.33dp</dimen>
     <dimen name="main_linearLayout_layout_marginTop">33.66dp</dimen>
     <dimen name="main_linearLayout_paddingLeft">38.45dp</dimen>
     <dimen name="main_linearLayout_paddingRight">38.45dp</dimen>
 
+    <!--the data of main_frameLayout_mine -->
+    <!--the data of main_frameLayout_mine_TextView1 -->
+    <dimen name="main_frameLayout_mine_TextView1_textSize">16sp</dimen>
+    <dimen name="main_frameLayout_mine_TextView1_paddingTop">17dp</dimen>
+    <dimen name="main_frameLayout_mine_TextView1_paddingBottom">17dp</dimen>
 
-        <!--the data of zero time-->
+    <!-- the data of main_frameLayout_mine_ImageView1-->
+    <dimen name="main_frameLayout_mine_layout_width">22dp</dimen>
+    <dimen name="main_frameLayout_mine_layout_height">22dp</dimen>
+    <dimen name="main_frameLayout_mine_layout_marginRight">17dp</dimen>
+
+    <!--the data of main_frameLayout_relativeLayout -->
+    <dimen name="main_frameLayout_mine_relativeLayout_layout_height">89.66dp</dimen>
+
+    <!--the data of main_frameLayout_mine_view_rewrite-->
+    <dimen name="main_frameLayout_mine_view_rewrite_layout_width">52dp</dimen>
+    <dimen name="main_frameLayout_mine_view_rewrite_layout_height">52dp</dimen>
+    <dimen name="main_frameLayout_mine_view_rewrite_layout_marginLeft">19dp</dimen>
+    <dimen name="main_frameLayout_mine_view_rewrite_paddingTop">19dp</dimen>
+    <dimen name="main_frameLayout_mine_view_rewrite_paddingBottom">19dp</dimen>
+    <dimen name="main_frameLayout_mine_view_rewrite_border_thickness">0.33dp</dimen>
+
+    <!--the data of main_frameLayout_mine_TextView2 -->
+    <dimen name="main_frameLayout_mine_TextView2_layout_marginLeft">20.33dp</dimen>
+    <dimen name="main_frameLayout_mine_TextView2_textSize">14sp</dimen>
+
+    <!-- the data of main_frameLayout_mine_view1 包括后面重复数据-->
+    <dimen name="main_frameLayout_mine_view1_layout_height">17dp</dimen>
+
+    <!--the data of main_frameLayout_mine_relativeLayout -->
+    <dimen name="main_frameLayout_mine_RelativeLayout_layout_height">51dp</dimen>
+
+    <!--the data of main_frameLayout_mine_ImageView2 -->
+    <dimen name="main_frameLayout_mine_ImageView2_layout_width">26.33dp</dimen>
+    <dimen name="main_frameLayout_mine_ImageView2_layout_height">23.33dp</dimen>
+    <dimen name="main_frameLayout_mine_ImageView2_layout_marginLeft">18dp</dimen>
+
+    <!--the data of main_frameLayout_mine_TextView3 -->
+    <dimen name="main_frameLayout_mine_TextView3_layout_marginLeft">9dp</dimen>
+    <dimen name="main_frameLayout_mine_TextView3_textSize">13.33sp</dimen>
+
+    <!--the data of main_frameLayout_mine_ImageView3 -->
+    <dimen name="main_frameLayout_mine_ImageView3_layout_width">11.66dp</dimen>
+    <dimen name="main_frameLayout_mine_ImageView3_layout_height">16.66dp</dimen>
+    <dimen name="main_frameLayout_mine_ImageView3_layout_marginRight">19.66dp</dimen>
+
+    <!-- the data of main_frameLayout_mine_view2-->
+    <dimen name="main_frameLayout_mine_view2_layout_height">0.5dp</dimen>
+
+    <!-- the data of main_frameLayout_top_hot-->
+    <!-- the data of main_frameLayout_top_hot_view_rewrite-->
+    <dimen name="main_frameLayout_top_hot_view_rewrite_line_length">278.33dp</dimen>
+    <dimen name="main_frameLayout_top_hot_view_rewrite_line_width">7dp</dimen>
+    <dimen name="main_frameLayout_top_hot_view_rewrite_max_distance">150dp</dimen>
+    <dimen name="main_frameLayout_top_hot_view_rewrite_min_distance">130dp</dimen>
+
+
+
+
+    <!--the data of zero time-->
     <dimen name="main_zero_time_title_width">134.66dp</dimen>
     <dimen name="main_zero_time_title_height">23.33dp</dimen>
     <dimen name="main_zero_time_title_margin_top">50.33dp</dimen>
