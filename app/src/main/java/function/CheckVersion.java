@@ -34,30 +34,34 @@ public class CheckVersion{
         new Thread(new Runnable(){
             @Override
             public void run(){
-            if(Network.checkNetWorkState(context)){
-                String url = "http://127.0.0.1/FreeTime/code/check_version.php/";
-                String parameter[] = {" "};
-                String keys[] = {"versionId","versiondescription","versionurl","available"};
-                String result = NetworkFunction.ConnectServer(url,keys,parameter);//联网解析JSON
-                Versions versions = new Versions(result);
-                ArrayList<BaseObject> versionArray = versions.getObjects(result);
-                int totalCount = versionArray.size();
-                int index = 0;
-                if (totalCount >= 1){
-                    version = (Version) versionArray.get(0);
-                    int max = Integer.parseInt(version.getVersionId().replace(".", ""));
-                    for (int i = 0; i < totalCount; i++) {
-                        version = (Version) versionArray.get(i);
-                        int tmp = Integer.parseInt(version.getVersionId().replace(".", ""));
-                        if (tmp > max) {
-                            max = tmp;
-                            index = i;
+                if(Network.checkNetWorkState(context)){
+                    String url = "http://127.0.0.1/FreeTime/code/check_version.php/";
+                    String parameter[] = new String[]{""};
+                    String keys[] = new String[]{"versionId","versiondescription","versionurl","available"};
+                    String result = NetworkFunction.ConnectServer(url,keys,parameter);//联网解析JSON
+                    if (result != null) {
+                        Versions versions = new Versions(result);
+                        ArrayList<BaseObject> versionArray = versions.getObjects(result);
+                        int totalCount = versionArray.size();
+                        int index = 0;
+                        if (totalCount >= 1) {
+                            version = (Version) versionArray.get(0);
+                            int max = Integer.parseInt(version.getVersionId().replace(".", ""));
+                            for (int i = 0; i < totalCount; i++) {
+                                version = (Version) versionArray.get(i);
+                                int tmp = Integer.parseInt(version.getVersionId().replace(".", ""));
+                                if (tmp > max) {
+                                    max = tmp;
+                                    index = i;
+                            }
                         }
+                        version = (Version) versionArray.get(index);
+                            if (listener != null)
+                                listener.getVersion(version);
+                        }
+                        return;
                     }
-                    version = (Version) versionArray.get(index);
                 }
-                return;
-            }
             }
         }).start();
     }
