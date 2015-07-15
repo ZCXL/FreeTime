@@ -48,7 +48,7 @@ public class NetworkFunction {
         try{
             HttpClient httpClient = new DefaultHttpClient();//创建HttpClient对象
             HttpPost httpPost = new HttpPost(url);//创建HttpPost对象
-            httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));//设置编码
+            httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));//使用UTF-8格式对数据进行编码
             HttpResponse httpResponse = httpClient.execute(httpPost);//执行HttpClient请求
             StringBuilder builder = new StringBuilder();
             //获取已获得读取内容的输入流对象
