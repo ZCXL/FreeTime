@@ -25,7 +25,7 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
     //Parameters that will be used to set interface value.
     private int lineLength;
     private int lineWidth;
-    private int lineColor= Color.parseColor("#ffffff");
+    private int lineColor= Color.parseColor("#ffffff");//set default rgb value for line
     private int max_distance=100;
     private int min_distance=50;
 
@@ -244,6 +244,11 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
 
     @Override
     public void onChangeOver(float distance) {
+        float distanceTemp=distance;
+        while(Math.abs(distanceTemp)>1f){
+            distanceTemp=-distanceTemp/2;
+            ViewHelper.setY(imageView,yInit+distanceTemp);
+        }
         ViewHelper.setY(imageView,yInit);
         if(distance>min_distance){
             if(unpressedListener!=null)
