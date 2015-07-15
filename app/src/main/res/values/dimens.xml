@@ -118,12 +118,49 @@
     <!-- the data of main_frameLayout_mine_view2-->
     <dimen name="main_frameLayout_mine_view2_layout_height">0.5dp</dimen>
 
-    <!-- the data of main_frameLayout_top_hot-->
-    <!-- the data of main_frameLayout_top_hot_view_rewrite-->
-    <dimen name="main_frameLayout_top_hot_view_rewrite_line_length">278.33dp</dimen>
-    <dimen name="main_frameLayout_top_hot_view_rewrite_line_width">7dp</dimen>
-    <dimen name="main_frameLayout_top_hot_view_rewrite_max_distance">150dp</dimen>
-    <dimen name="main_frameLayout_top_hot_view_rewrite_min_distance">130dp</dimen>
+    <!-- the data of main_login-->
+    <!-- the data of main_login_view_rewrite.SlideDown-->
+    <dimen name="main_login_view_rewrite.SlideDown_line_length">278.33dp</dimen>
+    <dimen name="main_login_view_rewrite.SlideDown_line_width">7dp</dimen>
+    <dimen name="main_login_view_rewrite.SlideDown_max_distance">150dp</dimen>
+    <dimen name="main_login_view_rewrite.SlideDown_min_distance">130dp</dimen>
+
+    <!--the data of main_login_relativeLayout1 -->
+    <dimen name="main_login_relativeLayout1_layout_marginRight">27dp</dimen>
+    <dimen name="main_login_relativeLayout1_layout_marginTop">310dp</dimen>
+
+    <!--the data of main_login_view_rewrite.RippleImage1 -->
+    <dimen name="main_login_view_rewrite.RippleImage1_layout_width">79dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage1_layout_height">79.33dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage1_paddingBottom">10dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage1_paddingLeft">10dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage1_paddingTop">10dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage1_paddingRight">10dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage1_image_width">59dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage1_image_height">59.33dp</dimen>
+
+    <!--the data of main_login_TextView1 -->
+    <dimen name="main_login_TextView1_layout_marginTop">5dp</dimen>
+    <dimen name="main_login_TextView1_textSize">10sp</dimen>
+
+    <!--the data of main_relativeLayout2 -->
+    <dimen name="main_login_relativeLayout2_layout_marginLeft">27dp</dimen>
+    <dimen name="main_login_relativeLayout2_layout_marginTop">310dp</dimen>
+
+    <!--the data of main_login_view_rewrite.RippleImage2 -->
+    <dimen name="main_login_view_rewrite.RippleImage2_layout_width">79dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage2_layout_height">79.33dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage2_paddingBottom">10dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage2_paddingLeft">10dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage2_paddingTop">10dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage2_paddingRight">10dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage2_image_width">59dp</dimen>
+    <dimen name="main_login_view_rewrite.RippleImage2_image_height">59.33dp</dimen>
+
+
+    <!--the data of main_login_TextView2 -->
+    <dimen name="main_login_TextView2_layout_marginTop">5dp</dimen>
+    <dimen name="main_login_TextView2_textSize">10sp</dimen>
 
 
 
