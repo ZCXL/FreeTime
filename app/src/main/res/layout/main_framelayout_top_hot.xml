@@ -9,29 +9,29 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        customer:line_length="278.33dp"
-        customer:line_width="7dp"
+        customer:line_length="@dimen/main_login_view_rewrite.SlideDown_line_length"
+        customer:line_width="@dimen/main_login_view_rewrite.SlideDown_line_width"
         customer:line_color="#ffffff"
-        customer:max_distance="150dp"
-        customer:min_distance="130dp"
+        customer:max_distance="@dimen/main_login_view_rewrite.SlideDown_max_distance"
+        customer:min_distance="@dimen/main_login_view_rewrite.SlideDown_min_distance"
         customer:source_button="@drawable/casual_login_button" />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/login_casual_login"
-        android:layout_marginRight="27dp"
-        android:layout_marginTop="310dp">
+        android:layout_marginRight="@dimen/main_login_relativeLayout1_layout_marginRight"
+        android:layout_marginTop="@dimen/main_login_relativeLayout1_layout_marginTop">
         <view_rewrite.RippleImage
             android:id="@+id/login_weibo_login"
-            android:layout_width="79dp"
-            android:layout_height="79.33dp"
+            android:layout_width="@dimen/main_login_view_rewrite.RippleImage1_layout_width"
+            android:layout_height="@dimen/main_login_view_rewrite.RippleImage1_layout_height"
             android:layout_centerHorizontal="true"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            customer:image_width="59dp"
-            customer:image_height="59.33dp"
+            android:paddingBottom="@dimen/main_login_view_rewrite.RippleImage1_paddingBottom"
+            android:paddingLeft="@dimen/main_login_view_rewrite.RippleImage1_paddingLeft"
+            android:paddingTop="@dimen/main_login_view_rewrite.RippleImage1_paddingTop"
+            android:paddingRight="@dimen/main_login_view_rewrite.RippleImage1_paddingRight"
+            customer:image_width="@dimen/main_login_view_rewrite.RippleImage1_image_width"
+            customer:image_height="@dimen/main_login_view_rewrite.RippleImage1_image_height"
             customer:ripple_color="#00b7ee"
             customer:ripple_speed="1"
             customer:image="@drawable/weibo_login_button"/>
@@ -40,28 +40,28 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/login_weibo_login"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/main_login_TextView1_layout_marginTop"
             android:text="WeiBo"
-            android:textSize="10sp"
+            android:textSize="@dimen/main_login_TextView1_textSize"
             android:textColor="@android:color/white"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/login_casual_login"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="310dp">
+        android:layout_marginLeft="@dimen/main_login_relativeLayout2_layout_marginLeft"
+        android:layout_marginTop="@dimen/main_login_relativeLayout2_layout_marginTop">
         <view_rewrite.RippleImage
             android:id="@+id/login_qq_login"
-            android:layout_width="79dp"
-            android:layout_height="79.33dp"
+            android:layout_width="@dimen/main_login_view_rewrite.RippleImage2_layout_width"
+            android:layout_height="@dimen/main_login_view_rewrite.RippleImage2_layout_height"
             android:layout_centerHorizontal="true"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            customer:image_width="59dp"
-            customer:image_height="59.33dp"
+            android:paddingBottom="@dimen/main_login_view_rewrite.RippleImage2_paddingBottom"
+            android:paddingLeft="@dimen/main_login_view_rewrite.RippleImage2_paddingLeft"
+            android:paddingTop="@dimen/main_login_view_rewrite.RippleImage2_paddingTop"
+            android:paddingRight="@dimen/main_login_view_rewrite.RippleImage2_paddingRight"
+            customer:image_width="@dimen/main_login_view_rewrite.RippleImage2_image_width"
+            customer:image_height="@dimen/main_login_view_rewrite.RippleImage2_image_height"
             customer:ripple_color="#00b7ee"
             customer:ripple_speed="1"
             customer:image="@drawable/qq_login_button"/>
@@ -70,9 +70,9 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/login_qq_login"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/main_login_TextView2_layout_marginTop"
             android:text="QQ"
-            android:textSize="10sp"
+            android:textSize="@dimen/main_login_TextView2_textSize"
             android:textColor="@android:color/white"/>
     </RelativeLayout>
 
