@@ -19,4 +19,16 @@
         <attr name="border_inside_color" format="color" />
         <attr name="border_outside_color" format="color"></attr>
     </declare-styleable>
+    <declare-styleable name="rippleImageView">
+        //The width of ripple button
+        <attr name="image_width" format="dimension"/>
+        //The height of ripple button
+        <attr name="image_height" format="dimension"/>
+        //The color of ripple
+        <attr name="ripple_color" format="color"/>
+        //The speed of ripple
+        <attr name="ripple_speed" format="integer"/>
+        //The source of image
+        <attr name="image" format="integer"/>
+    </declare-styleable>
 </resources>

@@ -39,7 +39,7 @@ public class Welcome extends Activity implements Runnable{
                 Welcome.this.version=version;//this version will pass to MainActivity to judge update or not.
             }
         });
-        checkVersion.startCheck();
+        //checkVersion.startCheck();
 
         preferences=getSharedPreferences(setting,MODE_PRIVATE);
         isFirst=preferences.getBoolean("START_FIRST",true);
