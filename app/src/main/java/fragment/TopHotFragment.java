@@ -62,13 +62,13 @@ public class TopHotFragment extends Fragment {
         pullToRefresh.setOnFooterRefreshListener(new PullToRefreshView.OnFooterRefreshListener() {
             @Override
             public void onFooterRefresh(PullToRefreshView view) {
-                mHandler.postDelayed(mRunnable,3000);
+                pullToRefresh.onFooterRefreshComplete();
             }
         });
         pullToRefresh.setOnHeaderRefreshListener(new PullToRefreshView.OnHeaderRefreshListener() {
             @Override
             public void onHeaderRefresh(PullToRefreshView view) {
-                pullToRefresh.onHeaderRefreshComplete();
+                mHandler.postDelayed(mRunnable, 3000);
             }
         });
         return rootView;
