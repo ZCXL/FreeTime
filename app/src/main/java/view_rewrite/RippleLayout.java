@@ -39,8 +39,6 @@ public class RippleLayout extends CustomerView {
     }
     @Override
     void setAttributes(AttributeSet attributes) {
-        setBackgroundResource(android.R.color.transparent);
-
         TypedArray array=getContext().obtainStyledAttributes(attributes, R.styleable.rippleLayout);
         //get color
         color=array.getColor(R.styleable.rippleLayout_color,0);
@@ -52,17 +50,15 @@ public class RippleLayout extends CustomerView {
     public boolean onTouchEvent(MotionEvent event){
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                if(event.getX()>getX()&&event.getX()<getX()+getWidth()&&event.getY()>getY()&&event.getY()<getY()+getHeight()) {
-                    x=event.getX();
-                    y=event.getY();
-                    xLeft=x;
-                    xRight=getWidth()-x;
-                    yTop=y;
-                    yBottom=getHeight()-y;
-                    pressed = true;
-                    isOver=false;
-                    invalidate();
-                }
+                x=event.getX();
+                y=event.getY();
+                xLeft=x;
+                xRight=getWidth()-x;
+                yTop=y;
+                yBottom=getHeight()-y;
+                pressed = true;
+                isOver=false;
+                invalidate();
                 break;
             case MotionEvent.ACTION_UP:
                 pressed=false;
@@ -80,7 +76,7 @@ public class RippleLayout extends CustomerView {
             paint.setAntiAlias(true);
             paint.setColor(makePressColor());
             canvas.drawCircle(x,y,radius,paint);
-            if(radius<Math.max(Math.max(xLeft,xRight),Math.max(yBottom,yTop))){
+            if(radius<Math.max(getWidth()-x,x)){
                 radius+=speed;
             }else{
                 radius=1;

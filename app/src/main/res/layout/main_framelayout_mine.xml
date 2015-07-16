@@ -62,8 +62,8 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_frameLayout_mine_RelativeLayout_layout_height"
         android:background="@drawable/mine_item_press"
-        customer:color="#007bee"
-        customer:speed="1">
+        customer:color="#00b7ee"
+        customer:speed="20">
         <ImageView
             android:id="@+id/mine_collect_image"
             android:layout_width="@dimen/main_frameLayout_mine_ImageView2_layout_width"
@@ -96,12 +96,13 @@
         android:background="#f3f2f2"
         />
     <!--message notification block-->
-    <RelativeLayout
+    <view_rewrite.RippleLayout
         android:id="@+id/mine_message_block"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_frameLayout_mine_RelativeLayout_layout_height"
         android:background="@drawable/mine_item_press"
-        >
+        customer:color="#00b7ee"
+        customer:speed="20">
         <ImageView
             android:id="@+id/mine_message_image"
             android:layout_width="@dimen/main_frameLayout_mine_ImageView2_layout_width"
@@ -127,19 +128,20 @@
             android:layout_marginRight="@dimen/main_frameLayout_mine_ImageView3_layout_marginRight"
             android:src="@drawable/mine_arrow_button"
             />
-    </RelativeLayout>
+    </view_rewrite.RippleLayout>
     <View
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_frameLayout_mine_view2_layout_height"
         android:background="#f3f2f2"
         />
 <!--time machine block-->
-    <RelativeLayout
+    <view_rewrite.RippleLayout
         android:id="@+id/mine_time_machine_block"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_frameLayout_mine_RelativeLayout_layout_height"
         android:background="@drawable/mine_item_press"
-        >
+        customer:color="#00b7ee"
+        customer:speed="20">
         <ImageView
             android:id="@+id/mine_time_machine_image"
             android:layout_width="@dimen/main_frameLayout_mine_ImageView2_layout_width"
@@ -165,19 +167,20 @@
             android:layout_marginRight="@dimen/main_frameLayout_mine_ImageView3_layout_marginRight"
             android:src="@drawable/mine_arrow_button"
             />
-    </RelativeLayout>
+    </view_rewrite.RippleLayout>
     <View
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_frameLayout_mine_view1_layout_height"
         android:background="#f3f2f2"
         />
     <!--self label block-->
-    <RelativeLayout
+    <view_rewrite.RippleLayout
         android:id="@+id/mine_self_label_block"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_frameLayout_mine_RelativeLayout_layout_height"
         android:background="@drawable/mine_item_press"
-        >
+        customer:color="#00b7ee"
+        customer:speed="20">
         <ImageView
             android:id="@+id/mine_self_label_image"
             android:layout_width="@dimen/main_frameLayout_mine_ImageView2_layout_width"
@@ -203,7 +206,7 @@
             android:layout_marginRight="@dimen/main_frameLayout_mine_ImageView3_layout_marginRight"
             android:src="@drawable/mine_arrow_button"
             />
-    </RelativeLayout>
+    </view_rewrite.RippleLayout>
     <View
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_frameLayout_mine_view2_layout_height"
