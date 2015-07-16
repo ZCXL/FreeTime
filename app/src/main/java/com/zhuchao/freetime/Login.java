@@ -6,7 +6,6 @@ import android.view.Window;
 
 
 public class Login extends Activity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

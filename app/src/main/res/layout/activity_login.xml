@@ -1,119 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:customer="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white">
-    <ImageView
-        android:id="@+id/main_zero_time_title"
-        android:layout_width="@dimen/main_ImageView1_layout_width"
-        android:layout_height="@dimen/main_ImageView1_layout_height"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/main_ImageView1_layout_marginTop"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/login_bg"
+    android:layout_height="match_parent">
+    <view_rewrite.SlideDown
+        android:id="@+id/login_casual_login"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/main_title_word"/>
-    <FrameLayout
-        android:id="@+id/main_zero_time_movie_frame"
-        android:layout_width="@dimen/main_frameLayout_layout_width"
-        android:layout_height="@dimen/main_frameLayout_layout_height"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/main_zero_time_title"
-        android:layout_marginTop="@dimen/main_frameLayout_layout_marginTop">
-        <android.support.v4.view.ViewPager
-            android:id="@+id/main_zero_time_movie_image_container"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:src="@drawable/main_video_frame"/>
-    </FrameLayout>
-    <TextView
-        android:id="@+id/main_zero_time_movie_description"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/main_zero_time_movie_frame"
-        android:layout_marginTop="@dimen/main_TextView1_layout_marginTop"
-        android:paddingLeft="@dimen/main_TextView1_paddingLeft"
-        android:paddingRight="@dimen/main_TextView1_paddingRight"
-        android:textSize="@dimen/main_TextView1_textSize"
-        android:text="One word to describe a movie,One word to describe a movie."/>
-
-    <TextView
-        android:id="@+id/main_zero_time_movie_size"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        customer:line_length="@dimen/main_login_view_rewrite_SlideDown_line_length"
+        customer:line_width="@dimen/main_login_view_rewrite_SlideDown_line_width"
+        customer:line_color="#ffffff"
+        customer:max_distance="@dimen/main_login_view_rewrite_SlideDown_max_distance"
+        customer:min_distance="@dimen/main_login_view_rewrite_SlideDown_min_distance"
+        customer:source_button="@drawable/casual_login_button" />
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/main_zero_time_movie_description"
-        android:layout_marginTop="@dimen/main_TextView2_layout_marginTop"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="@dimen/main_TextView2_layout_marginLeft"
-        android:text="File Size:123M"
-        android:textSize="@dimen/main_TextView2_textSize"
-        android:textColor="#b3b3b3"/>
-    <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignBottom="@+id/main_zero_time_movie_size"
-        android:layout_toRightOf="@+id/main_zero_time_movie_size"
-        android:layout_marginLeft="@dimen/main_ImageView2_layout_marginLeft"
-        android:src="@drawable/main_comment_button"/>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/main_zero_time_movie_size"
-        android:layout_marginTop="@dimen/main_linearLayout_layout_marginTop"
-        android:paddingLeft="@dimen/main_linearLayout_paddingLeft"
-        android:paddingRight="@dimen/main_linearLayout_paddingRight">
+        android:layout_toLeftOf="@+id/login_casual_login"
+        android:layout_marginRight="@dimen/main_login_relativeLayout1_layout_marginRight"
+        android:layout_marginTop="@dimen/main_login_relativeLayout1_layout_marginTop">
         <view_rewrite.RippleImage
-            android:id="@+id/main_zero_time_share"
-            android:layout_width="78.33dp"
-            android:layout_height="78.33dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:layout_toLeftOf="@+id/main_zero_time_collect"
-            android:layout_marginRight="15.66dp"
-            customer:image_width="58.33dp"
-            customer:image_height="58.33dp"
-            customer:ripple_color="#8dc9e8"
-            customer:ripple_speed="1"
-            customer:image="@drawable/main_share_button"
-            />
-        <view_rewrite.RippleImage
-            android:id="@+id/main_zero_time_collect"
-            android:layout_width="78.33dp"
-            android:layout_height="78.33dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
+            android:id="@+id/login_weibo_login"
+            android:layout_width="@dimen/main_login_view_rewrite_RippleImage1_layout_width"
+            android:layout_height="@dimen/main_login_view_rewrite_RippleImage1_layout_height"
             android:layout_centerHorizontal="true"
-            customer:image_width="58.33dp"
-            customer:image_height="58.33dp"
-            customer:ripple_color="#8dc9e8"
-            customer:ripple_speed="1"
-            customer:image="@drawable/main_collect_button"
-            />
-        <view_rewrite.RippleImage
-            android:id="@+id/main_zero_time_delete"
-            android:layout_width="78.33dp"
-            android:layout_height="78.33dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:layout_toRightOf="@+id/main_zero_time_collect"
-            android:layout_marginLeft="15.66dp"
-            customer:image_width="58.33dp"
-            customer:image_height="58.33dp"
+            android:paddingBottom="@dimen/main_login_view_rewrite_RippleImage1_paddingBottom"
+            android:paddingLeft="@dimen/main_login_view_rewrite_RippleImage1_paddingLeft"
+            android:paddingTop="@dimen/main_login_view_rewrite_RippleImage1_paddingTop"
+            android:paddingRight="@dimen/main_login_view_rewrite_RippleImage1_paddingRight"
+            customer:image_width="@dimen/main_login_view_rewrite_RippleImage1_image_width"
+            customer:image_height="@dimen/main_login_view_rewrite_RippleImage1_image_height"
             customer:ripple_color="#00b7ee"
             customer:ripple_speed="1"
-            customer:image="@drawable/main_delete_button"
-            />
+            customer:image="@drawable/weibo_login_button"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/login_weibo_login"
+            android:layout_marginTop="@dimen/main_login_TextView1_layout_marginTop"
+            android:text="WeiBo"
+            android:textSize="@dimen/main_login_TextView1_textSize"
+            android:textColor="@android:color/white"/>
     </RelativeLayout>
-
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/login_casual_login"
+        android:layout_marginLeft="@dimen/main_login_relativeLayout2_layout_marginLeft"
+        android:layout_marginTop="@dimen/main_login_relativeLayout2_layout_marginTop">
+        <view_rewrite.RippleImage
+            android:id="@+id/login_qq_login"
+            android:layout_width="@dimen/main_login_view_rewrite_RippleImage2_layout_width"
+            android:layout_height="@dimen/main_login_view_rewrite_RippleImage2_layout_height"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="@dimen/main_login_view_rewrite_RippleImage2_paddingBottom"
+            android:paddingLeft="@dimen/main_login_view_rewrite_RippleImage2_paddingLeft"
+            android:paddingTop="@dimen/main_login_view_rewrite_RippleImage2_paddingTop"
+            android:paddingRight="@dimen/main_login_view_rewrite_RippleImage2_paddingRight"
+            customer:image_width="@dimen/main_login_view_rewrite_RippleImage2_image_width"
+            customer:image_height="@dimen/main_login_view_rewrite_RippleImage2_image_height"
+            customer:ripple_color="#00b7ee"
+            customer:ripple_speed="1"
+            customer:image="@drawable/qq_login_button"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/login_qq_login"
+            android:layout_marginTop="@dimen/main_login_TextView2_layout_marginTop"
+            android:text="QQ"
+            android:textSize="@dimen/main_login_TextView2_textSize"
+            android:textColor="@android:color/white"/>
+    </RelativeLayout>
 </RelativeLayout>

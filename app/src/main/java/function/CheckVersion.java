@@ -35,7 +35,7 @@ public class CheckVersion{
             @Override
             public void run(){
                 if(Network.checkNetWorkState(context)){
-                    String url = "http://127.0.0.1/FreeTime/code/check_version.php";
+                    String url = "http://123.56.85.58/FreeTime/code/check_version.php";
                     String parameter[] = new String[]{};
                     String keys[] = new String[]{};
                     String result = NetworkFunction.ConnectServer(url,keys,parameter);//联网解析JSON
@@ -53,9 +53,9 @@ public class CheckVersion{
                                 if (tmp > max) {
                                     max = tmp;
                                     index = i;
+                                }
                             }
-                        }
-                        version = (Version) versionArray.get(index);
+                            version = (Version) versionArray.get(index);
                             if (listener != null)
                                 listener.getVersion(version);
                         }

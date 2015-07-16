@@ -56,7 +56,7 @@ public class Welcome extends Activity implements Runnable{
             //load user info
             //load resources saved in SDCard
             startActivity(new Intent(Welcome.this,MainActivity.class));
-            overridePendingTransition(R.anim.loading_out, R.anim.loading_in);
+            overridePendingTransition(R.anim.loading_in, R.anim.loading_out);
             Welcome.this.finish();
         }
     }
