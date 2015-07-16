@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
+    xmlns:customer="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -40,8 +40,8 @@
             android:paddingTop="@dimen/main_frameLayout_mine_view_rewrite_paddingTop"
             android:paddingBottom="@dimen/main_frameLayout_mine_view_rewrite_paddingBottom"
             android:src="@drawable/qq_login_button"
-            imagecontrol:border_outside_color="#f3f2f2"
-            imagecontrol:border_thickness="@dimen/main_frameLayout_mine_view_rewrite_border_thickness" />
+            customer:border_outside_color="#f3f2f2"
+            customer:border_thickness="@dimen/main_frameLayout_mine_view_rewrite_border_thickness" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,11 +57,13 @@
         android:layout_height="@dimen/main_frameLayout_mine_view1_layout_height"
         android:background="#f3f2f2"/>
     <!--my collection block-->
-    <RelativeLayout
+    <view_rewrite.RippleLayout
         android:id="@+id/mine_collection_block"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_frameLayout_mine_RelativeLayout_layout_height"
-        android:background="@drawable/mine_item_press">
+        android:background="@drawable/mine_item_press"
+        customer:color="#007bee"
+        customer:speed="1">
         <ImageView
             android:id="@+id/mine_collect_image"
             android:layout_width="@dimen/main_frameLayout_mine_ImageView2_layout_width"
@@ -87,7 +89,7 @@
             android:layout_marginRight="@dimen/main_frameLayout_mine_ImageView3_layout_marginRight"
             android:src="@drawable/mine_arrow_button"
             />
-    </RelativeLayout>
+    </view_rewrite.RippleLayout>
     <View
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_frameLayout_mine_view2_layout_height"

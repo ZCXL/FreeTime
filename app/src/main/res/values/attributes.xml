@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--attributes of customer view-->
     <declare-styleable name="CustomerAttributes">
         <!--The length of line-->
         <attr name="line_length" format="dimension"/>
@@ -14,11 +15,17 @@
         <!--The source of button image-->
         <attr name="source_button" format="integer"/>
     </declare-styleable>
+
+
+    <!--attributes of rounded image view-->
     <declare-styleable name="roundedImageView">
         <attr name="border_thickness" format="dimension" />
         <attr name="border_inside_color" format="color" />
         <attr name="border_outside_color" format="color"></attr>
     </declare-styleable>
+
+
+    <!--attributes of ripple image view-->
     <declare-styleable name="rippleImageView">
         //The width of ripple button
         <attr name="image_width" format="dimension"/>
@@ -30,5 +37,12 @@
         <attr name="ripple_speed" format="integer"/>
         //The source of image
         <attr name="image" format="integer"/>
+    </declare-styleable>
+
+
+    <!--attributes of ripple layout-->
+    <declare-styleable name="rippleLayout">
+        <attr name="color" format="color"/>
+        <attr name="speed" format="integer"/>
     </declare-styleable>
 </resources>

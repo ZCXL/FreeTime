@@ -14,4 +14,5 @@
     <string name="main_bottom_text_1">零时光</string>
     <string name="main_bottom_text_2">最热</string>
     <string name="main_bottom_text_3">我的</string>
+    <string name="title_activity_login">Login</string>
 </resources>
