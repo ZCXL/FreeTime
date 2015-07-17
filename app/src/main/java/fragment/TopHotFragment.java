@@ -1,5 +1,6 @@
 package fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -7,9 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.zhuchao.freetime.R;
+import com.zhuchao.freetime.TopHot_Detail;
 
 import java.util.ArrayList;
 
@@ -47,6 +50,13 @@ public class TopHotFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.main_framelayout_top_hot,container,false);
 
+        initView(rootView);
+
+        initData();
+        return rootView;
+    }
+
+    private void initView(View rootView){
         pullToRefresh=(PullToRefreshView)rootView.findViewById(R.id.pull_to_refresh);
         listView=(ListView)rootView.findViewById(R.id.listView);
 
@@ -59,6 +69,8 @@ public class TopHotFragment extends Fragment {
 
         listView.setAdapter(adapter);
 
+    }
+    private void initData(){
         pullToRefresh.setOnFooterRefreshListener(new PullToRefreshView.OnFooterRefreshListener() {
             @Override
             public void onFooterRefresh(PullToRefreshView view) {
@@ -71,6 +83,11 @@ public class TopHotFragment extends Fragment {
                 mHandler.postDelayed(mRunnable, 3000);
             }
         });
-        return rootView;
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                getActivity().startActivity(new Intent(getActivity(), TopHot_Detail.class));
+            }
+        });
     }
 }

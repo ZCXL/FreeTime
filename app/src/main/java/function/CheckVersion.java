@@ -1,6 +1,9 @@
 package function;
 
 import android.content.Context;
+import android.util.Log;
+
+import com.zhuchao.freetime.Welcome;
 
 import java.util.ArrayList;
 
@@ -31,6 +34,7 @@ public class CheckVersion{
      * Created by LMZ on 7/14/15
      */
     public void startCheck(){
+        Welcome.signal-=1;
         new Thread(new Runnable(){
             @Override
             public void run(){
@@ -41,23 +45,26 @@ public class CheckVersion{
                     String result = NetworkFunction.ConnectServer(url,keys,parameter);//联网解析JSON
                     if (result != null) {
                         Versions versions = new Versions(result);
-                        ArrayList<BaseObject> versionArray = versions.getObjects(result);
-                        int totalCount = versionArray.size();
+                        version=(Version) versions.getItem(0);
+
+                        //ArrayList<BaseObject> versionArray = versions.getObjects(result);
+                        int totalCount = versions.getCount();
                         int index = 0;
                         if (totalCount >= 1) {
-                            version = (Version) versionArray.get(0);
+                            version = (Version) versions.getItem(0);
                             int max = Integer.parseInt(version.getVersionId().replace(".", ""));
                             for (int i = 0; i < totalCount; i++) {
-                                version = (Version) versionArray.get(i);
+                                version = (Version) versions.getItem(i);
                                 int tmp = Integer.parseInt(version.getVersionId().replace(".", ""));
                                 if (tmp > max) {
                                     max = tmp;
                                     index = i;
                                 }
                             }
-                            version = (Version) versionArray.get(index);
+                            version = (Version) versions.getItem(index);
                             if (listener != null)
                                 listener.getVersion(version);
+                            Welcome.signal+=1;
                         }
                         return;
                     }

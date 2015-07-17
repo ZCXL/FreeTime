@@ -15,4 +15,5 @@
     <string name="main_bottom_text_2">最热</string>
     <string name="main_bottom_text_3">我的</string>
     <string name="title_activity_login">Login</string>
+    <string name="title_activity_top_hot__detail">TopHot_Detail</string>
 </resources>

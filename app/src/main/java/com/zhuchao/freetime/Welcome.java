@@ -5,8 +5,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.Intent;
 
+import android.util.Log;
 import android.view.Window;
 
+import bean.Movies;
+import bean.UserInfo;
 import bean.Version;
 import function.CheckVersion;
 
@@ -17,6 +20,12 @@ public class Welcome extends Activity implements Runnable{
     private SharedPreferences preferences;//get setting
     private CheckVersion checkVersion;
     private Version version;
+
+    private UserInfo userInfo;
+    private Movies movies;
+    public static int signal=0;//thread synthesize
+
+    private boolean initOver=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +48,17 @@ public class Welcome extends Activity implements Runnable{
                 Welcome.this.version=version;//this version will pass to MainActivity to judge update or not.
             }
         });
-        //checkVersion.startCheck();
+        checkVersion.startCheck();
 
+        //thread
+        while(signal<0){
+            doNothing();
+//            if(!initOver){
+//                movies=new Movies(Welcome.this);
+//                userInfo=new UserInfo(Welcome.this);
+//                initOver=true;
+//            }
+        }
         preferences=getSharedPreferences(setting,MODE_PRIVATE);
         isFirst=preferences.getBoolean("START_FIRST",true);
         if(isFirst){//use firstly
@@ -55,9 +73,13 @@ public class Welcome extends Activity implements Runnable{
         }else{
             //load user info
             //load resources saved in SDCard
-            startActivity(new Intent(Welcome.this,MainActivity.class));
+            Log.d("Version",version.getVersionDescription());
+            startActivity(new Intent(Welcome.this, MainActivity.class));
             overridePendingTransition(R.anim.loading_in, R.anim.loading_out);
             Welcome.this.finish();
         }
+    }
+    private void doNothing(){
+
     }
 }

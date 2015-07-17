@@ -31,15 +31,20 @@ public class Versions extends BaseObjects implements ParseJson {
         Version version;
         try {
             JSONObject object = new JSONObject(c);
-            String V = object.getString("V");
-            JSONArray jsonArray = new JSONArray(V);
+
+            JSONArray jsonArray=object.getJSONArray("V");
             for(int i=0;i<jsonArray.length();i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 version = new Version();
                 version.setVersionId(jsonObject.getString("versionId"));
                 version.setVersionDescription(jsonObject.getString("versiondescription"));
                 version.setVersionUrl(jsonObject.getString("versionurl"));
-                version.setAvailable(jsonObject.getBoolean("available"));
+                String available=jsonObject.getString("available");
+                if(available.equals("0")){
+                    version.setAvailable(false);
+                }else{
+                    version.setAvailable(true);
+                }
                 list.add(version);
             }
             return list;

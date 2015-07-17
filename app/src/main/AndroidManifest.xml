@@ -34,7 +34,11 @@
             android:name=".Login"
             android:label="@string/title_activity_login" >
         </activity>
-        <!-- 调用QQ API-->
+        <activity
+            android:name=".TopHot_Detail"
+            android:label="@string/title_activity_top_hot__detail" >
+        </activity>
+        <!-- 不配置将会导致无法调用API -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:noHistory="true"
@@ -46,9 +50,8 @@
                 <data android:scheme="tencent222222" />
             </intent-filter>
         </activity>
-        <!-- QQ_SDK_V2.0引入了AssistActivity,在androidManifest.xml中注册 -->
-        <activity
-            android:name="com.tencent.connect.common.AssistActivity"
+        <!-- SDK_V2.0引入了AssistActivity，开发者需在androidManifest.xml中注册 -->
+        <activity android:name="com.tencent.connect.common.AssistActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="orientation|keyboardHidden|screenSize"
             />

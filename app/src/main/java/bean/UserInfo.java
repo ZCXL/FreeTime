@@ -1,4 +1,5 @@
 package bean;
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -8,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import function.ParseJson;
+import function.SaveAndOpenUserInfo;
 
 /**
  * Created by zhuchao on 7/12/15.
@@ -21,6 +23,7 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
     private String head_url;//user's head url
     private String signature;//user's signature
     private String stamp;//login stamp ensuring that one account only logins once;
+    private SaveAndOpenUserInfo saveAndOpenUserInfo;
     private static final long serialVersionUID=-7620435178023928254L;
 
     public String getNumber() {
@@ -68,16 +71,31 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
     }
     public UserInfo(String c){
         super(TYPE.USER);
-        setUserinfo(c);
+        setUserInfo(c);
     }
-    private void setUserinfo(String c){
+    private void setUserInfo(String c){
         userinfo=getObjects(c);
-        UserInfo info=(UserInfo)userinfo.get(0);
-        setHead_url(info.getHead_url());
-        setNumber(info.getNumber());
-        setNick_name(info.getNick_name());
-        setSignature(info.getSignature());
-        setStamp(info.getStamp());
+        if(userinfo!=null){
+            UserInfo info=(UserInfo)userinfo.get(0);
+            setHead_url(info.getHead_url());
+            setNumber(info.getNumber());
+            setNick_name(info.getNick_name());
+            setSignature(info.getSignature());
+            setStamp(info.getStamp());
+        }
+    }
+    public UserInfo(Context context){
+        super(TYPE.USER);
+        saveAndOpenUserInfo=new SaveAndOpenUserInfo();
+        userinfo=saveAndOpenUserInfo.Open(context);
+        if(userinfo!=null){
+            UserInfo info=(UserInfo)userinfo.get(0);
+            setHead_url(info.getHead_url());
+            setNumber(info.getNumber());
+            setNick_name(info.getNick_name());
+            setSignature(info.getSignature());
+            setStamp(info.getStamp());
+        }
     }
 
     /**
@@ -103,7 +121,6 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
                 userInfo.setNick_name(user.getString("nick_name"));
                 userInfo.setSignature(user.getString("signature"));
                 userInfo.setStamp(user.getString("stamp"));
-                userInfo.setUserinfo(user.getString("userInfo"));
                 list.add(userInfo);
             return list;
         } catch (JSONException e) {

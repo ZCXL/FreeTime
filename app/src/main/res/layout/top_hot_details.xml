@@ -3,16 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
     <!--title bar-->
-        <RelativeLayout
+    <RelativeLayout
         android:id="@+id/top_hot_detail_title_bar"
         android:layout_width="fill_parent"
         android:layout_height="47.66dp"
-        android:background="#f3f2f2">
+        android:background="#f3f2f2"
+        android:gravity="top">
         <ImageView
             android:id="@+id/top_hot_detail_return_button"
             android:layout_width="12.66dp"
@@ -49,7 +46,12 @@
             android:layout_marginRight="12.66dp"
             android:src="@drawable/top_hot_detail_collect_button"
             />
-        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="47.66dp">
         <!--video block-->
         <FrameLayout
                 android:id="@+id/top_hot_detail_video"
@@ -132,7 +134,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="59.7dp"
+        android:layout_height="50.7dp"
         android:layout_gravity="bottom"
         android:orientation="vertical"
         >
@@ -144,14 +146,14 @@
             />
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="59dp">
+            android:layout_height="50dp">
             <ImageView
                 android:id="@+id/top_hot_detail_bottom_logo"
                 android:layout_width="38.33dp"
                 android:layout_height="28dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="16.33dp"
-                android:src="@drawable/top_hot_detail_comment_button"
+                android:src="@drawable/top_hot_detail_buttom_logo"
              />
             <EditText
                 android:id="@+id/top_hot_detail_bottom_edit"
@@ -176,6 +178,7 @@
                 android:textSize="13.33sp"
                 android:textColor="#999999"
                 android:text="Send"
+                android:background="@android:color/transparent"
                 />
         </RelativeLayout>
     </LinearLayout>

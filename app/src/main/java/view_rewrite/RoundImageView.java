@@ -99,8 +99,7 @@ public class RoundImageView extends ImageView {
         if (bmpHeight > bmpWidth) {
             squareWidth = squareHeight = bmpWidth; 
             x = 0; 
-            y = (bmpHeight - bmpWidth) / 2; 
-            // ��ȡ������ͼƬ 
+            y = (bmpHeight - bmpWidth) / 2;
             squareBitmap = Bitmap.createBitmap(bmp, x, y, squareWidth, squareHeight); 
         } else if (bmpHeight < bmpWidth) {
             squareWidth = squareHeight = bmpHeight; 
@@ -138,10 +137,7 @@ public class RoundImageView extends ImageView {
         scaledSrcBmp = null; 
         return output; 
     } 
-   
-    /** 
-     * ��Ե��Բ 
-     */ 
+
     private void drawCircleBorder(Canvas canvas, int radius, int color) { 
         Paint paint = new Paint();
         paint.setAntiAlias(true); 
