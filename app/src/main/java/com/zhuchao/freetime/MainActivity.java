@@ -2,20 +2,26 @@ package com.zhuchao.freetime;
 
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import connection.DownloadServiceConnection;
 import fragment.MineFragment;
 import fragment.TopHotFragment;
 import fragment.ZeroTimeFragment;
+import receiver.DownloadReceiver;
+import service.DownloadService;
 
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener{
@@ -30,6 +36,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private ImageView zero_time_image,top_hot_image,mine_image;
 
     private String curFragmentTag;
+
+    //Update version
+    public static DownloadService downloadService;
+    //Download receiver
+    private DownloadReceiver downloadReceiver;
+    //Download connection
+    private DownloadServiceConnection downloadServiceConnection;
+    private long exitTime = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +79,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         transaction.add(R.id.container, zeroTimeFragment);
         transaction.commit();
 
+        bindService();
     }
 
     /**
@@ -157,5 +172,41 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         Fragment f = manager.findFragmentByTag(curFragmentTag);
         /*然后在碎片中调用重写的onActivityResult方法*/
         f.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK ){
+            if((System.currentTimeMillis()-exitTime) >1000){
+                Toast.makeText(getApplicationContext(), "Click again to leave", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        if(downloadServiceConnection!=null){
+            Intent it = new Intent(MainActivity.this, DownloadService.class);
+            bindService(it,downloadServiceConnection, BIND_AUTO_CREATE);
+        }
+    }
+    private void bindService(){
+        downloadServiceConnection=new DownloadServiceConnection();
+        Intent intent=new Intent(MainActivity.this,DownloadService.class);
+        bindService(intent, downloadServiceConnection, BIND_AUTO_CREATE);
+        startService(intent);
+
+        IntentFilter filter=new IntentFilter();
+        filter.addAction(DownloadReceiver.ACTION_UPDATE);
+        filter.addAction(DownloadReceiver.ACTION_FINISHED);
+        filter.addAction(DownloadReceiver.ACTION_FAILED);
+        downloadReceiver=new DownloadReceiver(MainActivity.this);
+        registerReceiver(downloadReceiver,filter);
     }
 }

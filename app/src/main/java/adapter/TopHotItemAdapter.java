@@ -15,16 +15,19 @@ import java.util.ArrayList;
 import bean.Movie;
 import function.ImageLoaderTask;
 import function.ImageProcess;
+import utils.ImageLoader;
 
 /**
  * Created by zhuchao on 7/16/15.
  */
 public class TopHotItemAdapter extends BaseAdapter {
+    private ImageLoader imageLoader;
     private ArrayList<Movie>movies;
     private Context context;
     public TopHotItemAdapter(ArrayList<Movie>movies,Context context){
         this.movies=movies;
         this.context=context;
+        imageLoader=new ImageLoader(context);
     }
     @Override
     public int getCount() {
@@ -59,7 +62,8 @@ public class TopHotItemAdapter extends BaseAdapter {
             holder=(ViewHolder)convertView.getTag();
         }
 
-        new ImageLoaderTask(holder.movie_image,context, ImageProcess.FileType_Image.MovieImage).execute(movie.getImageUrl());
+        holder.movie_image.setTag(movie.getImageUrl());
+        imageLoader.DisplayImage(movie.getImageUrl(),holder.movie_image);
 
         holder.movie_sights.setText(movie.getViewNumber());
         holder.movie_comment_number.setText(movie.getCommentNumber());

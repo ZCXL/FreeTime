@@ -18,4 +18,5 @@
     <string name="title_activity_top_hot__detail">TopHot_Detail</string>
     <string name="title_activity_play_movie">PlayMovie</string>
     <string name="title_activity_test">Test</string>
+    <string name="title_activity_set">Set</string>
 </resources>

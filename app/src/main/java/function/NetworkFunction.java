@@ -20,6 +20,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,5 +105,25 @@ public class NetworkFunction {
      */
     public static void UploadFile(String fileName){
 
+    }
+    /**
+     *   get net file
+     * @param uri
+     * @return
+     * @throws IOException
+     */
+    public static FileInfo GetFile(String uri)throws IOException{
+        FileInfo fileInfo=new NetworkFunction().new FileInfo();
+        URL url=new URL(uri);
+        URLConnection urlConnection=url.openConnection();
+        urlConnection.setConnectTimeout(5000);
+        urlConnection.connect();
+        fileInfo.inputStream=urlConnection.getInputStream();
+        fileInfo.fileSize=urlConnection.getContentLength();
+        return fileInfo;
+    }
+    public class FileInfo{
+        public InputStream inputStream;
+        public int fileSize;
     }
 }

@@ -260,7 +260,7 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
         start_button.setImageResource(R.drawable.video_play_pause_button);
         RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(Utils.dpToPx(79.33f,getResources()),Utils.dpToPx(77.33f,getResources()));
         params.addRule(RelativeLayout.CENTER_HORIZONTAL,RelativeLayout.TRUE);
-        params.addRule(RelativeLayout.BELOW,R.id.top_hot_detail_detail_introduction);
+        params.addRule(RelativeLayout.BELOW, R.id.top_hot_detail_detail_introduction);
         params.topMargin=10;
         start_button.setLayoutParams(params);
 
@@ -286,6 +286,22 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
 
     }
 
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent event){
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                Log.d("fa","Action down");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d("fa","action move");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d("fa","action up");
+                //isPressed=false;
+                break;
+        }
+        return false;
+    }
     @Override
     public void onClick(View v) {
         if(v==back_button){
@@ -406,6 +422,7 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
             surfaceHolder.addCallback(this);
             surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
             mTimer.schedule(mTimerTask, 0, 1000);
+            handleProgress.sendEmptyMessage(1);
         }
         TimerTask mTimerTask = new TimerTask() {
             @Override
@@ -452,7 +469,6 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
                     //start buffer
                     case 2:
                         Log.d("staring","starting progress");
-                        this.sendEmptyMessage(1);
                         mediaPlayer.reset();
                         try {
                             mediaPlayer.setDataSource(url);

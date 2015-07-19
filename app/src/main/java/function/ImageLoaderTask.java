@@ -33,6 +33,9 @@ public class ImageLoaderTask extends AsyncTask<String, Void, Bitmap> {
 	@Override
 	protected Bitmap doInBackground(String... params) {
 		imageUrl = params[0];
+        if(!imageUrl.equals(imageViewReference.get().getTag())){
+            return null;
+        }
 		return loadImageFile(imageUrl);
 	}
 
@@ -51,6 +54,7 @@ public class ImageLoaderTask extends AsyncTask<String, Void, Bitmap> {
 		}
 		if(ImageProcess.SearchImage(fileType_Image,temp)){
 			bitmap=ImageProcess.OutputImage(fileType_Image,temp);
+			bitmap=ImageProcess.compressImage(bitmap);
 			if(bitmap!=null){
 				ImageCache.put(filename,new SoftReference<Bitmap>(bitmap));
 				return bitmap;
@@ -59,6 +63,7 @@ public class ImageLoaderTask extends AsyncTask<String, Void, Bitmap> {
 	     	if(Network.checkNetWorkState(context)){
 	         	InputStream iStream=NetworkFunction.DownloadImage(filename);
 	         	bitmap=ImageProcess.getBitmap(iStream);
+				bitmap=ImageProcess.compressImage(bitmap);
 	         	ImageProcess.InputImage(bitmap, fileType_Image, filename.substring(filename.lastIndexOf("/")+1));
 				try {
 					iStream.close();
@@ -79,7 +84,6 @@ public class ImageLoaderTask extends AsyncTask<String, Void, Bitmap> {
 		if (isCancelled()) {
 			bitmap = null;
 		}
-
 		if (imageViewReference != null) {
 			ImageView imageView = imageViewReference.get();
 			if (imageView != null) {
@@ -91,8 +95,6 @@ public class ImageLoaderTask extends AsyncTask<String, Void, Bitmap> {
 					}else{
 						imageView.setImageBitmap(bitmap);
 					}
-				}else{
-					imageView.setImageResource(R.drawable.logo);//��ʾ����
 				}
 			}
 		}

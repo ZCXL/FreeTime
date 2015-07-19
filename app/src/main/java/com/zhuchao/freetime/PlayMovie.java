@@ -26,10 +26,6 @@ public class PlayMovie extends Activity {
             Bundle bundle=getIntent().getExtras();
             playUrl=bundle.getString("movieurl");
             title=bundle.getString("title");
-            if(playUrl!=null) {
-                Log.d("fa", playUrl);
-                Toast.makeText(PlayMovie.this,playUrl,Toast.LENGTH_LONG).show();
-            }
         }
         playerView=new PlayerView(PlayMovie.this,playUrl,title);
         ViewGroup.LayoutParams params=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT);

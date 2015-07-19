@@ -4,16 +4,17 @@
 
     <!-- use permission for internet -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--access network state-->
+    <!-- access network state -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--write data to memory-->
+    <!-- write data to memory -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--write setting-->
+    <!-- write setting -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <!--read phone state-->
+    <!-- read phone state -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!--keep screen alive-->
+    <!-- keep screen alive -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -68,15 +69,20 @@
         <activity
             android:name=".PlayMovie"
             android:label="@string/title_activity_play_movie"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name=".Test"
             android:label="@string/title_activity_test"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
+        <activity
+            android:name=".Set"
+            android:label="@string/title_activity_set" >
+        </activity>
+        <service android:name="service.DownloadService" />
     </application>
 
 </manifest>

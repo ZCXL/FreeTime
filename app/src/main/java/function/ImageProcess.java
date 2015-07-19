@@ -96,7 +96,7 @@ public static boolean InputImage(Bitmap bitmap,FileType_Image fImage,String file
 	   String fileFolderPath="";//�ļ��е�ַ
 	   String parentPath="/sdcard/FreeTime/";
 	   if(fImage==FileType_Image.MovieImage){
-		   fileFolderPath=parentPath+"GoodImages/";
+		   fileFolderPath=parentPath+"MovieImages/";
 	   }else if (fImage==FileType_Image.HeadImage) {
 		   fileFolderPath=parentPath+"HeadImages/";
 	   }
@@ -109,7 +109,7 @@ public static boolean InputImage(Bitmap bitmap,FileType_Image fImage,String file
 	   return false;
    }
    public static boolean DeleteImage(){
-	   String parentPathString="/sdcard/SmallFreeTime/MovieImages";
+	   String parentPathString="/sdcard/FreeTime/MovieImages";
 	   if(isSDExit()){
 		   File file=new File(parentPathString);
 		   if(file.exists()){
@@ -169,7 +169,7 @@ public static boolean InputImage(Bitmap bitmap,FileType_Image fImage,String file
 		Bitmap bitmap=null;
 		if(in!=null){
 		BitmapFactory.Options options=new BitmapFactory.Options();
-		options.inPreferredConfig = Bitmap.Config.RGB_565;   
+		options.inPreferredConfig = Bitmap.Config.ALPHA_8;
 	    options.inPurgeable = true;  
 		options.inInputShareable = true; 
 		options.inJustDecodeBounds=false;
@@ -196,4 +196,20 @@ public static boolean InputImage(Bitmap bitmap,FileType_Image fImage,String file
 	   matrix.postScale(scaleWidth,scaleHeight);
        return Bitmap.createBitmap(bitmap, (bitmap.getWidth()-width)/2,(bitmap.getHeight()-height)/2, width, height, matrix, true);//�����µ�λͼ
    }
+	public static Bitmap compressImage(Bitmap image) {
+
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		image.compress(Bitmap.CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
+		int options = 100;
+		while ( baos.toByteArray().length / 1024>50) {  //循环判断如果压缩后图片是否大于100kb,大于继续压缩
+            Log.d("length",String.valueOf(baos.toByteArray().length/1024)+"k");
+			baos.reset();//重置baos即清空baos
+			image.compress(Bitmap.CompressFormat.JPEG, options, baos);//这里压缩options%，把压缩后的数据存放到baos中
+			options -= 10;//每次都减少10
+		}
+        Log.d("length",String.valueOf(baos.toByteArray().length/1024)+"k");
+		ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());//把压缩后的数据baos存放到ByteArrayInputStream中
+		Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);//把ByteArrayInputStream数据生成图片
+		return bitmap;
+	}
 }

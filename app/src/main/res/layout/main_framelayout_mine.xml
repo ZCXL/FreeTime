@@ -17,6 +17,7 @@
             android:paddingTop="@dimen/main_frameLayout_mine_TextView1_paddingTop"
             android:paddingBottom="@dimen/main_frameLayout_mine_TextView1_paddingBottom"/>
         <ImageView
+            android:id="@+id/mine_set"
             android:layout_width="@dimen/main_frameLayout_mine_layout_width"
             android:layout_height="@dimen/main_frameLayout_mine_layout_height"
             android:layout_alignParentRight="true"

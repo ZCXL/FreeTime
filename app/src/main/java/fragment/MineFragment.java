@@ -1,6 +1,5 @@
 package fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,10 +7,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zhuchao.freetime.Login;
 import com.zhuchao.freetime.R;
+import com.zhuchao.freetime.Set;
 
 import bean.UserInfo;
 import function.ImageLoaderTask;
@@ -24,8 +25,12 @@ import view_rewrite.RoundImageView;
 public class MineFragment extends Fragment implements View.OnClickListener{
     private RoundImageView head;
     public static boolean isLogin=false;
+    //User info
     private UserInfo userInfo;
+    //User name
     private TextView userName;
+    //Set button
+    private ImageView set_button;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.main_framelayout_mine,container,false);
@@ -39,9 +44,13 @@ public class MineFragment extends Fragment implements View.OnClickListener{
         head=(RoundImageView)rootView.findViewById(R.id.mine_head_image);
 
         userName=(TextView)rootView.findViewById(R.id.mine_user_name);
+
+        set_button=(ImageView)rootView.findViewById(R.id.mine_set);
     }
     private void initData(){
         head.setOnClickListener(this);
+
+        set_button.setOnClickListener(this);
     }
 
     @Override
@@ -51,6 +60,9 @@ public class MineFragment extends Fragment implements View.OnClickListener{
                 if(!isLogin){
                     getActivity().startActivityForResult(new Intent(getActivity(),Login.class),0);
                 }
+                break;
+            case R.id.mine_set:
+                getActivity().startActivity(new Intent(getActivity(), Set.class));
                 break;
         }
     }
