@@ -16,4 +16,6 @@
     <string name="main_bottom_text_3">我的</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_top_hot__detail">TopHot_Detail</string>
+    <string name="title_activity_play_movie">PlayMovie</string>
+    <string name="title_activity_test">Test</string>
 </resources>

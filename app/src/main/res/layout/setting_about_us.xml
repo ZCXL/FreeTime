@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/setting_about_us_bg"
+        />
+    <ImageView
+        android:id="@+id/left_return_arrow"
+        android:layout_width="12.66dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginLeft="17.33dp"
+        android:src="@drawable/left_return_arrow"/>
+    </FrameLayout>

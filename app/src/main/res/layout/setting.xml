@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--title bar-->
+    <RelativeLayout
+        android:id="@+id/setting_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="47.44dp"
+        android:background="#f3f2f2"
+        >
+        <ImageView
+            android:id="@+id/left_return_arrow"
+            android:layout_width="12.66dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="17.33dp"
+            android:src="@drawable/left_return_arrow"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Setting"
+            android:textSize="16sp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="13dp"
+            />
+    </RelativeLayout>
+    <!--delete cash content-->
+    <RelativeLayout
+        android:id="@+id/setting_delete_cash"
+        android:layout_width="fill_parent"
+        android:layout_height="47dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14.66dp"
+            android:text="Delete cash content"
+            android:textSize="40px"
+            />
+        <ImageView
+            android:layout_width="11.66dp"
+            android:layout_height="15.66dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="19dp"
+            android:src="@drawable/right_arrow"
+            />
+    </RelativeLayout>
+    <!--gap between two blocks-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.66dp"
+        android:background="#f3f2f2"
+        />
+
+    <!--problem feedback-->
+    <RelativeLayout
+        android:id="@+id/setting_problem_feedback"
+        android:layout_width="fill_parent"
+        android:layout_height="47dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14.66dp"
+            android:text="Problem feedback"
+            android:textSize="40px"
+            />
+        <ImageView
+            android:layout_width="11.66dp"
+            android:layout_height="15.66dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="19dp"
+            android:src="@drawable/right_arrow"
+            />
+    </RelativeLayout>
+    <!--gap between two blocks-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.66dp"
+        android:background="#f3f2f2"
+        />
+
+    <!--check update-->
+    <RelativeLayout
+        android:id="@+id/setting_check_update"
+        android:layout_width="fill_parent"
+        android:layout_height="47dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14.66dp"
+            android:text="Check update"
+            android:textSize="40px"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="19dp"
+            android:text="当前版本：1.0.2"
+            android:textColor="#e9686767"
+            />
+    </RelativeLayout>
+    <!--gap between two blocks-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.66dp"
+        android:background="#f3f2f2"
+        />
+    <!--share with friends-->
+    <RelativeLayout
+        android:id="@+id/setting_share_with_friends"
+        android:layout_width="fill_parent"
+        android:layout_height="47dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14.66dp"
+            android:text="Share with friends"
+            android:textSize="40px"
+            />
+        <ImageView
+            android:layout_width="11.66dp"
+            android:layout_height="15.66dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="19dp"
+            android:src="@drawable/right_arrow"
+            />
+    </RelativeLayout>
+    <!--gap between two blocks-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.66dp"
+        android:background="#f3f2f2"
+        />
+    <!--join in us-->
+    <RelativeLayout
+        android:id="@+id/setting_join_in_us"
+        android:layout_width="fill_parent"
+        android:layout_height="47dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14.66dp"
+            android:text="Join in us"
+            android:textSize="40px"
+            />
+        <ImageView
+            android:layout_width="11.66dp"
+            android:layout_height="15.66dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/right_arrow"
+            />
+    </RelativeLayout>
+    <!--gap between two blocks-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="16dp"
+        android:background="#f3f2f2"
+        />
+    <!--about us-->
+    <RelativeLayout
+        android:id="@+id/setting_about_us"
+        android:layout_width="fill_parent"
+        android:layout_height="47dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14.66dp"
+            android:text="About us"
+            android:textSize="40px"
+            />
+        <ImageView
+            android:layout_width="11.66dp"
+            android:layout_height="15.66dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="19dp"
+            android:src="@drawable/right_arrow"
+            />
+    </RelativeLayout>
+    <!--gap between two blocks-->
+    <View
+        android:id="@+id/setting_gap"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#f3f2f2"
+        />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="#f3f2f2">
+        <Button
+            android:layout_width="334dp"
+            android:layout_height="44.33dp"
+            android:layout_marginTop="55dp"
+            android:layout_centerHorizontal="true"
+            android:text="Quit"
+            android:textColor="#ffffff"
+            android:background="#ffe6282e"
+            />
+
+</RelativeLayout>
+</LinearLayout>

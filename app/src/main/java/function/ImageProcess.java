@@ -16,7 +16,7 @@ import android.os.Environment;
 import android.util.Log;
 @SuppressLint("SdCardPath")
 public class ImageProcess {
-   public static enum FileType_Image{GoodImage,HeadImage};//Type of image
+   public static enum FileType_Image{MovieImage,HeadImage};//Type of image
    public static String TAG="ImageProcess";
    @SuppressLint("SdCardPath")
 public static boolean InputImage(Bitmap bitmap,FileType_Image fImage,String filename){
@@ -24,7 +24,7 @@ public static boolean InputImage(Bitmap bitmap,FileType_Image fImage,String file
 	   if(isSDExit()){
 	        String fileFolderPath="";
 	        String parentPath="/sdcard/FreeTime/";
-	        if(fImage==FileType_Image.GoodImage){
+	        if(fImage==FileType_Image.MovieImage){
 		      fileFolderPath=parentPath+"MovieImages/";
 	          }else if (fImage==FileType_Image.HeadImage) {
 		      fileFolderPath=parentPath+"HeadImages/";
@@ -63,7 +63,7 @@ public static boolean InputImage(Bitmap bitmap,FileType_Image fImage,String file
 	   String fileFolderPath="";
 	   Bitmap bitmap;
 	   String parentPath="/sdcard/FreeTime/";
-	   if(fImage==FileType_Image.GoodImage){
+	   if(fImage==FileType_Image.MovieImage){
 		   fileFolderPath=parentPath+"MovieImages/";
 	   }else if (fImage==FileType_Image.HeadImage) {
 		   fileFolderPath=parentPath+"HeadImages/";
@@ -95,7 +95,7 @@ public static boolean InputImage(Bitmap bitmap,FileType_Image fImage,String file
    public static boolean SearchImage(FileType_Image fImage,String filename){
 	   String fileFolderPath="";//�ļ��е�ַ
 	   String parentPath="/sdcard/FreeTime/";
-	   if(fImage==FileType_Image.GoodImage){
+	   if(fImage==FileType_Image.MovieImage){
 		   fileFolderPath=parentPath+"GoodImages/";
 	   }else if (fImage==FileType_Image.HeadImage) {
 		   fileFolderPath=parentPath+"HeadImages/";

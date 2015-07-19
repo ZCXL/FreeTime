@@ -48,17 +48,17 @@ public class Welcome extends Activity implements Runnable{
                 Welcome.this.version=version;//this version will pass to MainActivity to judge update or not.
             }
         });
-        checkVersion.startCheck();
+        //checkVersion.startCheck();
 
         //thread
-        while(signal<0){
-            doNothing();
-//            if(!initOver){
-//                movies=new Movies(Welcome.this);
-//                userInfo=new UserInfo(Welcome.this);
-//                initOver=true;
-//            }
-        }
+//        while(signal<0){
+//            doNothing();
+////            if(!initOver){
+////                movies=new Movies(Welcome.this);
+////                userInfo=new UserInfo(Welcome.this);
+////                initOver=true;
+////            }
+//        }
         preferences=getSharedPreferences(setting,MODE_PRIVATE);
         isFirst=preferences.getBoolean("START_FIRST",true);
         if(isFirst){//use firstly
@@ -73,7 +73,7 @@ public class Welcome extends Activity implements Runnable{
         }else{
             //load user info
             //load resources saved in SDCard
-            Log.d("Version",version.getVersionDescription());
+           // Log.d("Version",version.getVersionDescription());
             startActivity(new Intent(Welcome.this, MainActivity.class));
             overridePendingTransition(R.anim.loading_in, R.anim.loading_out);
             Welcome.this.finish();
