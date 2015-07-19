@@ -65,7 +65,7 @@ public class Welcome extends Activity implements Runnable{
             preferences.edit().putBoolean("START_FIRST",false).commit();
             Intent intent=new Intent(Welcome.this,Introduction.class);
             Bundle bundle=new Bundle();
-            bundle.putSerializable("version",version);
+            bundle.putParcelable("version",version);
             intent.putExtras(bundle);
             startActivity(intent);
             overridePendingTransition(R.anim.out_to_left,R.anim.in_from_right);

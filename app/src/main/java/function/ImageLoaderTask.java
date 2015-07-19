@@ -1,13 +1,16 @@
 package function;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 
 import function.ImageProcess.FileType_Image;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.zhuchao.freetime.R;
@@ -17,6 +20,8 @@ public class ImageLoaderTask extends AsyncTask<String, Void, Bitmap> {
 	private String imageUrl;
 	private Context context;
 	private final WeakReference<ImageView> imageViewReference; // 防止内存溢出
+
+	private static HashMap<String,SoftReference<Bitmap>> ImageCache=new HashMap<String, SoftReference<Bitmap>>();
 
 	private FileType_Image fileType_Image;
 	public ImageLoaderTask(ImageView imageView,Context context,FileType_Image fImage) {
@@ -32,27 +37,41 @@ public class ImageLoaderTask extends AsyncTask<String, Void, Bitmap> {
 	}
 
 	private Bitmap loadImageFile(String filename) {
+		Bitmap bitmap;
 		if(filename.equals(""))
      		filename="http://coon-moonlord.stor.sinaapp.com/GoodsImage/noimage.jpg";
 		String temp=new String(filename);
 		temp=temp.substring(temp.lastIndexOf("/")+1);
+		if(ImageCache.containsKey(filename)){
+			Log.d("image","reuse");
+			SoftReference<Bitmap>reference=ImageCache.get(filename);
+			bitmap=reference.get();
+			if(bitmap!=null)
+				return bitmap;
+		}
 		if(ImageProcess.SearchImage(fileType_Image,temp)){
-		   return ImageProcess.OutputImage(fileType_Image, temp);
+			bitmap=ImageProcess.OutputImage(fileType_Image,temp);
+			if(bitmap!=null){
+				ImageCache.put(filename,new SoftReference<Bitmap>(bitmap));
+				return bitmap;
+			}
 		}else{
 	     	if(Network.checkNetWorkState(context)){
 	         	InputStream iStream=NetworkFunction.DownloadImage(filename);
-	         	Bitmap bitmap=ImageProcess.getBitmap(iStream);
+	         	bitmap=ImageProcess.getBitmap(iStream);
 	         	ImageProcess.InputImage(bitmap, fileType_Image, filename.substring(filename.lastIndexOf("/")+1));
-	         	try {
+				try {
 					iStream.close();
-				} catch (IOException e) {
+				    } catch (IOException e) {
 					// TODO: handle exception
-				}
+				    }
+				ImageCache.put(filename,new SoftReference<Bitmap>(bitmap));
 		        return bitmap;
-	        	}else{
+			}else{
 	        		return null;
-	        	}
-	     	}
+			}
+		}
+		return null;
 	}
 
 	@Override

@@ -49,7 +49,7 @@ public class TopHot_Detail extends Activity implements View.OnClickListener{
 
         if(getIntent().getExtras()!=null) {
             Bundle bundle=getIntent().getExtras();
-            movie = (Movie) bundle.getParcelable("movie");
+            movie =bundle.getParcelable("movie");
             Log.d("detail",movie.getDescription());
         }
 
@@ -124,9 +124,11 @@ public class TopHot_Detail extends Activity implements View.OnClickListener{
                 break;
 
             case R.id.top_hot_detail_play_button:
+                Log.d("fa",movie.getDescription());
                 Intent intent1=new Intent(TopHot_Detail.this,PlayMovie.class);
                 Bundle bundle=new Bundle();
-                bundle.getParcelable("movie");
+                bundle.putString("movieurl",movie.getPlayUrl());
+                bundle.putString("title",movie.getMovieName());
                 intent1.putExtras(bundle);
                 startActivity(intent1);
                 break;

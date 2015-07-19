@@ -43,13 +43,14 @@
             customer:border_outside_color="#f3f2f2"
             customer:border_thickness="@dimen/main_frameLayout_mine_view_rewrite_border_thickness" />
         <TextView
+            android:id="@+id/mine_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/mine_head_image"
             android:layout_marginLeft="@dimen/main_frameLayout_mine_TextView2_layout_marginLeft"
             android:textSize="@dimen/main_frameLayout_mine_TextView2_textSize"
-            android:text="Sun Shine."/>
+            android:text="Free Time"/>
     </RelativeLayout>
     <!--gap between two blocks-->
     <View

@@ -1,16 +1,16 @@
 package bean;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Created by zhuchao on 7/12/15.
  */
-public class Version extends BaseObject implements Serializable {
+public class Version extends BaseObject implements Parcelable{
     private String versionId;
     private String versionDescription;
     private String versionUrl;
     private boolean available;
-    private static final long serialVersionUID=-7620435178023928254L;
     public Version(){
         super(TYPE.VERSION);
     }
@@ -44,5 +44,37 @@ public class Version extends BaseObject implements Serializable {
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(versionId);
+        dest.writeString(versionDescription);
+        dest.writeString(versionUrl);
+        dest.writeBooleanArray(new boolean[]{available});
+    }
+    public static final Parcelable.Creator<Version>CREATOR=new Creator<Version>() {
+        @Override
+        public Version createFromParcel(Parcel source) {
+            return new Version(source);
+        }
+
+        @Override
+        public Version[] newArray(int size) {
+            return new Version[size];
+        }
+    };
+    private Version(Parcel in){
+        super(TYPE.VERSION);
+        versionId=in.readString();
+        versionDescription=in.readString();
+        versionUrl=in.readString();
+        boolean b[]=new boolean[]{};
+        in.readBooleanArray(b);
+        available=b[0];
     }
 }

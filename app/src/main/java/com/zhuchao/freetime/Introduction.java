@@ -33,7 +33,7 @@ public class Introduction extends Activity implements ViewPager.OnPageChangeList
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_introduction);
 
-        getVersion(savedInstanceState);
+        getVersion();
 
         initView();
 
@@ -42,9 +42,9 @@ public class Introduction extends Activity implements ViewPager.OnPageChangeList
 
     }
 
-    private void getVersion(Bundle bundle){
-        if(bundle!=null){
-            version=(Version)bundle.getSerializable("version");
+    private void getVersion(){
+        if(getIntent().getExtras()!=null){
+            version=getIntent().getExtras().getParcelable("version");
         }
     }
     private void initView(){
@@ -101,7 +101,7 @@ public class Introduction extends Activity implements ViewPager.OnPageChangeList
             public void onClick(View v) {
                 Intent intent=new Intent(Introduction.this,MainActivity.class);
                 Bundle bundle=new Bundle();
-                bundle.putSerializable("version",version);
+                bundle.putParcelable("version", version);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 Introduction.this.finish();

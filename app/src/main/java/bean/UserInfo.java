@@ -1,5 +1,7 @@
 package bean;
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -15,7 +17,7 @@ import function.SaveAndOpenUserInfo;
  * Created by zhuchao on 7/12/15.
  * This class is used to save user's information.
  */
-public class UserInfo extends BaseObject implements Serializable, ParseJson {
+public class UserInfo extends BaseObject implements Parcelable, ParseJson {
     private static String TAG="ProcessJson";
     private ArrayList<BaseObject>userinfo;
     private String number;//user's account
@@ -24,7 +26,6 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
     private String signature;//user's signature
     private String stamp;//login stamp ensuring that one account only logins once;
     private SaveAndOpenUserInfo saveAndOpenUserInfo;
-    private static final long serialVersionUID=-7620435178023928254L;
 
     public String getNumber() {
         return number;
@@ -117,8 +118,8 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
             JSONObject user = new JSONObject(U);
             userInfo=new UserInfo();
                 userInfo.setNumber(user.getString("number"));
-                userInfo.setHead_url(user.getString("head_url"));
-                userInfo.setNick_name(user.getString("nick_name"));
+                userInfo.setHead_url(user.getString("headurl"));
+                userInfo.setNick_name(user.getString("nickname"));
                 userInfo.setSignature(user.getString("signature"));
                 userInfo.setStamp(user.getString("stamp"));
                 list.add(userInfo);
@@ -127,5 +128,38 @@ public class UserInfo extends BaseObject implements Serializable, ParseJson {
             Log.d(TAG, e.toString() + "userInfo of json fault");
             return null;
         }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(number);
+        dest.writeString(nick_name);
+        dest.writeString(head_url);
+        dest.writeString(signature);
+        dest.writeString(stamp);
+    }
+    public static final Parcelable.Creator<UserInfo>CREATOR=new Creator<UserInfo>() {
+        @Override
+        public UserInfo createFromParcel(Parcel source) {
+            return new UserInfo(source);
+        }
+
+        @Override
+        public UserInfo[] newArray(int size) {
+            return new UserInfo[size];
+        }
+    };
+    private UserInfo(Parcel in){
+        super(TYPE.USER);
+        number=in.readString();
+        nick_name=in.readString();
+        head_url=in.readString();
+        signature=in.readString();
+        stamp=in.readString();
     }
 }

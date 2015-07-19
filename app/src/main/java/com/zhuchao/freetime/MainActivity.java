@@ -1,7 +1,9 @@
 package com.zhuchao.freetime;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -26,6 +28,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private RelativeLayout zero_time,top_hot,mine;
     private TextView zero_time_text,top_hot_text,mine_text;
     private ImageView zero_time_image,top_hot_image,mine_image;
+
+    private String curFragmentTag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,30 +120,42 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 setAllUnchecked(1);
                 if(zeroTimeFragment==null){
                     zeroTimeFragment=new ZeroTimeFragment();
-                    fragmentTransaction.add(R.id.container,zeroTimeFragment);
+                    fragmentTransaction.add(R.id.container,zeroTimeFragment,"main_zero_time");
                 }else{
                     fragmentTransaction.show(zeroTimeFragment);
                 }
+                curFragmentTag="main_zero_time";
                 break;
             case R.id.main_top_hot_layout:
                 setAllUnchecked(2);
                 if(topHotFragment==null){
                     topHotFragment=new TopHotFragment();
-                    fragmentTransaction.add(R.id.container,topHotFragment);
+                    fragmentTransaction.add(R.id.container,topHotFragment,"main_top");
                 }else{
                     fragmentTransaction.show(topHotFragment);
                 }
+                curFragmentTag="main_top";
                 break;
             case R.id.main_mine_layout:
                 setAllUnchecked(3);
                 if(mineFragment==null){
                     mineFragment=new MineFragment();
-                    fragmentTransaction.add(R.id.container,mineFragment);
+                    fragmentTransaction.add(R.id.container,mineFragment,"main_mine");
                 }else{
                     fragmentTransaction.show(mineFragment);
                 }
+                curFragmentTag="main_mine";
                 break;
         }
         fragmentTransaction.commit();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /*在这里，我们通过碎片管理器中的Tag，就是每个碎片的名称，来获取对应的fragment*/
+        Fragment f = manager.findFragmentByTag(curFragmentTag);
+        /*然后在碎片中调用重写的onActivityResult方法*/
+        f.onActivityResult(requestCode, resultCode, data);
     }
 }

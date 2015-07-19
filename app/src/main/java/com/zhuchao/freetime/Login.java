@@ -1,6 +1,7 @@
 package com.zhuchao.freetime;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,11 +30,9 @@ public class Login extends Activity implements View.OnClickListener {
     private Tencent mTencent;
     private static String mAppId;
     private QQToken qqToken;
-
     private String openId;
     private UserInfo userInfo;
     private RippleImage rippleImage;
-
     private Handler handler=new Handler(){
       public void handleMessage(Message message){
           switch (message.what){
@@ -54,6 +53,12 @@ public class Login extends Activity implements View.OnClickListener {
                               @Override
                               public void run() {
                                   String result=NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/uploaduserinfo.php",keys,parameters);
+                                  if(!result.contains("error")){
+                                      userInfo=new UserInfo(result);
+                                      handler.sendEmptyMessage(1);
+                                  }else{
+                                      handler.sendEmptyMessage(2);
+                                  }
                                   Log.d("UserInfo",result);
                               }
                           }).start();
@@ -61,6 +66,19 @@ public class Login extends Activity implements View.OnClickListener {
                   } catch (JSONException e) {
                       e.printStackTrace();
                   }
+                  break;
+              case 1:
+                  Intent intent=new Intent();
+                  Bundle bundle=new Bundle();
+                  if(userInfo!=null){
+                      bundle.putParcelable("userinfo",userInfo);
+                  }
+                  intent.putExtras(bundle);
+                  setResult(0,intent);
+                  finish();
+                  break;
+              case 2:
+                  Toast.makeText(Login.this,"Login failed,please try again!",Toast.LENGTH_LONG).show();
                   break;
           }
       }
