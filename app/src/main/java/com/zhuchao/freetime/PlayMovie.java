@@ -3,6 +3,7 @@ package com.zhuchao.freetime;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -27,7 +28,7 @@ public class PlayMovie extends Activity {
             playUrl=bundle.getString("movieurl");
             title=bundle.getString("title");
         }
-        playerView=new PlayerView(PlayMovie.this,playUrl,title);
+        playerView=new PlayerView(PlayMovie.this,playUrl,title,PlayMovie.this);
         ViewGroup.LayoutParams params=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT);
         playerView.setLayoutParams(params);
 
