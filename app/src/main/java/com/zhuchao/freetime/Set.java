@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.Window;
 
 import fragment.AboutUs;
+import fragment.Feedback;
 import fragment.JoinUs;
 import fragment.Set_Main;
 
@@ -20,6 +21,8 @@ public class Set extends FragmentActivity {
     public JoinUs joinUs;
 
     private Set_Main main;
+
+    public Feedback feedback;
 
     public Fragment nowFragment;
 

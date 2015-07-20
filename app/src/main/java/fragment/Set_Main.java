@@ -174,6 +174,16 @@ public class Set_Main extends Fragment implements View.OnClickListener{
                 transaction.commit();
                 set.isTop=false;
                 break;
+            case R.id.setting_problem_feedback:
+                if(set.feedback==null)
+                    set.feedback=new Feedback();
+                transaction=set.manager.beginTransaction();
+                transaction.hide(set.nowFragment);
+                transaction.add(R.id.set_container, set.feedback);
+                set.nowFragment=set.feedback;
+                transaction.commit();
+                set.isTop=false;
+                break;
             case R.id.setting_delete_cash:
                 ImageProcess.DeleteImage();
                 Toast.makeText(getActivity(),"Cash has been cleaned",Toast.LENGTH_LONG).show();
