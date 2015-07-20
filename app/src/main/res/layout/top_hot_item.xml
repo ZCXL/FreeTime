@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="210.33dp">
+    android:layout_height="@dimen/top_hot_item_frameLayout_layout_height">
     <ImageView
         android:id="@+id/top_hot_item_image"
         android:layout_width="match_parent"
@@ -19,25 +19,25 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/top_hot_item_notify"
             android:layout_alignTop="@+id/top_hot_item_notify"
-            android:layout_marginTop="-28dp"
+            android:layout_marginTop="@dimen/top_hot_item_TextView_layout_marginTop"
             android:text="Movie description,Movie description,Movie description."
-            android:textSize="13.33dp"
+            android:textSize="@dimen/top_hot_item_TextView_textSize"
             android:textColor="@android:color/white"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingLeft="@dimen/top_hot_item_TextView_paddingLeft"
+            android:paddingRight="@dimen/top_hot_item_TextView_paddingRight"/>
         <RelativeLayout
             android:id="@+id/top_hot_item_notify"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="13dp"
+            android:layout_marginBottom="@dimen/top_hot_item_relativeLayout_layout_marginBottom"
             android:background="@android:color/transparent">
             <ImageView
                 android:id="@+id/top_hot_item_time_image"
-                android:layout_width="18dp"
-                android:layout_height="15.33dp"
+                android:layout_width="@dimen/top_hot_item_ImageView_layout_width"
+                android:layout_height="@dimen/top_hot_item_ImageView_layout_height"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="@dimen/top_hot_item_ImageView_layout_marginLeft"
                 android:src="@drawable/top_hot_time_button"/>
             <TextView
                 android:id="@+id/top_hot_item_time_text"
@@ -46,17 +46,17 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/top_hot_item_time_image"
                 android:text="00:00"
-                android:layout_marginLeft="2.66dp"
-                android:textSize="12sp"
+                android:layout_marginLeft="@dimen/top_hot_item_TextView1_layout_marginLeft"
+                android:textSize="@dimen/top_hot_item_TextView1_textSize"
                 android:textColor="@android:color/white"
                 />
             <ImageView
                 android:id="@+id/top_hot_item_sight_image"
-                android:layout_width="18dp"
-                android:layout_height="15.33dp"
+                android:layout_width="@dimen/top_hot_item_ImageView1_layout_width"
+                android:layout_height="@dimen/top_hot_item_ImageView1_layout_height"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/top_hot_item_time_text"
-                android:layout_marginLeft="22.66dp"
+                android:layout_marginLeft="@dimen/top_hot_item_ImageView1_layout_marginLeft"
                 android:src="@drawable/top_hot_sight_button"/>
             <TextView
                 android:id="@+id/top_hot_item_sight_text"
@@ -65,17 +65,17 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/top_hot_item_sight_image"
                 android:text="0"
-                android:layout_marginLeft="2.66dp"
-                android:textSize="12sp"
+                android:layout_marginLeft="@dimen/top_hot_item_TextView1_layout_marginLeft"
+                android:textSize="@dimen/top_hot_item_TextView1_textSize"
                 android:textColor="@android:color/white"
                 />
             <ImageView
                 android:id="@+id/top_hot_item_comment_image"
-                android:layout_width="18dp"
-                android:layout_height="15.33dp"
+                android:layout_width="@dimen/top_hot_item_ImageView1_layout_width"
+                android:layout_height="@dimen/top_hot_item_ImageView1_layout_height"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/top_hot_item_sight_text"
-                android:layout_marginLeft="22.66dp"
+                android:layout_marginLeft="@dimen/top_hot_item_ImageView1_layout_marginLeft"
                 android:src="@drawable/top_hot_comment_button"/>
             <TextView
                 android:id="@+id/top_hot_item_comment_text"
@@ -84,8 +84,8 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/top_hot_item_comment_image"
                 android:text="0"
-                android:layout_marginLeft="2.66dp"
-                android:textSize="12sp"
+                android:layout_marginLeft="@dimen/top_hot_item_TextView1_layout_marginLeft"
+                android:textSize="@dimen/top_hot_item_TextView1_textSize"
                 android:textColor="@android:color/white"
                 />
 

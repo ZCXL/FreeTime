@@ -6,7 +6,7 @@
     <dimen name="welcome_text_size">10sp</dimen>
 
 
-    <!--the data of introduction interface-->
+    <!--the data of activity_welcome-->
     <dimen name="introduction_logo_width">72dp</dimen>
     <dimen name="introduction_logo_height">72dp</dimen>
     <dimen name="introduction_logo_margin_top">149.66dp</dimen>
@@ -24,14 +24,14 @@
     <dimen name="introduction_rights_text_size">10sp</dimen>
     <dimen name="introduction_rights_text_margin_bottom">37.66dp</dimen>
 
-        <!--the data in page 3-->
+    <!--the data of introduction_page_3-->
     <dimen name="introduction_start_button_width">136.33dp</dimen>
     <dimen name="introduction_start_button_height">36dp</dimen>
     <dimen name="introduction_margin_bottom">84.66dp</dimen>
 
 
-    <!--the data of main interface-->
-        <!--the data at bottom-->
+    <!--the data of main_activity -->
+      <!--the data at bottom-->
     <dimen name="main_bottom_height">57dp</dimen>
     <dimen name="main_bottom_linear_height">58dp</dimen>
     <dimen name="main_bottom_icon_top">6dp</dimen>
@@ -39,51 +39,68 @@
     <dimen name="main_bottom_text_size">12sp</dimen>
     <dimen name="main_bottom_divider">0.66dp</dimen>
 
-    <!--the data of main_frameLayout_zero_time_ImageView1 -->
+    <dimen name="main_activity_layout_width">24dp</dimen>
+    <dimen name="main_activity_layout_height">24dp</dimen>
+
+    <!--the data of main_frameLayout_zero_time -->
+       <!--the data of main_frameLayout_zero_time_ImageView1 -->
     <dimen name="main_ImageView1_layout_width">134.66dp</dimen>
     <dimen name="main_ImageView1_layout_height">23.33dp</dimen>
     <dimen name="main_ImageView1_layout_marginTop">28.33dp</dimen>
 
-    <!--the data of main_frameLayout_zero_time -->
+       <!--the data of main_frameLayout_zero_time -->
     <dimen name="main_frameLayout_layout_width">292dp</dimen>
     <dimen name="main_frameLayout_layout_height">193dp</dimen>
     <dimen name="main_frameLayout_layout_marginTop">21dp</dimen>
 
-    <!--the data of main_frameLayout_zero_time_TextView1 -->
+       <!--the data of main_frameLayout_zero_time_TextView1 -->
     <dimen name="main_TextView1_layout_marginTop">20dp</dimen>
     <dimen name="main_TextView1_paddingLeft">47dp</dimen>
     <dimen name="main_TextView1_paddingRight">47dp</dimen>
     <dimen name="main_TextView1_textSize">20sp</dimen>
 
-    <!--the data of main_frameLayout_zero_time_TextView2 -->
+       <!--the data of main_frameLayout_zero_time_TextView2 -->
     <dimen name="main_TextView2_layout_marginTop">21dp</dimen>
     <dimen name="main_TextView2_layout_marginLeft">86.33dp</dimen>
     <dimen name="main_TextView2_textSize">12sp</dimen>
 
-    <!--the data of main_frameLayout_zero_time_ImageView2 -->
+       <!--the data of main_frameLayout_zero_time_ImageView2 -->
+    <dimen name="main_ImageView2_layout_width">25dp</dimen>
+    <dimen name="main_ImageView2_layout_height">25dp</dimen>
     <dimen name="main_ImageView2_layout_marginLeft">41.33dp</dimen>
 
-    <!--the data of main_linearLayout_zero_time -->
+       <!--the data of main_linearLayout_zero_time -->
     <dimen name="main_linearLayout_layout_height">58.33dp</dimen>
     <dimen name="main_linearLayout_layout_marginTop">33.66dp</dimen>
     <dimen name="main_linearLayout_paddingLeft">38.45dp</dimen>
     <dimen name="main_linearLayout_paddingRight">38.45dp</dimen>
+       <!--the data of main_frameLayout_zero_time_view_rewrite -->
+    <dimen name="main_frameLayout_zero_time_view_rewrite_layout_width">78.33dp</dimen>
+    <dimen name="main_frameLayout_zero_time_view_rewrite_layout_height">78.33dp</dimen>
+    <dimen name="main_frameLayout_zero_time_view_rewrite_paddingBottom">10dp</dimen>
+    <dimen name="main_frameLayout_zero_time_view_rewrite_paddingLeft">10dp</dimen>
+    <dimen name="main_frameLayout_zero_time_view_rewrite_paddingTop">10dp</dimen>
+    <dimen name="main_frameLayout_zero_time_view_rewrite_paddingRight">10dp</dimen>
+    <dimen name="main_frameLayout_zero_time_view_rewrite_image_width">58.33dp</dimen>
+    <dimen name="main_frameLayout_zero_time_view_rewrite_image_height">58.33dp</dimen>
+    <dimen name="main_frameLayout_zero_time_view_rewrite_layout_marginLeft">15.66dp</dimen>
+    <dimen name="main_frameLayout_zero_time_view_rewrite_layout_marginRight">15.66dp</dimen>
 
     <!--the data of main_frameLayout_mine -->
-    <!--the data of main_frameLayout_mine_TextView1 -->
-    <dimen name="main_frameLayout_mine_TextView1_textSize">16sp</dimen>
+      <!--the data of main_frameLayout_mine_TextView1 -->
+    <dimen name="main_frameLayout_mine_TextView1_textSize">18sp</dimen>
     <dimen name="main_frameLayout_mine_TextView1_paddingTop">17dp</dimen>
     <dimen name="main_frameLayout_mine_TextView1_paddingBottom">17dp</dimen>
 
-    <!-- the data of main_frameLayout_mine_ImageView1-->
-    <dimen name="main_frameLayout_mine_layout_width">22dp</dimen>
-    <dimen name="main_frameLayout_mine_layout_height">22dp</dimen>
+      <!-- the data of main_frameLayout_mine_ImageView1-->
+    <dimen name="main_frameLayout_mine_layout_width">25dp</dimen>
+    <dimen name="main_frameLayout_mine_layout_height">25dp</dimen>
     <dimen name="main_frameLayout_mine_layout_marginRight">17dp</dimen>
 
-    <!--the data of main_frameLayout_relativeLayout -->
+      <!--the data of main_frameLayout_relativeLayout -->
     <dimen name="main_frameLayout_mine_relativeLayout_layout_height">89.66dp</dimen>
 
-    <!--the data of main_frameLayout_mine_view_rewrite-->
+      <!--the data of main_frameLayout_mine_view_rewrite-->
     <dimen name="main_frameLayout_mine_view_rewrite_layout_width">52dp</dimen>
     <dimen name="main_frameLayout_mine_view_rewrite_layout_height">52dp</dimen>
     <dimen name="main_frameLayout_mine_view_rewrite_layout_marginLeft">19dp</dimen>
@@ -91,45 +108,44 @@
     <dimen name="main_frameLayout_mine_view_rewrite_paddingBottom">19dp</dimen>
     <dimen name="main_frameLayout_mine_view_rewrite_border_thickness">0.33dp</dimen>
 
-    <!--the data of main_frameLayout_mine_TextView2 -->
+      <!--the data of main_frameLayout_mine_TextView2 -->
     <dimen name="main_frameLayout_mine_TextView2_layout_marginLeft">20.33dp</dimen>
     <dimen name="main_frameLayout_mine_TextView2_textSize">14sp</dimen>
 
-    <!-- the data of main_frameLayout_mine_view1 包括后面重复数据-->
+      <!-- the data of main_frameLayout_mine_view1 包括后面重复数据-->
     <dimen name="main_frameLayout_mine_view1_layout_height">17dp</dimen>
 
-    <!--the data of main_frameLayout_mine_relativeLayout -->
+      <!--the data of main_frameLayout_mine_relativeLayout -->
     <dimen name="main_frameLayout_mine_RelativeLayout_layout_height">51dp</dimen>
 
-    <!--the data of main_frameLayout_mine_ImageView2 -->
+      <!--the data of main_frameLayout_mine_ImageView2 -->
     <dimen name="main_frameLayout_mine_ImageView2_layout_width">26.33dp</dimen>
     <dimen name="main_frameLayout_mine_ImageView2_layout_height">23.33dp</dimen>
     <dimen name="main_frameLayout_mine_ImageView2_layout_marginLeft">18dp</dimen>
 
-    <!--the data of main_frameLayout_mine_TextView3 -->
+      <!--the data of main_frameLayout_mine_TextView3 -->
     <dimen name="main_frameLayout_mine_TextView3_layout_marginLeft">9dp</dimen>
     <dimen name="main_frameLayout_mine_TextView3_textSize">13.33sp</dimen>
 
-    <!--the data of main_frameLayout_mine_ImageView3 -->
+      <!--the data of main_frameLayout_mine_ImageView3 -->
     <dimen name="main_frameLayout_mine_ImageView3_layout_width">11.66dp</dimen>
     <dimen name="main_frameLayout_mine_ImageView3_layout_height">16.66dp</dimen>
     <dimen name="main_frameLayout_mine_ImageView3_layout_marginRight">19.66dp</dimen>
 
-    <!-- the data of main_frameLayout_mine_view2-->
-    <dimen name="main_frameLayout_mine_view2_layout_height">0.5dp</dimen>
 
-    <!-- the data of main_login-->
-    <!-- the data of main_login_view_rewrite.SlideDown-->
+
+    <!-- the data of activity_login-->
+      <!-- the data of main_login_view_rewrite.SlideDown-->
     <dimen name="main_login_view_rewrite_SlideDown_line_length">278.33dp</dimen>
     <dimen name="main_login_view_rewrite_SlideDown_line_width">7dp</dimen>
     <dimen name="main_login_view_rewrite_SlideDown_max_distance">150dp</dimen>
     <dimen name="main_login_view_rewrite_SlideDown_min_distance">130dp</dimen>
 
-    <!--the data of main_login_relativeLayout1 -->
+      <!--the data of main_login_relativeLayout1 -->
     <dimen name="main_login_relativeLayout1_layout_marginRight">27dp</dimen>
     <dimen name="main_login_relativeLayout1_layout_marginTop">310dp</dimen>
 
-    <!--the data of main_login_view_rewrite.RippleImage1 -->
+      <!--the data of main_login_view_rewrite.RippleImage1 -->
     <dimen name="main_login_view_rewrite_RippleImage1_layout_width">79dp</dimen>
     <dimen name="main_login_view_rewrite_RippleImage1_layout_height">79.33dp</dimen>
     <dimen name="main_login_view_rewrite_RippleImage1_paddingBottom">10dp</dimen>
@@ -139,15 +155,15 @@
     <dimen name="main_login_view_rewrite_RippleImage1_image_width">59dp</dimen>
     <dimen name="main_login_view_rewrite_RippleImage1_image_height">59.33dp</dimen>
 
-    <!--the data of main_login_TextView1 -->
+      <!--the data of main_login_TextView1 -->
     <dimen name="main_login_TextView1_layout_marginTop">5dp</dimen>
     <dimen name="main_login_TextView1_textSize">10sp</dimen>
 
-    <!--the data of main_relativeLayout2 -->
+      <!--the data of main_relativeLayout2 -->
     <dimen name="main_login_relativeLayout2_layout_marginLeft">27dp</dimen>
     <dimen name="main_login_relativeLayout2_layout_marginTop">310dp</dimen>
 
-    <!--the data of main_login_view_rewrite.RippleImage2 -->
+      <!--the data of main_login_view_rewrite.RippleImage2 -->
     <dimen name="main_login_view_rewrite_RippleImage2_layout_width">79dp</dimen>
     <dimen name="main_login_view_rewrite_RippleImage2_layout_height">79.33dp</dimen>
     <dimen name="main_login_view_rewrite_RippleImage2_paddingBottom">10dp</dimen>
@@ -158,9 +174,213 @@
     <dimen name="main_login_view_rewrite_RippleImage2_image_height">59.33dp</dimen>
 
 
-    <!--the data of main_login_TextView2 -->
+      <!--the data of main_login_TextView2 -->
     <dimen name="main_login_TextView2_layout_marginTop">5dp</dimen>
     <dimen name="main_login_TextView2_textSize">10sp</dimen>
+
+      <!-- the data of main_frameLayout_mine_view2-->
+    <dimen name="main_frameLayout_mine_view2_layout_height">0.5dp</dimen>
+
+    <!--the data of activity_introduction -->
+       <!--the data of activity_introduction_linearLayout -->
+    <dimen name="activity_introduction_linearLayout_paddingBottom">12dp</dimen>
+       <!--the data of activity_introduction_ImageView -->
+    <dimen name="activity_introduction_ImageView_paddingLeft">10dp</dimen>
+    <dimen name="activity_introduction_ImageView_paddingRight">10dp</dimen>
+
+    <!--the data of customerProgressDialog -->
+    <dimen name="customerProgressDialog_layout_width">32dp</dimen>
+    <dimen name="customerProgressDialog_layout_height">32dp</dimen>
+    <dimen name="customerProgressDialog_width">1.33dp</dimen>
+    <dimen name="customerProgressDialog_layout_marginRight">10dp</dimen>
+
+    <!--the data of main_frameLayout_top_hot -->
+       <!--the data of main_top_hot_relativeLayout -->
+    <dimen name="main_top_hot_relativeLayout_layout_height">47dp</dimen>
+       <!--the data of main_top_hot_TextView -->
+    <dimen name="main_top_hot_TextView_textSize">18sp</dimen>
+       <!--the data of main_top_hot_ImageView -->
+    <dimen name="main_top_hot_ImageView_layout_width">25dp</dimen>
+    <dimen name="main_top_hot_ImageView_layout_height">25dp</dimen>
+    <dimen name="main_top_hot_ImageView_layout_marginRight">15dp</dimen>
+
+    <!--the data of message_share_remind -->
+       <!--the data of message_share_remind_TextView -->
+    <dimen name="message_share_remind_TextView_layout_marginLeft">18dp</dimen>
+    <dimen name="message_share_remind_TextView_layout_marginTop">12dp</dimen>
+    <dimen name="message_share_remind_TextView_textSize">36px</dimen>
+       <!--the data of message_share_remind_GridView -->
+    <dimen name="message_share_remind_GridView_layout_marginTop">10dp</dimen>
+    <dimen name="message_share_remind_GridView_layout_marginLeft">13dp</dimen>
+    <dimen name="message_share_remind_GridView_layout_marginRight">13dp</dimen>
+    <dimen name="message_share_remind_GridView_horizontalSpacing">10dp</dimen>
+    <dimen name="message_share_remind_GridView_verticalSpacing">8dp</dimen>
+       <!--the data of message_share_remind_GridView_button -->
+    <dimen name="message_share_remind_GridView_button_layout_height">45dp</dimen>
+    <dimen name="message_share_remind_GridView_button_layout_marginTop">3dp</dimen>
+    <dimen name="message_share_remind_GridView_button_textSize">48px</dimen>
+
+    <!--the data of pull_to_refresh_footer -->
+       <!--the data of pull_to_refresh_footer -->
+    <dimen name="pull_to_refresh_layout_height">36dp</dimen>
+       <!--the data of pull_to_refresh_view_rewrite -->
+    <dimen name="pull_to_refresh_view_rewrite_layout_width">32dp</dimen>
+    <dimen name="pull_to_refresh_view_rewrite_layout_height">32dp</dimen>
+    <dimen name="pull_to_refresh_view_rewrite_width">1.33dp</dimen>
+    <dimen name="pull_to_refresh_view_rewrite_layout_marginRight">10dp</dimen>
+       <!--the data of pull_to_refresh_TextView -->
+    <dimen name="pull_to_refresh_TextView_textSize">12sp</dimen>
+
+    <!--the data of remote_view_layout -->
+       <!--the data of remote_view_layout_linearLayout -->
+    <dimen name="remote_view_layout_linearLayout_padding">5dip</dimen>
+       <!--the data of remote_view_layout_TextView1 -->
+    <dimen name="remote_view_layout_TextView1_textSize">16sp</dimen>
+       <!--the data of remote_view_layout_progressBar -->
+    <dimen name="remote_view_layout_progressBar_layout_height">15dip</dimen>
+    <dimen name="remote_view_layout_progressBar_max">100</dimen>
+       <!--the data of remote_view_layout_TextView2 -->
+    <dimen name="remote_view_layout_TextView2_textSize">13sp</dimen>
+
+    <!--the data of setting -->
+       <!--the data of setting_relativeLayout1 -->
+    <dimen name="setting_relativeLayout1_layout_height">47.44dp</dimen>
+       <!--the data of setting_ImageView1 -->
+    <dimen name="setting_ImageView1_layout_width">12.66dp</dimen>
+    <dimen name="setting_ImageView1_layout_height">22dp</dimen>
+    <dimen name="setting_ImageView1_layout_marginTop">13dp</dimen>
+    <dimen name="setting_ImageView1_layout_marginBottom">13dp</dimen>
+    <dimen name="setting_ImageView1_layout_marginLeft">17.33dp</dimen>
+       <!--the data of setting_TextView1 -->
+    <dimen name="setting_TextView1_textSize">16sp</dimen>
+    <dimen name="setting_TextView1_layout_marginTop">13dp</dimen>
+    <dimen name="setting_TextView1_layout_marginBottom">13dp</dimen>
+       <!--the data of setting_relativeLayout2 后面数据重复-->
+    <dimen name="setting_relativeLayout2_layout_height">47dp</dimen>
+       <!--the data of setting_TextView2 -->
+    <dimen name="setting_TextView2_layout_marginLeft">14.66dp</dimen>
+    <dimen name="setting_TextView2_textSize">40px</dimen>
+       <!--the data of setting_ImageView2 -->
+    <dimen name="setting_ImageView2_layout_width">11.66dp</dimen>
+    <dimen name="setting_ImageView2_layout_height">15.66dp</dimen>
+    <dimen name="setting_ImageView2_layout_marginRight">19dp</dimen>
+       <!--the data of setting_view -->
+    <dimen name="setting_view_layout_height">0.66dp</dimen>
+    <dimen name="setting_view_layout_heightMax">16dp</dimen>
+    <dimen name="setting_view_layout_height1">1dp</dimen>
+       <!--the data of setting_bottom_relativeLayout -->
+    <dimen name="setting_bottom_relativeLayout_layout_height">100dp</dimen>
+    <dimen name="setting_bottom_relativeLayout_layout_width">334dp</dimen>
+    <dimen name="setting_bottom_relativeLayout_layout_height1">44.33dp</dimen>
+    <dimen name="setting_bottom_relativeLayout_layout_marginTop">55dp</dimen>
+
+    <!--the data of setting_about_us -->
+    <dimen name="setting_about_us_layout_width">12.66dp</dimen>
+    <dimen name="setting_about_us_layout_height">22dp</dimen>
+    <dimen name="setting_about_us_layout_marginTop">13dp</dimen>
+    <dimen name="setting_about_us_layout_marginBottom">13dp</dimen>
+    <dimen name="setting_about_us_layout_marginLeft">17.33dp</dimen>
+
+    <!--the data of setting_join_us -->
+       <!--the data of setting_join_us_relativeLayout -->
+    <dimen name="setting_join_us_relativeLayout_layout_height">47.44dp</dimen>
+       <!--the data of setting_join_us_ImageView -->
+    <dimen name="setting_join_us_ImageView_layout_width">12.66dp</dimen>
+    <dimen name="setting_join_us_ImageView_layout_height">22dp</dimen>
+    <dimen name="setting_join_us_ImageView_layout_marginTop">13dp</dimen>
+    <dimen name="setting_join_us_ImageView_layout_marginBottom">13dp</dimen>
+    <dimen name="setting_join_us_ImageView_layout_marginLeft">17.33dp</dimen>
+       <!--the data of setting_join_us_TextView -->
+    <dimen name="setting_join_us_TextView_textSize">16sp</dimen>
+    <dimen name="setting_join_us_TextView_layout_marginTop">13dp</dimen>
+    <dimen name="setting_join_us_TextView_layout_marginBottom">13dp</dimen>
+       <!--the data of setting_about_us_view -->
+    <dimen name="setting_about_us_view_layout_height">0.5dp</dimen>
+       <!--the data of setting_about_us_ImageView1 -->
+    <dimen name="setting_about_us_ImageView1_layout_width">287.33dp</dimen>
+    <dimen name="setting_about_us_ImageView1_layout_height">286.66dp</dimen>
+    <dimen name="setting_about_us_ImageView1_layout_marginTop">77dp</dimen>
+
+    <!--the data of top_hot_details -->
+       <!--the data of top_hot_details_relativeLayout -->
+    <dimen name="top_hot_details_relativeLayout_layout_height">47.66dp</dimen>
+       <!--the data of top_hot_details_ImageView1 -->
+    <dimen name="top_hot_details_ImageView1_layout_width">12.66dp</dimen>
+    <dimen name="top_hot_details_ImageView1_layout_height">22dp</dimen>
+    <dimen name="top_hot_details_ImageView1_layout_marginTop">13dp</dimen>
+    <dimen name="top_hot_details_ImageView1_layout_marginBottom">13dp</dimen>
+    <dimen name="top_hot_details_ImageView1_layout_marginLeft">17.33dp</dimen>
+       <!--the data of top_hot_details_ImageView2 后面的数据重复 -->
+    <dimen name="top_hot_details_ImageView2_layout_width">22.66dp</dimen>
+    <dimen name="top_hot_details_ImageView2_layout_height">19.66dp</dimen>
+    <dimen name="top_hot_details_ImageView2_layout_marginTop">13dp</dimen>
+    <dimen name="top_hot_details_ImageView2_layout_marginRight">25.66dp</dimen>
+       <!--the data of top_hot_details_relativeLayout1 -->
+    <dimen name="top_hot_details_relativeLayout1_paddingTop">47.66dp</dimen>
+       <!--the data of top_hot_details_frameLayout -->
+    <dimen name="top_hot_details_frameLayout_layout_height">200dp</dimen>
+       <!--the data of top_hot_details_ImageView3 -->
+    <dimen name="top_hot_details_ImageView3_layout_height">200dp</dimen>
+       <!--the data of top_hot_details_view -->
+    <dimen name="top_hot_details_view_layout_height">200dp</dimen>
+       <!--the data of top_hot_details_ImageView4 -->
+    <dimen name="top_hot_details_ImageView4_layout_width">61.5dp</dimen>
+    <dimen name="top_hot_details_ImageView4_layout_height">61.5dp</dimen>
+       <!--the data of top_hot_details_TextView1 -->
+    <dimen name="top_hot_details_TextView1_layout_marginTop">21dp</dimen>
+    <dimen name="top_hot_details_TextView1_layout_marginLeft">15.66dp</dimen>
+    <dimen name="top_hot_details_TextView1_textSize">60px</dimen>
+      <!--the data of top_hot_details_TextView2 -->
+    <dimen name="top_hot_details_TextView2_layout_marginTop">24.66dp</dimen>
+    <dimen name="top_hot_details_TextView2_layout_marginLeft">15.66dp</dimen>
+    <dimen name="top_hot_details_TextView2_textSize">30px</dimen>
+      <!--the data of top_hot_details_TextView3 -->
+    <dimen name="top_hot_details_TextView3_layout_marginTop">24.66dp</dimen>
+    <dimen name="top_hot_details_TextView3_layout_marginLeft">14.5dp</dimen>
+    <dimen name="top_hot_details_TextView3_textSize">30px</dimen>
+      <!--the data of top_hot_details_TextView4 -->
+    <dimen name="top_hot_details_TextView4_layout_marginTop">22dp</dimen>
+    <dimen name="top_hot_details_TextView4_layout_marginLeft">15.66dp</dimen>
+    <dimen name="top_hot_details_TextView4_textSize">40px</dimen>
+      <!--the data of top_hot_details_linearLayout2 -->
+    <dimen name="top_hot_details_linearLayout2_layout_height">50.7dp</dimen>
+      <!--the data of top_hot_details_view2 -->
+    <dimen name="top_hot_details_view2_layout_height">0.66dp</dimen>
+      <!--the data of top_hot_details_relativeLayout2 -->
+    <dimen name="top_hot_details_relativeLayout2_layout_height">50dp</dimen>
+      <!--the data of top_hot_details_ImageView5 -->
+    <dimen name="top_hot_details_ImageView5_layout_width">38.33dp</dimen>
+    <dimen name="top_hot_details_ImageView5_layout_height">28dp</dimen>
+    <dimen name="top_hot_details_ImageView5_layout_marginLeft">16.33dp</dimen>
+      <!--the data of top_hot_details_EditText -->
+    <dimen name="top_hot_details_EditText_layout_marginLeft">14dp</dimen>
+    <dimen name="top_hot_details_EditText_layout_marginRight">14dp</dimen>
+    <dimen name="top_hot_details_EditText_textSize">13.33sp</dimen>
+      <!--the data of top_hot_details_button -->
+    <dimen name="top_hot_details_button_layout_marginRight">16.33dp</dimen>
+    <dimen name="top_hot_details_button_textSize">13.33sp</dimen>
+
+    <!--the data of top_hot_item -->
+       <!--the data of top_hot_item_frameLayout -->
+    <dimen name="top_hot_item_frameLayout_layout_height">201.33dp</dimen>
+       <!--the data of top_hot_item_TextView -->
+    <dimen name="top_hot_item_TextView_layout_marginTop">28dp</dimen>
+    <dimen name="top_hot_item_TextView_textSize">13.33dp</dimen>
+    <dimen name="top_hot_item_TextView_paddingLeft">10dp</dimen>
+    <dimen name="top_hot_item_TextView_paddingRight">10dp</dimen>
+      <!--the data of top_hot_item_relativeLayout -->
+    <dimen name="top_hot_item_relativeLayout_layout_marginBottom">13dp</dimen>
+      <!--the data of top_hot_item_ImageView -->
+    <dimen name="top_hot_item_ImageView_layout_width">18dp</dimen>
+    <dimen name="top_hot_item_ImageView_layout_height">15.33dp</dimen>
+    <dimen name="top_hot_item_ImageView_layout_marginLeft">10dp</dimen>
+       <!--the data of top_hot_item_TextView1 后面重复数据-->
+    <dimen name="top_hot_item_TextView1_layout_marginLeft">2.66dp</dimen>
+    <dimen name="top_hot_item_TextView1_textSize">12sp</dimen>
+      <!--the data of top_hot_item_ImageView1 后面重复数据-->
+    <dimen name="top_hot_item_ImageView1_layout_width">18dp</dimen>
+    <dimen name="top_hot_item_ImageView1_layout_height">15.33dp</dimen>
+    <dimen name="top_hot_item_ImageView1_layout_marginLeft">22.66dp</dimen>
 
 
 
@@ -170,8 +390,7 @@
     <dimen name="main_zero_time_title_height">23.33dp</dimen>
     <dimen name="main_zero_time_title_margin_top">50.33dp</dimen>
 
-    <!--the data of main_activity -->
-    <dimen name="main_activity_layout_width">24dp</dimen>
-    <dimen name="main_activity_layout_height">24dp</dimen>
+
+
 
 </resources>

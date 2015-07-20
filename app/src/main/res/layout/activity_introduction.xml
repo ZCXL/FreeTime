@@ -15,29 +15,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
-            android:paddingBottom="12dp">
+            android:paddingBottom="@dimen/activity_introduction_linearLayout_paddingBottom">
             <ImageView
                 android:id="@+id/introduction_icon_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:paddingLeft="@dimen/activity_introduction_ImageView_paddingLeft"
+                android:paddingRight="@dimen/activity_introduction_ImageView_paddingRight"
                 android:src="@drawable/lead_icon_unchecked"
                 android:layout_weight="1.0"/>
             <ImageView
                 android:id="@+id/introduction_icon_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:paddingLeft="@dimen/activity_introduction_ImageView_paddingLeft"
+                android:paddingRight="@dimen/activity_introduction_ImageView_paddingRight"
                 android:src="@drawable/lead_icon_unchecked"
                 android:layout_weight="1.0"/>
             <ImageView
                 android:id="@+id/introduction_icon_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:paddingLeft="@dimen/activity_introduction_ImageView_paddingLeft"
+                android:paddingRight="@dimen/activity_introduction_ImageView_paddingRight"
                 android:src="@drawable/lead_icon_unchecked"
                 android:layout_weight="1.0"/>
         </LinearLayout>

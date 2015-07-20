@@ -10,10 +10,10 @@
         />
     <ImageView
         android:id="@+id/left_return_arrow"
-        android:layout_width="12.66dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginBottom="13dp"
-        android:layout_marginLeft="17.33dp"
+        android:layout_width="@dimen/setting_about_us_layout_width"
+        android:layout_height="@dimen/setting_about_us_layout_height"
+        android:layout_marginTop="@dimen/setting_about_us_layout_marginTop"
+        android:layout_marginBottom="@dimen/setting_about_us_layout_marginBottom"
+        android:layout_marginLeft="@dimen/setting_about_us_layout_marginLeft"
         android:src="@drawable/left_return_arrow"/>
     </FrameLayout>
