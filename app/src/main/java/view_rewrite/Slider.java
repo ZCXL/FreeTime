@@ -95,14 +95,40 @@ public class Slider extends SliderCustomer{
                 }
             });
         else {
-            this.value = value;
+            if(value<0)
+                this.value=0;
+            else if(value>100)
+                this.value=100;
+            else
+                this.value = value;
             float division = (ball.xFin - ball.xIni) / max;
             ViewHelper.setX(ball,
                     value * division + getHeight() / 2 - ball.getWidth() / 2);
             ball.changeBackground();
-            onValueChangedListener.onValueChanged(value);
         }
 
+    }
+    public void setPauseValue(final int value){
+        if (placedBall == false)
+            post(new Runnable() {
+                @Override
+                public void run() {
+                    setValue(value);
+                }
+            });
+        else {
+            if(value<0)
+                this.value=0;
+            else if(value>100)
+                this.value=100;
+            else
+                this.value = value;
+            float division = (ball.xFin - ball.xIni) / max;
+            ViewHelper.setX(ball,
+                    value * division + getHeight() / 2 - ball.getWidth() / 2);
+            ball.changeBackground();
+            onValueChangedListener.onValueChanged(this.value);
+        }
     }
     public void setBufferValue(final int value){
         this.buffervalue=value;

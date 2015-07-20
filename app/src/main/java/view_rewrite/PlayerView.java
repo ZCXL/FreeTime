@@ -1,5 +1,6 @@
 package view_rewrite;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.media.AudioManager;
@@ -32,9 +33,13 @@ import utils.Utils;
 /**
  * Created by zhuchao on 7/17/15.
  */
-public class PlayerView extends FrameLayout implements View.OnClickListener{
+public class PlayerView extends RelativeLayout implements View.OnClickListener{
+    //activity;
+    private Activity activity;
     //background
     private int background_color= Color.parseColor("#88000000");
+    //parent layout
+    private FrameLayout parent_layout;
     //top
     private RelativeLayout top_bar_relativeLayout;
     private ImageView back_button;
@@ -70,10 +75,47 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
     //slide event
 
     private boolean isPressed=false;
-    private float xLast,yLast;
+    private double xLast,yLast;
 
-    public PlayerView(Context context,String url,String title){
+    private long touchTime=0;
+
+    public static int PAUSE=1;
+    public static int SPEED=2;
+    public static int BACK=3;
+    public static int PLAYING=4;
+    private Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 0:
+                    showAll();
+                    if(player.currentState==1)
+                        start_button.setImageResource(R.drawable.top_hot_detail_play_button);
+                    if(player.currentState==2)
+                        start_button.setImageResource(R.drawable.video_play_speed_button);
+                    if(player.currentState==3)
+                        start_button.setImageResource(R.drawable.video_play_back_button);
+                    if(player.currentState==4)
+                        start_button.setImageResource(R.drawable.video_play_pause_button);
+                    this.sendEmptyMessageDelayed(1, 3000);
+                    break;
+                case 1:
+                    if(player.lastState==PLAYING&&player.currentState==BACK) {
+                        start_button.setImageResource(R.drawable.top_hot_detail_play_button);
+                        hideAll();
+                    }else if(player.lastState==PLAYING&&player.currentState==SPEED) {
+                        start_button.setImageResource(R.drawable.top_hot_detail_play_button);
+                        hideAll();
+                    }else if(player.currentState==PLAYING)
+                        hideAll();
+                    break;
+            }
+        }
+    };
+
+    public PlayerView(Context context,String url,String title,Activity activity){
         super(context);
+
+        this.activity=activity;
 
         this.url=url;
 
@@ -92,10 +134,6 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
 
     }
 
-    public void setUrl(String url){
-        player.setUrl(url);
-    }
-
     private void setAttributes(AttributeSet attributes) {
         int background=attributes.getAttributeResourceValue(CustomerView.ANDROIDXML,"background",-1);
         if(background!=-1){
@@ -106,6 +144,7 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
                 background_color=background;
             }
         }
+        addParent();
 
         addSurface();
 
@@ -116,6 +155,9 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
         addStart();
     }
     private void setAttributes(){
+
+        addParent();
+
         addSurface();
 
         addTopBar();
@@ -140,6 +182,19 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
     }
 
     /**
+     * add parent layout
+     */
+    private void addParent(){
+
+        parent_layout=new FrameLayout(getContext());
+
+        RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.FILL_PARENT);
+        parent_layout.setLayoutParams(params);
+        parent_layout.setClickable(true);
+
+        addView(parent_layout);
+    }
+    /**
      * add play interface
      */
     private void addSurface(){
@@ -147,7 +202,7 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
         surfaceView=new SurfaceView(getContext());
         FrameLayout.LayoutParams params=new FrameLayout.LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.FILL_PARENT);
         surfaceView.setLayoutParams(params);
-        addView(surfaceView);
+        parent_layout.addView(surfaceView);
 
     }
 
@@ -181,7 +236,7 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
         top_bar_movie_name.setTextColor(getResources().getColor(android.R.color.white));
         top_bar_relativeLayout.addView(top_bar_movie_name);
 
-        addView(top_bar_relativeLayout);
+        parent_layout.addView(top_bar_relativeLayout);
     }
 
     /**
@@ -230,7 +285,7 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
 
         bottom_bar_relativeLayout.addView(time_relativeLayout);
 
-        addView(bottom_bar_relativeLayout);
+        parent_layout.addView(bottom_bar_relativeLayout);
     }
 
     /**
@@ -238,10 +293,10 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
      */
     private void addStart(){
         center_relativeLayout=new RelativeLayout(getContext());
-        FrameLayout.LayoutParams cneter_params=new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-        cneter_params.gravity=Gravity.CENTER;
+        FrameLayout.LayoutParams center_params=new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,FrameLayout.LayoutParams.WRAP_CONTENT);
+        center_params.gravity=Gravity.CENTER;
         center_relativeLayout.setBackgroundResource(getResources().getColor(android.R.color.transparent));
-        center_relativeLayout.setLayoutParams(cneter_params);
+        center_relativeLayout.setLayoutParams(center_params);
 
         notify_info=new TextView(getContext());
         RelativeLayout.LayoutParams notify_params=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -266,8 +321,12 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
 
         center_relativeLayout.addView(start_button);
 
-        addView(center_relativeLayout);
+        parent_layout.addView(center_relativeLayout);
     }
+    /**
+     *
+     * @param title
+     */
     public void setTitle(String title){
         top_bar_movie_name.setText(title);
     }
@@ -276,28 +335,43 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
      * hide all relative layout
      */
     private void hideAll(){
-
+        top_bar_relativeLayout.setVisibility(INVISIBLE);
+        bottom_bar_relativeLayout.setVisibility(INVISIBLE);
+        center_relativeLayout.setVisibility(INVISIBLE);
     }
 
     /**
      * show all relative layout
      */
     private void showAll(){
-
+        top_bar_relativeLayout.setVisibility(VISIBLE);
+        bottom_bar_relativeLayout.setVisibility(VISIBLE);
+        center_relativeLayout.setVisibility(VISIBLE);
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event){
+        double y=event.getRawY();
+        double x=event.getRawX();
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                Log.d("fa","Action down");
+                if((System.currentTimeMillis()-touchTime)>1000){
+                    touchTime=System.currentTimeMillis();
+                    handler.sendEmptyMessage(0);
+                }else{
+                    player.pause();
+                    handler.sendEmptyMessage(0);
+                }
+                xLast=x;
+                yLast=y;
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("fa","action move");
+                if(checkPosition(xLast,yLast)){
+                    isPressed=true;
+                    return true;
+                }
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("fa","action up");
-                //isPressed=false;
                 break;
         }
         return false;
@@ -306,15 +380,14 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
     public void onClick(View v) {
         if(v==back_button){
             player.stop();
+            activity.finish();
         }else if(v==start_button){
             if(!isPlay) {
                 isPlay=true;
                 player.pause();
-                start_button.setImageResource(R.drawable.video_play_pause_button);
             }else{
                 isPlay=false;
                 player.pause();
-                start_button.setImageResource(R.drawable.top_hot_detail_play_button);
             }
         }
     }
@@ -331,24 +404,42 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("fa","action move");
+                Log.d("fa","Action move");
+                showAll();
                 float xCurrent=event.getRawX();
                 float yCurrent=event.getRawY();
                 double distanceX=xCurrent-xLast;
                 double distanceY=yCurrent-yLast;
                 double scale=Math.atan2(distanceY,distanceX);
-                if(scale<Math.PI/24&&isPressed){
-                    Toast.makeText(getContext(),String.valueOf(scale),Toast.LENGTH_SHORT).show();
+                //Log.d("data",String.valueOf(xCurrent)+","+String.valueOf(yCurrent)+":"+String.valueOf(distanceX)+","+String.valueOf(distanceY)+":"+String.valueOf(scale));
+                if((Math.abs(scale)<Math.PI/12||Math.abs(scale)>Math.PI*11/12)&&isPressed){
+                    //Toast.makeText(getContext(),String.valueOf(scale),Toast.LENGTH_SHORT).show();
+                    if(distanceX>0)
+                        start_button.setImageResource(R.drawable.video_play_speed_button);
+                    else if(distanceX<0)
+                        start_button.setImageResource(R.drawable.video_play_back_button);
+                    slider.setPauseValue(slider.getValue() + 3*(int) (distanceX * slider.getMax() / getWidth()));
                     isPressed=false;
+                    handler.sendEmptyMessageDelayed(0,3000);
                     return true;
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("fa","action up");
+                Log.d("fa","Action up");
                 //isPressed=false;
                 break;
         }
         return false;
+    }
+    private boolean checkPosition(double x,double y){
+        if(y>top_bar_relativeLayout.getHeight()&&y<getHeight()-bottom_bar_relativeLayout.getHeight()){
+            if(x>center_relativeLayout.getX()&&x<center_relativeLayout.getX()+center_relativeLayout.getWidth()&&y>center_relativeLayout.getY()&&y>center_relativeLayout.getY()+center_relativeLayout.getHeight()){
+                return false;
+            }
+            return true;
+        }else{
+            return false;
+        }
     }
     public static String getTime(long time){
         time=time/1000;
@@ -381,20 +472,42 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
 
     private class SliderChangeListener implements Slider.OnValueChangedListener{
 
-        int progress;
         @Override
         public void onValueChanged(int value) {
-            this.progress=value*player.mediaPlayer.getDuration()/slider.getMax();
+            int position=value*player.mediaPlayer.getDuration()/slider.getMax();
+            if(player.mediaPlayer.isPlaying()) {
+                if (position > player.mediaPlayer.getCurrentPosition()) {
+                    player.lastState=PLAYING;
+                    player.currentState = SPEED;
+                }else {
+                    player.lastState=PLAYING;
+                    player.currentState= BACK;
+                }
+                handler.sendEmptyMessage(0);
+                player.mediaPlayer.seekTo(position);
+            }else{
+                player.position=value*player.mediaPlayer.getDuration()/slider.getMax();
+                //player.mediaPlayer.pause();
+            }
         }
 
         @Override
         public void onStopTrackingTouch(int value) {
             int position=value*player.mediaPlayer.getDuration()/slider.getMax();
-            if(player.mediaPlayer.isPlaying())
+            if(player.mediaPlayer.isPlaying()) {
+                if (position > player.mediaPlayer.getCurrentPosition()) {
+                    player.lastState=PLAYING;
+                    player.currentState = SPEED;
+                }else {
+                    player.lastState=PLAYING;
+                    player.currentState= BACK;
+                }
+                handler.sendEmptyMessage(0);
                 player.mediaPlayer.seekTo(position);
-            else{
+            }else{
                 player.position=value*player.mediaPlayer.getDuration()/slider.getMax();
-                player.mediaPlayer.pause();
+                Log.d("position", String.valueOf(player.position));
+                //player.mediaPlayer.pause();
             }
         }
     }
@@ -409,6 +522,8 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
         private String url;
         private boolean isPasue=true;
 
+        public int lastState=PAUSE;
+        public int currentState=PAUSE;
         private int count=0;
 
         public void setUrl(String url){
@@ -451,18 +566,21 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
                     //show notification
                     case 1:
                         if(count==0) {
-                            notify_info.setText("caching now.");
+                            notify_info.setText("caching data.");
                             count++;
                         }else if(count==1){
-                            notify_info.setText("caching now..");
+                            notify_info.setText("caching data..");
                             count++;
                         }else if(count==2){
-                            notify_info.setText("caching now...");
+                            notify_info.setText("caching data...");
                             count=0;
                         }
                         if(!mediaPlayer.isPlaying()){
                             this.sendEmptyMessageDelayed(1,1000);
                         }else{
+                            lastState=PAUSE;
+                            currentState=PLAYING;
+                            handler.sendEmptyMessage(0);
                             notify_info.setText("");
                         }
                         break;
@@ -492,10 +610,19 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
                 position=mediaPlayer.getCurrentPosition();
                 mediaPlayer.pause();
                 isPasue=true;
+                //change interface
+                lastState=PLAYING;
+                currentState=PAUSE;
+                handler.sendEmptyMessage(0);
             }else{
                 if(isPasue){
                     mediaPlayer.start();
+                    mediaPlayer.seekTo(position);
                     isPasue=false;
+                    //change interface
+                    lastState=PAUSE;
+                    currentState=PLAYING;
+                    handler.sendEmptyMessage(0);
                 }
             }
         }
@@ -602,10 +729,16 @@ public class PlayerView extends FrameLayout implements View.OnClickListener{
             switch (what){
                 case MediaPlayer.MEDIA_INFO_BUFFERING_START:
                     notify_info.setText("Pausing to buffer more data...");
+                    lastState=PLAYING;
+                    currentState=PAUSE;
+                    handler.sendEmptyMessage(0);
                     Toast.makeText(getContext(),"Network is bad,please stop to buffer more data",Toast.LENGTH_LONG).show();
                     break;
                 case MediaPlayer.MEDIA_INFO_BUFFERING_END:
+                    lastState=PAUSE;
+                    currentState=PLAYING;
                     notify_info.setText("");
+                    handler.sendEmptyMessage(0);
                     break;
                 case MediaPlayer.MEDIA_INFO_NOT_SEEKABLE:
                     notify_info.setText("Sorry,Media can't be played...");

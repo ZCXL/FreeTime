@@ -33,9 +33,6 @@ public class ImageLoaderTask extends AsyncTask<String, Void, Bitmap> {
 	@Override
 	protected Bitmap doInBackground(String... params) {
 		imageUrl = params[0];
-        if(!imageUrl.equals(imageViewReference.get().getTag())){
-            return null;
-        }
 		return loadImageFile(imageUrl);
 	}
 
