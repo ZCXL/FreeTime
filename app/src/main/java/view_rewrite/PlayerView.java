@@ -78,11 +78,35 @@ public class PlayerView extends RelativeLayout implements View.OnClickListener{
     private double xLast,yLast;
 
     private long touchTime=0;
+
+    public static int PAUSE=1;
+    public static int SPEED=2;
+    public static int BACK=3;
+    public static int PLAYING=4;
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
-                    hideAll();
+                    showAll();
+                    if(player.currentState==1)
+                        start_button.setImageResource(R.drawable.top_hot_detail_play_button);
+                    if(player.currentState==2)
+                        start_button.setImageResource(R.drawable.video_play_speed_button);
+                    if(player.currentState==3)
+                        start_button.setImageResource(R.drawable.video_play_back_button);
+                    if(player.currentState==4)
+                        start_button.setImageResource(R.drawable.video_play_pause_button);
+                    this.sendEmptyMessageDelayed(1, 3000);
+                    break;
+                case 1:
+                    if(player.lastState==PLAYING&&player.currentState==BACK) {
+                        start_button.setImageResource(R.drawable.top_hot_detail_play_button);
+                        hideAll();
+                    }else if(player.lastState==PLAYING&&player.currentState==SPEED) {
+                        start_button.setImageResource(R.drawable.top_hot_detail_play_button);
+                        hideAll();
+                    }else if(player.currentState==PLAYING)
+                        hideAll();
                     break;
             }
         }
@@ -333,21 +357,10 @@ public class PlayerView extends RelativeLayout implements View.OnClickListener{
             case MotionEvent.ACTION_DOWN:
                 if((System.currentTimeMillis()-touchTime)>1000){
                     touchTime=System.currentTimeMillis();
-                    showAll();
-                    if(player.mediaPlayer.isPlaying())
-                        handler.sendEmptyMessageDelayed(0,3000);
+                    handler.sendEmptyMessage(0);
                 }else{
-                    showAll();
-                    if(!isPlay) {
-                        isPlay=true;
-                        player.pause();
-                        start_button.setImageResource(R.drawable.video_play_pause_button);
-                        handler.sendEmptyMessageDelayed(0,3000);
-                    }else{
-                        isPlay=false;
-                        player.pause();
-                        start_button.setImageResource(R.drawable.top_hot_detail_play_button);
-                    }
+                    player.pause();
+                    handler.sendEmptyMessage(0);
                 }
                 xLast=x;
                 yLast=y;
@@ -372,11 +385,9 @@ public class PlayerView extends RelativeLayout implements View.OnClickListener{
             if(!isPlay) {
                 isPlay=true;
                 player.pause();
-                start_button.setImageResource(R.drawable.video_play_pause_button);
             }else{
                 isPlay=false;
                 player.pause();
-                start_button.setImageResource(R.drawable.top_hot_detail_play_button);
             }
         }
     }
@@ -394,6 +405,7 @@ public class PlayerView extends RelativeLayout implements View.OnClickListener{
                 break;
             case MotionEvent.ACTION_MOVE:
                 Log.d("fa","Action move");
+                showAll();
                 float xCurrent=event.getRawX();
                 float yCurrent=event.getRawY();
                 double distanceX=xCurrent-xLast;
@@ -402,8 +414,13 @@ public class PlayerView extends RelativeLayout implements View.OnClickListener{
                 //Log.d("data",String.valueOf(xCurrent)+","+String.valueOf(yCurrent)+":"+String.valueOf(distanceX)+","+String.valueOf(distanceY)+":"+String.valueOf(scale));
                 if((Math.abs(scale)<Math.PI/12||Math.abs(scale)>Math.PI*11/12)&&isPressed){
                     //Toast.makeText(getContext(),String.valueOf(scale),Toast.LENGTH_SHORT).show();
+                    if(distanceX>0)
+                        start_button.setImageResource(R.drawable.video_play_speed_button);
+                    else if(distanceX<0)
+                        start_button.setImageResource(R.drawable.video_play_back_button);
                     slider.setPauseValue(slider.getValue() + 3*(int) (distanceX * slider.getMax() / getWidth()));
                     isPressed=false;
+                    handler.sendEmptyMessageDelayed(0,3000);
                     return true;
                 }
                 break;
@@ -458,9 +475,17 @@ public class PlayerView extends RelativeLayout implements View.OnClickListener{
         @Override
         public void onValueChanged(int value) {
             int position=value*player.mediaPlayer.getDuration()/slider.getMax();
-            if(player.mediaPlayer.isPlaying())
+            if(player.mediaPlayer.isPlaying()) {
+                if (position > player.mediaPlayer.getCurrentPosition()) {
+                    player.lastState=PLAYING;
+                    player.currentState = SPEED;
+                }else {
+                    player.lastState=PLAYING;
+                    player.currentState= BACK;
+                }
+                handler.sendEmptyMessage(0);
                 player.mediaPlayer.seekTo(position);
-            else{
+            }else{
                 player.position=value*player.mediaPlayer.getDuration()/slider.getMax();
                 //player.mediaPlayer.pause();
             }
@@ -469,11 +494,19 @@ public class PlayerView extends RelativeLayout implements View.OnClickListener{
         @Override
         public void onStopTrackingTouch(int value) {
             int position=value*player.mediaPlayer.getDuration()/slider.getMax();
-            if(player.mediaPlayer.isPlaying())
+            if(player.mediaPlayer.isPlaying()) {
+                if (position > player.mediaPlayer.getCurrentPosition()) {
+                    player.lastState=PLAYING;
+                    player.currentState = SPEED;
+                }else {
+                    player.lastState=PLAYING;
+                    player.currentState= BACK;
+                }
+                handler.sendEmptyMessage(0);
                 player.mediaPlayer.seekTo(position);
-            else{
+            }else{
                 player.position=value*player.mediaPlayer.getDuration()/slider.getMax();
-                Log.d("position",String.valueOf(player.position));
+                Log.d("position", String.valueOf(player.position));
                 //player.mediaPlayer.pause();
             }
         }
@@ -489,6 +522,8 @@ public class PlayerView extends RelativeLayout implements View.OnClickListener{
         private String url;
         private boolean isPasue=true;
 
+        public int lastState=PAUSE;
+        public int currentState=PAUSE;
         private int count=0;
 
         public void setUrl(String url){
@@ -543,7 +578,9 @@ public class PlayerView extends RelativeLayout implements View.OnClickListener{
                         if(!mediaPlayer.isPlaying()){
                             this.sendEmptyMessageDelayed(1,1000);
                         }else{
-                            hideAll();
+                            lastState=PAUSE;
+                            currentState=PLAYING;
+                            handler.sendEmptyMessage(0);
                             notify_info.setText("");
                         }
                         break;
@@ -573,11 +610,19 @@ public class PlayerView extends RelativeLayout implements View.OnClickListener{
                 position=mediaPlayer.getCurrentPosition();
                 mediaPlayer.pause();
                 isPasue=true;
+                //change interface
+                lastState=PLAYING;
+                currentState=PAUSE;
+                handler.sendEmptyMessage(0);
             }else{
                 if(isPasue){
                     mediaPlayer.start();
                     mediaPlayer.seekTo(position);
                     isPasue=false;
+                    //change interface
+                    lastState=PAUSE;
+                    currentState=PLAYING;
+                    handler.sendEmptyMessage(0);
                 }
             }
         }
@@ -684,12 +729,16 @@ public class PlayerView extends RelativeLayout implements View.OnClickListener{
             switch (what){
                 case MediaPlayer.MEDIA_INFO_BUFFERING_START:
                     notify_info.setText("Pausing to buffer more data...");
-                    showAll();
+                    lastState=PLAYING;
+                    currentState=PAUSE;
+                    handler.sendEmptyMessage(0);
                     Toast.makeText(getContext(),"Network is bad,please stop to buffer more data",Toast.LENGTH_LONG).show();
                     break;
                 case MediaPlayer.MEDIA_INFO_BUFFERING_END:
-                    hideAll();
+                    lastState=PAUSE;
+                    currentState=PLAYING;
                     notify_info.setText("");
+                    handler.sendEmptyMessage(0);
                     break;
                 case MediaPlayer.MEDIA_INFO_NOT_SEEKABLE:
                     notify_info.setText("Sorry,Media can't be played...");

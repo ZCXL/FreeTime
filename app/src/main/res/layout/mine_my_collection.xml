@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--title bar-->
+    <RelativeLayout
+        android:id="@+id/mine_my_collection_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="47.44dp"
+        android:background="#f3f2f2"
+        >
+        <ImageView
+            android:id="@+id/left_return_arrow"
+            android:layout_width="12.66dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="17.33dp"
+            android:src="@drawable/left_return_arrow"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="My collection"
+            android:textSize="16sp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="13dp"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#ffc6c5c5"/>
+    <!--movies that collected-->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="79.33dp">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:layout_width="120.66dp"
+                android:layout_height="79.33dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="17.33dp"
+                android:src="@drawable/top_hot_detail_video"
+                android:scaleType="centerCrop"
+            />
+            <View
+                android:layout_width="120.66dp"
+                android:layout_height="13.33dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="68.33dp"
+                android:background="#000000"
+                android:alpha="0.3"
+                android:layout_gravity="right|bottom" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="71.33dp"
+                android:layout_marginLeft="115.33dp"
+                android:textColor="#ffffff"
+                android:textSize="14px"
+                android:text="22:24"
+                 />
+        </FrameLayout>
+        <!--video description-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21.33dp"
+            android:layout_marginLeft="141.66dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:textSize="13.33sp"
+            android:textColor="#f137373b"
+            android:text="Description of the video!Description of the video!"
+             />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="79.33dp">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:layout_width="120.66dp"
+                android:layout_height="79.33dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="17.33dp"
+                android:src="@drawable/top_hot_detail_video"
+                android:scaleType="centerCrop"
+                />
+            <View
+                android:layout_width="120.66dp"
+                android:layout_height="13.33dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="68.33dp"
+                android:background="#000000"
+                android:alpha="0.3"
+                android:layout_gravity="right|bottom" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="71.33dp"
+                android:layout_marginLeft="115.33dp"
+                android:textColor="#ffffff"
+                android:textSize="14px"
+                android:text="22:24"
+                />
+        </FrameLayout>
+        <!--video description-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21.33dp"
+            android:layout_marginLeft="141.66dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:textSize="13.33sp"
+            android:textColor="#f137373b"
+            android:text="Description of the video!Description of the video!"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="79.33dp">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:layout_width="120.66dp"
+                android:layout_height="79.33dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="17.33dp"
+                android:src="@drawable/top_hot_detail_video"
+                android:scaleType="centerCrop"
+                />
+            <View
+                android:layout_width="120.66dp"
+                android:layout_height="13.33dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="68.33dp"
+                android:background="#000000"
+                android:alpha="0.3"
+                android:layout_gravity="right|bottom" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="71.33dp"
+                android:layout_marginLeft="115.33dp"
+                android:textColor="#ffffff"
+                android:textSize="14px"
+                android:text="22:24"
+                />
+        </FrameLayout>
+        <!--video description-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21.33dp"
+            android:layout_marginLeft="141.66dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:textSize="13.33sp"
+            android:textColor="#f137373b"
+            android:text="Description of the video!Description of the video!"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="79.33dp">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:layout_width="120.66dp"
+                android:layout_height="79.33dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="17.33dp"
+                android:src="@drawable/top_hot_detail_video"
+                android:scaleType="centerCrop"
+                />
+            <View
+                android:layout_width="120.66dp"
+                android:layout_height="13.33dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="68.33dp"
+                android:background="#000000"
+                android:alpha="0.3"
+                android:layout_gravity="right|bottom" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="71.33dp"
+                android:layout_marginLeft="115.33dp"
+                android:textColor="#ffffff"
+                android:textSize="14px"
+                android:text="22:24"
+                />
+        </FrameLayout>
+        <!--video description-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21.33dp"
+            android:layout_marginLeft="141.66dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:textSize="13.33sp"
+            android:textColor="#f137373b"
+            android:text="Description of the video!Description of the video!"
+            />
+    </RelativeLayout>
+</LinearLayout>
