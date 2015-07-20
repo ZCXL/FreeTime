@@ -2,16 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:customer="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="36dp">
+    android:layout_height="@dimen/pull_to_refresh_layout_height">
     <view_rewrite.CircularProgressBar
         android:id="@+id/pull_to_refresh_header_progressBar"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="@dimen/pull_to_refresh_view_rewrite_layout_width"
+        android:layout_height="@dimen/pull_to_refresh_view_rewrite_layout_height"
         customer:circle_color="#007bee"
-        customer:width="1.33dp"
+        customer:width="@dimen/pull_to_refresh_view_rewrite_width"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/pull_to_refresh_header_text"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="@dimen/pull_to_refresh_view_rewrite_layout_marginRight"
         />
     <TextView
         android:id="@+id/pull_to_refresh_header_text"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="Updating..."
-        android:textSize="12sp"
+        android:textSize="@dimen/pull_to_refresh_TextView_textSize"
         android:textColor="#888888"/>
 
 </RelativeLayout>

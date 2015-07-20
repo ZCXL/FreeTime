@@ -148,8 +148,7 @@
             />
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@android:color/white">
+            android:layout_height="50dp">
             <ImageView
                 android:id="@+id/top_hot_detail_bottom_logo"
                 android:layout_width="38.33dp"

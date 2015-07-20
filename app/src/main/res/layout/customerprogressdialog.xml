@@ -5,12 +5,12 @@
     android:layout_height="match_parent">
     <view_rewrite.CircularProgressBar
         android:id="@+id/customer_progress_dialog_progressBar"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="@dimen/customerProgressDialog_layout_width"
+        android:layout_height="@dimen/customerProgressDialog_layout_height"
         customer:circle_color="#ff38c8ee"
-        customer:width="1.33dp"
+        customer:width="@dimen/customerProgressDialog_width"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/pull_to_refresh_header_text"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="@dimen/customerProgressDialog_layout_marginRight"
         />
 </LinearLayout>
