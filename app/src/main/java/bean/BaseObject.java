@@ -5,7 +5,7 @@ package bean;
  */
 public class BaseObject {
     public static enum  TYPE{
-        USER(0),VERSION(1),MOVIE(2);
+        USER(0),VERSION(1),MOVIE(2),COMMENT(3),COMMENTBACK(4);
         private int value;
         private TYPE(int value){
             this.value=value;

@@ -48,7 +48,8 @@
         </activity>
         <activity
             android:name=".TopHot_Detail"
-            android:label="@string/title_activity_top_hot__detail" >
+            android:label="@string/title_activity_top_hot__detail"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
         <!-- 不配置将会导致无法调用API -->
         <activity
@@ -86,13 +87,6 @@
             android:label="@string/title_activity_set" >
         </activity>
         <service android:name="service.DownloadService" />
-        <!-- web login for weibo -->
-        <activity android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
-            android:configChanges="keyboardHidden|orientation"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false" >
-        </activity>
-
     </application>
 
 </manifest>

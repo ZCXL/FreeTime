@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zhuchao.freetime.Collection;
 import com.zhuchao.freetime.Login;
 import com.zhuchao.freetime.R;
 import com.zhuchao.freetime.Set;
@@ -17,6 +18,7 @@ import com.zhuchao.freetime.Set;
 import bean.UserInfo;
 import function.ImageLoaderTask;
 import function.ImageProcess;
+import view_rewrite.RippleLayout;
 import view_rewrite.RoundImageView;
 
 /**
@@ -31,6 +33,8 @@ public class MineFragment extends Fragment implements View.OnClickListener{
     private TextView userName;
     //Set button
     private ImageView set_button;
+    //collect button
+    private RippleLayout collect_button;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.main_framelayout_mine,container,false);
@@ -46,11 +50,15 @@ public class MineFragment extends Fragment implements View.OnClickListener{
         userName=(TextView)rootView.findViewById(R.id.mine_user_name);
 
         set_button=(ImageView)rootView.findViewById(R.id.mine_set);
+
+        collect_button=(RippleLayout)rootView.findViewById(R.id.mine_collection_block);
     }
     private void initData(){
         head.setOnClickListener(this);
 
         set_button.setOnClickListener(this);
+
+        collect_button.setListener(this);
     }
 
     @Override
@@ -63,6 +71,9 @@ public class MineFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.mine_set:
                 getActivity().startActivity(new Intent(getActivity(), Set.class));
+                break;
+            case R.id.mine_collection_block:
+                getActivity().startActivity(new Intent(getActivity(), Collection.class));
                 break;
         }
     }

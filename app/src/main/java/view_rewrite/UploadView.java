@@ -1,9 +1,5 @@
 package view_rewrite;
 
-/**
- * ����ʵ���������ص�������ؼ�,
- * ScrollOverListViewֻ���ṩ�������¼���,
- */
 import java.text.SimpleDateFormat;
 
 import android.annotation.SuppressLint;
@@ -22,8 +18,8 @@ import com.zhuchao.freetime.R;
 
 @SuppressLint("SimpleDateFormat")
 public class UploadView extends LinearLayout implements ScrollOverListView.OnScrollOverListener {
-	private static final int WHAT_DID_LOAD_DATA = 1; // Handler what ���ݼ������
-	private static final int WHAT_DID_MORE = 5; // Handler what �Ѿ���ȡ�����
+	private static final int WHAT_DID_LOAD_DATA = 1;
+	private static final int WHAT_DID_MORE = 5;
 
 	@SuppressWarnings("unused")
 	private static SimpleDateFormat dateFormat = new SimpleDateFormat(
@@ -31,7 +27,7 @@ public class UploadView extends LinearLayout implements ScrollOverListView.OnScr
 
 	private View mFooterView;
 	private TextView mFooterTextView;
-	private View mFooterLoadingView;
+	private CircularProgressBar mFooterLoadingView;
 	private ScrollOverListView mListView;
 	private OnUploadListener mOnPullDownListener;
 	private boolean mIsFetchMoreing;
@@ -46,18 +42,15 @@ public class UploadView extends LinearLayout implements ScrollOverListView.OnScr
 		initFooterViewAndListView(context);
 	}
 
-	/**
-	 * �¼��ӿ�
-	 */
 	public interface OnUploadListener {
 		void onMore();
 	}
 	public void notifyDidLoad() {
-		mUIHandler.sendEmptyMessage(WHAT_DID_LOAD_DATA);//���ݼ������
+		mUIHandler.sendEmptyMessage(WHAT_DID_LOAD_DATA);
 	}
 
 	public void notifyDidMore() {
-		mUIHandler.sendEmptyMessage(WHAT_DID_MORE);//�Ѿ���ȡ�����
+		mUIHandler.sendEmptyMessage(WHAT_DID_MORE);
 	}
 
 	public void setOnPullDownListener(OnUploadListener listener) {
@@ -73,7 +66,7 @@ public class UploadView extends LinearLayout implements ScrollOverListView.OnScr
 			mListView.setBottomPosition(index);
 			mFooterLoadingView.setVisibility(View.VISIBLE);
 		} else {
-			mFooterTextView.setText("����");
+			mFooterTextView.setText("Type");
 			mFooterLoadingView.setVisibility(View.GONE);
 		}
 		mEnableAutoFetchMore = enable;
@@ -84,30 +77,21 @@ public class UploadView extends LinearLayout implements ScrollOverListView.OnScr
 
 		mFooterView = LayoutInflater.from(context).inflate(
 				R.layout.pulldown_footer, null);
-		mFooterTextView = (TextView) mFooterView
-				.findViewById(R.id.pull_down_footer_text);
-		mFooterLoadingView = mFooterView
-				.findViewById(R.id.pull_down_footer_loading);
-		mFooterView.setOnClickListener(new OnClickListener() {//����¼� 
+		mFooterTextView = (TextView) mFooterView.findViewById(R.id.pull_down_footer_text);
+		mFooterLoadingView = (CircularProgressBar)mFooterView.findViewById(R.id.pull_down_footer_loading);
+		mFooterView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				if (!mIsFetchMoreing) {
-//					mIsFetchMoreing = true;
-					mFooterLoadingView.setVisibility(View.VISIBLE);
+					mFooterLoadingView.startAnimation();
 					mOnPullDownListener.onMore();
-				//}
 			}
 		});
 
-		/*
-		 * ScrollOverListView ͬ���ǿ��ǵ�����ʹ�ã����Է������ͬʱ��Ϊ����Ҫ���ļ����¼�
-		 */
 		mListView = new ScrollOverListView(context);
 		mListView.setOnScrollOverListener(this);
 		mListView.setCacheColorHint(0);
 		addView(mListView, LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
-		
-//�յ�listener
+
 		mOnPullDownListener = new OnUploadListener(){
 			@Override
 			public void onMore() {	
@@ -119,24 +103,21 @@ public class UploadView extends LinearLayout implements ScrollOverListView.OnScr
 		@Override
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-			case WHAT_DID_LOAD_DATA: {//���ݼ������
+			case WHAT_DID_LOAD_DATA: {
 				showFooterView();
 				mFooterLoadingView.setVisibility(View.GONE);
 				return;
 			}
 
-			case WHAT_DID_MORE: {//�Ѿ���ȡ�����
+			case WHAT_DID_MORE: {
 				mIsFetchMoreing = false; 
-				mFooterTextView.setText("����"); 
-				mFooterLoadingView.setVisibility(View.GONE); 
+				mFooterTextView.setText("Get More");
+				mFooterLoadingView.setVisibility(View.GONE);
 			}
 			}
 		}
 	};
 
-	/**
-	 * ��ʾ�Ų��Ų��ļ�
-	 */
 	private void showFooterView() {
 		if (mListView.getFooterViewsCount() == 0 && isFillScreenItem()) {
 			mListView.addFooterView(mFooterView);
@@ -144,9 +125,6 @@ public class UploadView extends LinearLayout implements ScrollOverListView.OnScr
 		}
 	}
 
-	/**
-	 * item��Ŀ�Ƿ�����������Ļ
-	 */
 	private boolean isFillScreenItem() {
 		final int firstVisiblePosition = mListView.getFirstVisiblePosition();
 		final int lastVisiblePosition = mListView.getLastVisiblePosition()
@@ -159,16 +137,13 @@ public class UploadView extends LinearLayout implements ScrollOverListView.OnScr
 			return true;
 		return false;
 	}
-
-	//�Ƿ�����
 	@Override
 	public boolean onListViewBottomAndPullUp(int delta) {
 		if (!mEnableAutoFetchMore || mIsFetchMoreing)
 			return false;
-		// ����������Ļ�Ŵ���
 		if (isFillScreenItem()) {
 			mIsFetchMoreing = true;
-			mFooterTextView.setText("���ظ�����...") ; 
+			mFooterTextView.setText("loading...") ;
 			mFooterLoadingView.setVisibility(View.VISIBLE); 
 			mOnPullDownListener.onMore();
 			return true;

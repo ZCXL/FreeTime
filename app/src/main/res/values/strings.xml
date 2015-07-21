@@ -19,4 +19,6 @@
     <string name="title_activity_play_movie">PlayMovie</string>
     <string name="title_activity_test">Test</string>
     <string name="title_activity_set">Set</string>
+    <string name="title_activity_collection">Collection</string>
+    <string name="title_activity_comment">CommentActivity</string>
 </resources>

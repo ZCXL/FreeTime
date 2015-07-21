@@ -1,5 +1,7 @@
 package function;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
 import bean.BaseObject;
@@ -12,5 +14,5 @@ public interface ParseJson {
      * @param c
      * @return
      */
-     ArrayList<BaseObject> getObjects(String c);
+     ArrayList<BaseObject> getObjects(String c) throws JSONException;
 }
