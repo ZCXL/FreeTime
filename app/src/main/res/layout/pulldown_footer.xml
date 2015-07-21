@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:customer="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="10dp"
@@ -11,12 +12,13 @@
         android:layout_centerInParent="true"
         android:text="更多"
         android:textSize="15dp" />
-    <ProgressBar
+    <view_rewrite.CircularProgressBar
         android:id="@+id/pull_down_footer_loading"
-        style="@android:style/Widget.ProgressBar.Small.Inverse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/customerProgressDialog_layout_width"
+        android:layout_height="@dimen/customerProgressDialog_layout_height"
+        customer:circle_color="#ff38c8ee"
+        customer:width="@dimen/customerProgressDialog_width"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="20dp"
-        android:visibility="gone" />
+        android:layout_marginLeft="30dp"
+        />
 </RelativeLayout>

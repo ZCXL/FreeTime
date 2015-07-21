@@ -33,7 +33,5 @@ public class PlayMovie extends Activity {
         playerView.setLayoutParams(params);
 
         setContentView(playerView);
-
-
     }
 }

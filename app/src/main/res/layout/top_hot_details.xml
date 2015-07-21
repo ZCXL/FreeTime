@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
 
     <!--title bar-->
     <RelativeLayout
@@ -47,11 +49,17 @@
             android:src="@drawable/top_hot_detail_collect_button"
             />
     </RelativeLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="47.66dp">
+        android:layout_height="match_parent">
         <!--video block-->
         <FrameLayout
                 android:id="@+id/top_hot_detail_video"
@@ -120,7 +128,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/top_hot_detail_video_data_1"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="18dp"
             android:layout_marginLeft="15.66dp"
             android:textColor="#999999"
             android:textSize="40px"
@@ -129,7 +137,35 @@
 
 
         </RelativeLayout>
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="20dp"
+            android:textColor="#ff3f3f3f"
+            android:textSize="48px"
+            android:text="User's comments"
+            />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/comment_time"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_centerHorizontal="true"
+            android:background="#f5888c8b"
+            />
+        <LinearLayout
+            android:id="@+id/pull_down_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="60dp"
+            android:orientation="vertical"
+            android:background="@android:color/white">
+        </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <!--comment block-->
 
@@ -139,6 +175,8 @@
         android:layout_height="50.7dp"
         android:layout_gravity="bottom"
         android:orientation="vertical"
+        android:paddingBottom="3dp"
+        android:background="@android:color/white"
         >
         <View
             android:layout_width="fill_parent"
@@ -155,12 +193,12 @@
                 android:layout_height="28dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="16.33dp"
-                android:src="@drawable/top_hot_detail_buttom_logo"
+                android:src="@drawable/top_hot_detail_bottom_logo"
              />
             <EditText
                 android:id="@+id/top_hot_detail_bottom_edit"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:layout_toRightOf="@+id/top_hot_detail_bottom_logo"
                 android:layout_marginLeft="14dp"
                 android:layout_toLeftOf="@+id/top_hot_detail_send_comment"
@@ -169,6 +207,7 @@
                 android:textSize="13.33sp"
                 android:textColor="#999999"
                 android:hint="Say something"
+                android:background="@drawable/top_hot_detail_bottom_edit"
                 />
             <Button
                 android:id="@+id/top_hot_detail_send_comment"
@@ -180,11 +219,9 @@
                 android:textSize="13.33sp"
                 android:textColor="#999999"
                 android:text="Send"
-                android:background="@android:color/transparent"
+                android:background="@android:color/white"
                 />
         </RelativeLayout>
     </LinearLayout>
-
-
-
-</FrameLayout>
+    </FrameLayout>
+</LinearLayout>
