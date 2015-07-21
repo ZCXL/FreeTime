@@ -89,6 +89,7 @@
     <orderEntry type="library" exported="" name="open_sdk_r5043" level="project" />
     <orderEntry type="library" exported="" name="nineoldandroids-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="android-support-v4" level="project" />
+    <orderEntry type="library" exported="" name="weibosdkcore" level="project" />
     <orderEntry type="library" exported="" name="mta-sdk-1.6.2" level="project" />
   </component>
 </module>
