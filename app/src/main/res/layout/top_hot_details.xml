@@ -7,43 +7,43 @@
     <RelativeLayout
         android:id="@+id/top_hot_detail_title_bar"
         android:layout_width="fill_parent"
-        android:layout_height="@dimen/top_hot_details_relativeLayout_layout_height"
+        android:layout_height="47.66dp"
         android:background="#f3f2f2"
         android:gravity="top">
         <ImageView
             android:id="@+id/top_hot_detail_return_button"
-            android:layout_width="@dimen/top_hot_details_ImageView1_layout_width"
-            android:layout_height="@dimen/top_hot_details_ImageView1_layout_height"
-            android:layout_marginTop="@dimen/top_hot_details_ImageView1_layout_marginTop"
-            android:layout_marginBottom="@dimen/top_hot_details_ImageView1_layout_marginBottom"
-            android:layout_marginLeft="@dimen/top_hot_details_ImageView1_layout_marginLeft"
+            android:layout_width="12.66dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="17.33dp"
             android:src="@drawable/top_hot_detail_return_button"
             />
         <ImageView
             android:id="@+id/top_hot_detail_comment_button"
-            android:layout_width="@dimen/top_hot_details_ImageView2_layout_width"
-            android:layout_height="@dimen/top_hot_details_ImageView2_layout_height"
-            android:layout_marginTop="@dimen/top_hot_details_ImageView2_layout_marginTop"
+            android:layout_width="22.66dp"
+            android:layout_height="19.66dp"
+            android:layout_marginTop="13dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/top_hot_details_ImageView2_layout_marginRight"
+            android:layout_marginRight="25.66dp"
             android:src="@drawable/top_hot_detail_comment_button"
             />
         <ImageView
             android:id="@+id/top_hot_detail_share_button"
-            android:layout_width="@dimen/top_hot_details_ImageView2_layout_width"
-            android:layout_height="@dimen/top_hot_details_ImageView2_layout_height"
-            android:layout_marginTop="@dimen/top_hot_details_ImageView2_layout_marginTop"
+            android:layout_width="22.66dp"
+            android:layout_height="19.66dp"
+            android:layout_marginTop="13dp"
             android:layout_toLeftOf="@+id/top_hot_detail_comment_button"
-            android:layout_marginRight="@dimen/top_hot_details_ImageView2_layout_marginRight"
+            android:layout_marginRight="12.66dp"
             android:src="@drawable/top_hot_detail_share_button"
             />
         <ImageView
             android:id="@+id/top_hot_detail_collect_button"
-            android:layout_width="@dimen/top_hot_details_ImageView2_layout_width"
-            android:layout_height="@dimen/top_hot_details_ImageView2_layout_height"
-            android:layout_marginTop="@dimen/top_hot_details_ImageView2_layout_marginTop"
+            android:layout_width="22.66dp"
+            android:layout_height="19.66dp"
+            android:layout_marginTop="13dp"
             android:layout_toLeftOf="@+id/top_hot_detail_share_button"
-            android:layout_marginRight="@dimen/top_hot_details_ImageView2_layout_marginRight"
+            android:layout_marginRight="12.66dp"
             android:src="@drawable/top_hot_detail_collect_button"
             />
     </RelativeLayout>
@@ -51,30 +51,30 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/top_hot_details_relativeLayout1_paddingTop">
+        android:paddingTop="47.66dp">
         <!--video block-->
         <FrameLayout
                 android:id="@+id/top_hot_detail_video"
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/top_hot_details_frameLayout_layout_height"
+                android:layout_height="200dp"
             >
             <ImageView
                 android:id="@+id/top_hot_detail_video_image"
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/top_hot_details_ImageView3_layout_height"
+                android:layout_height="200dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/top_hot_video_wait"
                 />
             <View
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/top_hot_details_view_layout_height"
+                android:layout_height="200dp"
                 android:background="#000000"
                 android:alpha="0.3"
                 />
             <ImageView
                 android:id="@+id/top_hot_detail_play_button"
-                android:layout_width="@dimen/top_hot_details_ImageView4_layout_width"
-                android:layout_height="@dimen/top_hot_details_ImageView4_layout_height"
+                android:layout_width="61.5dp"
+                android:layout_height="61.5dp"
                 android:src="@drawable/top_hot_detail_play_button"
                 android:layout_gravity="center" />
         </FrameLayout>
@@ -86,10 +86,10 @@
             android:id="@+id/top_hot_detail_brief_introduction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/top_hot_details_TextView1_layout_marginTop"
-            android:layout_marginLeft="@dimen/top_hot_details_TextView1_layout_marginLeft"
+            android:layout_marginTop="21dp"
+            android:layout_marginLeft="15.66dp"
             android:textColor="#3f4041"
-            android:textSize="@dimen/top_hot_details_TextView1_textSize"
+            android:textSize="60px"
             android:text="A brief introduction of the video!"
             />
         <TextView
@@ -97,10 +97,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/top_hot_detail_brief_introduction"
-            android:layout_marginTop="@dimen/top_hot_details_TextView2_layout_marginTop"
-            android:layout_marginLeft="@dimen/top_hot_details_TextView2_layout_marginLeft"
+            android:layout_marginTop="24.66dp"
+            android:layout_marginLeft="15.66dp"
             android:textColor="#999999"
-            android:textSize="@dimen/top_hot_details_TextView2_textSize"
+            android:textSize="30px"
             android:text="Already  has 12,343 watched "
             />
         <TextView
@@ -108,11 +108,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/top_hot_detail_brief_introduction"
-            android:layout_marginTop="@dimen/top_hot_details_TextView3_layout_marginTop"
+            android:layout_marginTop="24.66dp"
             android:layout_toRightOf="@+id/top_hot_detail_video_data_1"
-            android:layout_marginLeft="@dimen/top_hot_details_TextView3_layout_marginLeft"
+            android:layout_marginLeft="14.5dp"
             android:textColor="#999999"
-            android:textSize="@dimen/top_hot_details_TextView3_textSize"
+            android:textSize="30px"
             android:text="676 people shared"
             />
         <TextView
@@ -120,10 +120,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/top_hot_detail_video_data_1"
-            android:layout_marginTop="@dimen/top_hot_details_TextView4_layout_marginTop"
-            android:layout_marginLeft="@dimen/top_hot_details_TextView4_layout_marginLeft"
+            android:layout_marginTop="22dp"
+            android:layout_marginLeft="15.66dp"
             android:textColor="#999999"
-            android:textSize="@dimen/top_hot_details_TextView4_textSize"
+            android:textSize="40px"
             android:text="Here are detail introductions about the video!Here are detail introductions about the video!Here are detail introductions about the video!"
             />
 
@@ -136,25 +136,25 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/top_hot_details_linearLayout2_layout_height"
+        android:layout_height="50.7dp"
         android:layout_gravity="bottom"
         android:orientation="vertical"
         >
         <View
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/top_hot_details_view2_layout_height"
+            android:layout_height="0.66dp"
             android:background="#999999"
             android:layout_alignParentTop="true"
             />
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/top_hot_details_relativeLayout2_layout_height">
+            android:layout_height="50dp">
             <ImageView
                 android:id="@+id/top_hot_detail_bottom_logo"
-                android:layout_width="@dimen/top_hot_details_ImageView5_layout_width"
-                android:layout_height="@dimen/top_hot_details_ImageView5_layout_height"
+                android:layout_width="38.33dp"
+                android:layout_height="28dp"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/top_hot_details_ImageView5_layout_marginLeft"
+                android:layout_marginLeft="16.33dp"
                 android:src="@drawable/top_hot_detail_buttom_logo"
              />
             <EditText
@@ -162,11 +162,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/top_hot_detail_bottom_logo"
-                android:layout_marginLeft="@dimen/top_hot_details_EditText_layout_marginLeft"
+                android:layout_marginLeft="14dp"
                 android:layout_toLeftOf="@+id/top_hot_detail_send_comment"
-                android:layout_marginRight="@dimen/top_hot_details_EditText_layout_marginRight"
+                android:layout_marginRight="14dp"
                 android:layout_centerVertical="true"
-                android:textSize="@dimen/top_hot_details_EditText_textSize"
+                android:textSize="13.33sp"
                 android:textColor="#999999"
                 android:hint="Say something"
                 />
@@ -174,10 +174,10 @@
                 android:id="@+id/top_hot_detail_send_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/top_hot_details_button_layout_marginRight"
+                android:layout_marginRight="16.33dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:textSize="@dimen/top_hot_details_button_textSize"
+                android:textSize="13.33sp"
                 android:textColor="#999999"
                 android:text="Send"
                 android:background="@android:color/transparent"
