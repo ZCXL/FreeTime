@@ -238,7 +238,7 @@
     <dimen name="remote_view_layout_TextView1_textSize">16sp</dimen>
        <!--the data of remote_view_layout_progressBar -->
     <dimen name="remote_view_layout_progressBar_layout_height">15dip</dimen>
-    <dimen name="remote_view_layout_progressBar_max">100dp</dimen>
+    <dimen name="remote_view_layout_progressBar_max">100</dimen>
        <!--the data of remote_view_layout_TextView2 -->
     <dimen name="remote_view_layout_TextView2_textSize">13sp</dimen>
 
@@ -364,8 +364,8 @@
        <!--the data of top_hot_item_frameLayout -->
     <dimen name="top_hot_item_frameLayout_layout_height">201.33dp</dimen>
        <!--the data of top_hot_item_TextView -->
-    <dimen name="top_hot_item_TextView_layout_marginTop">-28dp</dimen>
-    <dimen name="top_hot_item_TextView_textSize">13sp</dimen>
+    <dimen name="top_hot_item_TextView_layout_marginTop">28dp</dimen>
+    <dimen name="top_hot_item_TextView_textSize">13.33dp</dimen>
     <dimen name="top_hot_item_TextView_paddingLeft">10dp</dimen>
     <dimen name="top_hot_item_TextView_paddingRight">10dp</dimen>
       <!--the data of top_hot_item_relativeLayout -->
