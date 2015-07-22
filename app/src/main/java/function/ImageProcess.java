@@ -189,12 +189,12 @@ public static boolean InputImage(Bitmap bitmap,FileType_Image fImage,String file
 		   height=(int) afterheight;
 	   if(afterwidth<=width)
 		   width=(int) afterwidth;  
-	   //Bitmap bitmap1=Bitmap.createBitmap(bitmap,(bitmap.getWidth()-width)/2,(bitmap.getHeight()-height)/2, width, height);//������ؼ���ͬ������ͼ
+	   //Bitmap bitmap1=Bitmap.createBitmap(bitmap,(bitmap.getWidth()-width)/2,(bitmap.getHeight()-height)/2, width, height);
 	   float scaleWidth=((float)nwidth)/width;
 	   float scaleHeight=((float)nheight)/height;
 	   Matrix matrix=new Matrix();
 	   matrix.postScale(scaleWidth,scaleHeight);
-       return Bitmap.createBitmap(bitmap, (bitmap.getWidth()-width)/2,(bitmap.getHeight()-height)/2, width, height, matrix, true);//�����µ�λͼ
+       return Bitmap.createBitmap(bitmap, (bitmap.getWidth()-width)/2,(bitmap.getHeight()-height)/2, width, height, matrix, true);
    }
 	public static Bitmap compressImage(Bitmap image) {
 

@@ -1,12 +1,14 @@
 package com.zhuchao.freetime;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -71,6 +73,18 @@ public class Collection extends Activity implements Runnable, UploadView.OnUploa
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        swipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Movie movie=movieArrayList.get(position);
+                Intent intent=new Intent(Collection.this,TopHot_Detail.class);
+                Bundle bundle=new Bundle();
+                bundle.putParcelable("movie",movie);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }

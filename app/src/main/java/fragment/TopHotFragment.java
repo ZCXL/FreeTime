@@ -34,7 +34,7 @@ public class TopHotFragment extends Fragment implements Runnable{
     private PullToRefreshView pullToRefresh;
     //listView
     private ListView listView;
-    //arryalist movie
+    //array list movie
     private ArrayList<Movie>movieArrayList;
     //adapter of item
     private TopHotItemAdapter adapter;
