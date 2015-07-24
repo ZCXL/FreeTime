@@ -49,8 +49,8 @@
     <dimen name="main_ImageView1_layout_marginTop">28.33dp</dimen>
 
        <!--the data of main_frameLayout_zero_time -->
-    <dimen name="main_frameLayout_layout_width">292dp</dimen>
-    <dimen name="main_frameLayout_layout_height">193dp</dimen>
+    <dimen name="main_frameLayout_layout_width">350dp</dimen>
+    <dimen name="main_frameLayout_layout_height">240dp</dimen>
     <dimen name="main_frameLayout_layout_marginTop">21dp</dimen>
 
        <!--the data of main_frameLayout_zero_time_TextView1 -->

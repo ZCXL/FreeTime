@@ -14,5 +14,5 @@ public interface ParseJson {
      * @param c
      * @return
      */
-     ArrayList<BaseObject> getObjects(String c) throws JSONException;
+     ArrayList<BaseObject> getObjects(String c);
 }

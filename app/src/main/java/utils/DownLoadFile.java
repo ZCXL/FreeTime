@@ -26,6 +26,8 @@ public class DownLoadFile {
 
     private Context context;
 
+    private long lastTime=0;
+
     public OnDownloadListener getDownloadListener() {
         return downloadListener;
     }
@@ -58,6 +60,9 @@ public class DownLoadFile {
                         if(file_size<0){
                             if(errorListener!=null)
                                 errorListener.onSizeError();
+                        }else{
+                            if(downloadListener!=null)
+                                downloadListener.onFileSize(file_size);
                         }
 
                         if(inputStream==null){
@@ -84,11 +89,14 @@ public class DownLoadFile {
                             byte buf[]=new byte[1024];
                             long dotPercent=file_size/1000;
                             long nowPercent=dotPercent;
-
+                            lastTime=System.currentTimeMillis();
                             while(downloadFileSize<file_size){
                                 if(downloadFileSize>nowPercent){
-                                    if(downloadListener!=null)
-                                        downloadListener.onValueChange(1000*downloadFileSize/file_size);
+                                    if(downloadListener!=null) {
+                                        downloadListener.onValueChange(1000*downloadFileSize / file_size);
+                                        long distance=System.currentTimeMillis()-lastTime;
+                                        downloadListener.onSpeedChange((int)(downloadFileSize/distance));
+                                    }
                                     nowPercent+=dotPercent;
                                 }
                                 int numRead=inputStream.read(buf);
@@ -99,6 +107,8 @@ public class DownLoadFile {
                             }
                             fos.close();
                             inputStream.close();
+                            if(downloadListener!=null)
+                                downloadListener.onDownloadSuccess();
                         }else{
                             if(errorListener!=null)
                                 errorListener.onSDCardError();
@@ -125,10 +135,29 @@ public class DownLoadFile {
 
     public interface OnDownloadListener{
         /**
+         * start download
+         */
+        void onStart();
+        /**
          * change percent of download
          * @param value
          */
         void onValueChange(float value);
+
+        /**
+         * download speed
+         * @param speed
+         */
+        void onSpeedChange(int speed);
+
+        /**
+         * download successfully
+         */
+        void onDownloadSuccess();
+        /**
+         * file size
+         */
+        void onFileSize(long file_size);
     }
     public interface OnErrorListener{
         /**

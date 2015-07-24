@@ -12,4 +12,5 @@ import bean.BaseObject;
 public interface ParseXml {
     void Save(Context context,ArrayList<BaseObject>objects);
     ArrayList<BaseObject> Open(Context context);
+    void Delete(Context context);
 }

@@ -45,6 +45,8 @@ public class CheckVersion{
                     String result = NetworkFunction.ConnectServer(url,keys,parameter);//联网解析JSON
                     if (result != null) {
                         Versions versions = new Versions(result);
+                        if(versions==null)
+                            return;
                         version=(Version) versions.getItem(0);
 
                         //ArrayList<BaseObject> versionArray = versions.getObjects(result);
@@ -66,7 +68,6 @@ public class CheckVersion{
                                 listener.getVersion(version);
                             Welcome.signal+=1;
                         }
-                        return;
                     }
                 }
             }

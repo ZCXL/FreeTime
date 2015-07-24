@@ -3,47 +3,14 @@
     xmlns:customer="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!--title bar-->
-    <RelativeLayout
-        android:id="@+id/mine_my_collection_title_bar"
-        android:layout_width="fill_parent"
-        android:layout_height="47.44dp"
-        android:background="#f3f2f2"
-        >
-        <ImageView
-            android:id="@+id/left_return_arrow"
-            android:layout_width="12.66dp"
-            android:layout_height="22dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginBottom="13dp"
-            android:layout_marginLeft="17.33dp"
-            android:src="@drawable/left_return_arrow"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Collections"
-            android:textSize="16sp"
-            android:layout_marginTop="13dp"
-            android:layout_marginBottom="13dp"
-            />
-    </RelativeLayout>
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
-        android:background="#ffc6c5c5"/>
-    <!--movies that collected-->
-    <view_rewrite.SwipeListView
-        android:id="@+id/collection_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#fff4f7f9"
-        android:cacheColorHint="#00000000"
-        android:divider="#dddbdb"
-        android:dividerHeight="1dp"
-        customer:right_width="120dp"
-        />
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+    <view_rewrite.DownloadCircle
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        customer:circle_color_inside="#888888"
+        customer:circle_color_outside="#007ebb"
+        customer:text_color="#999999"
+        customer:text_size="8sp"
+        customer:image_button="@drawable/top_hot_detail_play_button"/>
 </LinearLayout>

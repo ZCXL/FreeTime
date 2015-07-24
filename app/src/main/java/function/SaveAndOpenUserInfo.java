@@ -107,8 +107,8 @@ public class SaveAndOpenUserInfo implements ParseXml{
             builder = factory.newDocumentBuilder();
             document = builder.parse(inputStream);
             Element root = document.getDocumentElement();
-            Element user = (Element)root.getElementsByTagName("UsersShow").item(0);
-            NodeList users = user.getElementsByTagName("userInfo");
+            //Element user = (Element)root.getElementsByTagName("UserShow").item(0);
+            NodeList users = root.getElementsByTagName("userInfo");
             for (int i = 0; i < users.getLength(); i++){
                 Element info = (Element)users.item(i);
                 userInfo = new UserInfo();
@@ -139,5 +139,10 @@ public class SaveAndOpenUserInfo implements ParseXml{
             Log.d(TAG, "IO output error:" + e.toString());
             return null;
         }
+    }
+
+    @Override
+    public void Delete(Context context) {
+        context.deleteFile("userInfo.xml");
     }
 }

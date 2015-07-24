@@ -44,7 +44,7 @@ public class Utils {
 			listItem.measure(0, 0);
 			totalHeight += listItem.getMeasuredHeight();
 		}
-
+		//View view=listView.getChildAt(listView.getChildCount()-1);
 		ViewGroup.LayoutParams params = listView.getLayoutParams();
 		params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
 		listView.setLayoutParams(params);

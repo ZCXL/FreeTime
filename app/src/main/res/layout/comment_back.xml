@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/commentname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="20dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="Forever"
+        android:textColor="#ff38a0ee"/>
+    <TextView
+        android:id="@+id/comment_reply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/commentname"
+        android:paddingTop="5dp"
+        android:text=" reply "
+        />
+    <TextView
+        android:id="@+id/commentedname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="5dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:layout_toRightOf="@+id/comment_reply"
+        android:text="Sun shine"
+        android:textColor="#ff38a0ee"/>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/comment_reply_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="10dp"
+        android:textSize="13sp"
+        android:paddingBottom="5dp"
+        android:text="Just so soJust so soJust so soJust so soJust so soJust so so"
+        />
+</LinearLayout>

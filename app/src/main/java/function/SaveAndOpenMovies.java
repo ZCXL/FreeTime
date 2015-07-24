@@ -140,4 +140,9 @@ public class SaveAndOpenMovies implements ParseXml {
                 return null;
             }
         }
+
+    @Override
+    public void Delete(Context context) {
+
     }
+}

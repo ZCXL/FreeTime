@@ -65,4 +65,12 @@
     <declare-styleable name="swipelistviewstyle">
         <attr name="right_width" format="dimension"></attr>
     </declare-styleable>
+
+    <declare-styleable name="DownloadCircle">
+        <attr name="circle_color_inside" format="color"/>
+        <attr name="circle_color_outside" format="color"/>
+        <attr name="text_color" format="color"/>
+        <attr name="text_size" format="dimension"/>
+        <attr name="image_button" format="integer"/>
+    </declare-styleable>
 </resources>

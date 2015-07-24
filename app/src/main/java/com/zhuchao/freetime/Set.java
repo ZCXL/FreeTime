@@ -68,6 +68,7 @@ public class Set extends FragmentActivity {
                     isTop=true;
                     return false;
                 }else{
+                    setResult(1,null);
                     finish();
                 }
         }

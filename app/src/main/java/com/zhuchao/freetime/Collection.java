@@ -6,17 +6,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import adapter.CollectionAdapter;
 import bean.Movie;
 import bean.Movies;
+import fragment.MineFragment;
 import function.Network;
 import function.NetworkFunction;
 import view_rewrite.SwipeListView;
@@ -41,6 +42,9 @@ public class Collection extends Activity implements Runnable, UploadView.OnUploa
             switch (msg.what) {
                 case 0:
                     adapter.notifyDataSetChanged();
+                    if(movieArrayList.size()==0){
+                        swipeListView.addView(LayoutInflater.from(Collection.this).inflate(R.layout.collection_item_nothing,null));
+                    }
                     break;
             }
         }
@@ -92,7 +96,7 @@ public class Collection extends Activity implements Runnable, UploadView.OnUploa
     @Override
     public void run() {
         String keys[]=new String[]{"number"};
-        String parameters[]=new String[]{"241938F47DE2A7CEAB664C99E5A63F28"};
+        String parameters[]=new String[]{MineFragment.userInfo.getNumber()};
         String result= NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/get_collection.php",keys,parameters);
         Log.d("result",result);
         if(result!=null&&!result.contains("error")){

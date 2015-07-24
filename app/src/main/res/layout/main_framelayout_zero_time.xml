@@ -13,28 +13,20 @@
         android:layout_marginTop="@dimen/main_ImageView1_layout_marginTop"
         android:layout_centerHorizontal="true"
         android:src="@drawable/main_title_word"/>
-    <FrameLayout
-        android:id="@+id/main_zero_time_movie_frame"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_zero_time_movie_image_container"
         android:layout_width="@dimen/main_frameLayout_layout_width"
         android:layout_height="@dimen/main_frameLayout_layout_height"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/main_zero_time_title"
-        android:layout_marginTop="@dimen/main_frameLayout_layout_marginTop">
-        <android.support.v4.view.ViewPager
-            android:id="@+id/main_zero_time_movie_image_container"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:src="@drawable/main_video_frame"/>
-    </FrameLayout>
+        android:layout_marginTop="@dimen/main_frameLayout_layout_marginTop"/>
+
     <TextView
         android:id="@+id/main_zero_time_movie_description"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/main_zero_time_movie_frame"
+        android:layout_below="@+id/main_zero_time_movie_image_container"
         android:layout_marginTop="@dimen/main_TextView1_layout_marginTop"
         android:paddingLeft="@dimen/main_TextView1_paddingLeft"
         android:paddingRight="@dimen/main_TextView1_paddingRight"
@@ -53,6 +45,7 @@
         android:textSize="@dimen/main_TextView2_textSize"
         android:textColor="#b3b3b3"/>
     <ImageView
+        android:id="@+id/main_zero_time_movie_comment"
         android:layout_width="@dimen/main_ImageView2_layout_width"
         android:layout_height="@dimen/main_ImageView2_layout_height"
         android:layout_alignBottom="@+id/main_zero_time_movie_size"
@@ -79,7 +72,7 @@
             android:layout_marginRight="@dimen/main_frameLayout_zero_time_view_rewrite_layout_marginRight"
             customer:image_width="@dimen/main_frameLayout_zero_time_view_rewrite_image_width"
             customer:image_height="@dimen/main_frameLayout_zero_time_view_rewrite_image_height"
-            customer:ripple_color="#8dc9e8"
+            customer:ripple_color="#00b7ee"
             customer:ripple_speed="1"
             customer:image="@drawable/main_share_button"
             />
@@ -94,7 +87,7 @@
             android:layout_centerHorizontal="true"
             customer:image_width="@dimen/main_frameLayout_zero_time_view_rewrite_image_width"
             customer:image_height="@dimen/main_frameLayout_zero_time_view_rewrite_image_height"
-            customer:ripple_color="#8dc9e8"
+            customer:ripple_color="#00b7ee"
             customer:ripple_speed="1"
             customer:image="@drawable/main_collect_button"
             />

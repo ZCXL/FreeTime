@@ -25,9 +25,13 @@ import com.tencent.tauth.UiError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
+import bean.BaseObject;
 import bean.UserInfo;
 import function.Network;
 import function.NetworkFunction;
+import function.SaveAndOpenUserInfo;
 import openapi.UsersAPI;
 import view_rewrite.RippleImage;
 
@@ -52,6 +56,7 @@ public class Login extends Activity implements View.OnClickListener {
     private Long uid;
     private String mCode;
     private RippleImage rippleImage_Weibo;
+    private SaveAndOpenUserInfo saveAndOpenUserInfo=new SaveAndOpenUserInfo();
 
     private Handler handler=new Handler(){
       public void handleMessage(Message message){
@@ -89,6 +94,9 @@ public class Login extends Activity implements View.OnClickListener {
                   }
                   break;
               case 1:
+                  ArrayList<BaseObject>userinfos=new ArrayList<BaseObject>();
+                  userinfos.add(userInfo);
+                  saveAndOpenUserInfo.Save(Login.this,userinfos);
                   Intent intent=new Intent();
                   Bundle bundle=new Bundle();
                   if(userInfo!=null){

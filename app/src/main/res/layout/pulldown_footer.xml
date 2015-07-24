@@ -4,7 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="10dp"
-    android:paddingTop="10dp" >
+    android:paddingTop="10dp"
+    android:background="@android:color/white">
     <TextView
         android:id="@+id/pull_down_footer_text"
         android:layout_width="wrap_content"

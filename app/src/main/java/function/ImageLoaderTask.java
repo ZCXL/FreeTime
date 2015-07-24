@@ -41,7 +41,7 @@ public class ImageLoaderTask extends AsyncTask<String, Void, Bitmap> {
 		if(filename.equals(""))
      		filename="http://coon-moonlord.stor.sinaapp.com/GoodsImage/noimage.jpg";
 		String temp=new String(filename);
-		temp=temp.substring(temp.lastIndexOf("/")+1);
+		//temp=temp.substring(temp.lastIndexOf("/")+1);
 		if(ImageCache.containsKey(filename)){
 			Log.d("image","reuse");
 			SoftReference<Bitmap>reference=ImageCache.get(filename);

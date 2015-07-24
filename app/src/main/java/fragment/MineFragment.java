@@ -13,11 +13,13 @@ import android.widget.TextView;
 import com.zhuchao.freetime.Collection;
 import com.zhuchao.freetime.Login;
 import com.zhuchao.freetime.R;
+import com.zhuchao.freetime.SelfLabel;
 import com.zhuchao.freetime.Set;
 
 import bean.UserInfo;
 import function.ImageLoaderTask;
 import function.ImageProcess;
+import function.LoginNotification;
 import view_rewrite.RippleLayout;
 import view_rewrite.RoundImageView;
 
@@ -28,13 +30,15 @@ public class MineFragment extends Fragment implements View.OnClickListener{
     private RoundImageView head;
     public static boolean isLogin=false;
     //User info
-    private UserInfo userInfo;
+    public static UserInfo userInfo;
     //User name
     private TextView userName;
     //Set button
     private ImageView set_button;
     //collect button
     private RippleLayout collect_button;
+    //self label
+    private RippleLayout label_button;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.main_framelayout_mine,container,false);
@@ -52,6 +56,13 @@ public class MineFragment extends Fragment implements View.OnClickListener{
         set_button=(ImageView)rootView.findViewById(R.id.mine_set);
 
         collect_button=(RippleLayout)rootView.findViewById(R.id.mine_collection_block);
+
+        label_button=(RippleLayout)rootView.findViewById(R.id.mine_self_label_block);
+
+        if(isLogin&&userInfo!=null){
+            userName.setText(userInfo.getNick_name());
+            new ImageLoaderTask(head,getActivity(), ImageProcess.FileType_Image.HeadImage).execute(userInfo.getHead_url());
+        }
     }
     private void initData(){
         head.setOnClickListener(this);
@@ -59,6 +70,8 @@ public class MineFragment extends Fragment implements View.OnClickListener{
         set_button.setOnClickListener(this);
 
         collect_button.setListener(this);
+
+        label_button.setListener(this);
     }
 
     @Override
@@ -70,10 +83,19 @@ public class MineFragment extends Fragment implements View.OnClickListener{
                 }
                 break;
             case R.id.mine_set:
-                getActivity().startActivity(new Intent(getActivity(), Set.class));
+                getActivity().startActivityForResult(new Intent(getActivity(), Set.class),1);
                 break;
             case R.id.mine_collection_block:
-                getActivity().startActivity(new Intent(getActivity(), Collection.class));
+                if(!isLogin)
+                    LoginNotification.loginNotification(getActivity());
+                else
+                    getActivity().startActivity(new Intent(getActivity(), Collection.class));
+                break;
+            case R.id.mine_self_label_block:
+                if(!isLogin)
+                    LoginNotification.loginNotification(getActivity());
+                else
+                    getActivity().startActivity(new Intent(getActivity(), SelfLabel.class));
                 break;
         }
     }
@@ -88,8 +110,12 @@ public class MineFragment extends Fragment implements View.OnClickListener{
                     Log.d("login","bundle");
                     userInfo = bundle.getParcelable("userinfo");
                     updateUserInfo();
-                    isLogin=true;
                 }
+            }
+        }else if(requestCode==1){
+            if(!isLogin){
+                userName.setText("Click to login");
+                head.setImageResource(R.drawable.qq_login_button);
             }
         }
     }
@@ -97,6 +123,7 @@ public class MineFragment extends Fragment implements View.OnClickListener{
         if(userInfo!=null){
             new ImageLoaderTask(head,getActivity(), ImageProcess.FileType_Image.HeadImage).execute(userInfo.getHead_url());
             userName.setText(userInfo.getNick_name());
+            isLogin=true;
         }
     }
 }

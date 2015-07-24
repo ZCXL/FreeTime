@@ -1,5 +1,7 @@
 package bean;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +31,10 @@ public class CommentBacks extends BaseObjects implements ParseJson{
             return null;
         return commentBacks.get(index);
     }
-
+    public void addCommentBacks(CommentBack back){
+        Log.d("tell me why",back.getComment());
+        commentBacks.add(back);
+    }
     @Override
     public ArrayList<BaseObject> getObjects(String c) {
         return null;
@@ -43,7 +48,9 @@ public class CommentBacks extends BaseObjects implements ParseJson{
                 back.setComment(temp.getString("comment"));
                 back.setTime(temp.getString("time"));
                 back.setComment_number(temp.getString("commentnumber"));
-                back.setComment_time(temp.getString("commenttime"));
+                back.setComment_name(temp.getString("commentname"));
+                back.setCommented_name(temp.getString("commentedname"));
+                back.setCommented_number(temp.getString("commentednumber"));
                 commentBacks.add(back);
             }
             return commentBacks;

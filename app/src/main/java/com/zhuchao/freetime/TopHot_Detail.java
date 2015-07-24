@@ -23,12 +23,15 @@ import org.json.JSONObject;
 import bean.Comment;
 import bean.Comments;
 import bean.Movie;
+import fragment.MineFragment;
 import function.ImageLoaderTask;
 import function.ImageProcess;
+import function.LoginNotification;
 import function.Network;
 import function.NetworkFunction;
 import utils.ImageLoader;
 import view_rewrite.CustomProgressDialog;
+import view_rewrite.LoadingDialog;
 import view_rewrite.RoundImageView;
 import view_rewrite.UploadView;
 
@@ -65,6 +68,7 @@ public class TopHot_Detail extends Activity implements View.OnClickListener, Upl
 
     private CustomProgressDialog dialog;
 
+    private LoadingDialog loadingDialog;
     //image loader
     private ImageLoader imageLoader;
     //comment edit
@@ -87,20 +91,20 @@ public class TopHot_Detail extends Activity implements View.OnClickListener, Upl
                         Comment comment=(Comment)comments.getItem(i);
                         addComment(comment);
                     }
-                    stopProgressDialog();
+                    loadingDialog.stopProgressDialog();
                     break;
                 case 1:
-                    stopProgressDialog();
+                    loadingDialog.stopProgressDialog();
                     break;
                 case 2:
                     comment_edit.setText("");
                     addComment(comment);
                     Toast.makeText(TopHot_Detail.this,"Comment Successfully",Toast.LENGTH_SHORT).show();
-                    stopProgressDialog();
+                    loadingDialog.stopProgressDialog();
                     break;
                 case 3:
                     Toast.makeText(TopHot_Detail.this,"Comment failed,please try again!",Toast.LENGTH_SHORT).show();
-                    stopProgressDialog();
+                    loadingDialog.stopProgressDialog();
                     break;
                 case 4:
                     if(isCollect){
@@ -131,7 +135,7 @@ public class TopHot_Detail extends Activity implements View.OnClickListener, Upl
         initData();
 
         if(Network.checkNetWorkState(TopHot_Detail.this)){
-            startProgressDialog();
+            loadingDialog.startProgressDialog();
             new Thread(this).start();
         }
     }
@@ -164,6 +168,8 @@ public class TopHot_Detail extends Activity implements View.OnClickListener, Upl
         comment_edit=(EditText)findViewById(R.id.top_hot_detail_bottom_edit);
 
         send=(Button)findViewById(R.id.top_hot_detail_send_comment);
+
+        loadingDialog=new LoadingDialog(TopHot_Detail.this);
     }
 
     private void initData(){
@@ -208,37 +214,47 @@ public class TopHot_Detail extends Activity implements View.OnClickListener, Upl
                 break;
             case R.id.top_hot_detail_collect_button:
                 if(Network.checkNetWorkState(TopHot_Detail.this)){
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            String keys[]={"movieid","number","available"};
-                            String parameters[];
-                            if(isCollect)
-                                parameters=new String[]{movie.getMovieId(),"241938F47DE2A7CEAB664C99E5A63F28","1"};
-                            else
-                                parameters=new String[]{movie.getMovieId(),"241938F47DE2A7CEAB664C99E5A63F28","2"};
-                            String result=NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/collect.php",keys,parameters);
-                            if(result!=null&&!result.contains("error")){
-                                isCollect=isCollect?false:true;
-                                mHandler.sendEmptyMessage(4);
+                    if(MineFragment.isLogin){
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                String keys[]={"movieid","number","available"};
+                                String parameters[];
+                                if(isCollect)
+                                    parameters=new String[]{movie.getMovieId(),MineFragment.userInfo.getNumber(),"1"};
+                                else
+                                    parameters=new String[]{movie.getMovieId(),MineFragment.userInfo.getNumber(),"2"};
+                                String result=NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/collect.php",keys,parameters);
+                                if(result!=null&&!result.contains("error")){
+                                    isCollect=isCollect?false:true;
+                                    mHandler.sendEmptyMessage(4);
+                                }
                             }
-                        }
-                    }).start();
+                        }).start();
+                    }else{
+                        LoginNotification.loginNotification(TopHot_Detail.this);
+                    }
                 }
                 break;
             case R.id.top_hot_detail_comment_button:
-                startActivity(new Intent(TopHot_Detail.this,CommentActivity.class));
+                Intent intent2=new Intent(TopHot_Detail.this,CommentActivity.class);
+                Bundle bundle1=new Bundle();
+                bundle1.putParcelable("movie",movie);
+                intent2.putExtras(bundle1);
+                startActivity(intent2);
                 break;
             case R.id.top_hot_detail_play_button:
                 if(Network.checkNetWorkState(TopHot_Detail.this)){
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            String keys[]={"movieid","number"};
-                            String parameters[]={movie.getMovieId(),"241938F47DE2A7CEAB664C99E5A63F28"};
-                            NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/uploadviewlog.php",keys,parameters);
-                        }
-                    }).start();
+                    if(MineFragment.isLogin){
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                String keys[]={"movieid","number"};
+                                String parameters[]={movie.getMovieId(),MineFragment.userInfo.getNumber()};
+                                NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/uploadviewlog.php",keys,parameters);
+                            }
+                        }).start();
+                    }
                 }
                 Intent intent1=new Intent(TopHot_Detail.this,PlayMovie.class);
                 Bundle bundle=new Bundle();
@@ -250,21 +266,25 @@ public class TopHot_Detail extends Activity implements View.OnClickListener, Upl
             case R.id.top_hot_detail_send_comment:
                 final String commt=comment_edit.getText().toString();
                 if(commt!=null&&!commt.equals("")){
-                    startProgressDialog();
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            String keys[]={"number","comment","movieid"};
-                            String parameters[]={"241938F47DE2A7CEAB664C99E5A63F28",commt,movie.getMovieId()};
-                            String result=NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/comment.php",keys,parameters);
-                            if(result!=null&&!result.contains("error")){
-                                comment=new Comment(result);
-                                mHandler.sendEmptyMessage(2);
-                            }else{
-                                mHandler.sendEmptyMessage(1);
+                    if(MineFragment.isLogin){
+                        loadingDialog.startProgressDialog();
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                String keys[]={"number","comment","movieid"};
+                                String parameters[]={MineFragment.userInfo.getNumber(),commt,movie.getMovieId()};
+                                String result=NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/comment.php",keys,parameters);
+                                if(result!=null&&!result.contains("error")){
+                                    comment=new Comment(result);
+                                    mHandler.sendEmptyMessage(2);
+                                }else{
+                                    mHandler.sendEmptyMessage(1);
+                                }
                             }
-                        }
-                    }).start();
+                        }).start();
+                    }else{
+                        LoginNotification.loginNotification(TopHot_Detail.this);
+                    }
                 }else{
                     Toast.makeText(TopHot_Detail.this,"Comment can't be null",Toast.LENGTH_SHORT).show();
                 }
@@ -282,39 +302,32 @@ public class TopHot_Detail extends Activity implements View.OnClickListener, Upl
         String keys[]=new String[]{"movieid","page"};
         String parameters[]=new String[]{movie.getMovieId(),"1"};
         String result= NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/get_comment.php",keys,parameters);
-        keys=new String[]{"number","movieid"};
-        parameters=new String[]{"241938F47DE2A7CEAB664C99E5A63F28",movie.getMovieId()};
-        String result1=NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/get_collection_state.php",keys,parameters);
-        Log.d("result1", result);
-        Log.d("result2", result1);
+        Log.d("result2", result);
+        String result1="no";
+        if(MineFragment.isLogin){
+            keys=new String[]{"number","movieid"};
+            parameters=new String[]{MineFragment.userInfo.getNumber(),movie.getMovieId()};
+            result1=NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/get_collection_state.php",keys,parameters);
+            Log.d("result1", result1);
+        }
         if((result!=null&&!result.contains("error"))&&(result1!=null&&!result1.contains("error"))){
             comments=new Comments(result);
-            try {
-                JSONObject object=new JSONObject(result1);
-                String state=object.getString("state");
-                if(state.equals("0"))
-                    isCollect=false;
-                else
-                    isCollect=true;
-            } catch (JSONException e) {
-                e.printStackTrace();
+            //default false
+            if(!result1.equals("no")){
+                try {
+                    JSONObject object=new JSONObject(result1);
+                    String state=object.getString("state");
+                    if(state.equals("0"))
+                        isCollect=false;
+                    else
+                        isCollect=true;
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
             mHandler.sendEmptyMessage(0);
         }else{
             mHandler.sendEmptyMessage(1);
-        }
-    }
-    private void startProgressDialog(){
-        if (dialog == null){
-            dialog= CustomProgressDialog.createDialog(TopHot_Detail.this);
-        }
-        dialog.show();
-    }
-
-    private void stopProgressDialog(){
-        if (dialog != null){
-            dialog.dismiss();
-            dialog = null;
         }
     }
 
@@ -329,6 +342,6 @@ public class TopHot_Detail extends Activity implements View.OnClickListener, Upl
         time.setText(comment.getTime());
         imageView.setTag(comment.getHead_url());
         imageLoader.DisplayImage(comment.getHead_url(), imageView);
-        linearLayout.addView(view);
+        linearLayout.addView(view,0);
     }
 }

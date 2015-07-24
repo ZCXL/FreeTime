@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view_rewrite.ExpandableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:customer="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+    <LinearLayout
+        android:id="@+id/collapse_value"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                >
+                <view_rewrite.RoundImageView
+                    android:id="@+id/mine_head_image"
+                    android:layout_width="@dimen/main_frameLayout_mine_view_rewrite_layout_width"
+                    android:layout_height="@dimen/main_frameLayout_mine_view_rewrite_layout_height"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/main_frameLayout_mine_view_rewrite_layout_marginLeft"
+                    android:layout_marginTop="19.33dp"
+                    android:src="@drawable/qq_login_button"
+                    customer:border_outside_color="#f3f2f2"
+                    customer:border_thickness="@dimen/main_frameLayout_mine_view_rewrite_border_thickness" />
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="21dp"
+                    android:layout_toRightOf="@+id/mine_head_image"
+                    android:layout_marginLeft="12.66dp"
+                    android:textColor="#999999"
+                    android:textSize="36px"
+                    android:text="Sun Shine."/>
+                <TextView
+                    android:id="@+id/comment_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/user_name"
+                    android:layout_marginTop="14.33dp"
+                    android:layout_toRightOf="@+id/mine_head_image"
+                    android:layout_marginLeft="12.66dp"
+                    android:layout_marginRight="28.33dp"
+                    android:textSize="40px"
+                    android:text="朱超是傻逼说这部影片真的是太好看了。哈哈哈哈"
+                    />
+                <TextView
+                    android:id="@+id/comment_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/comment_text"
+                    android:layout_marginTop="11dp"
+                    android:layout_toRightOf="@+id/mine_head_image"
+                    android:layout_marginLeft="12.66dp"
+                    android:textColor="#999999"
+                    android:textSize="28px"
+                    android:text="12 minutes ago"
+                    />
+                <ImageView
+                    android:id="@+id/icon_value"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="40dp"
+                    android:layout_below="@+id/comment_text"
+                    android:layout_marginTop="11dp"
+                    android:src="@drawable/update_detail_down"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/expand_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <View
+            android:id="@+id/detail_comment_line"
+            android:layout_width="fill_parent"
+            android:layout_height="0.23dp"
+            android:layout_marginTop="10.33dp"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="#f6cccbcb"/>
+        <ListView
+            android:id="@+id/comment_back_container"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"/>
+
+    </LinearLayout>
+</view_rewrite.ExpandableLayout>

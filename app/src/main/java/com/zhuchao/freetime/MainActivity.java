@@ -16,11 +16,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import connection.DownloadMovieServiceConnection;
 import connection.DownloadServiceConnection;
 import fragment.MineFragment;
 import fragment.TopHotFragment;
 import fragment.ZeroTimeFragment;
 import receiver.DownloadReceiver;
+import service.DownloadMovieService;
 import service.DownloadService;
 
 
@@ -43,6 +45,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private DownloadReceiver downloadReceiver;
     //Download connection
     private DownloadServiceConnection downloadServiceConnection;
+    //download movie
+    public static DownloadMovieService downloadMovieService;
+    private DownloadMovieServiceConnection downloadMovieServieConnection;
     private long exitTime = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         initView();
     }
     private void initView(){
+
+        bindService();
         //init button at main interface's bottom.
         zero_time=(RelativeLayout)findViewById(R.id.main_zero_time_layout);
         top_hot=(RelativeLayout)findViewById(R.id.main_top_hot_layout);
@@ -78,8 +85,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         zeroTimeFragment=new ZeroTimeFragment();
         transaction.add(R.id.container, zeroTimeFragment);
         transaction.commit();
-
-        bindService();
     }
 
     /**
@@ -201,6 +206,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         Intent intent=new Intent(MainActivity.this,DownloadService.class);
         bindService(intent, downloadServiceConnection, BIND_AUTO_CREATE);
         startService(intent);
+
+        downloadMovieServieConnection=new DownloadMovieServiceConnection();
+        Intent intent1=new Intent(MainActivity.this,DownloadMovieService.class);
+        bindService(intent1,downloadMovieServieConnection,BIND_AUTO_CREATE);
+        startService(intent1);
 
         IntentFilter filter=new IntentFilter();
         filter.addAction(DownloadReceiver.ACTION_UPDATE);

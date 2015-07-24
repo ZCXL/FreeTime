@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:layout_height="50dp">
+    <EditText
+        android:id="@+id/comment_back_edit"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginLeft="14dp"
+        android:layout_toLeftOf="@+id/comment_back_send"
+        android:layout_marginRight="14dp"
+        android:layout_centerVertical="true"
+        android:textSize="13.33sp"
+        android:textColor="#999999"
+        android:hint="Say something"
+        android:background="@drawable/top_hot_detail_bottom_edit"
+        />
+    <Button
+        android:id="@+id/comment_back_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16.33dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textSize="13.33sp"
+        android:textColor="#999999"
+        android:text="Send"
+        android:background="@android:color/white"
+        />
+</RelativeLayout>

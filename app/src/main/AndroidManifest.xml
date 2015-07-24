@@ -85,6 +85,7 @@
         </activity>
 
         <service android:name="service.DownloadService" />
+        <service android:name="service.DownloadMovieService"/>
 
         <activity
             android:name=".Collection"
@@ -92,6 +93,10 @@
         </activity>
         <activity
             android:name=".CommentActivity"
+            android:label="@string/title_activity_comment" >
+        </activity>
+        <activity
+            android:name=".SelfLabel"
             android:label="@string/title_activity_comment" >
         </activity>
     </application>

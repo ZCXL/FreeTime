@@ -27,6 +27,7 @@ import com.zhuchao.freetime.Set;
 import bean.Version;
 import function.CheckVersion;
 import function.ImageProcess;
+import function.SaveAndOpenUserInfo;
 import view_rewrite.CustomProgressDialog;
 
 /**
@@ -152,6 +153,7 @@ public class Set_Main extends Fragment implements View.OnClickListener{
     public void onClick(final View v) {
         switch (v.getId()){
             case R.id.left_return_arrow:
+                getActivity().setResult(1, null);
                 getActivity().finish();
                 break;
             case R.id.setting_about_us:
@@ -204,6 +206,8 @@ public class Set_Main extends Fragment implements View.OnClickListener{
                 MineFragment.isLogin=false;
                 quit_button.setClickable(false);
                 quit_button.setBackgroundColor(Color.parseColor("#bebebe"));
+                SaveAndOpenUserInfo saveAndOpenUserInfo=new SaveAndOpenUserInfo();
+                saveAndOpenUserInfo.Delete(getActivity());
                 Toast.makeText(getActivity(),"Login off successfully",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.setting_share_with_friends:

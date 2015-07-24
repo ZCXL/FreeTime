@@ -11,6 +11,7 @@ import android.view.Window;
 import bean.Movies;
 import bean.UserInfo;
 import bean.Version;
+import fragment.MineFragment;
 import function.CheckVersion;
 import function.Network;
 
@@ -56,13 +57,13 @@ public class Welcome extends Activity implements Runnable{
         checkVersion.startCheck();
 
         //thread
-        while(signal<0){
+        while(signal<0||!initOver){
             doNothing();
-//            if(!initOver){
-//                movies=new Movies(Welcome.this);
-//                userInfo=new UserInfo(Welcome.this);
-//                initOver=true;
-//            }
+            if(!initOver){
+                movies=new Movies(Welcome.this);
+                userInfo=new UserInfo(Welcome.this);
+                initOver=true;
+            }
         }
         preferences=getSharedPreferences(setting,MODE_PRIVATE);
         isFirst=preferences.getBoolean("START_FIRST",true);
@@ -77,6 +78,11 @@ public class Welcome extends Activity implements Runnable{
             Welcome.this.finish();
         }else{
             //load user info
+            if(userInfo!=null&&userInfo.getNumber()!=null){
+                Log.d("tell me why",userInfo.getHead_url());
+                MineFragment.isLogin=true;
+                MineFragment.userInfo=userInfo;
+            }
             //load resources saved in SDCard
             Log.d("Version",version.getVersionDescription());
             startActivity(new Intent(Welcome.this, MainActivity.class));

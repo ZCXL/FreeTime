@@ -64,10 +64,10 @@ public class UploadView extends LinearLayout implements ScrollOverListView.OnScr
 	public void enableAutoFetchMore(boolean enable, int index) {
 		if (enable) {
 			mListView.setBottomPosition(index);
-			mFooterLoadingView.setVisibility(View.VISIBLE);
-		} else {
-			mFooterTextView.setText("Type");
 			mFooterLoadingView.setVisibility(View.GONE);
+		} else {
+			mFooterTextView.setText("More");
+			mFooterLoadingView.setVisibility(View.VISIBLE);
 		}
 		mEnableAutoFetchMore = enable;
 	}
