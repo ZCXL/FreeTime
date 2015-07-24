@@ -8,10 +8,12 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Window;
 
+import bean.Movie;
 import bean.Movies;
 import bean.UserInfo;
 import bean.Version;
 import fragment.MineFragment;
+import fragment.ZeroTimeFragment;
 import function.CheckVersion;
 import function.Network;
 
@@ -83,8 +85,11 @@ public class Welcome extends Activity implements Runnable{
                 MineFragment.isLogin=true;
                 MineFragment.userInfo=userInfo;
             }
-            //load resources saved in SDCard
-            Log.d("Version",version.getVersionDescription());
+            if(movies!=null&&movies.getCount()>0){
+                for(int i=0,j=movies.getCount();i<j;i++){
+                    ZeroTimeFragment.movies.add((Movie)movies.getItem(i));
+                }
+            }
             startActivity(new Intent(Welcome.this, MainActivity.class));
             overridePendingTransition(R.anim.loading_in, R.anim.loading_out);
             Welcome.this.finish();

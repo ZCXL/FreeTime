@@ -3,10 +3,17 @@ package bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import function.ParseJson;
+
 /**
  * Created by zhuchao on 7/13/15.
  */
-public class Movie extends BaseObject implements Parcelable{
+public class Movie extends BaseObject implements Parcelable, ParseJson{
     private String description;
     private long fileSize;
     private String time;
@@ -101,6 +108,10 @@ public class Movie extends BaseObject implements Parcelable{
         super(TYPE.MOVIE);
     }
 
+    public Movie(String c){
+        super(TYPE.MOVIE);
+        getObjects(c);
+    }
     //implement parcel
     @Override
     public int describeContents() {
@@ -143,5 +154,25 @@ public class Movie extends BaseObject implements Parcelable{
         movieName=in.readString();
         viewNumber=in.readString();
         commentNumber=in.readString();
+    }
+
+    @Override
+    public ArrayList<BaseObject> getObjects(String c) {
+        try {
+            JSONObject object=new JSONObject(c);
+            JSONObject jsonObject=object.getJSONObject("M");
+            setMovieName(jsonObject.getString("moviename"));
+            setMovieId(jsonObject.getString("movieId"));
+            setFileUrl(jsonObject.getString("movieurl"));
+            setPlayUrl(jsonObject.getString("playurl"));
+            setTime(jsonObject.getString("movietime"));
+            setImageUrl(jsonObject.getString("moviepictureurl"));
+            setDescription(jsonObject.getString("movieinstruction"));
+            setViewNumber(jsonObject.getString("viewnumber"));
+            setCommentNumber(jsonObject.getString("commentnumber"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

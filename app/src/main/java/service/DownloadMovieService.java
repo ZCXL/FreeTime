@@ -7,6 +7,9 @@ import android.os.IBinder;
 import android.util.Log;
 
 
+import java.util.LinkedList;
+
+import bean.Movie;
 import fragment.ZeroTimeFragment;
 import utils.DownLoadFile;
 
@@ -16,10 +19,15 @@ import utils.DownLoadFile;
 public class DownloadMovieService extends Service implements DownLoadFile.OnDownloadListener, DownLoadFile.OnErrorListener{
     private IBinder binder;
 
-    private String tasks;
-
     private DownLoadFile downLoadFile;
 
+    private LinkedList<Movie>movie_queue;
+
+    private LinkedList<String>movie_tag;
+
+    private boolean isDownloading=false;
+
+    private String tag;
     @Override
     public IBinder onBind(Intent intent) {
         return binder;
@@ -32,6 +40,9 @@ public class DownloadMovieService extends Service implements DownLoadFile.OnDown
         downLoadFile=new DownLoadFile(getApplicationContext());
         downLoadFile.setDownloadListener(this);
         downLoadFile.setErrorListener(this);
+
+        movie_queue=new LinkedList<Movie>();
+        movie_tag=new LinkedList<String>();
     }
 
     @Override
@@ -51,24 +62,35 @@ public class DownloadMovieService extends Service implements DownLoadFile.OnDown
             return DownloadMovieService.this;
         }
     }
-
-    public void addTask(String url){
-        this.tasks=url;
-        startDownloadTsk();
+    public void addTask(Movie m,String tag){
+        if(m!=null) {
+            movie_queue.add(m);
+            movie_tag.add(tag);
+            if(isDownloading)
+                notifyWait(tag);
+            startDownloadTsk();
+        }
     }
-
     public void startDownloadTsk(){
-        downLoadFile.startDownload(tasks);
+        if(!isDownloading){
+            if(movie_queue.size() >0){
+                Movie movie=movie_queue.poll();
+                tag=movie_tag.poll();
+                isDownloading=true;
+                Log.d("nononono",tag);
+                downLoadFile.startDownload(movie.getFileUrl());
+            }
+        }
     }
 
     @Override
     public void onStart() {
         notifyStart();
+        isDownloading=true;
     }
 
     @Override
     public void onValueChange(float value) {
-        Log.d("tell me why",String.valueOf(value));
         notifyPercent(value);
     }
 
@@ -80,61 +102,82 @@ public class DownloadMovieService extends Service implements DownLoadFile.OnDown
     @Override
     public void onDownloadSuccess() {
         notifyCompleted();
+        isDownloading=false;
     }
 
     @Override
     public void onFileSize(long file_size) {
-        notifyFileSize(file_size);
+        notifyFileSize(file_size/1000000);
     }
 
     @Override
     public void onSizeError() {
         notifyError();
+        isDownloading=false;
+        startDownloadTsk();
     }
 
     @Override
     public void onStreamError() {
         notifyError();
+        isDownloading=false;
+        startDownloadTsk();
     }
 
     @Override
     public void onSDCardError() {
         notifyError();
+        isDownloading=false;
+        startDownloadTsk();
     }
 
     @Override
     public void onDownloadError() {
         notifyError();
+        isDownloading=false;
+        startDownloadTsk();
     }
 
     private void notifyStart(){
         Intent intent=new Intent(ZeroTimeFragment.ACTION_START);
         intent.putExtra("isStart",true);
+        intent.putExtra("tag",tag);
         DownloadMovieService.this.sendBroadcast(intent);
     }
     private void notifyCompleted(){
         Intent intent=new Intent(ZeroTimeFragment.ACTION_COMPLETED);
         intent.putExtra("isCompleted",true);
+        intent.putExtra("tag",tag);
         DownloadMovieService.this.sendBroadcast(intent);
+        startDownloadTsk();
     }
     private void notifyError(){
         Intent intent=new Intent(ZeroTimeFragment.ACTION_ERROR);
         intent.putExtra("isError",true);
+        intent.putExtra("tag",tag);
         DownloadMovieService.this.sendBroadcast(intent);
     }
     private void notifySpeed(int speed){
         Intent intent=new Intent(ZeroTimeFragment.ACTION_SPEED);
         intent.putExtra("speed",speed);
+        intent.putExtra("tag",tag);
         DownloadMovieService.this.sendBroadcast(intent);
     }
     private void notifyPercent(float value){
         Intent intent=new Intent(ZeroTimeFragment.ACTION_PERCENT);
         intent.putExtra("percent",value);
+        intent.putExtra("tag",tag);
         DownloadMovieService.this.sendBroadcast(intent);
     }
     private void notifyFileSize(long file_size){
         Intent intent=new Intent(ZeroTimeFragment.ACTION_FILE_SIZE);
         intent.putExtra("file_size",file_size);
+        intent.putExtra("tag",tag);
+        DownloadMovieService.this.sendBroadcast(intent);
+    }
+    private void notifyWait(String tag){
+        Intent intent=new Intent(ZeroTimeFragment.ACTION_WAIT);
+        intent.putExtra("tag",tag);
         DownloadMovieService.this.sendBroadcast(intent);
     }
 }

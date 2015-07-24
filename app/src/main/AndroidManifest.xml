@@ -85,7 +85,7 @@
         </activity>
 
         <service android:name="service.DownloadService" />
-        <service android:name="service.DownloadMovieService"/>
+        <service android:name="service.DownloadMovieService" />
 
         <activity
             android:name=".Collection"
@@ -98,6 +98,10 @@
         <activity
             android:name=".SelfLabel"
             android:label="@string/title_activity_comment" >
+        </activity>
+        <activity
+            android:name=".TimeMachine"
+            android:label="@string/title_activity_time_machine" >
         </activity>
     </application>
 

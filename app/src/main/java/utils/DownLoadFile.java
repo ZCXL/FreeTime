@@ -89,6 +89,8 @@ public class DownLoadFile {
                             byte buf[]=new byte[1024];
                             long dotPercent=file_size/1000;
                             long nowPercent=dotPercent;
+                            if(downloadListener!=null)
+                                downloadListener.onStart();
                             lastTime=System.currentTimeMillis();
                             while(downloadFileSize<file_size){
                                 if(downloadFileSize>nowPercent){

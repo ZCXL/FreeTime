@@ -64,6 +64,21 @@ public class SaveAndOpenMovies implements ParseXml {
                 xmlSerializer.startTag("", "FileUrl");
                 xmlSerializer.attribute("", "fileUrl", movie.getFileUrl());
                 xmlSerializer.endTag("", "FileUrl");
+                xmlSerializer.startTag("", "MovieId");
+                xmlSerializer.attribute("", "movieId", movie.getMovieId());
+                xmlSerializer.endTag("","MovieId");
+                xmlSerializer.startTag("","PlayUrl");
+                xmlSerializer.attribute("","playUrl",movie.getPlayUrl());
+                xmlSerializer.endTag("","PlayUrl");
+                xmlSerializer.startTag("","MovieName");
+                xmlSerializer.attribute("","movieName",movie.getMovieName());
+                xmlSerializer.endTag("","MovieName");
+                xmlSerializer.startTag("","ViewNumber");
+                xmlSerializer.attribute("","viewNumber",movie.getViewNumber());
+                xmlSerializer.endTag("","ViewNumber");
+                xmlSerializer.startTag("","CommentNumber");
+                xmlSerializer.attribute("","commentNumber",movie.getCommentNumber());
+                xmlSerializer.endTag("","CommentNumber");
                 xmlSerializer.endTag("", "movie");
             }
             xmlSerializer.endTag("", "MovieShow");
@@ -107,8 +122,8 @@ public class SaveAndOpenMovies implements ParseXml {
                 builder = factory.newDocumentBuilder();
                 document = builder.parse(inputStream);
                 Element root = document.getDocumentElement();
-                Element movieInfo = (Element) root.getElementsByTagName("MovieShow").item(0);
-                NodeList movies = movieInfo.getElementsByTagName("movie");
+//                Element movieInfo = (Element) root.getElementsByTagName("MovieShow").item(0);
+                NodeList movies = root.getElementsByTagName("movie");
                 for (int i = 0; i < movies.getLength(); i++) {
                     Element info = (Element) movies.item(i);
                     movie = new Movie();
@@ -122,6 +137,16 @@ public class SaveAndOpenMovies implements ParseXml {
                     movie.setImageUrl(imageUrlElement.getAttribute("imageUrl"));
                     Element fileUrlElement = (Element) info.getElementsByTagName("FileUrl").item(0);
                     movie.setFileUrl(fileUrlElement.getAttribute("fileUrl"));
+                    Element movieIdElement=(Element)info.getElementsByTagName("MovieId").item(0);
+                    movie.setMovieId(movieIdElement.getAttribute("movieId"));
+                    Element playUrlElement=(Element)info.getElementsByTagName("PlayUrl").item(0);
+                    movie.setPlayUrl(playUrlElement.getAttribute("playUrl"));
+                    Element movieNameElement=(Element)info.getElementsByTagName("MovieName").item(0);
+                    movie.setMovieName(movieNameElement.getAttribute("movieName"));
+                    Element viewNumberElement=(Element)info.getElementsByTagName("ViewNumber").item(0);
+                    movie.setViewNumber(viewNumberElement.getAttribute("viewNumber"));
+                    Element commentNumberElement=(Element)info.getElementsByTagName("CommentNumber").item(0);
+                    movie.setCommentNumber(commentNumberElement.getAttribute("commentNumber"));
                     list.add(movie);
                 }
                 inputStream.close();

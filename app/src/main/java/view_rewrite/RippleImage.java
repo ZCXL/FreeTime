@@ -114,6 +114,9 @@ public class RippleImage extends CustomerView {
             invalidate();
         }
     }
+    public void setImageResource(int imageResource){
+        imageView.setImageResource(imageResource);
+    }
     public int getImageSource() {
         return imageSource;
     }

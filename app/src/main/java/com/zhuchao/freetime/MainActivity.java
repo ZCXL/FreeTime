@@ -47,7 +47,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private DownloadServiceConnection downloadServiceConnection;
     //download movie
     public static DownloadMovieService downloadMovieService;
-    private DownloadMovieServiceConnection downloadMovieServieConnection;
+    private DownloadMovieServiceConnection downloadMovieServiceConnection;
     private long exitTime = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -207,9 +207,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         bindService(intent, downloadServiceConnection, BIND_AUTO_CREATE);
         startService(intent);
 
-        downloadMovieServieConnection=new DownloadMovieServiceConnection();
+        downloadMovieServiceConnection=new DownloadMovieServiceConnection();
         Intent intent1=new Intent(MainActivity.this,DownloadMovieService.class);
-        bindService(intent1,downloadMovieServieConnection,BIND_AUTO_CREATE);
+        bindService(intent1,downloadMovieServiceConnection,BIND_AUTO_CREATE);
         startService(intent1);
 
         IntentFilter filter=new IntentFilter();
