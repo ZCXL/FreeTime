@@ -8,12 +8,15 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- write data to memory -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- write setting -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <!-- read phone state -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- keep screen alive -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- broadcast the start if system -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -83,10 +86,6 @@
             android:name=".Set"
             android:label="@string/title_activity_set" >
         </activity>
-
-        <service android:name="service.DownloadService" />
-        <service android:name="service.DownloadMovieService"/>
-
         <activity
             android:name=".Collection"
             android:label="@string/title_activity_collection" >
@@ -99,6 +98,32 @@
             android:name=".SelfLabel"
             android:label="@string/title_activity_comment" >
         </activity>
+        <activity
+            android:name=".TimeMachine"
+            android:label="@string/title_activity_time_machine" >
+        </activity>
+
+        <receiver android:name="receiver.BootStartReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.media.RINGER_MODE_CHANGED" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="receiver.AlarmStartReceiver" >
+            <intent-filter>
+                <action android:name="receiver.alarm.action" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="service.DownloadService" />
+        <service android:name="service.DownloadMovieService" />
+        <service
+            android:name="service.AutoDownLoadIntentService"
+            android:exported="false" >
+        </service>
     </application>
 
 </manifest>

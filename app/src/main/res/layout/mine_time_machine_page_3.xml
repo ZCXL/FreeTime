@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/time_machine_page_3_bg"
+    >
+    <ImageView
+        android:id="@+id/time_machine_page_3_word_0"
+        android:layout_width="115.66dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginLeft="23dp"
+        android:src="@drawable/time_machine_page_3_word_0"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
+    <ImageView
+        android:id="@+id/time_machine_page_3_word_1"
+        android:layout_width="145.33dp"
+        android:layout_height="37dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="135dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/time_machine_page_3_word_1"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="97dp"
+        android:layout_centerHorizontal="true">
+        <ImageView
+            android:id="@+id/time_machine_page_3_word_2"
+            android:layout_width="79.33dp"
+            android:layout_height="32.66dp"
+            android:src="@drawable/time_machine_page_3_word_2"/>
+        <TextView
+            android:id="@+id/time_machine_page_3_movie_mount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/time_machine_page_3_word_2"
+            android:layout_marginLeft="2dp"
+            android:textSize="92px"
+            android:textColor="#80fffb"
+            android:text="26"/>
+        <ImageView
+            android:id="@+id/time_machine_page_3_word_3"
+            android:layout_width="179dp"
+            android:layout_height="32.66dp"
+            android:layout_toRightOf="@+id/time_machine_page_3_movie_mount"
+            android:layout_marginLeft="2dp"
+            android:src="@drawable/time_machine_page_3_word_3" />
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:src="@drawable/down_arrow"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="13dp"
+        />
+</RelativeLayout>

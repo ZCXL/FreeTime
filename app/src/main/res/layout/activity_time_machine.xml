@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--title bar-->
+    <RelativeLayout
+        android:id="@+id/mine_my_collection_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="47.44dp"
+        android:background="#f3f2f2"
+        >
+        <ImageView
+            android:id="@+id/left_return_arrow"
+            android:layout_width="12.66dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="17.33dp"
+            android:src="@drawable/left_return_arrow"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="13dp"
+            android:text="时光机"
+            android:textSize="16sp"
+            android:textColor="#ff5c5c5d"
+
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#ffc6c5c5"/>
+
+</LinearLayout>
