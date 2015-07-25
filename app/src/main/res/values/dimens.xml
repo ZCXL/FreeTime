@@ -196,7 +196,7 @@
 
     <!--the data of main_frameLayout_top_hot -->
        <!--the data of main_top_hot_relativeLayout -->
-    <dimen name="main_top_hot_relativeLayout_layout_height">47dp</dimen>
+    <dimen name="main_top_hot_relativeLayout_layout_height">57dp</dimen>
        <!--the data of main_top_hot_TextView -->
     <dimen name="main_top_hot_TextView_textSize">18sp</dimen>
        <!--the data of main_top_hot_ImageView -->
@@ -244,7 +244,7 @@
 
     <!--the data of setting -->
        <!--the data of setting_relativeLayout1 -->
-    <dimen name="setting_relativeLayout1_layout_height">47.44dp</dimen>
+    <dimen name="setting_relativeLayout1_layout_height">57dp</dimen>
        <!--the data of setting_ImageView1 -->
     <dimen name="setting_ImageView1_layout_width">12.66dp</dimen>
     <dimen name="setting_ImageView1_layout_height">22dp</dimen>
@@ -259,7 +259,7 @@
     <dimen name="setting_relativeLayout2_layout_height">47dp</dimen>
        <!--the data of setting_TextView2 -->
     <dimen name="setting_TextView2_layout_marginLeft">14.66dp</dimen>
-    <dimen name="setting_TextView2_textSize">40px</dimen>
+    <dimen name="setting_TextView2_textSize">13.33sp</dimen>
        <!--the data of setting_ImageView2 -->
     <dimen name="setting_ImageView2_layout_width">11.66dp</dimen>
     <dimen name="setting_ImageView2_layout_height">15.66dp</dimen>

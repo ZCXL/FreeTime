@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00b7ee">
+    android:background="#ffffff">
     <!--title bar-->
     <RelativeLayout
         android:id="@+id/setting_title_bar"
@@ -39,7 +39,7 @@
             android:layout_marginLeft="22.66dp"
             android:layout_marginTop="23dp"
             android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="60px"
             android:text="科技向"
             />
@@ -51,7 +51,7 @@
             android:layout_marginRight="22.66dp"
             android:layout_marginTop="23dp"
             android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="60px"
             android:text="羞羞哒"/>
     </RelativeLayout>
@@ -65,7 +65,7 @@
             android:layout_marginLeft="22.66dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="60px"
             android:text="美食"
             />
@@ -77,7 +77,7 @@
             android:layout_below="@+id/mine_self_label_food_button"
             android:layout_marginTop="5dp"
             android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="60px"
             android:text="动画"
             />
@@ -89,7 +89,7 @@
             android:layout_toRightOf="@+id/mine_self_label_food_button"
             android:layout_marginLeft="5dp"
             android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="90px"
             android:text="萌宠"
             />
@@ -101,7 +101,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="60px"
             android:text="创意"
             />
@@ -114,7 +114,7 @@
             android:layout_below="@+id/mine_self_label_creative_button"
             android:layout_marginTop="5dp"
             android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="60px"
             android:text="温情"
             />
@@ -129,7 +129,7 @@
             android:layout_marginLeft="22.66dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="60px"
             android:text="脑洞大开"
             />
@@ -141,7 +141,7 @@
             android:layout_toRightOf="@+id/mine_self_label_odd_idea_button"
             android:layout_marginLeft="5dp"
             android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="60px"
             android:text="正能量"
             />
@@ -156,7 +156,7 @@
             android:layout_marginLeft="22.66dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="60px"
             android:text="逗比"
             />
@@ -168,7 +168,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="60px"
             android:text="恐怖"/>
         <Button
@@ -179,7 +179,7 @@
             android:layout_below="@+id/mine_self_label_fun_button"
             android:layout_marginTop="5dp"
             android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="60px"
             android:text="重口味"
             />
@@ -191,7 +191,7 @@
             android:layout_toRightOf="@+id/mine_self_label_terrify_button"
             android:layout_marginLeft="5dp"
             android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="80px"
             android:text="青春爱情"
             />
@@ -199,7 +199,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="44.33dp"
-        android:layout_marginTop="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="130dp"
         android:background="@android:color/white"
         android:textColor="#00b7ee"
         android:text="确认提交"/>
