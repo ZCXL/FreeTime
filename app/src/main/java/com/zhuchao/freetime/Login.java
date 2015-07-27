@@ -223,7 +223,7 @@ public class Login extends Activity implements View.OnClickListener , SlideDown.
                 Log.d(TAG_Weibo, "----mAccessToken----" + mAccessToken.toString());
                 AccessTokenKeeper.writeAccessToken(getApplicationContext(), mAccessToken);
                 mAccessToken = AccessTokenKeeper.readAccessToken(getApplicationContext());
-                Log.e(TAG_Weibo, "---mAccessToken---" + mAccessToken.toString());
+                Log.d(TAG_Weibo, "---mAccessToken---" + mAccessToken.toString());
                 //get userInfo' json for weibo
                 UsersAPI mUsersAPI = new UsersAPI(getApplicationContext(),mAppKeyWeibo,mAccessToken);
                 uid = Long.parseLong(mAccessToken.getUid());
@@ -231,7 +231,7 @@ public class Login extends Activity implements View.OnClickListener , SlideDown.
                     @Override
                     public void onComplete(String response) {
                         if (!TextUtils.isEmpty(response)){
-                            Log.e(TAG_Weibo,"---user s---"+response);
+                            Log.d(TAG_Weibo,"---user s---"+response);
                             Message message=new Message();
                             message.what=3;
                             message.obj=response;
