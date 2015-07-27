@@ -54,6 +54,7 @@
     <dimen name="main_frameLayout_layout_marginTop">21dp</dimen>
 
        <!--the data of main_frameLayout_zero_time_TextView1 -->
+    <dimen name="main_TextView1_video_description">70dp</dimen>
     <dimen name="main_TextView1_layout_marginTop">20dp</dimen>
     <dimen name="main_TextView1_paddingLeft">47dp</dimen>
     <dimen name="main_TextView1_paddingRight">47dp</dimen>
@@ -61,17 +62,17 @@
 
        <!--the data of main_frameLayout_zero_time_TextView2 -->
     <dimen name="main_TextView2_layout_marginTop">21dp</dimen>
-    <dimen name="main_TextView2_layout_marginLeft">86.33dp</dimen>
+    <dimen name="main_TextView2_layout_marginLeft">80dp</dimen>
     <dimen name="main_TextView2_textSize">12sp</dimen>
 
        <!--the data of main_frameLayout_zero_time_ImageView2 -->
     <dimen name="main_ImageView2_layout_width">25dp</dimen>
     <dimen name="main_ImageView2_layout_height">25dp</dimen>
-    <dimen name="main_ImageView2_layout_marginLeft">41.33dp</dimen>
+    <dimen name="main_ImageView2_layout_marginLeft">91.33dp</dimen>
 
        <!--the data of main_linearLayout_zero_time -->
     <dimen name="main_linearLayout_layout_height">58.33dp</dimen>
-    <dimen name="main_linearLayout_layout_marginTop">33.66dp</dimen>
+    <dimen name="main_linearLayout_layout_marginTop">20dp</dimen>
     <dimen name="main_linearLayout_paddingLeft">38.45dp</dimen>
     <dimen name="main_linearLayout_paddingRight">38.45dp</dimen>
        <!--the data of main_frameLayout_zero_time_view_rewrite -->
@@ -283,7 +284,7 @@
 
     <!--the data of setting_join_us -->
        <!--the data of setting_join_us_relativeLayout -->
-    <dimen name="setting_join_us_relativeLayout_layout_height">47.44dp</dimen>
+    <dimen name="setting_join_us_relativeLayout_layout_height">57dp</dimen>
        <!--the data of setting_join_us_ImageView -->
     <dimen name="setting_join_us_ImageView_layout_width">12.66dp</dimen>
     <dimen name="setting_join_us_ImageView_layout_height">22dp</dimen>

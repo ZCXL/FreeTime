@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/setting_title_bar"
         android:layout_width="fill_parent"
-        android:layout_height="47.44dp"
+        android:layout_height="57dp"
         android:background="#f3f2f2"
         >
         <ImageView
