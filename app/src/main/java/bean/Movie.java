@@ -15,7 +15,7 @@ import function.ParseJson;
  */
 public class Movie extends BaseObject implements Parcelable, ParseJson{
     private String description;
-    private long fileSize;
+    private String fileSize;
     private String time;
     private String imageUrl;
     private String fileUrl;
@@ -70,7 +70,7 @@ public class Movie extends BaseObject implements Parcelable, ParseJson{
         return description;
     }
 
-    public long getFileSize() {
+    public String getFileSize() {
         return fileSize;
     }
 
@@ -92,7 +92,7 @@ public class Movie extends BaseObject implements Parcelable, ParseJson{
         this.time = time;
     }
 
-    public void setFileSize(long fileSize) {
+    public void setFileSize(String fileSize) {
         this.fileSize = fileSize;
     }
 
@@ -121,7 +121,7 @@ public class Movie extends BaseObject implements Parcelable, ParseJson{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(description);
-        dest.writeLong(fileSize);
+        dest.writeString(fileSize);
         dest.writeString(time);
         dest.writeString(imageUrl);
         dest.writeString(fileUrl);
@@ -145,7 +145,7 @@ public class Movie extends BaseObject implements Parcelable, ParseJson{
     private Movie(Parcel in){
         super(TYPE.MOVIE);
         description=in.readString();
-        fileSize=in.readLong();
+        fileSize=in.readString();
         time=in.readString();
         imageUrl=in.readString();
         fileUrl=in.readString();

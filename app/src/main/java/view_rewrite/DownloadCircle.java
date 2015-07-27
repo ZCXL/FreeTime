@@ -56,6 +56,7 @@ public class DownloadCircle extends CustomerView {
         this.download_speed.setText(speed+"kb/s");
     }
     public void setWait(){
+        this.setClickable(false);
         this.download_speed.setText("");
         this.notification.setText("Waiting");
         download_success=false;
@@ -68,6 +69,7 @@ public class DownloadCircle extends CustomerView {
         invalidate();
     }
     public void setStart(){
+        this.setClickable(false);
         download_success=false;
         if(download_speed.getVisibility()==INVISIBLE){
             notification.setVisibility(VISIBLE);
@@ -78,6 +80,7 @@ public class DownloadCircle extends CustomerView {
         invalidate();
     }
     public void endDownload(){
+        this.setClickable(true);
         if(download_speed.getVisibility()==VISIBLE){
             notification.setVisibility(INVISIBLE);
             download_speed.setVisibility(INVISIBLE);
@@ -88,6 +91,7 @@ public class DownloadCircle extends CustomerView {
         invalidate();
     }
     public void downloadError(){
+        this.setClickable(false);
         this.download_speed.setText("");
         this.notification.setText("Error");
     }

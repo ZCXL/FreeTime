@@ -56,9 +56,10 @@ public class Introduction extends Activity implements ViewPager.OnPageChangeList
         icon3=(ImageView)findViewById(R.id.introduction_icon_3);
 
         //Init there pages.
+        page3=inflater.inflate(R.layout.introduction_page_3, null);
         page1=inflater.inflate(R.layout.introduction_page_1,null);
-        page2=inflater.inflate(R.layout.introduction_page_2,null);
-        page3=inflater.inflate(R.layout.introduction_page_3,null);
+        page2=inflater.inflate(R.layout.introduction_page_2, null);
+
 
         start_button=(ImageView)page3.findViewById(R.id.introduction_start_button);//start button.
 
@@ -71,7 +72,7 @@ public class Introduction extends Activity implements ViewPager.OnPageChangeList
         Intent intent=new Intent();
 
         intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
-        Parcelable icon = Intent.ShortcutIconResource.fromContext(this, R.drawable.logo);
+        Parcelable icon = Intent.ShortcutIconResource.fromContext(this, R.drawable.app_logo);
 
         intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, icon);
 

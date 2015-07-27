@@ -194,6 +194,7 @@ public class Set_Main extends Fragment implements View.OnClickListener{
                 break;
             case R.id.setting_delete_cash:
                 ImageProcess.DeleteImage();
+                memory_size.setText("0M");
                 Toast.makeText(getActivity(),"Cash has been cleaned",Toast.LENGTH_LONG).show();
                 break;
             case R.id.setting_check_update:

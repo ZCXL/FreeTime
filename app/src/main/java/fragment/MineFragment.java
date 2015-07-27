@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zhuchao.freetime.Collection;
 import com.zhuchao.freetime.Login;
@@ -42,6 +43,8 @@ public class MineFragment extends Fragment implements View.OnClickListener{
     private RippleLayout label_button;
     //time machine
     private RippleLayout time_machine_button;
+    //message block
+    private RippleLayout message_button;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.main_framelayout_mine,container,false);
@@ -64,6 +67,7 @@ public class MineFragment extends Fragment implements View.OnClickListener{
 
         time_machine_button=(RippleLayout)rootView.findViewById(R.id.mine_time_machine_block);
 
+        message_button=(RippleLayout)rootView.findViewById(R.id.mine_message_block);
         if(isLogin&&userInfo!=null){
             userName.setText(userInfo.getNick_name());
             new ImageLoaderTask(head,getActivity(), ImageProcess.FileType_Image.HeadImage).execute(userInfo.getHead_url());
@@ -79,6 +83,9 @@ public class MineFragment extends Fragment implements View.OnClickListener{
         label_button.setListener(this);
 
         time_machine_button.setListener(this);
+
+        message_button.setListener(this);
+
     }
 
     @Override
@@ -105,7 +112,13 @@ public class MineFragment extends Fragment implements View.OnClickListener{
                     getActivity().startActivity(new Intent(getActivity(), SelfLabel.class));
                 break;
             case R.id.mine_time_machine_block:
-                getActivity().startActivity(new Intent(getActivity(), TimeMachine.class));
+                if(!isLogin){
+                    LoginNotification.loginNotification(getActivity());
+                }else
+                    getActivity().startActivity(new Intent(getActivity(), TimeMachine.class));
+                break;
+            case R.id.mine_message_block:
+                Toast.makeText(getActivity(),"Developing...",Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -125,7 +138,7 @@ public class MineFragment extends Fragment implements View.OnClickListener{
         }else if(requestCode==1){
             if(!isLogin){
                 userName.setText("Click to login");
-                head.setImageResource(R.drawable.qq_login_button);
+                head.setImageResource(R.drawable.mine_default_login_logo);
             }
         }
     }

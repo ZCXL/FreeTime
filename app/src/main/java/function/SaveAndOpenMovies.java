@@ -130,7 +130,7 @@ public class SaveAndOpenMovies implements ParseXml {
                     Element descriptionElement = (Element) info.getElementsByTagName("Description").item(0);
                     movie.setDescription(descriptionElement.getAttribute("description"));
                     Element fileSizeElement = (Element) info.getElementsByTagName("FileSize").item(0);
-                    movie.setFileSize(Long.parseLong(fileSizeElement.getAttribute("fileSize")));
+                    movie.setFileSize(String.valueOf(fileSizeElement.getAttribute("fileSize")));
                     Element timeElement = (Element) info.getElementsByTagName("Time").item(0);
                     movie.setTime(timeElement.getAttribute("time"));
                     Element imageUrlElement = (Element) info.getElementsByTagName("ImageUrl").item(0);

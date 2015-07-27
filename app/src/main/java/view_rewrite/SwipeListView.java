@@ -33,7 +33,7 @@ public class SwipeListView extends ListView {
     private final int mDurationStep = 10;
 
     private boolean mIsShown;
-    
+
     public SwipeListView(Context context) {
         this(context,null);
     }

@@ -19,6 +19,7 @@ import bean.Movie;
 import function.Network;
 import function.NetworkFunction;
 import utils.ImageLoader;
+import view_rewrite.SwipeListView;
 
 /**
  * Created by zhuchao on 7/21/15.
@@ -28,6 +29,16 @@ public class CollectionAdapter extends BaseAdapter {
     private ArrayList<Movie>movies;
     private Context context;
     private int position;
+
+    private SwipeListView listView;
+
+    public SwipeListView getListView() {
+        return listView;
+    }
+
+    public void setListView(SwipeListView listView) {
+        this.listView = listView;
+    }
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -35,6 +46,7 @@ public class CollectionAdapter extends BaseAdapter {
                 case 0:
                     movies.remove(position);
                     CollectionAdapter.this.notifyDataSetChanged();
+                    listView.hiddenRight(listView.mCurrentItemView);
                     break;
             }
         }

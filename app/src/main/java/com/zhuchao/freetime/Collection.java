@@ -97,6 +97,8 @@ public class Collection extends Activity implements Runnable, UploadView.OnUploa
                 startActivity(intent);
             }
         });
+
+        adapter.setListView(swipeListView);
     }
 
     @Override

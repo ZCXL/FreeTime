@@ -9,9 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.zhuchao.freetime.R;
+import com.zhuchao.freetime.Set;
 
 import view_rewrite.LoadingDialog;
 
@@ -22,6 +24,7 @@ public class Feedback extends Fragment{
     private LoadingDialog loadingDialog;
     private Button confirm;
     private EditText edit;
+    private ImageView back;
     Handler handler=new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -38,6 +41,7 @@ public class Feedback extends Fragment{
         View rootView=inflater.inflate(R.layout.setting_problem_feedback,container,false);
 
         loadingDialog=new LoadingDialog(getActivity());
+        back=(ImageView)rootView.findViewById(R.id.left_return_arrow);
         confirm=(Button)rootView.findViewById(R.id.feedback_confirm);
         edit=(EditText)rootView.findViewById(R.id.feedback_edit);
         confirm.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +63,12 @@ public class Feedback extends Fragment{
                 }else{
                     Toast.makeText(getActivity(),"Feedback can't be null",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Set)getActivity()).back();
             }
         });
         return rootView;

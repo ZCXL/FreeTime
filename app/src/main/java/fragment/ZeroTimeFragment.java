@@ -182,9 +182,10 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
 
         for(int i = 0; i < movies.size()&&i<3;i++) {
             tempMovies.add(movies.get(i));
-            if(i==0)
+            if(i==0) {
                 downloadCircle1.endDownload();
-            if(i==1)
+                currentMovie=movies.get(0);
+            }if(i==1)
                 downloadCircle2.endDownload();
             if(i==2)
                 downloadCircle3.endDownload();
@@ -310,13 +311,17 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                     }).start();
                 }
             }
-            Intent intent1=new Intent(getActivity(),PlayMovie.class);
-            Bundle bundle=new Bundle();
-            String url=movies.get(0).getPlayUrl();
-            bundle.putString("movieurl","sdcard/FreeTime/Movies/"+url.substring(url.lastIndexOf("/")+1));
-            bundle.putString("title",movies.get(0).getMovieName());
-            intent1.putExtras(bundle);
-            startActivity(intent1);
+            if(tempMovies.size()>=1) {
+                Intent intent1=new Intent(getActivity(),PlayMovie.class);
+                Bundle bundle=new Bundle();
+                String url = tempMovies.get(0).getPlayUrl();
+                bundle.putString("movieurl", "sdcard/FreeTime/Movies/" + url.substring(url.lastIndexOf("/") + 1));
+                bundle.putString("title", tempMovies.get(0).getMovieName());
+                intent1.putExtras(bundle);
+                startActivity(intent1);
+            }else{
+                Toast.makeText(getActivity(),"Downloading...,Wait...",Toast.LENGTH_SHORT).show();
+            }
         }else if(v==downloadCircle2){
             if(Network.checkNetWorkState(getActivity())){
                 if(MineFragment.isLogin){
@@ -330,13 +335,17 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                     }).start();
                 }
             }
-            Intent intent1=new Intent(getActivity(),PlayMovie.class);
-            Bundle bundle=new Bundle();
-            String url=movies.get(1).getPlayUrl();
-            bundle.putString("movieurl","sdcard/FreeTime/Movies/"+url.substring(url.lastIndexOf("/")+1));
-            bundle.putString("title",movies.get(1).getMovieName());
-            intent1.putExtras(bundle);
-            startActivity(intent1);
+            if(tempMovies.size()>=2) {
+                Intent intent1=new Intent(getActivity(),PlayMovie.class);
+                Bundle bundle=new Bundle();
+                String url = tempMovies.get(1).getPlayUrl();
+                bundle.putString("movieurl", "sdcard/FreeTime/Movies/" + url.substring(url.lastIndexOf("/") + 1));
+                bundle.putString("title", tempMovies.get(1).getMovieName());
+                intent1.putExtras(bundle);
+                startActivity(intent1);
+            }else{
+                Toast.makeText(getActivity(),"Downloading...,Wait...",Toast.LENGTH_SHORT).show();
+            }
         }else if(v==downloadCircle3){
             if(Network.checkNetWorkState(getActivity())){
                 if(MineFragment.isLogin){
@@ -350,13 +359,17 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                     }).start();
                 }
             }
-            Intent intent1=new Intent(getActivity(),PlayMovie.class);
-            Bundle bundle=new Bundle();
-            String url=movies.get(2).getPlayUrl();
-            bundle.putString("movieurl","sdcard/FreeTime/Movies/"+url.substring(url.lastIndexOf("/")+1));
-            bundle.putString("title",movies.get(2).getMovieName());
-            intent1.putExtras(bundle);
-            startActivity(intent1);
+            if(tempMovies.size()>=3) {
+                Intent intent1=new Intent(getActivity(),PlayMovie.class);
+                Bundle bundle=new Bundle();
+                String url = tempMovies.get(2).getPlayUrl();
+                bundle.putString("movieurl", "sdcard/FreeTime/Movies/" + url.substring(url.lastIndexOf("/") + 1));
+                bundle.putString("title", tempMovies.get(2).getMovieName());
+                intent1.putExtras(bundle);
+                startActivity(intent1);
+            }else{
+                Toast.makeText(getActivity(),"Downloading...,Wait...",Toast.LENGTH_SHORT).show();
+            }
         }else if(v==movie_comment){
             if(currentMovie!=null) {
                 Intent intent = new Intent(getActivity(), CommentActivity.class);
@@ -369,8 +382,12 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
             if(currentMovie!=null)
               updateCollectState(position);
         }else if(v==delete){
-            if(currentMovie!=null)
-              deleteMovie(position);
+            if(currentMovie!=null) {
+                deleteMovie(position);
+                Toast.makeText(getActivity(),"Have delete!",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getActivity(),"No Movie!",Toast.LENGTH_SHORT).show();
+            }
         }else if(v==share){
             if(currentMovie!=null) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
@@ -406,12 +423,15 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                 if(temp!=null){
                     movie_description.setText(temp.getMovieName());
                     movie_image1.setTag(temp.getImageUrl());
-                    movie_time.setText("File Size:" + filesize[0]);
+                    movie_time.setText("File Size:" + temp.getFileSize());
                     imageLoader.DisplayImage(temp.getImageUrl(), movie_image1);
                     if(collectstate[0])
                         collect.setImageResource(R.drawable.main_collect_button_checked);
                     else
                         collect.setImageResource(R.drawable.main_collect_button);
+                }else{
+                    movie_description.setText("网速不给力哦~加载不出来呢！");
+                    movie_time.setText("File Size:");
                 }
                 break;
             case 1:
@@ -421,12 +441,15 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                 if(temp!=null){
                     movie_description.setText(temp.getMovieName());
                     movie_image2.setTag(temp.getImageUrl());
-                    movie_time.setText("File Size:" + filesize[1]);
+                    movie_time.setText("File Size:" + temp.getFileSize());
                     imageLoader.DisplayImage(temp.getImageUrl(), movie_image2);
                     if(collectstate[1])
                         collect.setImageResource(R.drawable.main_collect_button_checked);
                     else
                         collect.setImageResource(R.drawable.main_collect_button);
+                }else{
+                    movie_description.setText("网速不给力哦~加载不出来呢！");
+                    movie_time.setText("File Size:");
                 }
                 break;
             case 2:
@@ -436,12 +459,15 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                 if(temp!=null){
                     movie_description.setText(temp.getMovieName());
                     movie_image3.setTag(temp.getImageUrl());
-                    movie_time.setText("File Size:" + filesize[2]);
+                    movie_time.setText("File Size:" + temp.getFileSize());
                     imageLoader.DisplayImage(temp.getImageUrl(), movie_image3);
                     if(collectstate[2])
                         collect.setImageResource(R.drawable.main_collect_button_checked);
                     else
                         collect.setImageResource(R.drawable.main_collect_button);
+                }else{
+                    movie_description.setText("网速不给力哦~加载不出来呢！");
+                    movie_time.setText("File Size:");
                 }
                 break;
         }
@@ -463,10 +489,12 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                 float value = intent.getFloatExtra("percent", 0f);
                 downloadCircle1.setPercent(value / 1000);
             } else if (intent.getAction().equals(ACTION_COMPLETED)) {
-                if(tempMovies.size()>=1)
-                   tempMovies.set(0,movies.get(0));
-                else
-                   tempMovies.add(movies.get(0));
+                if(tempMovies.size()>=1) {
+                    movies.get(0).setFileSize(filesize[0]);
+                    tempMovies.set(0, movies.get(0));
+                }else {
+                    tempMovies.add(movies.get(0));
+                }
                 saveMovie();
                 downloadCircle1.setPercent(1.0f);
                 downloadCircle1.endDownload();
@@ -488,10 +516,12 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                 float value = intent.getFloatExtra("percent", 0f);
                 downloadCircle2.setPercent(value / 1000);
             } else if (intent.getAction().equals(ACTION_COMPLETED)) {
-                if(tempMovies.size()>=2)
-                    tempMovies.set(1,movies.get(1));
-                else
+                if(tempMovies.size()>=2) {
+                    movies.get(1).setFileSize(filesize[1]);
+                    tempMovies.set(1, movies.get(1));
+                }else {
                     tempMovies.add(movies.get(1));
+                }
                 saveMovie();
                 downloadCircle2.setPercent(1.0f);
                 downloadCircle2.endDownload();
@@ -513,10 +543,12 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                 float value = intent.getFloatExtra("percent", 0f);
                 downloadCircle3.setPercent(value / 1000);
             } else if (intent.getAction().equals(ACTION_COMPLETED)) {
-                if(tempMovies.size()>=3)
-                    tempMovies.set(2,movies.get(2));
-                else
+                if(tempMovies.size()>=3) {
+                    movies.get(2).setFileSize(filesize[2]);
+                    tempMovies.set(2, movies.get(2));
+                }else {
                     tempMovies.add(movies.get(2));
+                }
                 saveMovie();
                 downloadCircle3.setPercent(1.0f);
                 downloadCircle3.endDownload();

@@ -41,7 +41,7 @@
             android:layout_centerVertical="true"
             android:paddingTop="@dimen/main_frameLayout_mine_view_rewrite_paddingTop"
             android:paddingBottom="@dimen/main_frameLayout_mine_view_rewrite_paddingBottom"
-            android:src="@drawable/qq_login_button"
+            android:src="@drawable/mine_default_login_logo"
             customer:border_outside_color="#f3f2f2"
             customer:border_thickness="@dimen/main_frameLayout_mine_view_rewrite_border_thickness" />
         <TextView

@@ -13,8 +13,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="最新"
-            android:textSize="@dimen/main_top_hot_TextView_textSize"
-            android:textColor="#7a7b7c"/>
+            android:textSize="@dimen/main_top_hot_TextView_textSize" />
       <!--  <ImageView
             android:layout_width="@dimen/main_top_hot_ImageView_layout_width"
             android:layout_height="@dimen/main_top_hot_ImageView_layout_height"
