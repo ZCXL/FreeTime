@@ -119,7 +119,7 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                         }
                         movies.add(movie);
                         if(position==0) {
-                            setMoviePage(movies.size() - 1);
+                            setMoviePage(0);
                             currentMovie=movie;
                         }
                         sendEmptyMessage(2);

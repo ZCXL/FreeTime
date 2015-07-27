@@ -260,20 +260,20 @@ public class PlayerView extends RelativeLayout implements View.OnClickListener{
         LinearLayout.LayoutParams slider_params=new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
         slider_params.setMargins(Utils.dpToPx(5, getResources()), 0, Utils.dpToPx(5, getResources()), 0);
         slider.setLayoutParams(slider_params);
-        slider.setPadding(0, Utils.dpToPx(3, getResources()), 0, 0);
+        slider.setPadding(0, Utils.dpToPx(1,getResources()), 0, 0);
         slider.setMax(100);
         bottom_bar_relativeLayout.addView(slider);
 
         //relativeLayout
         RelativeLayout time_relativeLayout=new RelativeLayout(getContext());
         LinearLayout.LayoutParams time_layout_params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-        time_relativeLayout.setPadding(0, Utils.dpToPx(3, getResources()), 0, Utils.dpToPx(3, getResources()));
+        time_relativeLayout.setPadding(0, Utils.dpToPx(1, getResources()), 0, Utils.dpToPx(1, getResources()));
         time_relativeLayout.setLayoutParams(time_layout_params);
 
         //time
         total_time=new TextView(getContext());
         RelativeLayout.LayoutParams time_params=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
-        time_params.setMargins(0, Utils.dpToPx(10, getResources()), Utils.dpToPx(10, getResources()), 0);
+        time_params.setMargins(0, Utils.dpToPx(1, getResources()), Utils.dpToPx(1, getResources()), 0);
         time_params.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
         time_params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
         time_params.rightMargin=Utils.dpToPx(20,getResources());
