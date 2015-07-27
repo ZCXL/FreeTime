@@ -2,6 +2,8 @@ package service;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -28,29 +30,47 @@ public class AutoDownLoadIntentService extends IntentService implements DownLoad
 
     private LinkedList<Movie> movie_queue;
 
-    private boolean isDownloading=false;
-
     private String number;
 
-    public static ArrayList<Movie>movies=new ArrayList<Movie>();
+    private Movies movieForInstance;
+
+    private Movie movie;
 
     private SaveAndOpenMovies saveAndOpenMovies;
     private SaveAndOpenUserInfo saveAndOpenUserInfo;
 
+    Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 0:
+                    if(movie_queue.size()>0){
+                        movie=movie_queue.poll();
+                        if(movie!=null)
+                            startDownloadTsk(movie);
+                    }
+                    break;
+            }
+        }
+    };
     public AutoDownLoadIntentService() {
         super("AutoDownLoadIntentService");
+        saveAndOpenUserInfo = new SaveAndOpenUserInfo();
+        downLoadFile = new DownLoadFile(getApplicationContext());
+        downLoadFile.setDownloadListener(this);
+        downLoadFile.setErrorListener(this);
+        movie_queue = new LinkedList<Movie>();
+        saveAndOpenMovies = new SaveAndOpenMovies();
+        movieForInstance = new Movies(this);
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
-            Log.i(TAG, "begin onHandleIntent() in " + this);
             if (Network.getNetworkType(this) == 1) {
                 //get movies' count
-                Movies movieForInstance = new Movies(this);
                 int count = movieForInstance.getCount();
 
-                saveAndOpenUserInfo = new SaveAndOpenUserInfo();
                 ArrayList<BaseObject> users = saveAndOpenUserInfo.Open(this);
                 if (users == null) {
                     number = "1";
@@ -58,104 +78,27 @@ public class AutoDownLoadIntentService extends IntentService implements DownLoad
                     UserInfo userInfo = (UserInfo) users.get(0);
                     number = userInfo.getNumber();
                 }
-                Log.i(TAG, "--userInfo--" + number);
-
-
-                downLoadFile = new DownLoadFile(getApplicationContext());
-                downLoadFile.setDownloadListener(this);
-                downLoadFile.setErrorListener(this);
-                movie_queue = new LinkedList<Movie>();
-                saveAndOpenMovies = new SaveAndOpenMovies();
-
-                Log.i(TAG, "movies' size: " + count);
-                if (count == 3) {
-                    try {
-                        Thread.sleep(10 * 1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    Log.i(TAG, "has enough movies");
-                } else if (count == -1) {
-                    try {
-                        Thread.sleep(10 * 1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    Log.i(TAG, "no movies");
-                    String keys[] = {"number"};
-                    String parameters[] = {number};
-                    String result = NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/get_customer_movie.php", keys, parameters);
-                    if (result != null && !result.contains("error")) {
-                        Log.i(TAG, result.toString());
-                        movie_queue.add(new Movie(result));
-                    }
-                    Movie movie = movie_queue.poll();
-                    Log.i(TAG, movie.getDescription());
-                    movies.add(movie);
-                    Log.i(TAG, "--start download task--");
-                    addTask(movie);
-                    Log.i(TAG, "--finished download task--");
-                    saveMovie();
-                } else {
-                    if (count < 3) {
-                        String keys[] = {"number"};
-                        String parameters[] = {number};
-                        Log.i(TAG, "--get movie's FileUrl--");
-                        String result = NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/get_customer_movie.php", keys, parameters);
-                        if (result != null && !result.contains("error")) {
-                            Log.i(TAG, result.toString());
-                            movie_queue.add(new Movie(result));
-                           /*Movie movie = new Movie(result);
-                            String t = movie.getFileUrl();
-                            Log.i(TAG, "movie's FileUrl" + t);
-                            downLoadFile.startDownload(t);*/
-                        }
-                        Movie movie=movie_queue.poll();
-                        movies.add(movie);
-                        Log.i(TAG, "--start download task--");
-                        addTask(movie);
-                        Log.i(TAG, "--finished download task--");
-                        saveMovie();
-                    }
-
+                if(count<3){
+                    new Thread(new GetNewMovie(String.valueOf(number))).start();
                 }
             } else {
                 Log.i(TAG, "has no wifi");
             }
         }
-        Log.i(TAG, "end onHandleIntent() in" + this);
     }
 
-    public void addTask(Movie m){
-        if(m!=null) {
-            movie_queue.add(m);
-            if(isDownloading) {
-                startDownloadTsk();
-            }else{
-                Log.i(TAG, "isDownloading is null");
-            }
-        }
-    }
-    private void startDownloadTsk() {
-        if(!isDownloading){
-            if(movie_queue.size() >0){
-                Movie movie=movie_queue.poll();
-                isDownloading=true;
-                Log.d(TAG,movie.toString());
-                downLoadFile.startDownload(movie.getFileUrl());
-            }
-        }else {
-            Log.i(TAG,"--start work failed--");
-        }
+    private void startDownloadTsk(Movie m) {
+        if(m!=null)
+            downLoadFile.startDownload(m.getFileUrl());
     }
     /**
      * save movie
      */
     private void saveMovie(){
         ArrayList<BaseObject> arrayList=new ArrayList<BaseObject>();
-        for(BaseObject object:movies){
-            arrayList.add(object);
-        }
+        arrayList.add(movie);
+        for(int i=0;i<movieForInstance.getCount();i++)
+            arrayList.add(movieForInstance.getItem(i));
         saveAndOpenMovies.Save(this,arrayList);
     }
 
@@ -167,7 +110,7 @@ public class AutoDownLoadIntentService extends IntentService implements DownLoad
 
     @Override
     public void onStart() {
-        isDownloading=true;
+        saveMovie();
     }
 
     @Override
@@ -182,7 +125,7 @@ public class AutoDownLoadIntentService extends IntentService implements DownLoad
 
     @Override
     public void onDownloadSuccess() {
-        isDownloading=false;
+
     }
 
 
@@ -193,25 +136,38 @@ public class AutoDownLoadIntentService extends IntentService implements DownLoad
 
     @Override
     public void onSizeError() {
-        isDownloading=false;
-        startDownloadTsk();
+
     }
 
     @Override
     public void onStreamError() {
-        isDownloading=false;
-        startDownloadTsk();
+
     }
 
     @Override
     public void onSDCardError() {
-        isDownloading=false;
-        startDownloadTsk();
+
     }
 
     @Override
     public void onDownloadError() {
-        isDownloading=false;
-        startDownloadTsk();
+
+    }
+    public class GetNewMovie implements Runnable{
+        private String number;
+        public GetNewMovie(String number){
+            this.number=number;
+        }
+        @Override
+        public void run() {
+            String keys[]={"number"};
+            String parameters[]={number};
+            String result= NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/get_customer_movie.php",keys,parameters);
+            if(result!=null&&!result.contains("error")){
+                Movie movie=new Movie(result);
+                movie_queue.add(movie);
+                mHandler.sendEmptyMessage(0);
+            }
+        }
     }
 }
