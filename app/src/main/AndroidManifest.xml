@@ -124,6 +124,11 @@
             android:name="service.AutoDownLoadIntentService"
             android:exported="false" >
         </service>
+
+        <activity
+            android:name=".FirstLogin"
+            android:label="@string/title_activity_first_login" >
+        </activity>
     </application>
 
 </manifest>

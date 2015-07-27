@@ -29,6 +29,7 @@ import java.util.ArrayList;
 
 import bean.BaseObject;
 import bean.UserInfo;
+import fragment.MineFragment;
 import function.Network;
 import function.NetworkFunction;
 import function.SaveAndOpenUserInfo;
@@ -38,7 +39,7 @@ import view_rewrite.RippleImage;
 import view_rewrite.SlideDown;
 
 
-public class Login extends Activity implements View.OnClickListener , SlideDown.OnSlideDownListener{
+public class FirstLogin extends Activity implements View.OnClickListener, SlideDown.OnSlideDownListener{
     public static  String TAG_QQ = "Activity_login_qq";
     public static  String TAG_Weibo = "Activity_login_weibo";
     //member for qq
@@ -63,94 +64,91 @@ public class Login extends Activity implements View.OnClickListener , SlideDown.
     private SaveAndOpenUserInfo saveAndOpenUserInfo=new SaveAndOpenUserInfo();
 
     private Handler handler=new Handler(){
-      public void handleMessage(Message message){
-          switch (message.what){
-              case 0:
-                  Log.e(TAG_QQ,"-----qq message----"+message.toString());
-                  try {
-                      JSONObject object=new JSONObject(message.obj.toString());
-                      userInfo.setNick_name(object.getString("nickname"));
-                      userInfo.setNumber(openId);
-                      userInfo.setHead_url(object.getString("figureurl_qq_2"));
-                      userInfo.setSignature("");
+        public void handleMessage(Message message){
+            switch (message.what){
+                case 0:
+                    Log.e(TAG_QQ, "-----qq message----" + message.toString());
+                    try {
+                        JSONObject object=new JSONObject(message.obj.toString());
+                        userInfo.setNick_name(object.getString("nickname"));
+                        userInfo.setNumber(openId);
+                        userInfo.setHead_url(object.getString("figureurl_qq_2"));
+                        userInfo.setSignature("");
 
-                      //update user info to server
-                      final String keys[]=new String[]{"number","nickname","headurl"};
-                      final String parameters[]=new String[]{userInfo.getNumber(),userInfo.getNick_name(),userInfo.getHead_url()};
-                      Log.d("UserInfo",parameters[0]+parameters[1]+parameters[2]);
-                      if(Network.checkNetWorkState(Login.this)){
-                          loadingDialog.startProgressDialog();
-                          new Thread(new Runnable() {
-                              @Override
-                              public void run() {
-                                  String result=NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/uploaduserinfo.php",keys,parameters);
-                                  if(!result.contains("error")){
-                                      userInfo=new UserInfo(result);
-                                      handler.sendEmptyMessage(1);
-                                  }else{
-                                      handler.sendEmptyMessage(2);
-                                  }
-                                  Log.d("UserInfo",result);
-                              }
-                          }).start();
-                      }
-                  } catch (JSONException e) {
-                      e.printStackTrace();
-                  }
-                  break;
-              case 1:
-                  loadingDialog.stopProgressDialog();
-                  ArrayList<BaseObject>userinfos=new ArrayList<BaseObject>();
-                  userinfos.add(userInfo);
-                  saveAndOpenUserInfo.Save(Login.this,userinfos);
-                  Intent intent=new Intent();
-                  Bundle bundle=new Bundle();
-                  if(userInfo!=null){
-                      bundle.putParcelable("userinfo",userInfo);
-                  }
-                  intent.putExtras(bundle);
-                  setResult(0,intent);
-                  finish();
-                  break;
-              case 2:
-                  loadingDialog.stopProgressDialog();
-                  Toast.makeText(Login.this,"Login failed,please try again!",Toast.LENGTH_LONG).show();
-                  break;
-              case 3:
-                  Log.e(TAG_Weibo,"-----Weibo message----"+message.toString());
-                  try {
-                      JSONObject object=new JSONObject(message.obj.toString());
-                      userInfo.setNick_name(object.getString("screen_name"));
-                      userInfo.setNumber(uid.toString());
-                      userInfo.setHead_url(object.getString("profile_image_url"));
-                      userInfo.setSignature("");
+                        //update user info to server
+                        final String keys[]=new String[]{"number","nickname","headurl"};
+                        final String parameters[]=new String[]{userInfo.getNumber(),userInfo.getNick_name(),userInfo.getHead_url()};
+                        Log.d("UserInfo",parameters[0]+parameters[1]+parameters[2]);
+                        if(Network.checkNetWorkState(FirstLogin.this)){
+                            loadingDialog.startProgressDialog();
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    String result= NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/uploaduserinfo.php", keys, parameters);
+                                    if(!result.contains("error")){
+                                        userInfo=new UserInfo(result);
+                                        handler.sendEmptyMessage(1);
+                                    }else{
+                                        handler.sendEmptyMessage(2);
+                                    }
+                                    Log.d("UserInfo",result);
+                                }
+                            }).start();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 1:
+                    loadingDialog.stopProgressDialog();
+                    ArrayList<BaseObject> userinfos=new ArrayList<BaseObject>();
+                    userinfos.add(userInfo);
+                    MineFragment.isLogin=true;
+                    MineFragment.userInfo=userInfo;
+                    saveAndOpenUserInfo.Save(FirstLogin.this,userinfos);
+                    Intent intent=new Intent(FirstLogin.this,MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                    break;
+                case 2:
+                    loadingDialog.stopProgressDialog();
+                    Toast.makeText(FirstLogin.this, "Login failed,please try again!", Toast.LENGTH_LONG).show();
+                    break;
+                case 3:
+                    Log.e(TAG_Weibo,"-----Weibo message----"+message.toString());
+                    try {
+                        JSONObject object=new JSONObject(message.obj.toString());
+                        userInfo.setNick_name(object.getString("screen_name"));
+                        userInfo.setNumber(uid.toString());
+                        userInfo.setHead_url(object.getString("profile_image_url"));
+                        userInfo.setSignature("");
 
-                      //update user info to server
-                      final String keys[]=new String[]{"number","nickname","headurl"};
-                      final String parameters[]=new String[]{userInfo.getNumber(),userInfo.getNick_name(),userInfo.getHead_url()};
-                      Log.d("UserInfo",parameters[0]+parameters[1]+parameters[2]);
-                      if(Network.checkNetWorkState(Login.this)){
-                          loadingDialog.startProgressDialog();
-                          new Thread(new Runnable() {
-                              @Override
-                              public void run() {
-                                  String result=NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/uploaduserinfo.php",keys,parameters);
-                                  if(!result.contains("error")){
-                                      userInfo=new UserInfo(result);
-                                      handler.sendEmptyMessage(1);
-                                  }else{
-                                      handler.sendEmptyMessage(2);
-                                  }
-                                  Log.d("UserInfo",result);
-                              }
-                          }).start();
-                      }
-                  } catch (JSONException e) {
-                      e.printStackTrace();
-                  }
-                  break;
-          }
-      }
+                        //update user info to server
+                        final String keys[]=new String[]{"number","nickname","headurl"};
+                        final String parameters[]=new String[]{userInfo.getNumber(),userInfo.getNick_name(),userInfo.getHead_url()};
+                        Log.d("UserInfo",parameters[0]+parameters[1]+parameters[2]);
+                        if(Network.checkNetWorkState(FirstLogin.this)){
+                            loadingDialog.startProgressDialog();
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    String result=NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/uploaduserinfo.php",keys,parameters);
+                                    if(!result.contains("error")){
+                                        userInfo=new UserInfo(result);
+                                        handler.sendEmptyMessage(1);
+                                    }else{
+                                        handler.sendEmptyMessage(2);
+                                    }
+                                    Log.d("UserInfo",result);
+                                }
+                            }).start();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+            }
+        }
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,14 +201,15 @@ public class Login extends Activity implements View.OnClickListener , SlideDown.
         mScopeWeibo = AppConstant.SCOPE_WEIBO;
         //instance for weibo
         mAuthInfo = new AuthInfo(this,mAppKeyWeibo,mRedirectUrl,mScopeWeibo);
-        mSsoHandler = new SsoHandler(Login.this,mAuthInfo);
+        mSsoHandler = new SsoHandler(FirstLogin.this,mAuthInfo);
         //SSO oauth call-back
         mSsoHandler.authorize(new AuthListener());
     }
 
     @Override
     public void onSlideDown() {
-        finish();
+        startActivity(new Intent(FirstLogin.this,MainActivity.class));
+        this.finish();
     }
 
     private class AuthListener implements WeiboAuthListener {
@@ -257,7 +256,7 @@ public class Login extends Activity implements View.OnClickListener , SlideDown.
                 if (!TextUtils.isEmpty(mCode)) {
                     error= error + "\nObtained the code: " + mCode;
                 }
-                Toast.makeText(Login.this, error, Toast.LENGTH_LONG).show();
+                Toast.makeText(FirstLogin.this, error, Toast.LENGTH_LONG).show();
             }
 
         }
@@ -294,9 +293,9 @@ public class Login extends Activity implements View.OnClickListener , SlideDown.
         //my application App_ID
         mAppId = AppConstant.APP_ID_QQ;
         mTencent = Tencent.createInstance(mAppId,getApplicationContext());
-        mTencent.login(Login.this,"all",new BaseUiListener());
+        mTencent.login(FirstLogin.this,"all",new BaseUiListener());
     }
-    private class BaseUiListener implements IUiListener{
+    private class BaseUiListener implements IUiListener {
 
         @Override
         public void onComplete(Object response) {
@@ -341,4 +340,6 @@ public class Login extends Activity implements View.OnClickListener , SlideDown.
             Toast.makeText(getApplicationContext(),"You have cancel login operation!",Toast.LENGTH_SHORT).show();
         }
     }
+
+
 }

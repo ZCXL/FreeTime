@@ -118,8 +118,10 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                             }
                         }
                         movies.add(movie);
-                        if(position==0)
-                           setMoviePage(movies.size()-1);
+                        if(position==0) {
+                            setMoviePage(movies.size() - 1);
+                            currentMovie=movie;
+                        }
                         sendEmptyMessage(2);
                         //while(symbol<0);
                         MainActivity.downloadMovieService.addTask(movie,String.valueOf(movies.size()-1));

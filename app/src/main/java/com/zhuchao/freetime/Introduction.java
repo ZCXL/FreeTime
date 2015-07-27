@@ -99,7 +99,7 @@ public class Introduction extends Activity implements ViewPager.OnPageChangeList
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Introduction.this,MainActivity.class);
+                Intent intent=new Intent(Introduction.this,FirstLogin.class);
                 Bundle bundle=new Bundle();
                 bundle.putParcelable("version", version);
                 intent.putExtras(bundle);

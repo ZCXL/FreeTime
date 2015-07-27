@@ -26,7 +26,7 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
     private int lineLength;
     private int lineWidth;
     private int lineColor= Color.parseColor("#ffffff");//set default rgb value for line
-    private int max_distance=100;
+    private int max_distance=300;
     private int min_distance=50;
 
     private boolean pressed;
@@ -43,6 +43,26 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
 
     private FlatImage imageView;
     private int image_button_source;
+
+    public OnSlideDownListener getSlideDownListener() {
+        return slideDownListener;
+    }
+
+    public void setSlideDownListener(OnSlideDownListener slideDownListener) {
+        this.slideDownListener = slideDownListener;
+    }
+
+    private OnSlideDownListener slideDownListener;
+
+    @Override
+    public boolean isPressed() {
+        return pressed;
+    }
+
+    @Override
+    public void setPressed(boolean pressed) {
+        this.pressed = pressed;
+    }
 
     private OnUnpressedListener unpressedListener;
 
@@ -63,6 +83,10 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
                     if(imageView.getListener()!=null)
                         imageView.getListener().onChangeOver(yCurrent-yInit);
                     pressed=false;
+                }
+                if(yCurrent-yInit>max_distance){
+                    if(slideDownListener!=null)
+                        slideDownListener.onSlideDown();
                 }
                 yCurrent=yInit;
                 yLast=yInit;
@@ -273,5 +297,12 @@ public class SlideDown extends CustomerView implements OnDistanceChangeListener{
         public void setListener(OnDistanceChangeListener listener) {
             this.listener = listener;
         }
+    }
+
+    /**
+     * slide down listener
+     */
+    public interface OnSlideDownListener{
+        void onSlideDown();
     }
 }

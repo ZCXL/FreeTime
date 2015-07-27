@@ -109,26 +109,32 @@ public static boolean InputImage(Bitmap bitmap,FileType_Image fImage,String file
 	   return false;
    }
    public static boolean DeleteImage(){
-	   String parentPathString="/sdcard/FreeTime/MovieImages";
-	   if(isSDExit()){
-		   File file=new File(parentPathString);
-		   if(file.exists()){
-			   File[]files=file.listFiles();
-			   if(files!=null||files.length!=0){
-				   for(File f:files)
-					   f.delete();
-				   return true;
-			   }
-		   }
-	   }
-	   return false;
+	   DeleteImage("/sdcard/FreeTime/MovieImages");
+	   DeleteImage("/sdcard/FreeTime/Movies");
+	   return true;
    }
-    //��ȡ�ļ��д�С    
+	public static boolean DeleteImage(String url){
+		String parentPathString=url;
+		if(isSDExit()){
+			File file=new File(parentPathString);
+			if(file.exists()){
+				File[]files=file.listFiles();
+				if(files!=null||files.length!=0){
+					for(File f:files)
+						f.delete();
+					return true;
+				}
+			}
+		}
+		return false;
+	}
    public static long getFolderSize(){
-	   String parentPathString="/sdcard/FreeTime/MovieImages";
+	   String movieImage="/sdcard/FreeTime/MovieImages";
+	   String movie="/sdcard/FreeTime/Movies";
 	   if(isSDExit()){
-	       File file=new File(parentPathString);
-	       return getFolderSize(file);
+	       File file=new File(movie);
+		   File file1=new File(movieImage);
+	       return getFolderSize(file)+getFolderSize(file1);
 	   }
 	   return 0;
    }
@@ -178,7 +184,7 @@ public static boolean InputImage(Bitmap bitmap,FileType_Image fImage,String file
 		}else{
 		return null;
 		}
-	}//BitMap��ת������
+	}
    public static Bitmap zoomImage(Bitmap bitmap,int nwidth,int nheight){
 	   float bili=((float)nwidth)/nheight;
 	   int width=bitmap.getWidth();

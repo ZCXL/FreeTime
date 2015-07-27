@@ -55,6 +55,8 @@ public class Set_Main extends Fragment implements View.OnClickListener{
 
     private TextView version_text;
 
+    private TextView memory_size;
+
     private CustomProgressDialog dialog;
 
     private CheckVersion checkVersion;
@@ -112,6 +114,10 @@ public class Set_Main extends Fragment implements View.OnClickListener{
         quit_button=(Button)rootView.findViewById(R.id.setting_quit);
 
         version_text=(TextView)rootView.findViewById(R.id.setting_version);
+
+        memory_size=(TextView)rootView.findViewById(R.id.memory_size);
+
+        memory_size.setText(String.valueOf(ImageProcess.getFolderSize())+"M");
 
         //set current version
         PackageManager packageManager=getActivity().getPackageManager();
