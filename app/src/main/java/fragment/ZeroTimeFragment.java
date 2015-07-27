@@ -90,8 +90,6 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
 
     private boolean collectstate[]={false,false,false};
 
-    private int symbol=0;
-
     private Movie currentMovie;
 
     private ImageLoader imageLoader;
@@ -115,7 +113,6 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                         Movie movie=movieQueue.poll();
                         movies.add(movie);
                         setMoviePage(movies.size()-1);
-                        symbol--;
                         sendEmptyMessage(2);
                         //while(symbol<0);
                         MainActivity.downloadMovieService.addTask(movie,String.valueOf(movies.size()-1));
@@ -144,7 +141,7 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
 
         initView(rootView);
 
-        for(int i = 0; i < movies.size();i++) {
+        for(int i = 0; i < movies.size()&&i<3;i++) {
             if(i==0)
                 downloadCircle1.endDownload();
             if(i==1)
@@ -229,8 +226,10 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
 
     @Override
     public void run() {
-        String keys[]={"page"};
-        String parameters[]={String.valueOf(page)};
+        String keys[]={"number"};
+        String parameters[]={"1"};
+        if(MineFragment.isLogin)
+            parameters[0]=MineFragment.userInfo.getNumber();
         String result= NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/get_customer_movie.php",keys,parameters);
         if(result!=null&&!result.contains("error")){
             page++;
@@ -367,9 +366,9 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                     temp=movies.get(1);
                 }
                 if(temp!=null){
-                    movie_description.setText(temp.getMovieName());
+                    //movie_description.setText(temp.getMovieName());
                     movie_image2.setTag(temp.getImageUrl());
-                    movie_time.setText("File Size:" + filesize[1]);
+                    //movie_time.setText("File Size:" + filesize[1]);
                     imageLoader.DisplayImage(temp.getImageUrl(), movie_image2);
                     if(collectstate[1])
                         collect.setImageResource(R.drawable.main_collect_button_checked);
@@ -382,9 +381,9 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                     temp=movies.get(2);
                 }
                 if(temp!=null){
-                    movie_description.setText(temp.getMovieName());
+                   // movie_description.setText(temp.getMovieName());
                     movie_image3.setTag(temp.getImageUrl());
-                    movie_time.setText("File Size:" + filesize[2]);
+                    //movie_time.setText("File Size:" + filesize[2]);
                     imageLoader.DisplayImage(temp.getImageUrl(), movie_image3);
                     if(collectstate[2])
                         collect.setImageResource(R.drawable.main_collect_button_checked);
@@ -483,33 +482,28 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
      * @param i
      */
     private void checkCollectState(final int i){
-        if(MineFragment.isLogin&&Network.checkNetWorkState(getActivity())){
+        if(MineFragment.isLogin&&Network.checkNetWorkState(getActivity())) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    String keys[]=new String[]{"number","movieid"};
-                    String parameters[]=new String[]{MineFragment.userInfo.getNumber(),movies.get(i).getMovieId()};
-                    String result=NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/get_collection_state.php",keys,parameters);
+                    String keys[] = new String[]{"number", "movieid"};
+                    String parameters[] = new String[]{MineFragment.userInfo.getNumber(), movies.get(i).getMovieId()};
+                    String result = NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/get_collection_state.php", keys, parameters);
                     Log.d("result", result);
-                    if(result!=null&&!result.contains("error")&&!result.equals("no")){
+                    if (result != null && !result.contains("error") && !result.equals("no")) {
                         try {
-                            JSONObject object=new JSONObject(result);
-                            String state=object.getString("state");
-                            if(state.equals("0"))
-                                collectstate[i]=false;
+                            JSONObject object = new JSONObject(result);
+                            String state = object.getString("state");
+                            if (state.equals("0"))
+                                collectstate[i] = false;
                             else
-                                collectstate[i]=true;
+                                collectstate[i] = true;
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
-                    if(symbol<0)
-                        symbol++;
                 }
             }).start();
-        }else{
-            if(symbol<0)
-                symbol++;
         }
     }
 

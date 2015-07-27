@@ -1,14 +1,18 @@
 package com.zhuchao.freetime;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -24,6 +28,7 @@ import bean.Movie;
 import function.Network;
 import function.NetworkFunction;
 import view_rewrite.CircularProgressBar;
+import view_rewrite.EditWindow;
 import view_rewrite.LoadingDialog;
 
 
@@ -42,8 +47,6 @@ public class CommentActivity extends Activity implements Runnable,View.OnClickLi
     private TextView comment_number;
 
     private ImageView back_button;
-
-    private LinearLayout layout_edit;
 
     //footer view
     private View footerView;
@@ -102,8 +105,6 @@ public class CommentActivity extends Activity implements Runnable,View.OnClickLi
 
         comment_back_list=(ListView)findViewById(R.id.comment_back_list);
 
-        layout_edit=(LinearLayout)findViewById(R.id.edit_layout);
-
         comment_back_list.setAdapter(adapter);
 
         footerView=LayoutInflater.from(CommentActivity.this).inflate(R.layout.pulldown_footer, null);
@@ -114,12 +115,9 @@ public class CommentActivity extends Activity implements Runnable,View.OnClickLi
 
         footerView.setOnClickListener(this);
 
-        adapter.setListView(comment_back_list);
-
-        adapter.setLinear_layout_edit(layout_edit);
-
         if(movie!=null)
             comment_number.setText(movie.getCommentNumber()+" comments");
+
     }
 
     @Override

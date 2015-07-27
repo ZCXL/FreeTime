@@ -55,7 +55,7 @@ public class Version extends BaseObject implements Parcelable{
         dest.writeString(versionId);
         dest.writeString(versionDescription);
         dest.writeString(versionUrl);
-        dest.writeBooleanArray(new boolean[]{available});
+        //dest.writeBooleanArray(new boolean[]{available});
     }
     public static final Parcelable.Creator<Version>CREATOR=new Creator<Version>() {
         @Override
@@ -73,8 +73,6 @@ public class Version extends BaseObject implements Parcelable{
         versionId=in.readString();
         versionDescription=in.readString();
         versionUrl=in.readString();
-        boolean b[]=new boolean[]{};
-        in.readBooleanArray(b);
-        available=b[0];
+//        available=in.re;
     }
 }

@@ -15,6 +15,7 @@ import com.zhuchao.freetime.Login;
 import com.zhuchao.freetime.R;
 import com.zhuchao.freetime.SelfLabel;
 import com.zhuchao.freetime.Set;
+import com.zhuchao.freetime.TimeMachine;
 
 import bean.UserInfo;
 import function.ImageLoaderTask;
@@ -39,6 +40,8 @@ public class MineFragment extends Fragment implements View.OnClickListener{
     private RippleLayout collect_button;
     //self label
     private RippleLayout label_button;
+    //time machine
+    private RippleLayout time_machine_button;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.main_framelayout_mine,container,false);
@@ -59,6 +62,8 @@ public class MineFragment extends Fragment implements View.OnClickListener{
 
         label_button=(RippleLayout)rootView.findViewById(R.id.mine_self_label_block);
 
+        time_machine_button=(RippleLayout)rootView.findViewById(R.id.mine_time_machine_block);
+
         if(isLogin&&userInfo!=null){
             userName.setText(userInfo.getNick_name());
             new ImageLoaderTask(head,getActivity(), ImageProcess.FileType_Image.HeadImage).execute(userInfo.getHead_url());
@@ -72,6 +77,8 @@ public class MineFragment extends Fragment implements View.OnClickListener{
         collect_button.setListener(this);
 
         label_button.setListener(this);
+
+        time_machine_button.setListener(this);
     }
 
     @Override
@@ -96,6 +103,9 @@ public class MineFragment extends Fragment implements View.OnClickListener{
                     LoginNotification.loginNotification(getActivity());
                 else
                     getActivity().startActivity(new Intent(getActivity(), SelfLabel.class));
+                break;
+            case R.id.mine_time_machine_block:
+                getActivity().startActivity(new Intent(getActivity(), TimeMachine.class));
                 break;
         }
     }

@@ -1,19 +1,13 @@
 package adapter;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.zhuchao.freetime.R;
 
@@ -23,18 +17,15 @@ import bean.Comment;
 import bean.CommentBack;
 import bean.CommentBacks;
 import bean.Movie;
-import fragment.MineFragment;
-import function.LoginNotification;
-import function.NetworkFunction;
 import utils.ImageLoader;
 import utils.Utils;
-import view_rewrite.LoadingDialog;
+import view_rewrite.EditWindow;
 import view_rewrite.RoundImageView;
 
 /**
  * Created by zhuchao on 7/22/15.
  */
-public class CommentBackAdapter extends BaseAdapter implements View.OnClickListener{
+public class CommentBackAdapter extends BaseAdapter implements EditWindow.OnCommentListener{
 
     private ArrayList<Comment>comments;
 
@@ -44,59 +35,15 @@ public class CommentBackAdapter extends BaseAdapter implements View.OnClickListe
 
     private ImageLoader imageLoader;
 
-    private LoadingDialog loadingDialog;
+    private EditWindow editWindow;
 
-    private CommentBack back;
-
-    private ListView listView;
-
-    private int position;
-
-    private LinearLayout linear_layout_edit;
-
-    private EditText editText;
-
-    private Button send;
-
-    private String commentednumber;
-
-    private String commenttime;
-
-    public void setLinear_layout_edit(LinearLayout edit){
-        this.linear_layout_edit=edit;
-        editText=(EditText)edit.findViewById(R.id.comment_back_edit);
-        send=(Button)edit.findViewById(R.id.comment_back_send);
-        send.setOnClickListener(this);
-    }
-    public void setListView(ListView listView){
-        this.listView=listView;
-    }
-    Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 0:
-                    Log.d("tell me why",String.valueOf(position));
-                    if(position>0&&position<3){
-                        comments.get(position-1).getCommentBacks().addCommentBacks(back);
-                    }else if(position>3){
-                        comments.get(position-2).getCommentBacks().addCommentBacks(back);
-                    }
-                    CommentBackAdapter.this.notifyDataSetChanged();
-                    loadingDialog.stopProgressDialog();
-                    break;
-                case 1:
-                    loadingDialog.stopProgressDialog();
-                    break;
-            }
-        }
-    };
     public CommentBackAdapter(Context context,ArrayList<Comment>comments,Movie movie){
         this.comments=comments;
         this.context=context;
         this.movie=movie;
         imageLoader=new ImageLoader(context);
-        loadingDialog=new LoadingDialog(context);
+        editWindow=new EditWindow(context);
+        editWindow.setOnCommentListener(this);
     }
     @Override
     public int getCount() {
@@ -153,21 +100,15 @@ public class CommentBackAdapter extends BaseAdapter implements View.OnClickListe
 
         final String commented_number=comment.getNumber();
         final String comment_time=comment.getTime();
+        final String movieId=movie.getMovieId();
         holder.comment_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CommentBackAdapter.this.commentednumber=commented_number;
-                CommentBackAdapter.this.commenttime=comment_time;
-                CommentBackAdapter.this.position = position;
-                if(linear_layout_edit.getVisibility()==View.GONE) {
-                    linear_layout_edit.setVisibility(View.VISIBLE);
-                    editText.requestFocus();
-                }else {
-                    linear_layout_edit.setVisibility(View.GONE);
-                }
+                editWindow.setParameters(commented_number,comment_time,movieId,position);
+                editWindow.show();
             }
         });
-        CommentBacks backs=comment.getCommentBacks();
+        final CommentBacks backs=comment.getCommentBacks();
         ArrayList<CommentBack>commentBackArrayList=new ArrayList<CommentBack>();
         for(int i=0;i<backs.getCount();i++){
            commentBackArrayList.add((CommentBack)backs.getItem(i));
@@ -175,7 +116,26 @@ public class CommentBackAdapter extends BaseAdapter implements View.OnClickListe
         CommentBackItemAdapter adapter=new CommentBackItemAdapter(commentBackArrayList,context);
         holder.back_container.setAdapter(adapter);
         Utils.setListViewHeightBasedOnChildren(holder.back_container);
+        holder.back_container.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int p, long id) {
+                CommentBack commentBack=(CommentBack)backs.getItem(p);
+                editWindow.setParameters(commentBack.getComment_number(),comment_time,movieId,position);
+                editWindow.show();
+            }
+        });
         return convertView;
+    }
+
+    @Override
+    public void onSuccess(CommentBack back, int position) {
+        comments.get(position).getCommentBacks().addCommentBacks(back);
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public void onError() {
+
     }
 
 
@@ -185,34 +145,5 @@ public class CommentBackAdapter extends BaseAdapter implements View.OnClickListe
         TextView user_name;
         TextView comment_time;
         ListView back_container;
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (MineFragment.isLogin) {
-            loadingDialog.startProgressDialog();
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    String con = editText.getText().toString();
-                    if (con != null && !con.equals("")) {
-                        String keys[] = {"movieid", "number", "comment", "commentnumber", "commentednumber", "commenttime"};
-                        String parameters[] = {movie.getMovieId(),commentednumber, con, MineFragment.userInfo.getNumber(), commentednumber, commenttime};
-                        String result = NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/comment_back.php", keys, parameters);
-                        if (result != null && !result.contains("error")) {
-                            back = new CommentBack(result);
-                            Log.d("tell me why", back.getComment());
-                            mHandler.sendEmptyMessage(0);
-                        } else {
-                            mHandler.sendEmptyMessage(1);
-                        }
-                    } else {
-                        Toast.makeText(context, "Comment can't be null", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }).start();
-        } else {
-            LoginNotification.loginNotification(context);
-        }
     }
 }

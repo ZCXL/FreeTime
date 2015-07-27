@@ -1,33 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_layout"
     android:layout_width="match_parent"
-    android:paddingTop="4dp"
-    android:paddingBottom="4dp"
-    android:layout_height="50dp">
-    <EditText
-        android:id="@+id/comment_back_edit"
+    android:layout_height="fill_parent"
+    android:background="#4d000000"
+    >
+    <RelativeLayout
+        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:layout_marginLeft="14dp"
-        android:layout_toLeftOf="@+id/comment_back_send"
-        android:layout_marginRight="14dp"
-        android:layout_centerVertical="true"
-        android:textSize="13.33sp"
-        android:textColor="#999999"
-        android:hint="Say something"
-        android:background="@drawable/top_hot_detail_bottom_edit"
-        />
-    <Button
-        android:id="@+id/comment_back_send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="16.33dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:textSize="13.33sp"
-        android:textColor="#999999"
-        android:text="Send"
         android:background="@android:color/white"
-        />
-</RelativeLayout>
+        android:layout_height="50dp">
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.66dp"
+            android:background="#999999"
+            android:layout_alignParentTop="true"
+            />
+        <ImageView
+            android:id="@+id/top_hot_detail_bottom_logo"
+            android:layout_width="38.33dp"
+            android:layout_height="28dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16.33dp"
+            android:src="@drawable/top_hot_detail_bottom_logo"
+            />
+        <EditText
+            android:id="@+id/comment_back_edit"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_toRightOf="@+id/top_hot_detail_bottom_logo"
+            android:layout_marginLeft="14dp"
+            android:layout_toLeftOf="@+id/comment_back_send"
+            android:layout_marginRight="14dp"
+            android:layout_centerVertical="true"
+            android:textSize="13.33sp"
+            android:textColor="#999999"
+            android:hint="Say something"
+            android:background="@drawable/top_hot_detail_bottom_edit"
+            />
+        <Button
+            android:id="@+id/comment_back_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16.33dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="13.33sp"
+            android:textColor="#999999"
+            android:text="Send"
+            android:background="@android:color/white"
+            />
+    </RelativeLayout>
+</FrameLayout>

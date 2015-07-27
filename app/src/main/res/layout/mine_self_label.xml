@@ -30,177 +30,134 @@
             />
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/container"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <Button
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:layout_gravity="center_horizontal"
+        >
+        <view_rewrite.PressImage
             android:id="@+id/mine_self_label_science_button"
             android:layout_width="154.6dp"
             android:layout_height="50.66dp"
-            android:layout_marginLeft="22.66dp"
-            android:layout_marginTop="23dp"
-            android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
-            android:textSize="60px"
-            android:text="科技向"
-            />
-        <Button
+            android:src="@drawable/mine_self_label_science_button"
+            android:layout_alignParentTop="true" />
+        <view_rewrite.PressImage
             android:id="@+id/mine_self_label_shy_button"
             android:layout_width="154.6dp"
             android:layout_height="50.66dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="22.66dp"
-            android:layout_marginTop="23dp"
-            android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
-            android:textSize="60px"
-            android:text="羞羞哒"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <Button
+            android:layout_toRightOf="@+id/mine_self_label_science_button"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/mine_self_label_shy_button"/>
+
+        <view_rewrite.PressImage
             android:id="@+id/mine_self_label_food_button"
             android:layout_width="79.66dp"
             android:layout_height="50.66dp"
-            android:layout_marginLeft="22.66dp"
+            android:layout_below="@+id/mine_self_label_science_button"
             android:layout_marginTop="5dp"
-            android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
-            android:textSize="60px"
-            android:text="美食"
+            android:src="@drawable/mine_self_label_food_button"
             />
-        <Button
+        <view_rewrite.PressImage
             android:id="@+id/mine_self_label_animation_button"
             android:layout_width="79.66dp"
             android:layout_height="50.66dp"
-            android:layout_marginLeft="22.66dp"
             android:layout_below="@+id/mine_self_label_food_button"
             android:layout_marginTop="5dp"
-            android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
-            android:textSize="60px"
-            android:text="动画"
+            android:src="@drawable/mine_self_label_animation_button"
             />
-        <Button
+        <view_rewrite.PressImage
             android:id="@+id/mine_self_label_pet_button"
             android:layout_width="140.66dp"
             android:layout_height="106.33dp"
+            android:layout_below="@+id/mine_self_label_science_button"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/mine_self_label_food_button"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
-            android:textSize="90px"
-            android:text="萌宠"
+            android:src="@drawable/mine_self_label_pet_button"
             />
-        <Button
+        <view_rewrite.PressImage
             android:id="@+id/mine_self_label_creative_button"
             android:layout_width="79.66dp"
             android:layout_height="50.66dp"
+            android:layout_below="@+id/mine_self_label_science_button"
+            android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/mine_self_label_pet_button"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
-            android:textSize="60px"
-            android:text="创意"
+            android:src="@drawable/mine_self_label_creative_button"
             />
-        <Button
-            android:id="@+id/mine_self_label_softheated_button"
+        <view_rewrite.PressImage
+            android:id="@+id/mine_self_label_softhearted_button"
             android:layout_width="79.66dp"
             android:layout_height="50.66dp"
             android:layout_toRightOf="@+id/mine_self_label_pet_button"
             android:layout_marginLeft="5dp"
             android:layout_below="@+id/mine_self_label_creative_button"
             android:layout_marginTop="5dp"
-            android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
-            android:textSize="60px"
-            android:text="温情"
+            android:src="@drawable/mine_self_label_softhearted_button"
             />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <Button
+
+        <view_rewrite.PressImage
             android:id="@+id/mine_self_label_odd_idea_button"
             android:layout_width="200.33dp"
             android:layout_height="50.66dp"
-            android:layout_marginLeft="22.66dp"
+            android:layout_below="@+id/mine_self_label_animation_button"
             android:layout_marginTop="5dp"
-            android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
-            android:textSize="60px"
-            android:text="脑洞大开"
+            android:src="@drawable/mine_self_label_odd_idea_button"
             />
-        <Button
+        <view_rewrite.PressImage
             android:id="@+id/mine_self_label_positive_energy_button"
             android:layout_width="106.33dp"
             android:layout_height="50.33dp"
+            android:layout_below="@+id/mine_self_label_softhearted_button"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/mine_self_label_odd_idea_button"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
-            android:textSize="60px"
-            android:text="正能量"
+            android:src="@drawable/mine_self_label_positive_energy_button"
             />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <Button
+        <view_rewrite.PressImage
             android:id="@+id/mine_self_label_fun_button"
             android:layout_width="75.33dp"
             android:layout_height="50.33dp"
-            android:layout_marginLeft="22.66dp"
+            android:layout_below="@+id/mine_self_label_odd_idea_button"
             android:layout_marginTop="5dp"
-            android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
-            android:textSize="60px"
-            android:text="逗比"
+            android:src="@drawable/mine_self_label_fun_button"
             />
-        <Button
+        <view_rewrite.PressImage
             android:id="@+id/mine_self_label_terrify_button"
             android:layout_width="75.33dp"
             android:layout_height="50.33dp"
             android:layout_toRightOf="@+id/mine_self_label_fun_button"
             android:layout_marginLeft="5dp"
+            android:layout_below="@+id/mine_self_label_odd_idea_button"
             android:layout_marginTop="5dp"
-            android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
-            android:textSize="60px"
-            android:text="恐怖"/>
-        <Button
+            android:src="@drawable/mine_self_label_terrify_button"/>
+        <view_rewrite.PressImage
             android:id="@+id/mine_self_label_heavy_taste_button"
             android:layout_width="155.6dp"
             android:layout_height="50.33dp"
-            android:layout_marginLeft="22.66dp"
             android:layout_below="@+id/mine_self_label_fun_button"
             android:layout_marginTop="5dp"
-            android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
-            android:textSize="60px"
-            android:text="重口味"
+            android:src="@drawable/mine_self_label_heavy_taste_button"
             />
-        <Button
+        <view_rewrite.PressImage
             android:id="@+id/mine_self_label_love_button"
             android:layout_width="151.66dp"
             android:layout_height="106dp"
+            android:layout_below="@+id/mine_self_label_odd_idea_button"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/mine_self_label_terrify_button"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/mine_self_label"
-            android:textColor="@android:color/white"
-            android:textSize="80px"
-            android:text="青春爱情"
+            android:src="@drawable/mine_self_label_love_button"
             />
     </RelativeLayout>
     <Button
+        android:id="@+id/mine_self_label_confirm_button"
         android:layout_width="match_parent"
         android:layout_height="44.33dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="55dp"
         android:background="@android:color/white"
         android:textColor="#00b7ee"
+        android:textSize="18sp"
         android:text="确认提交"/>
 </LinearLayout>

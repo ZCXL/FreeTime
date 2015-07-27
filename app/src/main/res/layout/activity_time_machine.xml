@@ -35,5 +35,15 @@
         android:layout_width="fill_parent"
         android:layout_height="0.5dp"
         android:background="#ffc6c5c5"/>
-
+    <view_rewrite.DefinedScrollView
+        android:id="@+id/verticalPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include layout="@layout/mine_time_machine_page_1"/>
+        <include layout="@layout/mine_time_machine_page_2"/>
+        <include layout="@layout/mine_time_machine_page_3"/>
+        <include layout="@layout/mine_time_machine_page_4"/>
+        <include layout="@layout/mine_time_machine_page_5"/>
+    </view_rewrite.DefinedScrollView>
 </LinearLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<view_rewrite.ExpandableLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:customer="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -93,4 +93,4 @@
             android:background="@android:color/white"/>
 
     </LinearLayout>
-</view_rewrite.ExpandableLayout>
+</LinearLayout>
