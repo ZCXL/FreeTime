@@ -33,6 +33,7 @@ import function.Network;
 import function.NetworkFunction;
 import function.SaveAndOpenUserInfo;
 import openapi.UsersAPI;
+import view_rewrite.LoadingDialog;
 import view_rewrite.RippleImage;
 
 
@@ -56,6 +57,7 @@ public class Login extends Activity implements View.OnClickListener {
     private Long uid;
     private String mCode;
     private RippleImage rippleImage_Weibo;
+    private LoadingDialog loadingDialog;
     private SaveAndOpenUserInfo saveAndOpenUserInfo=new SaveAndOpenUserInfo();
 
     private Handler handler=new Handler(){
@@ -75,6 +77,7 @@ public class Login extends Activity implements View.OnClickListener {
                       final String parameters[]=new String[]{userInfo.getNumber(),userInfo.getNick_name(),userInfo.getHead_url()};
                       Log.d("UserInfo",parameters[0]+parameters[1]+parameters[2]);
                       if(Network.checkNetWorkState(Login.this)){
+                          loadingDialog.startProgressDialog();
                           new Thread(new Runnable() {
                               @Override
                               public void run() {
@@ -94,6 +97,7 @@ public class Login extends Activity implements View.OnClickListener {
                   }
                   break;
               case 1:
+                  loadingDialog.stopProgressDialog();
                   ArrayList<BaseObject>userinfos=new ArrayList<BaseObject>();
                   userinfos.add(userInfo);
                   saveAndOpenUserInfo.Save(Login.this,userinfos);
@@ -107,6 +111,7 @@ public class Login extends Activity implements View.OnClickListener {
                   finish();
                   break;
               case 2:
+                  loadingDialog.stopProgressDialog();
                   Toast.makeText(Login.this,"Login failed,please try again!",Toast.LENGTH_LONG).show();
                   break;
               case 3:
@@ -123,6 +128,7 @@ public class Login extends Activity implements View.OnClickListener {
                       final String parameters[]=new String[]{userInfo.getNumber(),userInfo.getNick_name(),userInfo.getHead_url()};
                       Log.d("UserInfo",parameters[0]+parameters[1]+parameters[2]);
                       if(Network.checkNetWorkState(Login.this)){
+                          loadingDialog.startProgressDialog();
                           new Thread(new Runnable() {
                               @Override
                               public void run() {
@@ -150,6 +156,7 @@ public class Login extends Activity implements View.OnClickListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
 
+        loadingDialog=new LoadingDialog(this);
         initView();
 
     }

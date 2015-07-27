@@ -208,7 +208,7 @@ public class TopHot_Detail extends Activity implements View.OnClickListener, Upl
                 Intent intent=new Intent(Intent.ACTION_SEND);
                 intent.setType("image/*");
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
-                intent.putExtra(Intent.EXTRA_TEXT, "Free Time");
+                intent.putExtra(Intent.EXTRA_TEXT, movie.getMovieName());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(Intent.createChooser(intent, "Send To"));
                 break;

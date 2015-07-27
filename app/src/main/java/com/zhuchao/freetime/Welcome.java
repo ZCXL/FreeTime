@@ -15,7 +15,6 @@ import bean.Version;
 import fragment.MineFragment;
 import fragment.ZeroTimeFragment;
 import function.CheckVersion;
-import function.Network;
 
 public class Welcome extends Activity implements Runnable{
 
@@ -40,15 +39,6 @@ public class Welcome extends Activity implements Runnable{
     @Override
     public void run() {
         //input code to check version
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //Check network connection
-//        if(!Network.checkNetWorkState(Welcome.this)){
-//
-//        }
         checkVersion=new CheckVersion(Welcome.this);
         checkVersion.setOnVersionCheckListener(new CheckVersion.OnVersionCheckListener() {
             @Override

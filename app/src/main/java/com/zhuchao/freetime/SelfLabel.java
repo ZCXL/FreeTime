@@ -69,7 +69,7 @@ public class SelfLabel extends Activity implements View.OnClickListener,Runnable
         animation=(PressImage)findViewById(R.id.mine_self_label_animation_button);
         pet=(PressImage)findViewById(R.id.mine_self_label_pet_button);
         creative=(PressImage)findViewById(R.id.mine_self_label_creative_button);
-        softhearted=(PressImage)findViewById(R.id.mine_self_label_softhearted_button);
+        softhearted=(PressImage)findViewById(R.id.mine_self_label_soft_hearted_button);
         idea=(PressImage)findViewById(R.id.mine_self_label_odd_idea_button);
         energy=(PressImage)findViewById(R.id.mine_self_label_positive_energy_button);
         fun=(PressImage)findViewById(R.id.mine_self_label_fun_button);
@@ -157,7 +157,7 @@ public class SelfLabel extends Activity implements View.OnClickListener,Runnable
                     isCheck[4]=false;
                 }
                 break;
-            case R.id.mine_self_label_softhearted_button:
+            case R.id.mine_self_label_soft_hearted_button:
                 if(!isCheck[8]) {
                     softhearted.setImageResource(R.drawable.mine_self_label_softhearted_button_checked);
                     isCheck[8]=true;

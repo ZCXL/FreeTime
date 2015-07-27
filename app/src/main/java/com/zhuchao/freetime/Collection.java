@@ -20,6 +20,7 @@ import bean.Movies;
 import fragment.MineFragment;
 import function.Network;
 import function.NetworkFunction;
+import view_rewrite.LoadingDialog;
 import view_rewrite.SwipeListView;
 import view_rewrite.UploadView;
 
@@ -36,6 +37,8 @@ public class Collection extends Activity implements Runnable, UploadView.OnUploa
 
     private ImageView back_button;
 
+    private LoadingDialog loadingDialog;
+
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -45,6 +48,7 @@ public class Collection extends Activity implements Runnable, UploadView.OnUploa
                     if(movieArrayList.size()==0){
                         swipeListView.addView(LayoutInflater.from(Collection.this).inflate(R.layout.collection_item_nothing,null));
                     }
+                    loadingDialog.stopProgressDialog();
                     break;
             }
         }
@@ -55,9 +59,11 @@ public class Collection extends Activity implements Runnable, UploadView.OnUploa
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.mine_my_collection);
 
+        loadingDialog=new LoadingDialog(this);
         initView();
 
         if(Network.checkNetWorkState(Collection.this)){
+            loadingDialog.startProgressDialog();
             new Thread(this).start();
         }
     }

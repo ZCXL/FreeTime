@@ -64,6 +64,11 @@ public class DownloadMovieService extends Service implements DownLoadFile.OnDown
     }
     public void addTask(Movie m,String tag){
         if(m!=null) {
+            for(int i=0;i<movie_queue.size();i++){
+                if(m.getMovieId().equals(movie_queue.get(i).getMovieId())){
+                    return;
+                }
+            }
             movie_queue.add(m);
             movie_tag.add(tag);
             if(isDownloading)
@@ -77,8 +82,8 @@ public class DownloadMovieService extends Service implements DownLoadFile.OnDown
                 Movie movie=movie_queue.poll();
                 tag=movie_tag.poll();
                 isDownloading=true;
-                Log.d("nononono",tag);
                 downLoadFile.startDownload(movie.getFileUrl());
+                Log.d("tell me why", "doubi");
             }
         }
     }

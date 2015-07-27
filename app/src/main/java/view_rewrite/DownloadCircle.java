@@ -58,24 +58,38 @@ public class DownloadCircle extends CustomerView {
     public void setWait(){
         this.download_speed.setText("");
         this.notification.setText("Waiting");
-    }
-    public void setStart(){
         download_success=false;
-        if(download_speed.getVisibility()==GONE){
+        if(download_speed.getVisibility()==INVISIBLE){
             notification.setVisibility(VISIBLE);
             download_speed.setVisibility(VISIBLE);
         }
         if(start_button.getVisibility()==VISIBLE)
-            start_button.setVisibility(GONE);
+            start_button.setVisibility(INVISIBLE);
+        invalidate();
+    }
+    public void setStart(){
+        download_success=false;
+        if(download_speed.getVisibility()==INVISIBLE){
+            notification.setVisibility(VISIBLE);
+            download_speed.setVisibility(VISIBLE);
+        }
+        if(start_button.getVisibility()==VISIBLE)
+            start_button.setVisibility(INVISIBLE);
+        invalidate();
     }
     public void endDownload(){
         if(download_speed.getVisibility()==VISIBLE){
-            notification.setVisibility(GONE);
-            download_speed.setVisibility(GONE);
+            notification.setVisibility(INVISIBLE);
+            download_speed.setVisibility(INVISIBLE);
         }
-        if(start_button.getVisibility()==GONE)
+        if(start_button.getVisibility()==INVISIBLE)
             start_button.setVisibility(VISIBLE);
         download_success=true;
+        invalidate();
+    }
+    public void downloadError(){
+        this.download_speed.setText("");
+        this.notification.setText("Error");
     }
     public DownloadCircle(Context context,AttributeSet attributeSet){
         super(context,attributeSet);
@@ -123,7 +137,7 @@ public class DownloadCircle extends CustomerView {
         LayoutParams start_params=new LayoutParams(Utils.dpToPx(61.5f,getResources()),Utils.dpToPx(61.5f,getResources()));
         start_params.addRule(RelativeLayout.CENTER_IN_PARENT,RelativeLayout.TRUE);
         start_button.setImageResource(start_button_source);
-        start_button.setVisibility(GONE);
+        start_button.setVisibility(INVISIBLE);
 
         addView(start_button);
     }

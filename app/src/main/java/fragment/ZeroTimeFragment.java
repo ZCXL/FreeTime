@@ -82,7 +82,7 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
 
     public static ArrayList<Movie>movies=new ArrayList<Movie>();
 
-    private int page=100;
+    private ArrayList<Movie>tempMovies=new ArrayList<Movie>();
 
     private SaveAndOpenMovies saveAndOpenMovies;
 
@@ -94,7 +94,7 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
 
     private ImageLoader imageLoader;
 
-    private int position;
+    private int position=0;
 
     private LinkedList<Movie>movieQueue;
     Handler mHandler = new Handler() {
@@ -111,8 +111,15 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                 case 1:
                     if(movieQueue.size()>0){
                         Movie movie=movieQueue.poll();
+                        for(int i=0;i<movies.size();i++){
+                            if(movie.getMovieId().equals(movies.get(i).getMovieId())){
+                                this.sendEmptyMessage(0);
+                                return;
+                            }
+                        }
                         movies.add(movie);
-                        setMoviePage(movies.size()-1);
+                        if(position==0)
+                           setMoviePage(movies.size()-1);
                         sendEmptyMessage(2);
                         //while(symbol<0);
                         MainActivity.downloadMovieService.addTask(movie,String.valueOf(movies.size()-1));
@@ -132,6 +139,36 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                         collect.setImageResource(R.drawable.main_collect_button);
                     Toast.makeText(getActivity(),"Collect successfully",Toast.LENGTH_SHORT).show();
                     break;
+                case 5:
+                    int position=Integer.parseInt(String.valueOf(msg.obj));
+                    if(Network.checkNetWorkState(getActivity())&&Network.getNetworkType(getActivity())==Network.NETWORNTYPE_WIFI){
+                        new Thread(new getNewMovie(position)).start();
+                    }
+                    break;
+                case 6:
+                    position=Integer.parseInt(String.valueOf(msg.obj));
+                    if(movieQueue.size()>0){
+                        Movie movie=movieQueue.poll();
+                        for(int i=0;i<movies.size();i++){
+                            if(movie.getMovieId().equals(movies.get(i).getMovieId())){
+                                Message message=new Message();
+                                message.obj=position;
+                                message.what=5;
+                                this.sendMessage(message);
+                                return;
+                            }
+                        }
+                        movies.set(position,movie);
+                        if(position==ZeroTimeFragment.this.position)
+                            setMoviePage(position);
+                        checkCollectState(position);
+                        //while(symbol<0);
+                        Log.d("position",String.valueOf(position));
+                        MainActivity.downloadMovieService.addTask(movie,String.valueOf(position));
+                    }
+                    break;
+                case 7:
+                    break;
             }
         }
     };
@@ -142,6 +179,7 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
         initView(rootView);
 
         for(int i = 0; i < movies.size()&&i<3;i++) {
+            tempMovies.add(movies.get(i));
             if(i==0)
                 downloadCircle1.endDownload();
             if(i==1)
@@ -179,6 +217,8 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
 
         delete=(RippleImage)rootView.findViewById(R.id.main_zero_time_delete);
 
+        delete.setOnClickListener(this);
+
         movieViews=new ArrayList<View>();
         view1=LayoutInflater.from(getActivity()).inflate(R.layout.main_zero_time_movie_image,null);
         downloadCircle1=(DownloadCircle)view1.findViewById(R.id.movie_download_circle);
@@ -206,8 +246,7 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
         moviePager.setCurrentItem(0);
         moviePager.setOnPageChangeListener(this);
 
-        for(int i=0;i<3;i++)
-            setMoviePage(i);
+        setMoviePage(0);
 
         IntentFilter filter=new IntentFilter();
         filter.addAction(ACTION_COMPLETED);
@@ -232,7 +271,6 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
             parameters[0]=MineFragment.userInfo.getNumber();
         String result= NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/get_customer_movie.php",keys,parameters);
         if(result!=null&&!result.contains("error")){
-            page++;
             movieQueue.add(new Movie(result));
             mHandler.sendEmptyMessage(1);
         }
@@ -326,7 +364,18 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                 startActivity(intent);
             }
         }else if(v==collect){
-            updateCollectState(position);
+            if(currentMovie!=null)
+              updateCollectState(position);
+        }else if(v==delete){
+            if(currentMovie!=null)
+              deleteMovie(position);
+        }else if(v==share){
+            Intent intent=new Intent(Intent.ACTION_SEND);
+            intent.setType("image/*");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
+            intent.putExtra(Intent.EXTRA_TEXT, currentMovie.getMovieName());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(Intent.createChooser(intent, "Send To"));
         }
     }
 
@@ -366,9 +415,9 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                     temp=movies.get(1);
                 }
                 if(temp!=null){
-                    //movie_description.setText(temp.getMovieName());
+                    movie_description.setText(temp.getMovieName());
                     movie_image2.setTag(temp.getImageUrl());
-                    //movie_time.setText("File Size:" + filesize[1]);
+                    movie_time.setText("File Size:" + filesize[1]);
                     imageLoader.DisplayImage(temp.getImageUrl(), movie_image2);
                     if(collectstate[1])
                         collect.setImageResource(R.drawable.main_collect_button_checked);
@@ -381,9 +430,9 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                     temp=movies.get(2);
                 }
                 if(temp!=null){
-                   // movie_description.setText(temp.getMovieName());
+                    movie_description.setText(temp.getMovieName());
                     movie_image3.setTag(temp.getImageUrl());
-                    //movie_time.setText("File Size:" + filesize[2]);
+                    movie_time.setText("File Size:" + filesize[2]);
                     imageLoader.DisplayImage(temp.getImageUrl(), movie_image3);
                     if(collectstate[2])
                         collect.setImageResource(R.drawable.main_collect_button_checked);
@@ -405,11 +454,15 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                 downloadCircle1.setStart();
                 downloadCircle1.setPercent(0.0f);
             } else if (intent.getAction().equals(ACTION_ERROR)) {
-
+                downloadCircle1.downloadError();
             } else if (intent.getAction().equals(ACTION_PERCENT)) {
                 float value = intent.getFloatExtra("percent", 0f);
                 downloadCircle1.setPercent(value / 1000);
             } else if (intent.getAction().equals(ACTION_COMPLETED)) {
+                if(tempMovies.size()>=1)
+                   tempMovies.set(0,movies.get(0));
+                else
+                   tempMovies.add(movies.get(0));
                 saveMovie();
                 downloadCircle1.setPercent(1.0f);
                 downloadCircle1.endDownload();
@@ -423,14 +476,18 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
             }
         }else if(position==1){
             if (intent.getAction().equals(ACTION_START)) {
-                downloadCircle1.setStart();
+                downloadCircle2.setStart();
                 downloadCircle2.setPercent(0.0f);
             } else if (intent.getAction().equals(ACTION_ERROR)) {
-
+                downloadCircle2.downloadError();
             } else if (intent.getAction().equals(ACTION_PERCENT)) {
                 float value = intent.getFloatExtra("percent", 0f);
                 downloadCircle2.setPercent(value / 1000);
             } else if (intent.getAction().equals(ACTION_COMPLETED)) {
+                if(tempMovies.size()>=2)
+                    tempMovies.set(1,movies.get(1));
+                else
+                    tempMovies.add(movies.get(1));
                 saveMovie();
                 downloadCircle2.setPercent(1.0f);
                 downloadCircle2.endDownload();
@@ -447,11 +504,15 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
                 downloadCircle1.setStart();
                 downloadCircle3.setPercent(0.0f);
             } else if (intent.getAction().equals(ACTION_ERROR)) {
-
+                downloadCircle1.downloadError();
             } else if (intent.getAction().equals(ACTION_PERCENT)) {
                 float value = intent.getFloatExtra("percent", 0f);
                 downloadCircle3.setPercent(value / 1000);
             } else if (intent.getAction().equals(ACTION_COMPLETED)) {
+                if(tempMovies.size()>=3)
+                    tempMovies.set(2,movies.get(2));
+                else
+                    tempMovies.add(movies.get(2));
                 saveMovie();
                 downloadCircle3.setPercent(1.0f);
                 downloadCircle3.endDownload();
@@ -471,7 +532,7 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
      */
     private void saveMovie(){
         ArrayList<BaseObject>arrayList=new ArrayList<BaseObject>();
-        for(BaseObject object:movies){
+        for(BaseObject object:tempMovies){
             arrayList.add(object);
         }
         saveAndOpenMovies.Save(getActivity(),arrayList);
@@ -536,7 +597,32 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
             }
         }
     }
-    private void deleteMovie(final int postion){
+    public class getNewMovie implements Runnable{
 
+        private int position;
+        public getNewMovie(int position){
+            this.position=position;
+        }
+        @Override
+        public void run() {
+            String keys[]={"number"};
+            String parameters[]={"1"};
+            if(MineFragment.isLogin)
+                parameters[0]=MineFragment.userInfo.getNumber();
+            String result= NetworkFunction.ConnectServer("http://123.56.85.58/FreeTime/code/get_customer_movie.php",keys,parameters);
+            if(result!=null&&!result.contains("error")){
+                movieQueue.add(new Movie(result));
+                Message message=new Message();
+                message.obj=position;
+                message.what=6;
+                mHandler.sendMessage(message);
+            }
+        }
+    }
+    private void deleteMovie(final int position){
+        Message message=new Message();
+        message.obj=position;
+        message.what=5;
+        mHandler.sendMessage(message);
     }
 }

@@ -8,8 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="226dp"
         android:scaleType="centerCrop"
-        android:layout_gravity="center"
-        android:src="@drawable/top_hot_detail_video"/>
+        android:layout_gravity="center" />
     <RelativeLayout
         android:id="@+id/main_movie_background"
         android:background="#8a000000"
