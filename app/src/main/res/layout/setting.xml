@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Setting"
+            android:text="设置"
             android:textSize="@dimen/setting_TextView1_textSize"
             android:layout_marginTop="@dimen/setting_TextView1_layout_marginTop"
             android:layout_marginBottom="@dimen/setting_TextView1_layout_marginBottom"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/setting_TextView2_layout_marginLeft"
-            android:text="Delete cash content"
+            android:text="清除缓存"
             android:textSize="@dimen/setting_TextView2_textSize"
             />
         <ImageView
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/setting_TextView2_layout_marginLeft"
-            android:text="Problem feedback"
+            android:text="问题反馈"
             android:textSize="@dimen/setting_TextView2_textSize"
             />
         <ImageView
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/setting_TextView2_layout_marginLeft"
-            android:text="Check update"
+            android:text="版本更新"
             android:textSize="@dimen/setting_TextView2_textSize"
             />
         <TextView
@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/setting_TextView2_layout_marginLeft"
-            android:text="Share with friends"
+            android:text="分享给好友"
             android:textSize="@dimen/setting_TextView2_textSize"
             />
         <ImageView
@@ -164,7 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/setting_TextView2_layout_marginLeft"
-            android:text="Join in us"
+            android:text="加入我们"
             android:textSize="@dimen/setting_TextView2_textSize"
             />
         <ImageView
@@ -194,7 +194,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/setting_TextView2_layout_marginLeft"
-            android:text="About us"
+            android:text="关于我们"
             android:textSize="@dimen/setting_TextView2_textSize"
             />
         <ImageView
@@ -219,11 +219,13 @@
         android:background="#f3f2f2">
         <Button
             android:id="@+id/setting_quit"
-            android:layout_width="@dimen/setting_bottom_relativeLayout_layout_width"
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
             android:layout_height="@dimen/setting_bottom_relativeLayout_layout_height1"
             android:layout_marginTop="@dimen/setting_bottom_relativeLayout_layout_marginTop"
             android:layout_centerHorizontal="true"
-            android:text="Quit"
+            android:text="退出登录"
             android:textColor="#ffffff"
             android:background="#ffe6282e"
             />

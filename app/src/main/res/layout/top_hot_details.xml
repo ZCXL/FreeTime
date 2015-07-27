@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/top_hot_detail_title_bar"
         android:layout_width="fill_parent"
-        android:layout_height="47.66dp"
+        android:layout_height="50dp"
         android:background="#f3f2f2"
         android:gravity="top">
         <ImageView

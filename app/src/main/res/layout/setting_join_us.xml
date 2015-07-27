@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Join in us"
+            android:text="加入我们"
             android:textSize="@dimen/setting_join_us_TextView_textSize"
             android:layout_marginTop="@dimen/setting_join_us_TextView_layout_marginTop"
             android:layout_marginBottom="@dimen/setting_join_us_TextView_layout_marginBottom"

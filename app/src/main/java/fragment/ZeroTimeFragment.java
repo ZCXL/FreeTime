@@ -370,12 +370,14 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
             if(currentMovie!=null)
               deleteMovie(position);
         }else if(v==share){
-            Intent intent=new Intent(Intent.ACTION_SEND);
-            intent.setType("image/*");
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
-            intent.putExtra(Intent.EXTRA_TEXT, currentMovie.getMovieName());
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(Intent.createChooser(intent, "Send To"));
+            if(currentMovie!=null) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("image/*");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
+                intent.putExtra(Intent.EXTRA_TEXT, currentMovie.getMovieName());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(Intent.createChooser(intent, "Send To"));
+            }
         }
     }
 

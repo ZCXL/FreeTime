@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -159,10 +158,10 @@ public class SelfLabel extends Activity implements View.OnClickListener,Runnable
                 break;
             case R.id.mine_self_label_soft_hearted_button:
                 if(!isCheck[8]) {
-                    softhearted.setImageResource(R.drawable.mine_self_label_softhearted_button_checked);
+                    softhearted.setImageResource(R.drawable.mine_self_label_soft_hearted_button_checked);
                     isCheck[8]=true;
                 }else {
-                    softhearted.setImageResource(R.drawable.mine_self_label_softhearted_button);
+                    softhearted.setImageResource(R.drawable.mine_self_label_soft_hearted_button);
                     isCheck[8]=false;
                 }
                 break;
@@ -340,9 +339,9 @@ public class SelfLabel extends Activity implements View.OnClickListener,Runnable
                 break;
             case 8:
                 if(isCheck[8]) {
-                    softhearted.setImageResource(R.drawable.mine_self_label_softhearted_button_checked);
+                    softhearted.setImageResource(R.drawable.mine_self_label_soft_hearted_button_checked);
                 }else {
-                    softhearted.setImageResource(R.drawable.mine_self_label_softhearted_button);
+                    softhearted.setImageResource(R.drawable.mine_self_label_soft_hearted_button);
                 }
                 break;
             case 9:

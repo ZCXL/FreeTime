@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/setting_title_bar"
         android:layout_width="fill_parent"
-        android:layout_height="57dp"
+        android:layout_height="50dp"
         android:background="#f3f2f2"
         >
         <ImageView
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Self Label"
+            android:text="个性标签"
             android:textSize="16sp"
             android:layout_marginTop="13dp"
             android:layout_marginBottom="13dp"
@@ -31,32 +31,29 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:layout_gravity="center_horizontal"
+        >
         <view_rewrite.PressImage
             android:id="@+id/mine_self_label_science_button"
             android:layout_width="154.6dp"
             android:layout_height="50.66dp"
-            android:layout_marginLeft="22.66dp"
-            android:layout_marginTop="23dp"
             android:src="@drawable/mine_self_label_science_button"
             />
         <view_rewrite.PressImage
             android:id="@+id/mine_self_label_shy_button"
             android:layout_width="154.6dp"
             android:layout_height="50.66dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="22.66dp"
-            android:layout_marginTop="23dp"
+            android:layout_toRightOf="@+id/mine_self_label_science_button"
+            android:layout_marginLeft="5dp"
             android:src="@drawable/mine_self_label_shy_button"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+
         <view_rewrite.PressImage
             android:id="@+id/mine_self_label_food_button"
             android:layout_width="79.66dp"
             android:layout_height="50.66dp"
-            android:layout_marginLeft="22.66dp"
+            android:layout_below="@+id/mine_self_label_science_button"
             android:layout_marginTop="5dp"
             android:src="@drawable/mine_self_label_food_button"
             />
@@ -64,14 +61,15 @@
             android:id="@+id/mine_self_label_animation_button"
             android:layout_width="79.66dp"
             android:layout_height="50.66dp"
-            android:layout_marginLeft="22.66dp"
             android:layout_below="@+id/mine_self_label_food_button"
             android:layout_marginTop="5dp"
-            android:src="@drawable/mine_self_label_animation_button"/>
+            android:src="@drawable/mine_self_label_animation_button"
+            />
         <view_rewrite.PressImage
             android:id="@+id/mine_self_label_pet_button"
             android:layout_width="140.66dp"
             android:layout_height="106.33dp"
+            android:layout_below="@+id/mine_self_label_science_button"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/mine_self_label_food_button"
             android:layout_marginLeft="5dp"
@@ -81,9 +79,10 @@
             android:id="@+id/mine_self_label_creative_button"
             android:layout_width="79.66dp"
             android:layout_height="50.66dp"
+            android:layout_below="@+id/mine_self_label_science_button"
+            android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/mine_self_label_pet_button"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
             android:src="@drawable/mine_self_label_creative_button"
             />
         <view_rewrite.PressImage
@@ -94,39 +93,32 @@
             android:layout_marginLeft="5dp"
             android:layout_below="@+id/mine_self_label_creative_button"
             android:layout_marginTop="5dp"
-            android:src="@drawable/mine_self_label_softhearted_button"
+            android:src="@drawable/mine_self_label_soft_hearted_button"
             />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+
         <view_rewrite.PressImage
             android:id="@+id/mine_self_label_odd_idea_button"
             android:layout_width="200.33dp"
             android:layout_height="50.66dp"
-            android:layout_marginLeft="22.66dp"
+            android:layout_below="@+id/mine_self_label_animation_button"
             android:layout_marginTop="5dp"
-            android:background="@drawable/mine_self_label"
             android:src="@drawable/mine_self_label_odd_idea_button"
             />
         <view_rewrite.PressImage
             android:id="@+id/mine_self_label_positive_energy_button"
             android:layout_width="106.33dp"
             android:layout_height="50.33dp"
+            android:layout_below="@+id/mine_self_label_soft_hearted_button"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/mine_self_label_odd_idea_button"
             android:layout_marginLeft="5dp"
             android:src="@drawable/mine_self_label_positive_energy_button"
             />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
         <view_rewrite.PressImage
             android:id="@+id/mine_self_label_fun_button"
             android:layout_width="75.33dp"
             android:layout_height="50.33dp"
-            android:layout_marginLeft="22.66dp"
+            android:layout_below="@+id/mine_self_label_odd_idea_button"
             android:layout_marginTop="5dp"
             android:src="@drawable/mine_self_label_fun_button"
             />
@@ -136,13 +128,14 @@
             android:layout_height="50.33dp"
             android:layout_toRightOf="@+id/mine_self_label_fun_button"
             android:layout_marginLeft="5dp"
+            android:layout_below="@+id/mine_self_label_odd_idea_button"
             android:layout_marginTop="5dp"
             android:src="@drawable/mine_self_label_terrify_button"/>
+        />
         <view_rewrite.PressImage
             android:id="@+id/mine_self_label_heavy_taste_button"
             android:layout_width="155.6dp"
             android:layout_height="50.33dp"
-            android:layout_marginLeft="22.66dp"
             android:layout_below="@+id/mine_self_label_fun_button"
             android:layout_marginTop="5dp"
             android:src="@drawable/mine_self_label_heavy_taste_button"
@@ -151,18 +144,19 @@
             android:id="@+id/mine_self_label_love_button"
             android:layout_width="151.66dp"
             android:layout_height="106dp"
+            android:layout_below="@+id/mine_self_label_odd_idea_button"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/mine_self_label_terrify_button"
             android:layout_marginLeft="5dp"
-            android:src="@drawable/mine_self_label_love_button"
-            />
+            android:src="@drawable/mine_self_label_love_button"/>
     </RelativeLayout>
     <Button
         android:id="@+id/mine_self_label_confirm_button"
         android:layout_width="match_parent"
         android:layout_height="44.33dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="55dp"
         android:background="@android:color/white"
         android:textColor="#00b7ee"
+        android:textSize="18sp"
         android:text="确认提交"/>
 </LinearLayout>

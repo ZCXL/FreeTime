@@ -7,7 +7,7 @@
     <RelativeLayout
         android:id="@+id/mine_my_collection_title_bar"
         android:layout_width="fill_parent"
-        android:layout_height="57dp"
+        android:layout_height="50dp"
         android:background="#f3f2f2"
         >
         <ImageView

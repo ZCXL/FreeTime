@@ -32,7 +32,7 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/time_machine_page_5_word_2"/>
 
-    <ImageView
+   <!-- <ImageView
         android:layout_width="34dp"
         android:layout_height="34dp"
         android:src="@drawable/down_arrow"
@@ -40,4 +40,5 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="13dp"
         />
+        -->
 </RelativeLayout>

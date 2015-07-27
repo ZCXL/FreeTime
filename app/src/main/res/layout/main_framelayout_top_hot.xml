@@ -12,16 +12,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Top Hot"
+            android:text="最新"
             android:textSize="@dimen/main_top_hot_TextView_textSize"
             android:textColor="#7a7b7c"/>
-        <ImageView
+      <!--  <ImageView
             android:layout_width="@dimen/main_top_hot_ImageView_layout_width"
             android:layout_height="@dimen/main_top_hot_ImageView_layout_height"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/main_top_hot_ImageView_layout_marginRight"
             android:src="@drawable/top_hot_choose_button"/>
+          -->
     </RelativeLayout>
     <view_rewrite.PullToRefreshView
         android:id="@+id/pull_to_refresh"

@@ -31,7 +31,7 @@
         android:paddingLeft="@dimen/main_TextView1_paddingLeft"
         android:paddingRight="@dimen/main_TextView1_paddingRight"
         android:textSize="@dimen/main_TextView1_textSize"
-        android:text="测试描述测试描述测试描述测试描述测试描述测试描述测试描述测试描述"/>
+        android:text="网速不给力哦~加载不出来呢！"/>
 
     <TextView
         android:id="@+id/main_zero_time_movie_size"
@@ -41,7 +41,7 @@
         android:layout_marginTop="@dimen/main_TextView2_layout_marginTop"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="@dimen/main_TextView2_layout_marginLeft"
-        android:text="File Size:123M"
+        android:text="影片大小:123M"
         android:textSize="@dimen/main_TextView2_textSize"
         android:textColor="#b3b3b3"/>
     <ImageView
