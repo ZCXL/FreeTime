@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:customer="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_zero_time_movie_frame"
     android:layout_width="@dimen/main_frameLayout_layout_width"
     android:layout_height="@dimen/main_frameLayout_layout_height">
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="226dp"
-        android:scaleType="centerCrop"
-        android:layout_gravity="center" />
     <RelativeLayout
         android:id="@+id/main_movie_background"
         android:background="#8a000000"
         android:layout_width="fill_parent"
         android:layout_gravity="center"
-        android:layout_height="226dp"/>
+        android:layout_height="fill_parent"/>
     <ImageView
         android:id="@+id/main_movie_image"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:scaleType="centerCrop" />
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
         android:src="@drawable/main_video_frame"/>
     <view_rewrite.DownloadCircle
         android:id="@+id/movie_download_circle"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
+        android:layout_centerInParent="true"
         customer:circle_color_inside="#ffffff"
         customer:circle_color_outside="#ff009ce7"
         customer:text_color="#ffffff"
         customer:text_size="8sp"
         customer:image_button="@drawable/top_hot_detail_play_button"/>
-</FrameLayout>
+</RelativeLayout>
