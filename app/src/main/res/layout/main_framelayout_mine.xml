@@ -65,7 +65,7 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_frameLayout_mine_RelativeLayout_layout_height"
         android:background="@drawable/mine_item_press"
-        customer:color="#00b7ee"
+        customer:color="#ff00c5ff"
         customer:speed="20">
         <ImageView
             android:id="@+id/mine_collect_image"
@@ -104,7 +104,7 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_frameLayout_mine_RelativeLayout_layout_height"
         android:background="@drawable/mine_item_press"
-        customer:color="#00b7ee"
+        customer:color="#ff00c5ff"
         customer:speed="20">
         <ImageView
             android:id="@+id/mine_message_image"
@@ -143,7 +143,7 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_frameLayout_mine_RelativeLayout_layout_height"
         android:background="@drawable/mine_item_press"
-        customer:color="#00b7ee"
+        customer:color="#ff00c5ff"
         customer:speed="20">
         <ImageView
             android:id="@+id/mine_time_machine_image"
@@ -182,7 +182,7 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_frameLayout_mine_RelativeLayout_layout_height"
         android:background="@drawable/mine_item_press"
-        customer:color="#00b7ee"
+        customer:color="#ff00c5ff"
         customer:speed="20">
         <ImageView
             android:id="@+id/mine_self_label_image"
