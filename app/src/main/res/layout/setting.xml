@@ -43,13 +43,16 @@
             android:text="清除缓存"
             android:textSize="@dimen/setting_TextView2_textSize"
             />
-        <ImageView
-            android:layout_width="@dimen/setting_ImageView2_layout_width"
-            android:layout_height="@dimen/setting_ImageView2_layout_height"
+        <TextView
+            android:id="@+id/memory_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/setting_ImageView2_layout_marginRight"
-            android:src="@drawable/right_arrow"
+            android:text="100M"
+            android:textColor="#888888"
+            android:textSize="12sp"
             />
     </RelativeLayout>
     <!--gap between two blocks-->

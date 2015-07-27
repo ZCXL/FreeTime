@@ -122,7 +122,7 @@ public class SaveAndOpenMovies implements ParseXml {
                 builder = factory.newDocumentBuilder();
                 document = builder.parse(inputStream);
                 Element root = document.getDocumentElement();
-//                Element movieInfo = (Element) root.getElementsByTagName("MovieShow").item(0);
+                //Element movieInfo = (Element) root.getElementsByTagName("MovieShow").item(0);
                 NodeList movies = root.getElementsByTagName("movie");
                 for (int i = 0; i < movies.getLength(); i++) {
                     Element info = (Element) movies.item(i);
