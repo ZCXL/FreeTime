@@ -54,7 +54,7 @@
     <dimen name="main_frameLayout_layout_marginTop">21dp</dimen>
 
        <!--the data of main_frameLayout_zero_time_TextView1 -->
-    <dimen name="main_TextView1_video_description">70dp</dimen>
+    <dimen name="main_TextView1_video_description">50dp</dimen>
     <dimen name="main_TextView1_layout_marginTop">20dp</dimen>
     <dimen name="main_TextView1_paddingLeft">47dp</dimen>
     <dimen name="main_TextView1_paddingRight">47dp</dimen>

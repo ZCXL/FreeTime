@@ -72,7 +72,7 @@
             android:layout_marginRight="@dimen/main_frameLayout_zero_time_view_rewrite_layout_marginRight"
             customer:image_width="@dimen/main_frameLayout_zero_time_view_rewrite_image_width"
             customer:image_height="@dimen/main_frameLayout_zero_time_view_rewrite_image_height"
-            customer:ripple_color="#00b7ee"
+            customer:ripple_color="#ffffffff"
             customer:ripple_speed="1"
             customer:image="@drawable/main_share_button"
             />
@@ -87,7 +87,7 @@
             android:layout_centerHorizontal="true"
             customer:image_width="@dimen/main_frameLayout_zero_time_view_rewrite_image_width"
             customer:image_height="@dimen/main_frameLayout_zero_time_view_rewrite_image_height"
-            customer:ripple_color="#00b7ee"
+            customer:ripple_color="#ffffffff"
             customer:ripple_speed="1"
             customer:image="@drawable/main_collect_button"
             />
@@ -103,7 +103,7 @@
             android:layout_marginLeft="@dimen/main_frameLayout_zero_time_view_rewrite_layout_marginLeft"
             customer:image_width="@dimen/main_frameLayout_zero_time_view_rewrite_image_width"
             customer:image_height="@dimen/main_frameLayout_zero_time_view_rewrite_image_height"
-            customer:ripple_color="#00b7ee"
+            customer:ripple_color="#ffffff"
             customer:ripple_speed="1"
             customer:image="@drawable/main_delete_button"
             />
