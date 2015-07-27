@@ -30,6 +30,10 @@
             android:layout_marginBottom="13dp"
             />
     </RelativeLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
     <View
         android:layout_width="fill_parent"
         android:layout_height="0.5dp"
@@ -44,6 +48,7 @@
         android:text="Your Feedback"
         />
     <EditText
+        android:id="@+id/feedback_edit"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="14dp"
@@ -62,6 +67,8 @@
         android:text="Commit"
         android:textColor="#ffffff"
         android:background="#ffd42f2c"
+        android:id="@+id/feedback_confirm"
         />
+    </LinearLayout>
 
 </LinearLayout>

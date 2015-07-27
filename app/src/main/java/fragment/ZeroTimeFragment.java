@@ -501,10 +501,10 @@ public class ZeroTimeFragment extends Fragment implements Runnable,ViewPager.OnP
             }
         }else if(position==2){
             if (intent.getAction().equals(ACTION_START)) {
-                downloadCircle1.setStart();
+                downloadCircle3.setStart();
                 downloadCircle3.setPercent(0.0f);
             } else if (intent.getAction().equals(ACTION_ERROR)) {
-                downloadCircle1.downloadError();
+                downloadCircle3.downloadError();
             } else if (intent.getAction().equals(ACTION_PERCENT)) {
                 float value = intent.getFloatExtra("percent", 0f);
                 downloadCircle3.setPercent(value / 1000);
